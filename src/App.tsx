@@ -14,6 +14,7 @@ import ProjectTrackerPage from "./pages/ProjectTracker";
 import BlogPage from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPost";
 import PortfolioPage from "./pages/Portfolio";
+import SitemapPage from "./pages/Sitemap";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminBlog from "./pages/admin/AdminBlog";
@@ -52,6 +53,9 @@ const App = () => (
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
                 <Route path="/about-me" element={<AboutMe />} />
                 <Route path="/professional" element={<ProfessionalPage />} />
+                <Route path="/sitemap" element={<SitemapPage />} />
+                <Route path="/sitemap.xml" element={<SitemapPage />} />
+                <Route path="/sitemap-images.xml" element={<SitemapPage />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/admin/login" element={<AdminLogin />} />
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
