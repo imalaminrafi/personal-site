@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
-import { useAuth } from "@/context/AuthContext";
+import { Navigate } from "react-router-dom";
+import { useAdminAuth } from "@/context/AdminAuthContext";
+import AdminLayout from "@/pages/admin/AdminLayout";
 import {
     Plus, Trash2, Save, ChevronDown, ChevronUp,
-    ArrowLeft, ExternalLink
+    ExternalLink
 } from "lucide-react";
 import {
     loadProjects, saveProjects, STEPS,
@@ -202,8 +203,7 @@ function Field({
 
 /* ── Main Admin Page ─────────────────────────────────────────── */
 export default function AdminProjectsPage() {
-    const navigate = useNavigate();
-    const { user } = useAuth();
+    const { admin } = useAdminAuth();
     const [projects, setProjects] = useState<Project[]>([]);
     const [editing, setEditing] = useState<Project | null>(null);
     const [isNew, setIsNew] = useState(false);
@@ -234,38 +234,24 @@ export default function AdminProjectsPage() {
         setEditing(null);
     };
 
-    if (!user) return <Navigate to="/login" replace />;
+    if (!admin) return <Navigate to="/admin" replace />;
 
-    /* ── Admin Dashboard ── */
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 pb-16">
-            <div className="h-1 w-full bg-gradient-to-r from-violet-600 to-cyan-500" />
-
-            {/* Header */}
-            <header className="bg-white dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 px-5 py-4">
-                <div className="max-w-2xl mx-auto flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <button onClick={() => navigate("/")} className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors">
-                            <ArrowLeft className="w-4 h-4" />
-                        </button>
-                        <h1 className="text-base font-semibold text-zinc-900 dark:text-white">Project Manager</h1>
-                        <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-violet-50 dark:bg-violet-900/25 text-violet-600 dark:text-violet-400 border border-violet-200 dark:border-violet-800">Admin</span>
-                    </div>
+        <AdminLayout title="Projects">
+            <div className="max-w-2xl">
+                <div className="flex items-center justify-between mb-6">
+                    <p className="text-sm text-zinc-500">{projects.length} project{projects.length !== 1 ? "s" : ""} total</p>
                     <button
                         onClick={() => { setEditing(emptyProject()); setIsNew(true); }}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white text-xs font-semibold hover:opacity-90 transition-opacity"
+                        className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-gradient text-white text-xs font-bold shadow-lg shadow-violet-500/20 hover:opacity-90 transition-all"
                     >
                         <Plus className="w-3.5 h-3.5" /> New Project
                     </button>
                 </div>
-            </header>
 
-            <main className="max-w-2xl mx-auto px-5 py-8 space-y-5">
-
-                {/* New / Edit form */}
                 {editing && (
                     <div className="space-y-4">
-                        <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+                        <h2 className="text-sm font-bold text-zinc-700 dark:text-zinc-300">
                             {isNew ? "Create New Project" : `Editing: ${editing.projectName}`}
                         </h2>
                         <ProjectForm
@@ -277,10 +263,8 @@ export default function AdminProjectsPage() {
                     </div>
                 )}
 
-                {/* Projects list */}
                 {!editing && (
                     <>
-                        <p className="text-xs text-zinc-400 dark:text-zinc-500">{projects.length} project{projects.length !== 1 ? "s" : ""} total</p>
                         {projects.length === 0 && (
                             <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-10 text-center">
                                 <p className="text-sm text-zinc-400">No projects yet. Create your first one!</p>
@@ -294,7 +278,7 @@ export default function AdminProjectsPage() {
                                         className="w-full flex items-center justify-between px-5 py-4 text-left gap-3"
                                     >
                                         <div className="min-w-0">
-                                            <p className="text-sm font-semibold text-zinc-900 dark:text-white truncate">{p.projectName}</p>
+                                            <p className="text-sm font-bold text-zinc-900 dark:text-white truncate">{p.projectName}</p>
                                             <p className="text-xs text-zinc-400 dark:text-zinc-500 truncate">{p.clientName} · /{p.id}</p>
                                         </div>
                                         <div className="flex items-center gap-2 shrink-0">
@@ -309,7 +293,7 @@ export default function AdminProjectsPage() {
                                             <div className="flex gap-2">
                                                 <button
                                                     onClick={() => { setEditing(p); setIsNew(false); }}
-                                                    className="flex-1 py-2 rounded-xl text-xs font-semibold border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-violet-400 transition-colors"
+                                                    className="flex-1 py-2 rounded-xl text-xs font-bold border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-violet-400 transition-colors"
                                                 >
                                                     Edit
                                                 </button>
@@ -317,7 +301,7 @@ export default function AdminProjectsPage() {
                                                     href={`/project/${p.id}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-50 dark:bg-zinc-800 text-violet-600 dark:text-violet-400 border border-violet-200 dark:border-violet-800 hover:bg-violet-50 dark:hover:bg-violet-900/20 transition-colors"
+                                                    className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-zinc-50 dark:bg-zinc-800 text-violet-600 dark:text-violet-400 border border-violet-200 dark:border-violet-800 hover:bg-violet-50 dark:hover:bg-violet-900/20 transition-colors"
                                                 >
                                                     <ExternalLink className="w-3.5 h-3.5" /> Preview
                                                 </a>
@@ -329,7 +313,7 @@ export default function AdminProjectsPage() {
                         </div>
                     </>
                 )}
-            </main>
-        </div>
+            </div>
+        </AdminLayout>
     );
 }
