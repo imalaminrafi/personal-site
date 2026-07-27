@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { loadPosts, savePosts, CATEGORIES, slugify, estimateReadingTime } from "@/data/blogData";
+import { lazy, Suspense } from "react";
 import { Plus, Edit2, Trash2, Search, Eye, Calendar, Clock, Tag, Image, Save, X, CheckCircle, Clock9, AlertCircle } from "lucide-react";
+
+const WysiwygEditor = lazy(() => import("@/components/blog/WysiwygEditor"));
 
 type View = "list" | "editor";
 type Status = "draft" | "published" | "scheduled";
@@ -35,6 +38,7 @@ export default function AdminBlog() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<"all" | "draft" | "published" | "scheduled">("all");
   const [saved, setSaved] = useState(false);
+  const [autoSaved, setAutoSaved] = useState("");
 
   useEffect(() => { setPosts(loadPosts()); }, []);
 
@@ -72,6 +76,15 @@ export default function AdminBlog() {
 
   function update<K extends keyof FormData>(key: K, value: FormData[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
+  }
+
+  function handleAutoSave() {
+    if (!form.title.trim()) return;
+    try {
+      localStorage.setItem("ar_blog_autosave", JSON.stringify({ id: editId, form, timestamp: Date.now() }));
+      setAutoSaved("Draft auto-saved at " + new Date().toLocaleTimeString());
+      setTimeout(() => setAutoSaved(""), 3000);
+    } catch { /* localStorage quota */ }
   }
 
   function handleSave() {
@@ -140,23 +153,28 @@ export default function AdminBlog() {
     return (
       <AdminLayout title={editId ? "Edit Post" : "New Post"}>
         <div className="max-w-4xl mx-auto space-y-8 pb-20">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-xl font-black text-zinc-900 dark:text-white">{editId ? "Edit Post" : "New Post"}</h2>
-              <p className="text-xs text-zinc-500 mt-0.5">Fill in the fields below. Most SEO fields are optional but recommended.</p>
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-black text-zinc-900 dark:text-white">{editId ? "Edit Post" : "New Post"}</h2>
+                <p className="text-xs text-zinc-500 mt-0.5">Fill in the fields below. Most SEO fields are optional but recommended.</p>
+                {autoSaved && <p className="text-xs text-emerald-500 mt-1 font-bold">{autoSaved}</p>}
+              </div>
+              <div className="flex items-center gap-3">
+                <button onClick={() => setView("list")} className="px-4 py-2 text-sm font-bold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Cancel</button>
+                <button onClick={handleSave} className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-colors flex items-center gap-2"><Save className="w-4 h-4" /> {saved ? "Saved!" : "Save Post"}</button>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <button onClick={() => setView("list")} className="px-4 py-2 text-sm font-bold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Cancel</button>
-              <button onClick={handleSave} className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-colors flex items-center gap-2"><Save className="w-4 h-4" /> {saved ? "Saved!" : "Save Post"}</button>
-            </div>
-          </div>
 
           {/* Content */}
           <Section title="Content">
             <Field label="Title"><input type="text" value={form.title} onChange={(e) => { update("title", e.target.value); if (!editId) update("slug", slugify(e.target.value)); }} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></Field>
             <Field label="Slug"><input type="text" value={form.slug} onChange={(e) => update("slug", slugify(e.target.value))} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none font-mono text-xs" /></Field>
             <Field label="Short Description"><textarea rows={3} value={form.shortDescription} onChange={(e) => update("shortDescription", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></Field>
-            <Field label="Full Article (HTML)"><textarea rows={12} value={form.content} onChange={(e) => update("content", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none font-mono text-xs" placeholder="<p>Write your article content in HTML...</p>" /></Field>
+            <Field label="Full Article">
+              <Suspense fallback={<div className="h-[500px] rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center text-sm text-zinc-400">Loading editor...</div>}>
+                <WysiwygEditor value={form.content} onChange={(html) => update("content", html)} onAutoSave={handleAutoSave} />
+              </Suspense>
+            </Field>
           </Section>
 
           {/* Taxonomy */}

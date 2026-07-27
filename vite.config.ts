@@ -34,6 +34,7 @@ export default defineConfig(({ mode }) => ({
           router: ["react-router-dom"],
           motion: ["framer-motion"],
           ui: ["@radix-ui/react-dialog", "@radix-ui/react-tooltip", "@radix-ui/react-toast"],
+          editor: ["@tiptap/react", "@tiptap/starter-kit"],
         },
       },
     },
