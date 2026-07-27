@@ -14,3 +14,13 @@ User-agent: *
 Allow: /
 
 Sitemap: https://alaminrafi.com/sitemap.xml
+Sitemap: https://alaminrafi.com/sitemap-images.xml
+
+# Crawl delay
+Crawl-delay: 10
+
+# Disallow admin
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /dashboard

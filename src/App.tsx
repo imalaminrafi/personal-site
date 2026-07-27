@@ -28,6 +28,8 @@ import AdminSEO from "./pages/admin/AdminSEO";
 import AdminSettings from "./pages/admin/AdminSettings";
 import NotFound from "./pages/NotFound";
 import AboutMe from "./pages/AboutMe";
+import AboutAlaminRafi from "./pages/AboutAlaminRafi";
+import RssFeed from "./pages/RssFeed";
 import AdminProjects from "./pages/AdminProjects";
 import ProfessionalPage from "./pages/Professional";
 
@@ -52,10 +54,13 @@ const App = () => (
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
                 <Route path="/about-me" element={<AboutMe />} />
+                <Route path="/about-alamin-rafi" element={<AboutAlaminRafi />} />
                 <Route path="/professional" element={<ProfessionalPage />} />
                 <Route path="/sitemap" element={<SitemapPage />} />
                 <Route path="/sitemap.xml" element={<SitemapPage />} />
                 <Route path="/sitemap-images.xml" element={<SitemapPage />} />
+                <Route path="/rss" element={<RssFeed />} />
+                <Route path="/rss.xml" element={<RssFeed />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/admin/login" element={<AdminLogin />} />
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />

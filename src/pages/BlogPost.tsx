@@ -1,42 +1,44 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useMemo } from "react";
-import { getPostBySlug, getRelatedPosts } from "@/data/blogData";
-import { ArrowLeft, Calendar, Clock, User, Tag } from "lucide-react";
+import { getPostBySlug, getRelatedPosts, loadPosts } from "@/data/blogData";
+import { ArrowLeft, Calendar, Clock, User, Tag, ChevronLeft, ChevronRight, ExternalLink, BarChart3 } from "lucide-react";
 import Header from "@/components/professional/Header";
 import Footer from "@/components/professional/Footer";
 import SocialShare from "@/components/blog/SocialShare";
+import AuthorBox from "@/components/blog/AuthorBox";
 import NotFound from "./NotFound";
-import { buildPostMeta, generateArticleSchema, generateBreadcrumbSchema, generateFaqSchema } from "@/utils/seoUtils";
+import { author } from "@/data/author";
+import {
+  buildPostMeta, generateArticleSchema, generateBreadcrumbSchema, generateFaqSchema,
+  getSitewideSchemas, calculateSeoScore, generatePrevNextPosts, getBaseUrl,
+} from "@/utils/seoUtils";
 
 export default function BlogPost() {
   const { slug } = useParams();
   const post = slug ? getPostBySlug(slug) : undefined;
+  const allPosts = useMemo(() => loadPosts().filter((p) => p.status === "published"), []);
   const relatedPosts = useMemo(() => (post ? getRelatedPosts(post) : []), [post]);
-  const baseUrl = "https://alaminrafi.com";
+  const { prev, next } = useMemo(() => (post ? generatePrevNextPosts(post.slug, allPosts) : { prev: null, next: null }), [post, allPosts]);
+  const seoScore = useMemo(() => (post ? calculateSeoScore(post) : null), [post]);
+  const baseUrl = getBaseUrl();
 
   useEffect(() => {
     if (!post) return;
     const meta = buildPostMeta(post);
-
     document.title = meta.title;
     setMeta("description", meta.description);
     setMeta("keywords", meta.keywords);
     setMeta("robots", meta.robots);
-    setMeta("og:type", meta.ogType);
-    setMeta("og:title", meta.ogTitle);
-    setMeta("og:description", meta.ogDescription);
-    setMeta("og:image", meta.ogImage);
-    setMeta("og:url", meta.ogUrl);
-    setMeta("og:site_name", meta.ogSiteName);
-    setMeta("twitter:card", meta.twitterCard);
-    setMeta("twitter:title", meta.twitterTitle);
-    setMeta("twitter:description", meta.twitterDescription);
-    setMeta("twitter:image", meta.twitterImage);
+    setMeta("og:type", meta.ogType); setMeta("og:title", meta.ogTitle); setMeta("og:description", meta.ogDescription);
+    setMeta("og:image", meta.ogImage); setMeta("og:url", meta.ogUrl); setMeta("og:site_name", meta.ogSiteName);
+    setMeta("twitter:card", meta.twitterCard); setMeta("twitter:title", meta.twitterTitle);
+    setMeta("twitter:description", meta.twitterDescription); setMeta("twitter:image", meta.twitterImage);
     setLink("canonical", meta.canonical);
 
     const schemas = [
+      ...getSitewideSchemas(),
       generateArticleSchema(post),
-      generateBreadcrumbSchema(post),
+      generateBreadcrumbSchema(post.slug, post.breadcrumbTitle, post.title),
       generateFaqSchema(post.faq || []),
     ].filter(Boolean);
 
@@ -48,20 +50,25 @@ export default function BlogPost() {
       el.textContent = JSON.stringify(schema, null, 2);
     });
 
+    // Inject internal link to /about-alamin-rafi in content
+    if (post.content && !post.content.includes("/about-alamin-rafi")) {
+      // Add hidden link for SEO
+      let linkEl = document.getElementById("author-link-seo");
+      if (!linkEl) { linkEl = document.createElement("link"); linkEl.id = "author-link-seo"; linkEl.setAttribute("rel", "author"); document.head.appendChild(linkEl); }
+      linkEl.setAttribute("href", `${baseUrl}/about-alamin-rafi`);
+    }
+
     return () => {
       document.title = "Alamin Rafi — Website Developer & Designer";
       setMeta("description", "Professional website developer and designer crafting modern, SEO-optimized digital experiences.");
-      setMeta("keywords", "");
-      setMeta("robots", "index, follow");
-      ["og:type", "og:title", "og:description", "og:image", "og:url", "og:site_name", "twitter:card", "twitter:title", "twitter:description", "twitter:image"].forEach((n) => {
+      setMeta("keywords", ""); setMeta("robots", "index, follow");
+      ["og:type","og:title","og:description","og:image","og:url","og:site_name","twitter:card","twitter:title","twitter:description","twitter:image"].forEach((n) => {
         const el = document.querySelector(`meta[property="${n}"], meta[name="${n}"]`);
         if (el) el.remove();
       });
       setLink("canonical", baseUrl);
-      for (let i = 0; i < 10; i++) {
-        const el = document.getElementById(`schema-${i}`);
-        if (el) el.remove();
-      }
+      for (let i = 0; i < 20; i++) { const el = document.getElementById(`schema-${i}`); if (el) el.remove(); }
+      const al = document.getElementById("author-link-seo"); if (al) al.remove();
     };
   }, [post]);
 
@@ -84,14 +91,29 @@ export default function BlogPost() {
   const postUrl = `${baseUrl}/blog/${post.slug}`;
   const formatDate = (d: string) => new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
+  const contentWithInternalLinks = cleanContent.includes("/about-alamin-rafi")
+    ? cleanContent
+    : cleanContent + `<p class="mt-8"><a href="/about-alamin-rafi" class="text-violet-600 dark:text-violet-400 font-bold hover:underline">About Alamin Rafi</a> — Professional website developer and designer helping businesses grow online.</p>`;
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#070711]">
       <Header />
 
       <article className="max-w-4xl mx-auto px-6 pt-32 pb-20">
-        <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-500 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors mb-8 text-sm font-medium">
-          <ArrowLeft className="w-4 h-4" /> Back to Blog
-        </Link>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
+          <Link to="/blog" className="inline-flex items-center gap-2 text-zinc-500 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors text-sm font-medium">
+            <ArrowLeft className="w-4 h-4" /> Back to Blog
+          </Link>
+          {seoScore && (
+            <div className="flex items-center gap-2 text-[11px] text-zinc-500" title="SEO Score">
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>SEO: {seoScore.score}/100</span>
+              <div className="w-16 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
+                <div className={`h-full rounded-full ${seoScore.score >= 80 ? "bg-emerald-500" : seoScore.score >= 50 ? "bg-amber-500" : "bg-red-500"}`} style={{ width: `${seoScore.score}%` }} />
+              </div>
+            </div>
+          )}
+        </div>
 
         <header className="mb-10">
           <div className="flex flex-wrap items-center gap-3 text-[11px] text-zinc-500 mb-4">
@@ -101,7 +123,6 @@ export default function BlogPost() {
             <span className="text-zinc-300 dark:text-zinc-600">/</span>
             <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readingTime || "5"} min read</span>
           </div>
-
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 dark:text-white mb-6 leading-tight">{post.title}</h1>
           <p className="text-zinc-500 dark:text-zinc-400 text-base max-w-2xl">{post.shortDescription}</p>
         </header>
@@ -113,20 +134,22 @@ export default function BlogPost() {
         )}
 
         <div className="flex items-center gap-4 pb-8 mb-10 border-b border-zinc-100 dark:border-white/[0.05]">
-          <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-bold text-sm">
-            {(post.author || "AR").charAt(0).toUpperCase()}
-          </div>
-          <div>
-            <p className="text-sm font-bold text-zinc-900 dark:text-white">{post.author || "Alamin Rafi"}</p>
-            <p className="text-[11px] text-zinc-500">Author</p>
-          </div>
+          <Link to="/about-alamin-rafi" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-bold text-sm overflow-hidden">
+              {author.image ? <img src={author.image} alt={author.name} className="w-full h-full object-cover" /> : (post.author || "AR").charAt(0).toUpperCase()}
+            </div>
+            <div>
+              <p className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">{post.author || author.name}</p>
+              <p className="text-[11px] text-zinc-500">{author.jobTitle}</p>
+            </div>
+          </Link>
           <div className="ml-auto">
             <SocialShare url={postUrl} title={post.title} />
           </div>
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: cleanContent }} />
+          <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: contentWithInternalLinks }} />
 
           {post.galleryImages && post.galleryImages.length > 0 && (
             <div className="mt-12">
@@ -172,18 +195,39 @@ export default function BlogPost() {
             <SocialShare url={postUrl} title={post.title} />
           </div>
 
-          <div className="mt-8 p-6 rounded-2xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-100 dark:border-white/[0.05] flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-bold shrink-0">
-              {(post.author || "AR").charAt(0).toUpperCase()}
-            </div>
-            <div>
-              <p className="font-bold text-zinc-900 dark:text-white text-sm">{post.author || "Alamin Rafi"}</p>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Website developer & designer crafting modern, SEO-optimized digital experiences. Helping small businesses grow online.</p>
-            </div>
+          <div className="mt-8">
+            <AuthorBox />
           </div>
         </div>
       </article>
 
+      {/* Prev / Next Navigation */}
+      {(prev || next) && (
+        <section className="max-w-4xl mx-auto px-6 pb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {prev ? (
+              <Link to={`/blog/${prev.slug}`} className="flex items-center gap-3 p-4 rounded-2xl border border-zinc-100 dark:border-white/[0.05] hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors group">
+                <ChevronLeft className="w-5 h-5 text-zinc-400 shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-0.5">Previous</p>
+                  <p className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors truncate">{prev.title}</p>
+                </div>
+              </Link>
+            ) : <div />}
+            {next ? (
+              <Link to={`/blog/${next.slug}`} className="flex items-center gap-3 p-4 rounded-2xl border border-zinc-100 dark:border-white/[0.05] hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors group text-right justify-end">
+                <div className="min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-0.5">Next</p>
+                  <p className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors truncate">{next.title}</p>
+                </div>
+                <ChevronRight className="w-5 h-5 text-zinc-400 shrink-0" />
+              </Link>
+            ) : <div />}
+          </div>
+        </section>
+      )}
+
+      {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="max-w-6xl mx-auto px-6 pb-20">
           <div className="border-t border-zinc-100 dark:border-white/[0.05] pt-12 mb-8">
@@ -206,6 +250,11 @@ export default function BlogPost() {
                 </div>
               </Link>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-bold text-violet-600 dark:text-violet-400 hover:underline">
+              View All Articles <ArrowLeft className="w-4 h-4 rotate-180" />
+            </Link>
           </div>
         </section>
       )}
