@@ -26,6 +26,7 @@ import AdminMessages from "./pages/admin/AdminMessages";
 import AdminMedia from "./pages/admin/AdminMedia";
 import AdminSEO from "./pages/admin/AdminSEO";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminAbout from "./pages/admin/AdminAbout";
 import NotFound from "./pages/NotFound";
 import AboutMe from "./pages/AboutMe";
 import AboutAlaminRafi from "./pages/AboutAlaminRafi";
@@ -74,6 +75,7 @@ const App = () => (
                 <Route path="/admin/media" element={<AdminMedia />} />
                 <Route path="/admin/seo" element={<AdminSEO />} />
                 <Route path="/admin/settings" element={<AdminSettings />} />
+                <Route path="/admin/about" element={<AdminAbout />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AdminAuthProvider>

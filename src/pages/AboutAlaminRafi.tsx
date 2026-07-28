@@ -1,70 +1,107 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { author, contentClusterIdeas } from "@/data/author";
-import { getPostBySlug } from "@/data/blogData";
-import {
-  Code2, Palette, Layout, Globe, Search, Megaphone,
-  Smartphone, ShoppingCart, FileText, Building2,
-  Mail, Phone, Languages, User,
-  ArrowRight, ExternalLink, MessageCircle
-} from "lucide-react";
+import { loadAboutData } from "@/data/aboutData";
+import { getSitewideSchemas, generateSiteBreadcrumbSchema, getBaseUrl } from "@/utils/seoUtils";
 import Header from "@/components/professional/Header";
 import Footer from "@/components/professional/Footer";
-import { getAuthorSchema, getWebsiteSchema, getOrganizationSchema, getSitewideSchemas, generateSiteBreadcrumbSchema, getBaseUrl } from "@/utils/seoUtils";
+import {
+  ArrowRight, Mail, MessageCircle, ExternalLink, Briefcase, GraduationCap,
+  Award, Code2, Target, Heart, Zap, TrendingUp, Eye, RefreshCw, Users,
+  BookOpen, Monitor, Palette, Search, Globe, Layout, FileText, Building2, CheckCircle2, Quote
+} from "lucide-react";
 
-const skillIcons: Record<string, React.ReactNode> = {
-  "Web Development": <Code2 className="w-5 h-5" />,
-  "Website Design": <Palette className="w-5 h-5" />,
-  "UI/UX Design": <Layout className="w-5 h-5" />,
+const toolIcons: Record<string, React.ReactNode> = {
+  "Photoshop": <Palette className="w-5 h-5" />,
+  "Illustrator": <Palette className="w-5 h-5" />,
   "WordPress": <Globe className="w-5 h-5" />,
-  "SEO": <Search className="w-5 h-5" />,
-  "Digital Marketing": <Megaphone className="w-5 h-5" />,
-  "Front-End Development": <Code2 className="w-5 h-5" />,
-  "Responsive Design": <Smartphone className="w-5 h-5" />,
-  "E-Commerce": <ShoppingCart className="w-5 h-5" />,
-  "Landing Page Design": <FileText className="w-5 h-5" />,
-  "Business Website": <Building2 className="w-5 h-5" />,
-  "Portfolio Website": <FileText className="w-5 h-5" />,
+  "Microsoft Office": <FileText className="w-5 h-5" />,
+  "Google Workspace": <Layout className="w-5 h-5" />,
+  "VS Code": <Code2 className="w-5 h-5" />,
+  "GitHub": <Code2 className="w-5 h-5" />,
+  "Canva": <Palette className="w-5 h-5" />,
+  "Adobe Creative Cloud": <Palette className="w-5 h-5" />,
+  "Figma": <Layout className="w-5 h-5" />,
+  "Semrush": <Search className="w-5 h-5" />,
+  "Google Analytics": <TrendingUp className="w-5 h-5" />,
+  "Google Search Console": <Search className="w-5 h-5" />,
+  "Trello": <Layout className="w-5 h-5" />,
+  "Slack": <MessageCircle className="w-5 h-5" />,
 };
 
-const services = [
-  { title: "Website Design", description: "Custom website design tailored to your brand identity and business goals." },
-  { title: "Web Development", description: "Modern, responsive websites built with the latest technologies and best practices." },
-  { title: "WordPress", description: "Professional WordPress development, customization, and optimization services." },
-  { title: "UI/UX Design", description: "User-centered design that enhances engagement, usability, and conversions." },
-  { title: "SEO", description: "Search engine optimization to improve rankings and drive organic traffic." },
-  { title: "Digital Marketing", description: "Strategic digital marketing to grow your online presence and reach." },
-];
+const valueIcons: Record<string, React.ReactNode> = {
+  "Continuous Learning": <BookOpen className="w-5 h-5" />,
+  "Attention to Detail": <Eye className="w-5 h-5" />,
+  "Client Communication": <MessageCircle className="w-5 h-5" />,
+  "Problem Solving": <Zap className="w-5 h-5" />,
+  "Reliable Delivery": <Target className="w-5 h-5" />,
+  "Professional Ethics": <Heart className="w-5 h-5" />,
+  "Team Collaboration": <Users className="w-5 h-5" />,
+  "Adaptability": <RefreshCw className="w-5 h-5" />,
+};
+
+const focusIcons: Record<string, React.ReactNode> = {
+  "Professional Website Development": <Monitor className="w-5 h-5" />,
+  "SEO & Content Strategy": <Search className="w-5 h-5" />,
+  "Digital Marketing": <TrendingUp className="w-5 h-5" />,
+  "Graphic Design": <Palette className="w-5 h-5" />,
+  "Business Growth Solutions": <Target className="w-5 h-5" />,
+};
+
+function getIcon(title: string, fallback: React.ReactNode = <CheckCircle2 className="w-5 h-5" />) {
+  return focusIcons[title] || toolIcons[title] || valueIcons[title] || fallback;
+}
 
 export default function AboutAlaminRafi() {
+  const data = loadAboutData();
   const baseUrl = getBaseUrl();
 
   useEffect(() => {
-    document.title = "Alamin Rafi — Website Developer & Designer";
+    document.title = `${data.hero.name} — ${data.hero.title}`;
 
-    const metaDescription =
-      "Learn all about Alamin Rafi — a professional website developer and designer. Discover his expertise in web development, UI/UX design, WordPress, SEO, and digital marketing.";
+    const metaDescription = data.hero.paragraphs[0]?.slice(0, 160) || `Learn all about ${data.hero.name}.`;
+
+    const setMeta = (name: string, content: string) => {
+      const sel = `meta[property="${name}"], meta[name="${name}"]`;
+      let el = document.querySelector(sel) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        if (name.startsWith("og:")) el.setAttribute("property", name);
+        else el.setAttribute("name", name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+
+    const setLink = (rel: string, href: string) => {
+      let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+      if (!el) {
+        el = document.createElement("link");
+        el.setAttribute("rel", rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("href", href);
+    };
 
     setMeta("description", metaDescription);
-    setMeta("keywords", "Alamin Rafi, Alamin Rafi website developer, Website developer, Website designer, Alamin Rafi portfolio, Alamin Rafi SEO");
+    setMeta("keywords", `${data.hero.name}, ${data.hero.name} portfolio, ${data.hero.name} web developer, web project manager, digital specialist`);
     setMeta("robots", "index, follow, max-image-preview:large");
     setMeta("og:type", "profile");
-    setMeta("og:title", "Alamin Rafi — Website Developer & Designer");
+    setMeta("og:title", `${data.hero.name} — ${data.hero.title}`);
     setMeta("og:description", metaDescription);
-    setMeta("og:image", `${baseUrl}${author.image}`);
+    setMeta("og:image", `${baseUrl}${data.hero.image}`);
     setMeta("og:url", `${baseUrl}/about-alamin-rafi`);
-    setMeta("og:site_name", "Alamin Rafi");
+    setMeta("og:site_name", data.hero.name);
     setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", "Alamin Rafi — Website Developer & Designer");
+    setMeta("twitter:title", `${data.hero.name} — ${data.hero.title}`);
     setMeta("twitter:description", metaDescription);
-    setMeta("twitter:image", `${baseUrl}${author.image}`);
+    setMeta("twitter:image", `${baseUrl}${data.hero.image}`);
     setLink("canonical", `${baseUrl}/about-alamin-rafi`);
 
     const schemas = [
       ...getSitewideSchemas(),
       generateSiteBreadcrumbSchema([
         { name: "Home", path: "/" },
-        { name: "About Alamin Rafi", path: "/about-alamin-rafi" },
+        { name: `About ${data.hero.name}`, path: "/about-alamin-rafi" },
       ]),
     ].filter(Boolean);
 
@@ -82,7 +119,7 @@ export default function AboutAlaminRafi() {
     });
 
     return () => {
-      document.title = "Alamin Rafi — Website Developer & Designer";
+      document.title = `${data.hero.name} — Website Developer & Designer`;
       setMeta("description", "Professional website developer and designer crafting modern, SEO-optimized digital experiences.");
       setMeta("keywords", "");
       setMeta("robots", "index, follow");
@@ -101,241 +138,302 @@ export default function AboutAlaminRafi() {
     };
   }, []);
 
-  function setMeta(name: string, content: string) {
-    const sel = `meta[property="${name}"], meta[name="${name}"]`;
-    let el = document.querySelector(sel) as HTMLMetaElement | null;
-    if (!el) {
-      el = document.createElement("meta");
-      if (name.startsWith("og:")) el.setAttribute("property", name);
-      else el.setAttribute("name", name);
-      document.head.appendChild(el);
-    }
-    el.setAttribute("content", content);
-  }
-
-  function setLink(rel: string, href: string) {
-    let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
-    if (!el) {
-      el = document.createElement("link");
-      el.setAttribute("rel", rel);
-      document.head.appendChild(el);
-    }
-    el.setAttribute("href", href);
-  }
-
   return (
     <div className="min-h-screen bg-white dark:bg-[#070711]">
       <Header />
 
       <main>
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-violet-600/10 via-transparent to-cyan-500/10 dark:from-violet-600/5 dark:to-cyan-500/5 pt-32 pb-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8 inline-block">
-              <img
-                src={author.image}
-                alt={author.name}
-                className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-xl shadow-violet-500/10"
-              />
+        {/* ===== SECTION 1: HERO ===== */}
+        {data.visibility.hero && (
+          <section className="relative overflow-hidden bg-gradient-to-br from-violet-600/10 via-transparent to-cyan-500/10 dark:from-violet-600/5 dark:to-cyan-500/5 pt-32 pb-20 px-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="mb-8 inline-block">
+                <img
+                  src={data.hero.image}
+                  alt={data.hero.name}
+                  className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-xl shadow-violet-500/10"
+                />
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-zinc-900 dark:text-white mb-4 leading-tight">
+                {data.hero.name}
+              </h1>
+              <p className="text-xl sm:text-2xl font-medium text-violet-600 dark:text-violet-400 mb-8">
+                {data.hero.title}
+              </p>
+              <div className="max-w-2xl mx-auto space-y-4 text-left mb-8">
+                {data.hero.paragraphs.map((p, i) => (
+                  <p key={i} className="text-zinc-600 dark:text-zinc-300 text-base sm:text-lg leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
+              <div className="flex flex-wrap justify-center gap-3">
+                {data.hero.socialLinks.map((social) => (
+                  <a
+                    key={social.platform}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-xl bg-white/80 dark:bg-white/[0.05] border border-zinc-100 dark:border-white/[0.08] text-sm font-bold text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all"
+                  >
+                    {social.platform}
+                  </a>
+                ))}
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-zinc-900 dark:text-white mb-4 leading-tight">
-              {author.name}
-            </h1>
-            <p className="text-xl sm:text-2xl font-medium text-violet-600 dark:text-violet-400 mb-6">
-              {author.jobTitle}
-            </p>
-            <p className="text-zinc-600 dark:text-zinc-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-              {author.description.slice(0, 200)}...
-            </p>
+          </section>
+        )}
+
+        {/* ===== SECTION 2: PROFESSIONAL SUMMARY ===== */}
+        {data.visibility.summary && (
+          <section className="max-w-4xl mx-auto px-6 py-20">
+            <div className="relative">
+              <div className="absolute -top-6 -left-6 text-violet-200 dark:text-violet-900/40">
+                <Quote className="w-16 h-16" />
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-8 relative">
+                {data.summary.heading}
+              </h2>
+              <div className="space-y-5 text-zinc-600 dark:text-zinc-300 text-base sm:text-lg leading-relaxed">
+                {data.summary.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ===== SECTION 3: CURRENT FOCUS ===== */}
+        {data.visibility.focus && (
+          <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-4 text-center">
+                {data.focus.heading}
+              </h2>
+              <p className="text-zinc-500 dark:text-zinc-400 text-center max-w-2xl mx-auto mb-12 text-base sm:text-lg">
+                {data.focus.subheading}
+              </p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {data.focus.items.map((item, i) => (
+                  <div
+                    key={i}
+                    className="group p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 hover:shadow-lg hover:shadow-violet-500/5 transition-all"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 mb-4 group-hover:scale-110 transition-transform">
+                      {getIcon(item.title, <Target className="w-5 h-5" />)}
+                    </div>
+                    <h3 className="text-base font-bold text-zinc-900 dark:text-white mb-2">{item.title}</h3>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ===== SECTION 4: PROFESSIONAL EXPERIENCE ===== */}
+        {data.visibility.experience && (
+          <section className="max-w-4xl mx-auto px-6 py-20">
+            <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-12">
+              {data.experience.heading}
+            </h2>
+            <div className="relative">
+              <div className="absolute left-5 top-2 bottom-2 w-0.5 bg-gradient-to-b from-violet-500 via-cyan-500 to-violet-500 hidden sm:block" />
+              <div className="space-y-8">
+                {data.experience.items.map((item, i) => (
+                  <div key={i} className="relative sm:pl-14">
+                    <div className="hidden sm:flex absolute left-2.5 top-1.5 w-5 h-5 rounded-full bg-white dark:bg-zinc-900 border-2 border-violet-500 items-center justify-center z-10">
+                      <div className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+                    </div>
+                    <div className="sm:hidden flex items-center gap-3 mb-3">
+                      <div className="w-3 h-3 rounded-full bg-violet-500 shrink-0" />
+                      <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400">{item.period}</span>
+                    </div>
+                    <div className="bg-white dark:bg-zinc-900/40 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
+                        <div>
+                          <h3 className="text-lg font-bold text-zinc-900 dark:text-white">{item.title}</h3>
+                          <p className="text-violet-600 dark:text-violet-400 font-medium text-sm">{item.company}</p>
+                        </div>
+                        <span className="hidden sm:block text-xs font-bold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-lg shrink-0">{item.period}</span>
+                      </div>
+                      <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ===== SECTION 5: SKILLS ===== */}
+        {data.visibility.skills && (
+          <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-12 text-center">
+                {data.skills.heading}
+              </h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {data.skills.categories.map((cat, i) => (
+                  <div key={i} className="bg-white dark:bg-zinc-900/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6">
+                    <h3 className="text-sm font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-4">
+                      {cat.category}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {cat.items.map((skill, j) => (
+                        <span
+                          key={j}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-xs font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/[0.06]"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ===== SECTION 6: EDUCATION ===== */}
+        {data.visibility.education && (
+          <section className="max-w-4xl mx-auto px-6 py-20">
+            <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-12 text-center">
+              {data.education.heading}
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+              {data.education.items.map((item, i) => (
+                <div key={i} className="bg-white dark:bg-zinc-900/40 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 text-center hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
+                  <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center mx-auto mb-4">
+                    <GraduationCap className="w-6 h-6 text-violet-600 dark:text-violet-400" />
+                  </div>
+                  <h3 className="text-base font-bold text-zinc-900 dark:text-white mb-1">{item.degree}</h3>
+                  <p className="text-sm text-violet-600 dark:text-violet-400 font-medium mb-2">{item.institution}</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">{item.period}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ===== SECTION 7: CERTIFICATIONS ===== */}
+        {data.visibility.certifications && (
+          <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-12 text-center">
+                {data.certifications.heading}
+              </h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-3xl mx-auto">
+                {data.certifications.items.map((item, i) => (
+                  <div key={i} className="bg-white dark:bg-zinc-900/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all group">
+                    <div className="w-11 h-11 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Award className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                    </div>
+                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-1 leading-snug">{item.name}</h3>
+                    <p className="text-xs text-violet-600 dark:text-violet-400 font-medium">{item.issuer}</p>
+                    {item.year && (
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 font-medium">{item.year}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ===== SECTION 8: SOFTWARE & TOOLS ===== */}
+        {data.visibility.tools && (
+          <section className="max-w-4xl mx-auto px-6 py-20">
+            <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-12 text-center">
+              {data.tools.heading}
+            </h2>
             <div className="flex flex-wrap justify-center gap-3">
-              {author.sameAs.map((social) => (
+              {data.tools.items.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-white dark:bg-zinc-900/40 border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 hover:bg-violet-50/50 dark:hover:bg-violet-900/20 transition-all group"
+                >
+                  <span className="text-violet-500 dark:text-violet-400 group-hover:scale-110 transition-transform">
+                    {toolIcons[item.name] || <Code2 className="w-4 h-4" />}
+                  </span>
+                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{item.name}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ===== SECTION 9: PERSONAL VALUES ===== */}
+        {data.visibility.values && (
+          <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-4 text-center">
+                {data.values.heading}
+              </h2>
+              <p className="text-zinc-500 dark:text-zinc-400 text-center max-w-lg mx-auto mb-12">
+                {data.values.subheading}
+              </p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {data.values.items.map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-white dark:bg-zinc-900/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-5 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all group"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 mb-3 group-hover:scale-110 transition-transform">
+                      {getIcon(item.title, <Heart className="w-5 h-5" />)}
+                    </div>
+                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-1.5">{item.title}</h3>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ===== SECTION 10: CALL TO ACTION ===== */}
+        {data.visibility.cta && (
+          <section className="relative overflow-hidden px-6 py-20">
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-600/5 via-transparent to-cyan-500/5 dark:from-violet-600/10 dark:to-cyan-500/10" />
+            <div className="relative max-w-2xl mx-auto text-center">
+              <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white mb-4">
+                {data.cta.heading}
+              </h2>
+              <p className="text-zinc-500 dark:text-zinc-400 text-lg mb-10 max-w-md mx-auto">
+                {data.cta.subheading}
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link
+                  to={data.cta.buttonLink}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-violet-500/20"
+                >
+                  {data.cta.buttonText} <ArrowRight className="w-4 h-4" />
+                </Link>
                 <a
-                  key={social.platform}
-                  href={social.url}
+                  href={`mailto:hello@alaminrafi.com`}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-violet-600 text-white font-bold text-sm hover:bg-violet-700 transition-colors shadow-lg shadow-violet-500/20"
+                >
+                  <Mail className="w-4 h-4" /> Email Me
+                </a>
+                <a
+                  href="https://wa.me/8801917443161"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-white/80 dark:bg-white/[0.05] border border-zinc-100 dark:border-white/[0.08] text-sm font-bold text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-500/20"
                 >
-                  {social.platform}
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
                 </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* About Me Section */}
-        <section className="max-w-4xl mx-auto px-6 py-20">
-          <div className="grid md:grid-cols-[1fr_280px] gap-12 items-start">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-6">About Me</h2>
-              <div className="text-zinc-600 dark:text-zinc-300 text-base leading-relaxed space-y-4">
-                <p>{author.description}</p>
-                <p>
-                  With a deep understanding of both design and development, Alamin bridges the gap between aesthetics
-                  and functionality. Every project he takes on is built with performance, accessibility, and search
-                  engine visibility in mind. He believes that a great website is not just about looking good — it should
-                  also load fast, be easy to navigate, and convert visitors into customers.
-                </p>
-                <p>
-                  Working with clients worldwide, Alamin offers end-to-end web solutions from
-                  concept to launch. Whether you need a simple landing page, a full business website, or an e-commerce
-                  store, Alamin delivers results that exceed expectations.
-                </p>
+                <Link
+                  to="/portfolio"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-zinc-200 dark:border-white/[0.08] text-zinc-900 dark:text-white font-bold text-sm hover:border-violet-200 dark:hover:border-violet-800/40 hover:text-violet-600 dark:hover:text-violet-400 transition-all"
+                >
+                  <ExternalLink className="w-4 h-4" /> View Portfolio
+                </Link>
               </div>
             </div>
-            <div className="bg-zinc-50 dark:bg-zinc-900/40 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6">
-              <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-5 pb-4 border-b border-zinc-100 dark:border-white/[0.05]">Personal Info</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <User className="w-4 h-4 text-violet-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Name</p>
-                    <p className="text-sm font-bold text-zinc-900 dark:text-white">{author.name}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-violet-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Email</p>
-                    <a href={`mailto:${author.email}`} className="text-sm font-bold text-zinc-900 dark:text-white hover:text-violet-600 dark:hover:text-violet-400 transition-colors">{author.email}</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-violet-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Phone</p>
-                    <a href={`tel:${author.telephone}`} className="text-sm font-bold text-zinc-900 dark:text-white hover:text-violet-600 dark:hover:text-violet-400 transition-colors">{author.telephone}</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Languages className="w-4 h-4 text-violet-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Languages</p>
-                    <p className="text-sm font-bold text-zinc-900 dark:text-white">English, Bengali</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Expertise Section */}
-        <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-4 text-center">What I Do</h2>
-            <p className="text-zinc-500 dark:text-zinc-400 text-center max-w-lg mx-auto mb-12">
-              Specialized services to help your business grow online with modern web solutions.
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {author.knowsAbout.map((skill) => (
-                <div
-                  key={skill}
-                  className="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 transition-all group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform shrink-0">
-                    {skillIcons[skill] || <Code2 className="w-5 h-5" />}
-                  </div>
-                  <span className="text-sm font-bold text-zinc-900 dark:text-white">{skill}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Content Cluster Section */}
-        <section className="max-w-5xl mx-auto px-6 py-20">
-          <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-4">Articles by Alamin Rafi</h2>
-          <p className="text-zinc-500 dark:text-zinc-400 mb-10 max-w-lg">
-            In-depth guides, tips, and resources written to help you build a better online presence.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {contentClusterIdeas.map((item) => {
-              const post = getPostBySlug(item.slug);
-              const isPublished = post && post.status === "published";
-              return (
-                <div
-                  key={item.slug}
-                  className={`rounded-2xl border ${isPublished ? "border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-zinc-900/40 hover:border-violet-200 dark:hover:border-violet-800/40" : "border-zinc-100 dark:border-white/[0.05] bg-zinc-50/30 dark:bg-zinc-900/20 opacity-60"} transition-all p-5`}
-                >
-                  {isPublished ? (
-                    <Link to={`/blog/${item.slug}`} className="block group">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-2">{item.keyword}</p>
-                      <h3 className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">{item.title}</h3>
-                      <div className="mt-3 flex items-center gap-1 text-xs text-violet-600 dark:text-violet-400 font-bold">
-                        Read Article <ArrowRight className="w-3 h-3" />
-                      </div>
-                    </Link>
-                  ) : (
-                    <div>
-                      <span className="inline-block px-2 py-0.5 rounded-md bg-zinc-200 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-500 text-[10px] font-bold uppercase tracking-wider mb-2">{item.keyword}</span>
-                      <h3 className="text-sm font-bold text-zinc-500 dark:text-zinc-500">{item.title}</h3>
-                      <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-600 font-medium">Coming Soon</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Services Summary */}
-        <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-4 text-center">Services</h2>
-            <p className="text-zinc-500 dark:text-zinc-400 text-center max-w-lg mx-auto mb-12">
-              Everything you need to establish a powerful online presence.
-            </p>
-            <div className="grid sm:grid-cols-2 gap-4 mb-10">
-              {services.map((service) => (
-                <div
-                  key={service.title}
-                  className="p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-100 dark:border-white/[0.05]"
-                >
-                  <h3 className="text-base font-bold text-zinc-900 dark:text-white mb-2">{service.title}</h3>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{service.description}</p>
-                </div>
-              ))}
-            </div>
-            <div className="text-center">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-violet-500/20"
-              >
-                Get a Free Consultation <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="max-w-4xl mx-auto px-6 py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white mb-4">Let's Work Together</h2>
-          <p className="text-zinc-500 dark:text-zinc-400 max-w-md mx-auto mb-10">
-            Have a project in mind? Let's build something great together.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a
-              href={`mailto:${author.email}`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-violet-600 text-white font-bold text-sm hover:bg-violet-700 transition-colors shadow-lg shadow-violet-500/20"
-            >
-              <Mail className="w-4 h-4" /> Email Me
-            </a>
-            <a
-              href={author.sameAs.find((s) => s.platform === "WhatsApp")?.url || "https://wa.me/8801917443161"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-bold text-sm hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-500/20"
-            >
-              <MessageCircle className="w-4 h-4" /> WhatsApp
-            </a>
-            <Link
-              to="/portfolio"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-zinc-200 dark:border-white/[0.08] text-zinc-900 dark:text-white font-bold text-sm hover:border-violet-200 dark:hover:border-violet-800/40 hover:text-violet-600 dark:hover:text-violet-400 transition-all"
-            >
-              <ExternalLink className="w-4 h-4" /> View Portfolio
-            </Link>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
 
       <Footer />

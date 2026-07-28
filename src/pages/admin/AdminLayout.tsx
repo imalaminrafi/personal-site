@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation, Navigate } from "react-router-dom";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import {
   LayoutDashboard, Briefcase, FolderKanban, FileText, Image, DollarSign,
-  MessageCircle, Star, Search, Settings, LogOut, Menu, X, Globe
+  MessageCircle, Star, Search, Settings, LogOut, Menu, X, Globe, User
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ interface AdminLayoutProps {
 
 const navItems = [
   { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
+  { label: "About", href: "/admin/about", icon: User },
   { label: "Portfolio", href: "/admin/portfolio", icon: Briefcase },
   { label: "Projects", href: "/admin/projects", icon: FolderKanban },
   { label: "Blog", href: "/admin/blog", icon: FileText },
