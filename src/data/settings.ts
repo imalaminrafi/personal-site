@@ -30,9 +30,9 @@ const defaultSettings: SiteSettings = {
   phone: "+880 1917 443 161",
   whatsapp: "+8801917443161",
   socialLinks: [
-    { platform: "GitHub", url: "https://github.com/alaminrafi" },
-    { platform: "LinkedIn", url: "https://linkedin.com/in/alaminrafi" },
-    { platform: "Twitter", url: "https://twitter.com/alaminrafi" },
+    { platform: "GitHub", url: "https://github.com/imalaminrafi" },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/imalaminrafi/" },
+    { platform: "Twitter", url: "https://x.com/imalaminrafi" },
   ],
   footer: "© 2026 Alamin Rafi. All rights reserved.",
   analyticsCode: "",

@@ -9,10 +9,13 @@ const links = [
 ];
 
 const socials = [
-    { href: "https://linkedin.com/in/alaminrafi",   label: "LinkedIn" },
-    { href: "https://github.com/alaminseller",       label: "GitHub" },
-    { href: "https://wa.me/8801917443161",           label: "WhatsApp" },
-    { href: "mailto:hello@alaminrafi.com",           label: "Email" },
+    { href: "https://www.linkedin.com/in/imalaminrafi/",   label: "LinkedIn" },
+    { href: "https://github.com/imalaminrafi",             label: "GitHub" },
+    { href: "https://www.facebook.com/alamin.rafiofficial", label: "Facebook" },
+    { href: "https://x.com/imalaminrafi",                  label: "Twitter / X" },
+    { href: "https://www.behance.net/imalaminrafi",        label: "Behance" },
+    { href: "https://wa.me/8801917443161",                  label: "WhatsApp" },
+    { href: "mailto:hello@alaminrafi.com",                  label: "Email" },
 ];
 
 export default function ProfessionalFooter() {

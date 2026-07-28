@@ -78,9 +78,9 @@ export default function ModernHeroVisual() {
 
         {/* Socials */}
         <div className="mt-16 flex items-center justify-center gap-4">
-          <SocialLink href="https://github.com" label="GitHub" icon={<Github className="w-5 h-5" />} />
-          <SocialLink href="https://linkedin.com" label="LinkedIn" icon={<Linkedin className="w-5 h-5" />} />
-          <SocialLink href="https://twitter.com" label="Twitter" icon={<Twitter className="w-5 h-5" />} />
+          <SocialLink href="https://github.com/imalaminrafi" label="GitHub" icon={<Github className="w-5 h-5" />} />
+          <SocialLink href="https://www.linkedin.com/in/imalaminrafi/" label="LinkedIn" icon={<Linkedin className="w-5 h-5" />} />
+          <SocialLink href="https://x.com/imalaminrafi" label="Twitter" icon={<Twitter className="w-5 h-5" />} />
         </div>
       </div>
     </section>
