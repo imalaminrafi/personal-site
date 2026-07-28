@@ -10,11 +10,7 @@ export interface AuthorProfile {
   sameAs: { platform: string; url: string; icon: string }[];
   email: string;
   telephone: string;
-  address: { locality: string; country: string };
   knowsAbout: string[];
-  gender: string;
-  birthPlace: string;
-  nationality: string;
 }
 
 export const author: AuthorProfile = {
@@ -24,7 +20,7 @@ export const author: AuthorProfile = {
   alternateName: ["Al Amin Rafi", "Alaminrafi", "Md Alamin Rafi"],
   jobTitle: "Website Developer & Designer",
   description:
-    "Professional website developer and designer with years of experience building modern, responsive, and SEO-optimized websites for small businesses and individuals. Specializes in WordPress development, UI/UX design, front-end development, SEO, and digital marketing.",
+    "Professional website developer and designer building modern, responsive, and SEO-optimized websites for businesses worldwide. Specializes in WordPress development, UI/UX design, front-end development, SEO, and digital marketing. Serving clients globally with remote collaboration.",
   image: "/Profile.png",
   url: "https://alaminrafi.com",
   sameAs: [
@@ -37,15 +33,11 @@ export const author: AuthorProfile = {
   ],
   email: "hello@alaminrafi.com",
   telephone: "+8801917443161",
-  address: { locality: "Dhaka", country: "Bangladesh" },
   knowsAbout: [
     "Web Development", "Website Design", "UI/UX Design", "WordPress",
     "SEO", "Digital Marketing", "Front-End Development", "Responsive Design",
     "E-Commerce", "Landing Page Design", "Business Website", "Portfolio Website",
   ],
-  gender: "Male",
-  birthPlace: "Bangladesh",
-  nationality: "Bangladeshi",
 };
 
 export function getAuthorSchema() {
@@ -62,12 +54,8 @@ export function getAuthorSchema() {
     image: `${base}${author.image}`,
     url: base,
     jobTitle: author.jobTitle,
-    gender: author.gender,
-    birthPlace: author.birthPlace,
-    nationality: author.nationality,
     email: `mailto:${author.email}`,
     telephone: author.telephone,
-    address: { "@type": "PostalAddress", addressLocality: author.address.locality, addressCountry: author.address.country },
     knowsAbout: author.knowsAbout.map((k) => ({ "@type": "Thing", name: k })),
     sameAs: author.sameAs.map((s) => s.url),
   };
@@ -107,7 +95,6 @@ export function getOrganizationSchema() {
     description: author.description,
     email: `mailto:${author.email}`,
     telephone: author.telephone,
-    address: { "@type": "PostalAddress", addressLocality: author.address.locality, addressCountry: author.address.country },
     founder: { "@id": `${base}/#person` },
     sameAs: author.sameAs.map((s) => s.url),
   };

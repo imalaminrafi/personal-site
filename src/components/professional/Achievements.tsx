@@ -12,11 +12,11 @@ const achievements = [
     "Content workflow serving 500,000+ monthly readers",
     "4.9+ rating across 50+ freelance projects",
     "Multi-channel marketing campaigns with measurable ROI",
-    "Squad Leader — Bangladesh National Cadet Corps (BNCC)",
+    "Squad Leader — National Cadet Corps (NCC)",
 ];
 
 const community = [
-    { org: "Bangladesh National Cadet Corps (BNCC)", role: "Squad Leader" },
+    { org: "National Cadet Corps (NCC)", role: "Squad Leader" },
     { org: "Local Digital Marketing Community",       role: "Active Member" },
 ];
 

@@ -5,7 +5,7 @@ import { getPostBySlug } from "@/data/blogData";
 import {
   Code2, Palette, Layout, Globe, Search, Megaphone,
   Smartphone, ShoppingCart, FileText, Building2,
-  Mail, Phone, MapPin, Languages, User,
+  Mail, Phone, Languages, User,
   ArrowRight, ExternalLink, MessageCircle
 } from "lucide-react";
 import Header from "@/components/professional/Header";
@@ -40,22 +40,22 @@ export default function AboutAlaminRafi() {
   const baseUrl = getBaseUrl();
 
   useEffect(() => {
-    document.title = "Alamin Rafi — Website Developer & Designer | Bangladesh";
+    document.title = "Alamin Rafi — Website Developer & Designer";
 
     const metaDescription =
-      "Learn all about Alamin Rafi — a professional website developer and designer from Bangladesh. Discover his expertise in web development, UI/UX design, WordPress, SEO, and digital marketing.";
+      "Learn all about Alamin Rafi — a professional website developer and designer. Discover his expertise in web development, UI/UX design, WordPress, SEO, and digital marketing.";
 
     setMeta("description", metaDescription);
-    setMeta("keywords", "Alamin Rafi, Alamin Rafi website developer, Alamin Rafi Bangladesh, Web developer Bangladesh, Website designer, Alamin Rafi portfolio, Alamin Rafi SEO");
+    setMeta("keywords", "Alamin Rafi, Alamin Rafi website developer, Website developer, Website designer, Alamin Rafi portfolio, Alamin Rafi SEO");
     setMeta("robots", "index, follow, max-image-preview:large");
     setMeta("og:type", "profile");
-    setMeta("og:title", "Alamin Rafi — Website Developer & Designer | Bangladesh");
+    setMeta("og:title", "Alamin Rafi — Website Developer & Designer");
     setMeta("og:description", metaDescription);
     setMeta("og:image", `${baseUrl}${author.image}`);
     setMeta("og:url", `${baseUrl}/about-alamin-rafi`);
     setMeta("og:site_name", "Alamin Rafi");
     setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", "Alamin Rafi — Website Developer & Designer | Bangladesh");
+    setMeta("twitter:title", "Alamin Rafi — Website Developer & Designer");
     setMeta("twitter:description", metaDescription);
     setMeta("twitter:image", `${baseUrl}${author.image}`);
     setLink("canonical", `${baseUrl}/about-alamin-rafi`);
@@ -142,7 +142,7 @@ export default function AboutAlaminRafi() {
               {author.name}
             </h1>
             <p className="text-xl sm:text-2xl font-medium text-violet-600 dark:text-violet-400 mb-6">
-              {author.jobTitle} | {author.address.country}
+              {author.jobTitle}
             </p>
             <p className="text-zinc-600 dark:text-zinc-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
               {author.description.slice(0, 200)}...
@@ -177,7 +177,7 @@ export default function AboutAlaminRafi() {
                   also load fast, be easy to navigate, and convert visitors into customers.
                 </p>
                 <p>
-                  Based in Bangladesh, Alamin works with clients worldwide, offering end-to-end web solutions from
+                  Working with clients worldwide, Alamin offers end-to-end web solutions from
                   concept to launch. Whether you need a simple landing page, a full business website, or an e-commerce
                   store, Alamin delivers results that exceed expectations.
                 </p>
@@ -205,20 +205,6 @@ export default function AboutAlaminRafi() {
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Phone</p>
                     <a href={`tel:${author.telephone}`} className="text-sm font-bold text-zinc-900 dark:text-white hover:text-violet-600 dark:hover:text-violet-400 transition-colors">{author.telephone}</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-violet-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Location</p>
-                    <p className="text-sm font-bold text-zinc-900 dark:text-white">{author.address.locality}, {author.address.country}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Globe className="w-4 h-4 text-violet-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500">Nationality</p>
-                    <p className="text-sm font-bold text-zinc-900 dark:text-white">{author.nationality}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

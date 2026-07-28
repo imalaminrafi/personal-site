@@ -77,7 +77,7 @@ export default function ProfessionalContact() {
                             <div>
                                 <p className="text-xs text-zinc-400 font-medium uppercase tracking-wider mb-1">Location</p>
                                 <p className="text-zinc-900 dark:text-white font-medium">Faridganj, Chandpur</p>
-                                <p className="text-xs text-zinc-400 mt-0.5">Bangladesh — Available Remotely</p>
+                                <p className="text-xs text-zinc-400 mt-0.5">Available Remotely</p>
                             </div>
                         </div>
 

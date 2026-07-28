@@ -4,7 +4,7 @@ const experiences = [
         title: "Content & SEO Manager",
         period: "Jul 2025 – Dec 2025",
         type: "Part-time",
-        description: "Leading web content management and SEO strategy for one of Bangladesh's growing digital media platforms.",
+        description: "Leading web content management and SEO strategy for a growing digital media platform.",
         responsibilities: [
             "Lead SEO strategy and WordPress content optimization, improving organic search rankings and website traffic by 150%+",
             "Manage editorial calendar and oversee content production workflow for 500k+ monthly readers",

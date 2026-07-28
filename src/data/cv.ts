@@ -16,7 +16,7 @@ export const cvData = {
             company: "RangTVBD.com",
             title: "Content & SEO Manager",
             period: "Jul 2025 – Dec 2025",
-            description: "Led web content management and SEO strategy for one of Bangladesh's growing digital media platforms.",
+            description: "Led web content management and SEO strategy for a growing digital media platform.",
             responsibilities: [
                 "Managed SEO strategy and WordPress content optimization, improving organic search rankings and website traffic.",
                 "Led editorial calendar planning and oversaw the content production workflow.",
@@ -59,7 +59,7 @@ export const cvData = {
     ],
     education: [
         {
-            institution: "National University, Bangladesh",
+            institution: "National University",
             degree: "Bachelor of Business Administration (BBA)",
             period: "2018 - 2022"
         }
