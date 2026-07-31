@@ -6,12 +6,12 @@ import { useAuth } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-    { href: "/#about", label: "About" },
+    { href: "/about-alamin-rafi", label: "About" },
     { href: "/#services", label: "Services" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/blog", label: "Blog" },
     { href: "/#pricing", label: "Pricing" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/contact", label: "Contact" },
 ];
 
 export default function ModernHeader() {
