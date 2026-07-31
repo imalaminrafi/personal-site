@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Upload, Loader2, X, CheckCircle2, ImagePlus, RefreshCw, CloudUpload } from "lucide-react";
+import { Upload, Loader2, X, CheckCircle2, RefreshCw, CloudUpload } from "lucide-react";
 import { uploadToCloudinary, deleteAssetByUrl, getOptimizedUrl, isCloudinaryUrl } from "@/utils/cloudinary";
 import { addToMediaLibrary, fromCloudinaryAsset } from "@/data/cloudinaryMedia";
 

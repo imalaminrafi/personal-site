@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { loadPosts, CATEGORIES } from "@/data/blogData";
+import { getOptimizedUrl, getSrcSet } from "@/utils/cloudinary";
 import { ArrowRight, Calendar, Clock, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/professional/Header";
 import Footer from "@/components/professional/Footer";
@@ -103,7 +104,16 @@ export default function Blog() {
                   <Link key={post.id} to={`/blog/${post.slug}`} className="group flex flex-col rounded-2xl overflow-hidden border border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-zinc-900/40 hover:border-violet-200 dark:hover:border-violet-800/40 hover:shadow-lg hover:shadow-violet-500/5 transition-all duration-300">
                     <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-zinc-800">
                       {post.featuredImage ? (
-                        <img src={post.featuredImage} alt={post.imageAlt || post.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
+                        <img
+                          src={getOptimizedUrl(post.featuredImage, { width: 800, crop: "limit", quality: "auto", format: "auto" })}
+                          srcSet={getSrcSet(post.featuredImage) || undefined}
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          alt={post.imageAlt || post.title}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }}
+                        />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-zinc-400 text-xs">No image</div>
                       )}

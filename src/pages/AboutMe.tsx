@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ModernHeader from "@/components/modern/Header";
 import ProfessionalFooter from "@/components/professional/Footer";
 import { cvData } from "@/data/cv";
+import { getOptimizedUrl } from "@/utils/cloudinary";
 import { Briefcase, GraduationCap, Award, CheckCircle2, UserCircle2 } from "lucide-react";
 
 export default function AboutMe() {
@@ -16,8 +17,10 @@ export default function AboutMe() {
                     <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16 pb-12 border-b border-zinc-200 dark:border-zinc-800">
                         {cvData.personal.image ? (
                             <img 
-                                src={cvData.personal.image} 
+                                src={getOptimizedUrl(cvData.personal.image, { width: 256, crop: "fill", quality: "auto", format: "auto" })} 
                                 alt={cvData.personal.name} 
+                                loading="lazy"
+                                decoding="async"
                                 className="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white dark:border-zinc-900"
                             />
                         ) : (

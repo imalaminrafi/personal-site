@@ -12,6 +12,7 @@ import {
   buildPostMeta, generateArticleSchema, generateBreadcrumbSchema, generateFaqSchema,
   getSitewideSchemas, calculateSeoScore, generatePrevNextPosts, getBaseUrl,
 } from "@/utils/seoUtils";
+import { getOptimizedUrl, getSrcSet } from "@/utils/cloudinary";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -129,7 +130,17 @@ export default function BlogPost() {
 
         {(post.featuredImage || post.ogImage) && (
           <div className="aspect-[21/9] rounded-3xl overflow-hidden mb-12 border border-zinc-100 dark:border-white/[0.05] shadow-xl shadow-zinc-200/20 dark:shadow-none">
-            <img src={post.featuredImage || post.ogImage} alt={post.imageAlt || post.title} title={post.imageTitle || post.title} loading="lazy" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+            <img
+              src={getOptimizedUrl(post.featuredImage || post.ogImage, { width: 1600, crop: "limit", quality: "auto", format: "auto" })}
+              srcSet={getSrcSet(post.featuredImage || post.ogImage) || undefined}
+              sizes="100vw"
+              alt={post.imageAlt || post.title}
+              title={post.imageTitle || post.title}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+            />
           </div>
         )}
 
@@ -157,7 +168,7 @@ export default function BlogPost() {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {post.galleryImages.map((img, i) => (
                   <a key={i} href={img} target="_blank" rel="noopener noreferrer" className="aspect-video rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08]">
-                    <img src={img} alt={`${post.title} gallery ${i + 1}`} loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+                    <img src={getOptimizedUrl(img, { width: 600, crop: "limit", quality: "auto", format: "auto" })} alt={`${post.title} gallery ${i + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                   </a>
                 ))}
               </div>
@@ -238,7 +249,7 @@ export default function BlogPost() {
               <Link key={rp.id} to={`/blog/${rp.slug}`} className="group flex flex-col rounded-2xl overflow-hidden border border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-zinc-900/40 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
                 <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-zinc-800">
                   {rp.featuredImage ? (
-                    <img src={rp.featuredImage} alt={rp.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
+                    <img src={getOptimizedUrl(rp.featuredImage, { width: 600, crop: "limit", quality: "auto", format: "auto" })} alt={rp.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-zinc-400 text-xs">No image</div>
                   )}

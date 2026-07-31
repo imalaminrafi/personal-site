@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Figma, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
+import { getOptimizedUrl, getSrcSet } from "@/utils/cloudinary";
 
 type Category = "All" | "UI/UX Design";
 
@@ -95,10 +96,13 @@ function ProjectCard({ project }: { project: Project }) {
             {/* Preview Image */}
             <div className="h-44 sm:h-56 relative overflow-hidden shrink-0 bg-zinc-100 dark:bg-zinc-800">
                 <img
-                    src={project.image}
+                    src={getOptimizedUrl(project.image, { width: 800, crop: "limit", quality: "auto", format: "auto" })}
+                    srcSet={getSrcSet(project.image) || undefined}
+                    sizes="(max-width: 640px) 100vw, 50vw"
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
+                    decoding="async"
                 />
                 {project.featured && (
                     <span className="absolute top-3 right-3 bg-white/95 dark:bg-black/90 text-zinc-900 dark:text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-black/5 dark:border-white/10 shadow-sm">

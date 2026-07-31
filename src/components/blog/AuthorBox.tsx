@@ -2,6 +2,7 @@ import { author } from "@/data/author";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { User, Linkedin, MessageCircle, ExternalLink, Globe, Github, Bird, Palette } from "lucide-react";
+import { getOptimizedUrl } from "@/utils/cloudinary";
 
 const platformConfig: Record<string, { icon: React.ComponentType<{ className?: string }>; color: string }> = {
   LinkedIn: { icon: Linkedin, color: "#0A66C2" },
@@ -27,7 +28,7 @@ export default function AuthorBox() {
           </div>
         ) : (
           <img
-            src={author.image}
+            src={getOptimizedUrl(author.image, { width: 200, crop: "fill", quality: "auto", format: "auto" })}
             alt={author.name}
             className="w-16 h-16 rounded-full object-cover"
             onError={() => setImgError(true)}

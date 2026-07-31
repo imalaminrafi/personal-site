@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { loadAboutData } from "@/data/aboutData";
 import { getSitewideSchemas, generateSiteBreadcrumbSchema, getBaseUrl } from "@/utils/seoUtils";
+import { getOptimizedUrl, getThumbnailUrl } from "@/utils/cloudinary";
 import Header from "@/components/professional/Header";
 import Footer from "@/components/professional/Footer";
 import {
@@ -149,8 +150,10 @@ export default function AboutAlaminRafi() {
             <div className="max-w-4xl mx-auto text-center">
               <div className="mb-8 inline-block">
                 <img
-                  src={data.hero.image}
+                  src={getOptimizedUrl(data.hero.image, { width: 400, crop: "fill", quality: "auto", format: "auto" })}
                   alt={data.hero.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white dark:border-zinc-800 shadow-xl shadow-violet-500/10"
                 />
               </div>
