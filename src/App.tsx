@@ -36,6 +36,17 @@ import ProfessionalPage from "./pages/Professional";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AnalyticsTracker from "./components/analytics/AnalyticsTracker";
 import ConsentBanner from "./components/analytics/ConsentBanner";
+import { AppUiProvider } from "./components/app/app-ui-context";
+import MoreSheet from "./components/app/MoreSheet";
+import SearchOverlay from "./components/app/SearchOverlay";
+import BooksPage from "./pages/Books";
+import ContactPage from "./pages/Contact";
+import PricingPage from "./pages/Pricing";
+import TestimonialsPage from "./pages/Testimonials";
+import GalleryPage from "./pages/Gallery";
+import FAQPage from "./pages/FAQ";
+import PrivacyPage from "./pages/Privacy";
+import TermsPage from "./pages/Terms";
 
 const queryClient = new QueryClient();
 
@@ -46,11 +57,14 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
-            <AdminAuthProvider>
-              <AnalyticsTracker />
-              <ConsentBanner />
-              <Routes>
+          <AppUiProvider>
+            <BrowserRouter>
+              <AdminAuthProvider>
+                <AnalyticsTracker />
+                <ConsentBanner />
+                <MoreSheet />
+                <SearchOverlay />
+                <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
@@ -59,6 +73,14 @@ const App = () => (
                 <Route path="/portfolio" element={<PortfolioPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
+                <Route path="/books" element={<BooksPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/pricing" element={<PricingPage />} />
+                <Route path="/testimonials" element={<TestimonialsPage />} />
+                <Route path="/gallery" element={<GalleryPage />} />
+                <Route path="/faq" element={<FAQPage />} />
+                <Route path="/privacy" element={<PrivacyPage />} />
+                <Route path="/terms" element={<TermsPage />} />
                 <Route path="/about-me" element={<AboutMe />} />
                 <Route path="/about-alamin-rafi" element={<AboutAlaminRafi />} />
                 <Route path="/professional" element={<ProfessionalPage />} />
@@ -84,12 +106,14 @@ const App = () => (
                 <Route path="/admin/about" element={<AdminAbout />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            </AdminAuthProvider>
-          </BrowserRouter>
-        </TooltipProvider>
-      </AuthProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
-);
+              </AdminAuthProvider>
+            </BrowserRouter>
+            </AppUiProvider>
+          </TooltipProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
+
 
 export default App;

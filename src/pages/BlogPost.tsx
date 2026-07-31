@@ -13,6 +13,7 @@ import {
   getSitewideSchemas, calculateSeoScore, generatePrevNextPosts, getBaseUrl,
 } from "@/utils/seoUtils";
 import { getOptimizedUrl, getSrcSet } from "@/utils/cloudinary";
+import { trackBlogView, trackBlogReadTime } from "@/utils/analytics";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -70,6 +71,37 @@ export default function BlogPost() {
       setLink("canonical", baseUrl);
       for (let i = 0; i < 20; i++) { const el = document.getElementById(`schema-${i}`); if (el) el.remove(); }
       const al = document.getElementById("author-link-seo"); if (al) al.remove();
+    };
+  }, [post]);
+
+  // GA4: blog view + read time
+  useEffect(() => {
+    if (!post) return;
+    trackBlogView(post.title, post.category);
+    const start = Date.now();
+    let visible = document.visibilityState === "visible";
+    const sent = new Set<number>();
+
+    const maybeSend = () => {
+      if (!visible) return;
+      const seconds = (Date.now() - start) / 1000;
+      for (const target of [30, 60, 120]) {
+        if (seconds >= target && !sent.has(target)) {
+          sent.add(target);
+          trackBlogReadTime(post.title, target);
+        }
+      }
+    };
+    const iv = setInterval(maybeSend, 5000);
+    const onVis = () => { visible = document.visibilityState === "visible"; };
+    document.addEventListener("visibilitychange", onVis);
+    window.addEventListener("beforeunload", maybeSend);
+    return () => {
+      clearInterval(iv);
+      document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("beforeunload", maybeSend);
+      const total = (Date.now() - start) / 1000;
+      if (total >= 10) trackBlogReadTime(post.title, Math.round(total));
     };
   }, [post]);
 

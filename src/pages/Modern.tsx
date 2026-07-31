@@ -6,7 +6,7 @@ import AboutSection from "@/components/professional/About";
 
 import ProfessionalContact from "@/components/professional/Contact";
 import ProfessionalFooter from "@/components/professional/Footer";
-import MobileBottomNav from "@/components/professional/MobileNav";
+import BottomNav from "@/components/app/BottomNav";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 
 
@@ -22,7 +22,7 @@ export default function ModernPage() {
                 <ProfessionalContact />
             </main>
             <ProfessionalFooter />
-            <MobileBottomNav />
+            <BottomNav />
             <PWAInstallPrompt />
         </div>
     );

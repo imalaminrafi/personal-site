@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { loadPosts, CATEGORIES } from "@/data/blogData";
 import { getOptimizedUrl, getSrcSet } from "@/utils/cloudinary";
+import { trackBlogView } from "@/utils/analytics";
 import { ArrowRight, Calendar, Clock, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/professional/Header";
 import Footer from "@/components/professional/Footer";
@@ -22,7 +23,8 @@ export default function Blog() {
     setPosts(all);
     const tagParam = searchParams.get("tag");
     if (tagParam) setSelectedTag(tagParam);
-  }, [searchParams]);
+    trackBlogView("Blog listing", tagParam || category);
+  }, [searchParams, category]);
 
   const allTags = useMemo(() => [...new Set(posts.flatMap((p) => p.tags || []))].sort(), [posts]);
 

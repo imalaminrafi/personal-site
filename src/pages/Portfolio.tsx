@@ -1,13 +1,15 @@
 import ModernHeader from "@/components/modern/Header";
 import ProjectsSection from "@/components/professional/Projects";
 import ProfessionalFooter from "@/components/professional/Footer";
-import MobileBottomNav from "@/components/professional/MobileNav";
+import BottomNav from "@/components/app/BottomNav";
 import { useEffect } from "react";
+import { trackPortfolioView } from "@/utils/analytics";
 
 export default function PortfolioPage() {
     // Scroll to top on page load
     useEffect(() => {
         window.scrollTo(0, 0);
+        trackPortfolioView("all");
     }, []);
 
     return (
@@ -18,7 +20,7 @@ export default function PortfolioPage() {
                 <ProjectsSection isLanding={false} />
             </main>
             <ProfessionalFooter />
-            <MobileBottomNav />
+            <BottomNav />
         </div>
     );
 }

@@ -5,6 +5,7 @@ import {
     Download, ArrowLeft, AlertCircle
 } from "lucide-react";
 import { getProject, STEPS, type Project } from "@/data/projects";
+import { trackProjectTracker } from "@/utils/analytics";
 
 /* ── Status badge colours ─────────────────────────────────── */
 const statusStyle: Record<string, string> = {
@@ -30,6 +31,7 @@ export default function ProjectTrackerPage() {
         if (!id) { setProject(null); return; }
         const found = getProject(id);
         setProject(found ?? null);
+        if (found) trackProjectTracker(id, found.title);
     }, [id]);
 
     /* Loading */
