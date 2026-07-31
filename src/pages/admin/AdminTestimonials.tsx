@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { Testimonial, loadTestimonials, saveTestimonials } from "@/data/testimonials";
 import { Plus, Edit2, Trash2, Star, X, CheckCircle2 } from "lucide-react";
+import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
 
 const empty: Testimonial = {
   id: "", clientName: "", company: "", country: "", rating: 5, review: "",
@@ -146,9 +147,8 @@ export default function AdminTestimonials() {
                   rows={4} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none" required />
               </div>
               <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Photo URL</label>
-                <input value={modal.photo} onChange={(e) => setModal({ ...modal, photo: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" placeholder="Leave empty for initials" />
+                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Client Photo</label>
+                <CloudinaryUploadButton value={modal.photo} onChange={(url) => setModal({ ...modal, photo: url })} label="Client Photo" />
               </div>
               <div className="flex items-center gap-6 pt-2">
                 <label className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">

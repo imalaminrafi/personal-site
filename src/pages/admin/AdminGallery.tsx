@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { GalleryItem, loadGallery, saveGallery, CATEGORIES } from "@/data/gallery";
 import { Image, Plus, Trash2, Search, X } from "lucide-react";
+import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
 
 const empty: GalleryItem = {
   id: "", src: "", alt: "", category: "Office", createdAt: "",
@@ -114,9 +115,8 @@ export default function AdminGallery() {
             </div>
             <form onSubmit={handleSave} className="p-6 space-y-4">
               <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Image URL</label>
-                <input value={modal.src} onChange={(e) => setModal({ ...modal, src: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Image</label>
+                <CloudinaryUploadButton value={modal.src} onChange={(url) => setModal({ ...modal, src: url })} label="Gallery Image" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Alt Text</label>

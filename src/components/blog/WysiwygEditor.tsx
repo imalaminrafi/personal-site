@@ -17,6 +17,8 @@ import { Youtube } from "@tiptap/extension-youtube";
 import { FontFamily } from "@tiptap/extension-font-family";
 import { Dropcursor } from "@tiptap/extension-dropcursor";
 import { optimizeImage, readFileAsDataURL } from "@/utils/imageOptimizer";
+import { uploadToCloudinary } from "@/utils/cloudinary";
+import { addToMediaLibrary, fromCloudinaryAsset } from "@/data/cloudinaryMedia";
 import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough, List, ListOrdered,
   Quote, Heading1, Heading2, Heading3, AlignLeft, AlignCenter, AlignRight, AlignJustify,
@@ -114,11 +116,17 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
   async function handleImageFile(file: File) {
     if (!file.type.startsWith("image/") || !editor) return;
     try {
-      const opt = await optimizeImage(file, { maxWidth: 1920, quality: 0.8, format: "image/webp" });
-      editor.chain().focus().setImage({ src: opt.dataUrl }).run();
+      const asset = await uploadToCloudinary(file, { folder: "alaminrafi" });
+      addToMediaLibrary(fromCloudinaryAsset(asset, file.name));
+      editor.chain().focus().setImage({ src: asset.secureUrl || asset.url }).run();
     } catch {
-      const url = await readFileAsDataURL(file);
-      editor.chain().focus().setImage({ src: url }).run();
+      try {
+        const opt = await optimizeImage(file, { maxWidth: 1920, quality: 0.8, format: "image/webp" });
+        editor.chain().focus().setImage({ src: opt.dataUrl }).run();
+      } catch {
+        const url = await readFileAsDataURL(file);
+        editor.chain().focus().setImage({ src: url }).run();
+      }
     }
   }
 

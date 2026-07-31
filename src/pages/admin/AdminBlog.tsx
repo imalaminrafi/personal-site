@@ -3,6 +3,8 @@ import AdminLayout from "./AdminLayout";
 import { loadPosts, savePosts, CATEGORIES, slugify, estimateReadingTime } from "@/data/blogData";
 import { lazy, Suspense } from "react";
 import { Plus, Edit2, Trash2, Search, Eye, Calendar, Clock, Tag, Image, Save, X, CheckCircle, Clock9, AlertCircle } from "lucide-react";
+import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
+import CloudinaryMultiUploader from "@/components/cloudinary/CloudinaryMultiUploader";
 
 const WysiwygEditor = lazy(() => import("@/components/blog/WysiwygEditor"));
 
@@ -188,9 +190,12 @@ export default function AdminBlog() {
 
           {/* Image */}
           <Section title="Images">
-            <Field label="Featured Image URL"><input type="text" value={form.featuredImage} onChange={(e) => update("featuredImage", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></Field>
-            {form.featuredImage && <img src={form.featuredImage} alt="" className="w-40 h-24 object-cover rounded-xl border border-zinc-200 dark:border-white/[0.08]" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />}
-            <Field label="Gallery Images (one URL per line)"><textarea rows={3} value={form.galleryImages} onChange={(e) => update("galleryImages", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none font-mono text-xs" /></Field>
+            <Field label="Featured Image">
+              <CloudinaryUploadButton value={form.featuredImage} onChange={(url) => update("featuredImage", url)} />
+            </Field>
+            <Field label="Gallery Images">
+              <CloudinaryMultiUploader value={form.galleryImages} onChange={(urls) => update("galleryImages", urls)} label="gallery images" />
+            </Field>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Field label="Image Alt Text"><input type="text" value={form.imageAlt} onChange={(e) => update("imageAlt", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></Field>
               <Field label="Image Title"><input type="text" value={form.imageTitle} onChange={(e) => update("imageTitle", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></Field>
@@ -235,7 +240,9 @@ export default function AdminBlog() {
               </select></Field>
             </div>
             <Field label="OG Description"><textarea rows={2} value={form.ogDescription} onChange={(e) => update("ogDescription", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></Field>
-            <Field label="OG Image URL"><input type="text" value={form.ogImage} onChange={(e) => update("ogImage", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></Field>
+            <Field label="OG Image">
+              <CloudinaryUploadButton value={form.ogImage} onChange={(url) => update("ogImage", url)} label="OG Image" />
+            </Field>
           </Section>
 
           {/* Schema */}

@@ -2,6 +2,7 @@ import AdminLayout from "./AdminLayout";
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Edit2, Search, ExternalLink, Star } from "lucide-react";
 import { loadPortfolio, savePortfolio, CATEGORIES, PortfolioItem } from "@/data/portfolio";
+import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
 
 export default function AdminPortfolio() {
   const [items, setItems] = useState<PortfolioItem[]>([]);
@@ -97,7 +98,7 @@ export default function AdminPortfolio() {
             <div className="space-y-4">
               <div><label className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 block mb-1">Title</label><input type="text" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></div>
               <div><label className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 block mb-1">Description</label><textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></div>
-              <div><label className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 block mb-1">Image URL</label><input type="text" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></div>
+              <div><label className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 block mb-1">Image</label><CloudinaryUploadButton value={form.image} onChange={(url) => setForm({ ...form, image: url })} label="Project Image" /></div>
               <div><label className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 block mb-1">Category</label><select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none">{CATEGORIES.filter((c) => c !== "All").map((c) => <option key={c}>{c}</option>)}</select></div>
               <div><label className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 block mb-1">Demo Link</label><input type="text" value={form.demoLink} onChange={(e) => setForm({ ...form, demoLink: e.target.value })} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></div>
               <div><label className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 block mb-1">Tags (comma separated)</label><input type="text" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none" /></div>

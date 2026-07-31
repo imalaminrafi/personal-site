@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { loadSettings, saveSettings, SiteSettings } from "@/data/settings";
 import { Settings, Plus, Trash2, CheckCircle2 } from "lucide-react";
+import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
 
 export default function AdminSiteSettings() {
   const [settings, setSettings] = useState<SiteSettings | null>(null);
@@ -60,30 +61,12 @@ export default function AdminSiteSettings() {
           <form onSubmit={handleSave} className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Logo URL</label>
-                <input
-                  value={settings.logo}
-                  onChange={(e) => update({ logo: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
-                />
-                {settings.logo && (
-                  <div className="mt-2 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] w-16 h-16 flex items-center justify-center bg-zinc-50 dark:bg-zinc-900">
-                    <img src={settings.logo} alt="Logo preview" className="max-w-full max-h-full object-contain" />
-                  </div>
-                )}
+                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Logo</label>
+                <CloudinaryUploadButton value={settings.logo} onChange={(url) => update({ logo: url })} label="Logo" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Favicon URL</label>
-                <input
-                  value={settings.favicon}
-                  onChange={(e) => update({ favicon: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
-                />
-                {settings.favicon && (
-                  <div className="mt-2 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] w-10 h-10 flex items-center justify-center bg-zinc-50 dark:bg-zinc-900">
-                    <img src={settings.favicon} alt="Favicon preview" className="max-w-full max-h-full object-contain" />
-                  </div>
-                )}
+                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Favicon</label>
+                <CloudinaryUploadButton value={settings.favicon} onChange={(url) => update({ favicon: url })} label="Favicon" />
               </div>
             </div>
 

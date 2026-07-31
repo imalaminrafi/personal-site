@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { loadAboutData, saveAboutData, AboutData } from "@/data/aboutData";
+import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
 import {
   CheckCircle2, Plus, Trash2, Eye, EyeOff, Edit3, X,
   User, FileText, Target, Briefcase, GraduationCap, Award,
@@ -235,13 +236,8 @@ function HeroEditor({ data, update }: { data: AboutData; update: (partial: Parti
         <Field label="Name"><Input value={data.hero.name} onChange={(v) => update({ hero: { ...data.hero, name: v } })} /></Field>
         <Field label="Title"><Input value={data.hero.title} onChange={(v) => update({ hero: { ...data.hero, title: v } })} /></Field>
       </div>
-      <Field label="Profile Photo URL">
-        <Input value={data.hero.image} onChange={(v) => update({ hero: { ...data.hero, image: v } })} />
-        {data.hero.image && (
-          <div className="mt-2 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] w-16 h-16">
-            <img src={data.hero.image} alt="" className="w-full h-full object-cover" />
-          </div>
-        )}
+      <Field label="Profile Photo">
+        <CloudinaryUploadButton value={data.hero.image} onChange={(v) => update({ hero: { ...data.hero, image: v } })} label="Profile Photo" />
       </Field>
       <Field label="Introduction Paragraphs">
         <ParagraphList items={data.hero.paragraphs} onChange={(ps) => update({ hero: { ...data.hero, paragraphs: ps } })} />

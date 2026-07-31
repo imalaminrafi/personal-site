@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { loadSEOSettings, saveSEOSettings, SEOSettings } from "@/data/settings";
 import { Globe, CheckCircle2, AlertTriangle, TrendingUp, Search, Eye, Smartphone } from "lucide-react";
+import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
 
 const robotsOptions = [
   "index, follow",
@@ -124,17 +125,8 @@ export default function AdminSEO() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">OG Image URL</label>
-                <input
-                  value={settings.ogImage}
-                  onChange={(e) => update({ ogImage: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
-                />
-                {settings.ogImage && (
-                  <div className="mt-2 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] w-40">
-                    <img src={settings.ogImage} alt="OG preview" className="w-full h-24 object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  </div>
-                )}
+                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">OG Image</label>
+                <CloudinaryUploadButton value={settings.ogImage} onChange={(url) => update({ ogImage: url })} label="OG Image" />
               </div>
 
               <div>
