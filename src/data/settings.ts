@@ -8,6 +8,7 @@ export interface SiteSettings {
   socialLinks: { platform: string; url: string }[];
   footer: string;
   analyticsCode: string;
+  analyticsMeasurementId: string;
 }
 
 export interface SEOSettings {
@@ -36,6 +37,7 @@ const defaultSettings: SiteSettings = {
   ],
   footer: "© 2026 Alamin Rafi. All rights reserved.",
   analyticsCode: "",
+  analyticsMeasurementId: "G-H6SG271PT0",
 };
 
 const defaultSEO: SEOSettings = {

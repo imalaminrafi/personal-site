@@ -5,6 +5,7 @@ import { useAppUi } from "./app-ui-context";
 import { loadPosts } from "@/data/blogData";
 import { loadPortfolio } from "@/data/portfolio";
 import { getPublishedBooks } from "@/data/books";
+import { trackSearch } from "@/utils/analytics";
 import { cn } from "@/lib/utils";
 
 const servicesList = [
@@ -86,6 +87,7 @@ export default function SearchOverlay() {
       if (e.key === "ArrowDown") { e.preventDefault(); setActiveIdx((i) => Math.min(i + 1, results.length - 1)); }
       if (e.key === "ArrowUp") { e.preventDefault(); setActiveIdx((i) => Math.max(i - 1, 0)); }
       if (e.key === "Enter" && results[activeIdx]) {
+        trackSearch(query.trim(), results.length);
         navigate(results[activeIdx].to);
         closeSearch();
       }
@@ -95,6 +97,7 @@ export default function SearchOverlay() {
   }, [searchOpen, results, activeIdx, navigate, closeSearch]);
 
   const go = (to: string) => {
+    if (query.trim()) trackSearch(query.trim(), results.length);
     closeSearch();
     navigate(to);
   };

@@ -130,6 +130,8 @@ function ProjectCard({ project }: { project: Project }) {
 
                 <a
                     href="#view-project"
+                    data-ga="portfolio_button_click"
+                    data-ga-location={project.title}
                     className="inline-flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 text-xs sm:text-sm font-semibold text-zinc-900 dark:text-white border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group/btn"
                 >
                     View Project
@@ -179,6 +181,8 @@ export default function ProjectsSection({ isLanding = false }: ProjectsSectionPr
                     {isLanding && (
                         <a 
                             href="/portfolio" 
+                            data-ga="portfolio_button_click"
+                            data-ga-location="view_all"
                             className="inline-flex items-center gap-2 text-violet-600 dark:text-violet-400 font-bold hover:gap-3 transition-all"
                         >
                             View All Projects <ArrowRight className="w-5 h-5" />
@@ -254,6 +258,8 @@ export default function ProjectsSection({ isLanding = false }: ProjectsSectionPr
                     <div className="mt-12 flex justify-center sm:hidden">
                          <a 
                             href="/portfolio" 
+                            data-ga="portfolio_button_click"
+                            data-ga-location="view_all"
                             className="px-8 py-3 rounded-full bg-violet-600 text-white font-bold shadow-lg shadow-violet-600/20"
                         >
                             View All Projects

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Mail, MessageCircle, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { trackContactForm, trackFormSubmit } from "@/utils/analytics";
 
 export default function ProfessionalContact() {
     const [form, setForm] = useState({ name: "", email: "", service: "", message: "" });
@@ -11,6 +12,8 @@ export default function ProfessionalContact() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        trackFormSubmit("contact");
+        trackContactForm();
         // Build a mailto link with form data
         const subject = encodeURIComponent(`Website Inquiry from ${form.name}`);
         const body = encodeURIComponent(
@@ -40,6 +43,8 @@ export default function ProfessionalContact() {
                         {/* Email */}
                         <a
                             href="mailto:hello@alaminrafi.com"
+                            data-ga="email_click"
+                            data-ga-location="contact"
                             className="flex items-start gap-4 bg-white dark:bg-zinc-900 p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 group"
                         >
                             <div className="h-11 w-11 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 shrink-0 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300">
@@ -57,6 +62,8 @@ export default function ProfessionalContact() {
                             href={`https://wa.me/8801917443161?text=${whatsappMsg}`}
                             target="_blank"
                             rel="noopener noreferrer"
+                            data-ga="whatsapp_click"
+                            data-ga-location="contact"
                             className="flex items-start gap-4 bg-white dark:bg-zinc-900 p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 group"
                         >
                             <div className="h-11 w-11 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
+import { Link } from "react-router-dom";
 import { loadSettings, saveSettings, SiteSettings } from "@/data/settings";
-import { Settings, Plus, Trash2, CheckCircle2 } from "lucide-react";
+import { Settings, Plus, Trash2, CheckCircle2, BarChart3 } from "lucide-react";
 import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
 
 export default function AdminSiteSettings() {
@@ -156,16 +157,24 @@ export default function AdminSiteSettings() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">
-                Analytics Code <span className="text-zinc-400 font-normal">(HTML snippet)</span>
+              <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-2">
+                Analytics
               </label>
-              <textarea
-                value={settings.analyticsCode}
-                onChange={(e) => update({ analyticsCode: e.target.value })}
-                rows={4}
-                placeholder="&lt;script&gt; ... &lt;/script&gt;"
-                className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none font-mono"
-              />
+              <Link
+                to="/admin/analytics"
+                className="flex items-center gap-3 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-white/[0.03] p-4 transition-colors hover:border-violet-300 dark:hover:border-violet-700"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-100 text-violet-600 dark:bg-violet-500/15 dark:text-violet-300">
+                  <BarChart3 className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-bold text-zinc-900 dark:text-white">
+                    Google Analytics {settings.analyticsMeasurementId ? `· ${settings.analyticsMeasurementId}` : "· Not configured"}
+                  </p>
+                  <p className="text-xs text-zinc-400">Manage measurement ID, status & live events →</p>
+                </div>
+                <span className="text-zinc-300 dark:text-zinc-600">›</span>
+              </Link>
             </div>
 
             <div className="flex items-center gap-4 pt-2">

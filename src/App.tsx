@@ -33,6 +33,9 @@ import AboutAlaminRafi from "./pages/AboutAlaminRafi";
 import RssFeed from "./pages/RssFeed";
 import AdminProjects from "./pages/AdminProjects";
 import ProfessionalPage from "./pages/Professional";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AnalyticsTracker from "./components/analytics/AnalyticsTracker";
+import ConsentBanner from "./components/analytics/ConsentBanner";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +48,8 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <AdminAuthProvider>
+              <AnalyticsTracker />
+              <ConsentBanner />
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/login" element={<LoginPage />} />
@@ -75,6 +80,7 @@ const App = () => (
                 <Route path="/admin/media" element={<AdminMedia />} />
                 <Route path="/admin/seo" element={<AdminSEO />} />
                 <Route path="/admin/settings" element={<AdminSettings />} />
+                <Route path="/admin/analytics" element={<AdminAnalytics />} />
                 <Route path="/admin/about" element={<AdminAbout />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
