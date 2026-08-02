@@ -103,7 +103,7 @@ export default function ModernHeroVisual() {
         </h1>
 
         <p className="text-zinc-200 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-12 drop-shadow-sm font-medium">
-          I help entrepreneurs start, grow and scale their business using AI tools, smart strategy, and professional websites.
+          I help small businesses worldwide grow smarter with AI-driven strategy, high-performance websites, and digital marketing that turns visitors into customers.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5">

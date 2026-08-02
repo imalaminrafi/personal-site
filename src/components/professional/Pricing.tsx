@@ -25,8 +25,11 @@ export default function PricingSection() {
                         Pricing
                     </p>
                     <h2 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white tracking-tight">
-                        Simple, Transparent <span className="text-zinc-400">Pricing</span>
+                        Clear, Flexible <span className="text-zinc-400">Pricing</span>
                     </h2>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-3 max-w-xl leading-relaxed">
+                        Every project is unique, so you get a custom quote based on your exact needs — no surprise fees, and you'll know the price before we start.
+                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
@@ -122,13 +125,13 @@ export default function PricingSection() {
                 {/* Custom note */}
                 <div className="mt-12 pt-8 border-t border-zinc-100 dark:border-white/[0.05] text-center">
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm">
-                        Need a fully custom solution?{" "}
+                        Not sure what you need?{" "}
                         <a
                             href="#contact"
                             onClick={scrollToContact}
                             className="text-violet-600 dark:text-violet-400 hover:underline font-bold"
                         >
-                            Let's discuss your project →
+                            Let's talk — I'll help you figure it out →
                         </a>
                     </p>
                 </div>

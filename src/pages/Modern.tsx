@@ -2,6 +2,7 @@ import ModernHeader from "@/components/modern/Header";
 import ModernHeroVisual from "@/components/modern/Hero";
 import ServicesSection from "@/components/professional/Services";
 import PricingSection from "@/components/professional/Pricing";
+import WhyMeSection from "@/components/professional/WhyMe";
 import AboutSection from "@/components/professional/About";
 import ProfessionalContact from "@/components/professional/Contact";
 import ProfessionalFooter from "@/components/professional/Footer";
@@ -18,6 +19,7 @@ export default function ModernPage() {
                 <SectionBoundary name="About"><AboutSection /></SectionBoundary>
                 <SectionBoundary name="Services"><ServicesSection /></SectionBoundary>
                 <SectionBoundary name="Pricing"><PricingSection /></SectionBoundary>
+                <SectionBoundary name="WhyMe"><WhyMeSection /></SectionBoundary>
                 <SectionBoundary name="Contact"><ProfessionalContact /></SectionBoundary>
             </main>
             <SectionBoundary name="Footer"><ProfessionalFooter /></SectionBoundary>

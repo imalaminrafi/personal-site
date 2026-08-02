@@ -1,35 +1,29 @@
-import { Globe, Code2, Layout, Figma, BarChart3, ArrowRight } from "lucide-react";
+import { Sparkles, Code2, Figma, BarChart3 } from "lucide-react";
 
 const services = [
     {
-        icon: <Globe className="h-6 w-6" />,
-        title: "Website Design",
-        description: "Clean, fast, modern websites",
+        icon: <Sparkles className="h-6 w-6" />,
+        title: "AI Growth Strategy",
+        description: "Use AI to work smarter and scale",
         color: "violet",
     },
     {
         icon: <Code2 className="h-6 w-6" />,
-        title: "WordPress Website",
-        description: "Easy to manage business sites",
+        title: "Web Design & Development",
+        description: "Fast, modern, conversion-ready websites",
         color: "cyan",
     },
     {
-        icon: <Layout className="h-6 w-6" />,
-        title: "Landing Page",
-        description: "High-converting simple pages",
-        color: "indigo",
+        icon: <BarChart3 className="h-6 w-6" />,
+        title: "SEO & Digital Marketing",
+        description: "Get found and grow your customers",
+        color: "emerald",
     },
     {
         icon: <Figma className="h-6 w-6" />,
-        title: "UI/UX Design",
-        description: "Modern clean interface design",
+        title: "UI/UX & Brand Design",
+        description: "Designs your customers trust",
         color: "pink",
-    },
-    {
-        icon: <BarChart3 className="h-6 w-6" />,
-        title: "Digital Marketing",
-        description: "Grow your online presence",
-        color: "emerald",
     },
 ];
 
@@ -48,7 +42,7 @@ export default function ServicesSection() {
                 <div className="mb-8 sm:mb-12">
                     <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-2">Services</p>
                     <h2 className="text-xl sm:text-2xl font-medium text-zinc-900 dark:text-white leading-snug">
-                        What I can build <span className="text-zinc-400">for you</span>
+                        Services to grow <span className="text-zinc-400">your business</span>
                     </h2>
                 </div>
 

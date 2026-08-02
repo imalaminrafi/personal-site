@@ -1,10 +1,10 @@
 import { CheckCircle2 } from "lucide-react";
 
 const highlights = [
-    "Modern, fast & mobile-responsive websites",
-    "Affordable solutions for businesses of all sizes",
-    "Easy-to-manage WordPress & CMS setups",
-    "Full support from design to launch",
+    "AI-first strategy that saves you time and money",
+    "High-performance websites built to convert visitors into customers",
+    "SEO & digital marketing that attracts the right audience",
+    "Clear communication and on-time delivery, worldwide",
 ];
 
 export default function ProfessionalAbout() {
@@ -14,8 +14,8 @@ export default function ProfessionalAbout() {
                 {/* Section Label */}
                 <p className="text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">About</p>
                 <h2 className="text-2xl sm:text-4xl font-semibold text-zinc-900 dark:text-white mb-8 sm:mb-14 max-w-2xl leading-snug">
-                    Helping businesses build{" "}
-                    <span className="text-violet-600 dark:text-violet-400">effective websites</span>{" "}
+                    Helping businesses grow with{" "}
+                    <span className="text-violet-600 dark:text-violet-400">AI and websites</span>{" "}
                     that work.
                 </h2>
 
@@ -24,15 +24,15 @@ export default function ProfessionalAbout() {
                     <div className="space-y-4 text-zinc-600 dark:text-zinc-300 leading-relaxed text-[16px] sm:text-[17px]">
                         {/* Mobile: single concise paragraph */}
                         <p className="sm:hidden">
-                            I help businesses build modern, affordable, and effective websites. I manage projects, design direction, and ensure high-quality results with my team.
+                            I help businesses worldwide grow smarter with AI strategy, high-performance websites, and digital marketing that delivers results.
                         </p>
 
                         {/* Desktop: fuller paragraphs */}
                         <p className="hidden sm:block">
-                            I'm <span className="font-semibold text-zinc-900 dark:text-white">Alamin Rafi</span>, a Digital Service Provider helping businesses build modern, affordable, and effective websites. I manage projects, guide design direction, and ensure high-quality results with my team.
+                            I'm <span className="font-semibold text-zinc-900 dark:text-white">Alamin Rafi</span>, and I help small businesses grow smarter online — combining AI strategy, high-performance web design, and digital marketing that actually converts visitors into customers.
                         </p>
                         <p className="hidden sm:block">
-                            From clean landing pages to fully functional WordPress websites, I offer complete digital solutions under one roof — focused on what matters: results, clarity, and value for your business.
+                            From your first landing page to a complete growth system, I handle strategy, design, and build under one roof — focused on what matters: results, clarity, and value for your business.
                         </p>
                     </div>
 

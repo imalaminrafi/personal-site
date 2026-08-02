@@ -19,7 +19,7 @@ export const faqData: FAQItemData[] = [
   },
   {
     question: "How much does a website cost?",
-    answer: "Pricing starts at $250 for a personal/small site. Business sites range from $400–$600 and advanced custom solutions from $700–$1000. You'll receive an exact quote after a quick call about your needs.",
+    answer: "Every project is different, so I don't use a fixed price list. Tell me what you need and I'll prepare a clear custom quote for your exact scope — no surprise fees, and you'll know the price before we start.",
     category: "Pricing",
   },
   {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, MessageCircle, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MessageCircle, Globe, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { trackContactForm, trackFormSubmit } from "@/utils/analytics";
 
 export default function ProfessionalContact() {
@@ -76,6 +76,25 @@ export default function ProfessionalContact() {
                             </div>
                         </a>
 
+                        {/* Website */}
+                        <a
+                            href="https://alaminrafi.com/portfolio"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-ga="website_click"
+                            data-ga-location="contact"
+                            className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 group"
+                        >
+                            <div className="h-11 w-11 rounded-xl bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 group-hover:bg-[#C9A84C] group-hover:text-[#0A1628] transition-all duration-300">
+                                <Globe className="h-5 w-5" />
+                            </div>
+                            <div>
+                                <p className="text-xs text-zinc-400 font-medium uppercase tracking-wider mb-1">Website</p>
+                                <p className="text-zinc-900 dark:text-white font-medium">alaminrafi.com/portfolio</p>
+                                <p className="text-xs text-zinc-400 mt-0.5">Browse my recent work</p>
+                            </div>
+                        </a>
+
                         {/* Location */}
                         <div className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-white/[0.08]">
                             <div className="h-11 w-11 rounded-xl bg-slate-100 dark:bg-slate-400/10 flex items-center justify-center text-slate-600 dark:text-slate-300 shrink-0">
@@ -92,7 +111,7 @@ export default function ProfessionalContact() {
                         <div className="bg-gradient-to-r from-[#C9A84C] to-[#E6C97A] p-5 rounded-2xl text-[#0A1628]">
                             <p className="font-semibold mb-1">🟢 Currently Available</p>
                             <p className="text-sm text-[#0A1628]/80 leading-relaxed">
-                                I'm open to freelance projects, website contracts, and long-term digital partnerships. Let's talk!
+                                I'm open to new website projects, growth partnerships, and long-term digital support. Let's talk!
                             </p>
                         </div>
                     </div>
