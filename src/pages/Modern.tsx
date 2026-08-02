@@ -6,6 +6,7 @@ import AboutSection from "@/components/professional/About";
 import ProfessionalContact from "@/components/professional/Contact";
 import ProfessionalFooter from "@/components/professional/Footer";
 import MobileBottomNav from "@/components/professional/MobileNav";
+import SectionBoundary from "@/components/SectionBoundary";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 
 export default function ModernPage() {
@@ -13,15 +14,15 @@ export default function ModernPage() {
         <div className="min-h-screen bg-white dark:bg-zinc-950">
             <ModernHeader />
             <main>
-                <ModernHeroVisual />
-                <AboutSection />
-                <ServicesSection />
-                <PricingSection />
-                <ProfessionalContact />
+                <SectionBoundary name="Hero"><ModernHeroVisual /></SectionBoundary>
+                <SectionBoundary name="About"><AboutSection /></SectionBoundary>
+                <SectionBoundary name="Services"><ServicesSection /></SectionBoundary>
+                <SectionBoundary name="Pricing"><PricingSection /></SectionBoundary>
+                <SectionBoundary name="Contact"><ProfessionalContact /></SectionBoundary>
             </main>
-            <ProfessionalFooter />
-            <MobileBottomNav />
-            <PWAInstallPrompt />
+            <SectionBoundary name="Footer"><ProfessionalFooter /></SectionBoundary>
+            <SectionBoundary name="MobileBottomNav" fallback={null}><MobileBottomNav /></SectionBoundary>
+            <SectionBoundary name="PWAInstallPrompt" fallback={null}><PWAInstallPrompt /></SectionBoundary>
         </div>
     );
 }

@@ -119,6 +119,30 @@
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
+  <!-- Safety net: if the JS bundle fails to boot, show a message instead of a blank white screen. -->
+  <script>
+    (function () {
+      var shown = false;
+      function show() {
+        if (shown) return;
+        shown = true;
+        var root = document.getElementById('root');
+        if (!root || root.childElementCount > 0) return;
+        root.innerHTML =
+          '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fff;color:#18181b;font-family:system-ui,sans-serif;padding:24px;text-align:center">' +
+          '<div><p style="font-size:18px;font-weight:600;margin:0 0 8px">Something went wrong loading the app.</p>' +
+          '<p style="font-size:14px;color:#71717a;margin:0 0 16px">Please try refreshing the page.</p>' +
+          '<button onclick="location.reload()" style="background:#7c3aed;color:#fff;border:0;border-radius:12px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer">Reload page</button></div></div>';
+      }
+      window.addEventListener('error', show);
+      window.addEventListener('unhandledrejection', show);
+      setTimeout(function () {
+        var root = document.getElementById('root');
+        if (root && root.childElementCount === 0) show();
+      }, 8000);
+    })();
+  </script>
+
   <!-- ── PWA: Service Worker Registration ── -->
   <script>
     if ('serviceWorker' in navigator) {

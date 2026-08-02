@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { loadPosts, CATEGORIES } from "@/data/blogData";
+import { loadPosts, CATEGORIES, type BlogPost } from "@/data/blogData";
 import { getOptimizedUrl, getSrcSet } from "@/utils/cloudinary";
 import { trackBlogView } from "@/utils/analytics";
 import { ArrowRight, Calendar, Clock, Search, ChevronLeft, ChevronRight } from "lucide-react";
@@ -11,7 +11,7 @@ const ITEMS_PER_PAGE = 9;
 
 export default function Blog() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [search, setSearch] = useState(searchParams.get("q") || "");
   const [category, setCategory] = useState(searchParams.get("category") || "All");
   const [selectedTag, setSelectedTag] = useState(searchParams.get("tag") || "");

@@ -104,7 +104,7 @@ const defaults: Book[] = [
   }),
 ];
 
-function migrate(raw: any[]): Book[] {
+function migrate(raw: Book[]): Book[] {
   return raw.map((b, i) => ({
     id: b.id,
     title: b.title,

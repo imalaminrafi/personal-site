@@ -217,7 +217,16 @@ const defaults: PortfolioItem[] = [
   },
 ];
 
-function migrate(raw: any[]): PortfolioItem[] {
+type RawPortfolioItem = Partial<Omit<PortfolioItem, "id" | "title">> & {
+  id: string;
+  title: string;
+  demoLink?: string;
+  gallery?: string[] | string;
+  tags?: string[] | string;
+  caseStudy?: Partial<PortfolioItem["caseStudy"]>;
+};
+
+function migrate(raw: RawPortfolioItem[]): PortfolioItem[] {
   return raw.map((item, i) => ({
     id: item.id,
     title: item.title,

@@ -113,7 +113,19 @@ export function uploadToCloudinary(
   });
 }
 
-function normalizeAsset(data: any): CloudinaryAsset {
+interface CloudinaryUploadResponse {
+  public_id?: string;
+  url?: string;
+  secure_url?: string;
+  width?: number | string;
+  height?: number | string;
+  bytes?: number | string;
+  format?: string;
+  resource_type?: string;
+  created_at?: string;
+}
+
+function normalizeAsset(data: CloudinaryUploadResponse): CloudinaryAsset {
   return {
     publicId: data.public_id || "",
     url: data.url || data.secure_url || "",

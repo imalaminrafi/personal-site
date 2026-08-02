@@ -38,6 +38,7 @@ import ProfessionalPage from "./pages/Professional";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AnalyticsTracker from "./components/analytics/AnalyticsTracker";
 import ConsentBanner from "./components/analytics/ConsentBanner";
+import PageBoundary from "./components/PageBoundary";
 import BooksPage from "./pages/Books";
 import BookDetailPage from "./pages/BookDetail";
 import ContactPage from "./pages/Contact";
@@ -49,6 +50,9 @@ import PrivacyPage from "./pages/Privacy";
 import TermsPage from "./pages/Terms";
 
 const queryClient = new QueryClient();
+
+/** Wrap each route so a crashing page can't blank the whole app. */
+const page = (element: React.ReactNode) => <PageBoundary>{element}</PageBoundary>;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -62,49 +66,49 @@ const App = () => (
               <AnalyticsTracker />
               <ConsentBanner />
               <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={<SignupPage />} />
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/project/:id" element={<ProjectTrackerPage />} />
-                <Route path="/portfolio" element={<PortfolioPage />} />
-                <Route path="/portfolio/:slug" element={<PortfolioProjectPage />} />
-                <Route path="/blog" element={<BlogPage />} />
-                <Route path="/blog/:slug" element={<BlogPostPage />} />
-                <Route path="/books" element={<BooksPage />} />
-                <Route path="/books/:id" element={<BookDetailPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/pricing" element={<PricingPage />} />
-                <Route path="/testimonials" element={<TestimonialsPage />} />
-                <Route path="/gallery" element={<GalleryPage />} />
-                <Route path="/faq" element={<FAQPage />} />
-                <Route path="/privacy" element={<PrivacyPage />} />
-                <Route path="/terms" element={<TermsPage />} />
-                <Route path="/about-me" element={<AboutMe />} />
-                <Route path="/about-alamin-rafi" element={<AboutAlaminRafi />} />
-                <Route path="/professional" element={<ProfessionalPage />} />
-                <Route path="/sitemap" element={<SitemapPage />} />
-                <Route path="/sitemap.xml" element={<SitemapPage />} />
-                <Route path="/sitemap-images.xml" element={<SitemapPage />} />
-                <Route path="/rss" element={<RssFeed />} />
-                <Route path="/rss.xml" element={<RssFeed />} />
-                <Route path="/admin" element={<AdminLogin />} />
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                <Route path="/admin/blog" element={<AdminBlog />} />
-                <Route path="/admin/pricing" element={<AdminPricing />} />
-                <Route path="/admin/portfolio" element={<AdminPortfolio />} />
-                <Route path="/admin/projects" element={<AdminProjects />} />
-                <Route path="/admin/testimonials" element={<AdminTestimonials />} />
-                <Route path="/admin/gallery" element={<AdminGallery />} />
-                <Route path="/admin/book" element={<AdminBook />} />
-                <Route path="/admin/messages" element={<AdminMessages />} />
-                <Route path="/admin/media" element={<AdminMedia />} />
-                <Route path="/admin/seo" element={<AdminSEO />} />
-                <Route path="/admin/settings" element={<AdminSettings />} />
-                <Route path="/admin/analytics" element={<AdminAnalytics />} />
-                <Route path="/admin/about" element={<AdminAbout />} />
-                <Route path="*" element={<NotFound />} />
+                <Route path="/" element={page(<Index />)} />
+                <Route path="/login" element={page(<LoginPage />)} />
+                <Route path="/signup" element={page(<SignupPage />)} />
+                <Route path="/dashboard" element={page(<DashboardPage />)} />
+                <Route path="/project/:id" element={page(<ProjectTrackerPage />)} />
+                <Route path="/portfolio" element={page(<PortfolioPage />)} />
+                <Route path="/portfolio/:slug" element={page(<PortfolioProjectPage />)} />
+                <Route path="/blog" element={page(<BlogPage />)} />
+                <Route path="/blog/:slug" element={page(<BlogPostPage />)} />
+                <Route path="/books" element={page(<BooksPage />)} />
+                <Route path="/books/:id" element={page(<BookDetailPage />)} />
+                <Route path="/contact" element={page(<ContactPage />)} />
+                <Route path="/pricing" element={page(<PricingPage />)} />
+                <Route path="/testimonials" element={page(<TestimonialsPage />)} />
+                <Route path="/gallery" element={page(<GalleryPage />)} />
+                <Route path="/faq" element={page(<FAQPage />)} />
+                <Route path="/privacy" element={page(<PrivacyPage />)} />
+                <Route path="/terms" element={page(<TermsPage />)} />
+                <Route path="/about-me" element={page(<AboutMe />)} />
+                <Route path="/about-alamin-rafi" element={page(<AboutAlaminRafi />)} />
+                <Route path="/professional" element={page(<ProfessionalPage />)} />
+                <Route path="/sitemap" element={page(<SitemapPage />)} />
+                <Route path="/sitemap.xml" element={page(<SitemapPage />)} />
+                <Route path="/sitemap-images.xml" element={page(<SitemapPage />)} />
+                <Route path="/rss" element={page(<RssFeed />)} />
+                <Route path="/rss.xml" element={page(<RssFeed />)} />
+                <Route path="/admin" element={page(<AdminLogin />)} />
+                <Route path="/admin/login" element={page(<AdminLogin />)} />
+                <Route path="/admin/dashboard" element={page(<AdminDashboard />)} />
+                <Route path="/admin/blog" element={page(<AdminBlog />)} />
+                <Route path="/admin/pricing" element={page(<AdminPricing />)} />
+                <Route path="/admin/portfolio" element={page(<AdminPortfolio />)} />
+                <Route path="/admin/projects" element={page(<AdminProjects />)} />
+                <Route path="/admin/testimonials" element={page(<AdminTestimonials />)} />
+                <Route path="/admin/gallery" element={page(<AdminGallery />)} />
+                <Route path="/admin/book" element={page(<AdminBook />)} />
+                <Route path="/admin/messages" element={page(<AdminMessages />)} />
+                <Route path="/admin/media" element={page(<AdminMedia />)} />
+                <Route path="/admin/seo" element={page(<AdminSEO />)} />
+                <Route path="/admin/settings" element={page(<AdminSettings />)} />
+                <Route path="/admin/analytics" element={page(<AdminAnalytics />)} />
+                <Route path="/admin/about" element={page(<AdminAbout />)} />
+                <Route path="*" element={page(<NotFound />)} />
               </Routes>
               </AdminAuthProvider>
             </BrowserRouter>

@@ -4,7 +4,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <ErrorBoundary>
+  <ErrorBoundary name="app">
     <App />
   </ErrorBoundary>
 );

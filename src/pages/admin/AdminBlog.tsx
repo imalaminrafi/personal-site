@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
-import { loadPosts, savePosts, CATEGORIES, slugify, estimateReadingTime } from "@/data/blogData";
+import { loadPosts, savePosts, CATEGORIES, slugify, estimateReadingTime, type BlogPost } from "@/data/blogData";
 import { lazy, Suspense } from "react";
 import { Plus, Edit2, Trash2, Search, Eye, Calendar, Clock, Tag, Image, Save, X, CheckCircle, Clock9, AlertCircle } from "lucide-react";
 import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
@@ -34,7 +34,7 @@ const emptyForm = (): FormData => ({
 
 export default function AdminBlog() {
   const [view, setView] = useState<View>("list");
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [editId, setEditId] = useState<string | null>(null);
   const [form, setForm] = useState<FormData>(emptyForm());
   const [search, setSearch] = useState("");
@@ -44,7 +44,7 @@ export default function AdminBlog() {
 
   useEffect(() => { setPosts(loadPosts()); }, []);
 
-  function persist(list: any[]) { savePosts(list); setPosts([...list]); }
+  function persist(list: BlogPost[]) { savePosts(list); setPosts([...list]); }
 
   function openNew() {
     setEditId(null);
@@ -52,7 +52,7 @@ export default function AdminBlog() {
     setView("editor");
   }
 
-  function openEdit(post: any) {
+  function openEdit(post: BlogPost) {
     setEditId(post.id);
     setForm({
       title: post.title, slug: post.slug, category: post.category || CATEGORIES[0],
@@ -99,7 +99,7 @@ export default function AdminBlog() {
     const allPosts = loadPosts();
     const related = allPosts.filter((p) => p.id !== editId && form.relatedSlugs.includes(p.slug)).map((p) => p.slug);
 
-    const post: any = {
+    const post: BlogPost = {
       ...(editId ? allPosts.find((p) => p.id === editId) || {} : {}),
       id: editId || Date.now().toString(),
       slug, title: form.title, shortDescription: form.shortDescription,
@@ -110,7 +110,7 @@ export default function AdminBlog() {
       updatedDate: now, seoTitle: form.seoTitle, metaDescription: form.metaDescription,
       focusKeyword: form.focusKeyword, canonicalUrl: form.canonicalUrl,
       ogTitle: form.ogTitle, ogDescription: form.ogDescription, ogImage: form.ogImage,
-      twitterCard: form.twitterCard, schemaType: form.schemaType,
+      twitterCard: form.twitterCard as BlogPost["twitterCard"], schemaType: form.schemaType as BlogPost["schemaType"],
       breadcrumbTitle: form.breadcrumbTitle, relatedSlugs: related, faq: form.faq,
       imageAlt: form.imageAlt, imageTitle: form.imageTitle, imageCaption: form.imageCaption,
       imageDescription: form.imageDescription,
