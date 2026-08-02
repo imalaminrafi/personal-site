@@ -35,6 +35,7 @@ const navGroups: NavGroup[] = [
       { label: "Portfolio", href: "/admin/portfolio", icon: Briefcase },
       { label: "Projects", href: "/admin/projects", icon: FolderKanban },
       { label: "Gallery", href: "/admin/gallery", icon: Image },
+      { label: "Books", href: "/admin/book", icon: BookOpen },
       { label: "Media Library", href: "/admin/media", icon: Palette },
     ],
   },

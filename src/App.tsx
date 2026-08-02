@@ -27,6 +27,7 @@ import AdminMedia from "./pages/admin/AdminMedia";
 import AdminSEO from "./pages/admin/AdminSEO";
 import AdminSettings from "./pages/admin/AdminSettings";
 import AdminAbout from "./pages/admin/AdminAbout";
+import AdminBook from "./pages/admin/AdminBook";
 import NotFound from "./pages/NotFound";
 import AboutMe from "./pages/AboutMe";
 import AboutAlaminRafi from "./pages/AboutAlaminRafi";
@@ -92,6 +93,7 @@ const App = () => (
                 <Route path="/admin/projects" element={<AdminProjects />} />
                 <Route path="/admin/testimonials" element={<AdminTestimonials />} />
                 <Route path="/admin/gallery" element={<AdminGallery />} />
+                <Route path="/admin/book" element={<AdminBook />} />
                 <Route path="/admin/messages" element={<AdminMessages />} />
                 <Route path="/admin/media" element={<AdminMedia />} />
                 <Route path="/admin/seo" element={<AdminSEO />} />

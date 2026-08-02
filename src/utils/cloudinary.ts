@@ -260,6 +260,17 @@ export function getRawUrl(publicId: string): string {
   return `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/raw/upload/${publicId}`;
 }
 
+/**
+ * Build a Cloudinary URL that forces download (Content-Disposition
+ * attachment) for images and raw files. Falls back to the input URL.
+ */
+export function getDownloadUrl(input: string): string {
+  if (!isCloudinaryUrl(input)) return input;
+  const [before, rest] = input.split(/\/upload\//);
+  const isRaw = /\/raw\//.test(before + "/");
+  return `${before}/upload/fl_attachment/${rest}`;
+}
+
 export function formatBytes(bytes: number): string {
   if (!bytes || bytes <= 0) return "0 B";
   const units = ["B", "KB", "MB", "GB"];
