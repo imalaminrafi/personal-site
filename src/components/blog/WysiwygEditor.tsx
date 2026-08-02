@@ -66,7 +66,7 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Placeholder.configure({ placeholder: "Start writing your article...", emptyEditorClass: "is-editor-empty" }),
       Youtube.configure({ modestBranding: true, HTMLAttributes: { class: "w-full aspect-video rounded-xl my-4" } }),
-      Dropcursor.configure({ color: "#7c3aed", width: 2 }),
+      Dropcursor.configure({ color: "#C9A84C", width: 2 }),
     ],
     content: value || "",
     onUpdate: ({ editor }) => {
@@ -216,7 +216,7 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
           {showColors && (
             <div className="absolute top-full left-0 mt-1 bg-white dark:bg-[#14233F] rounded-xl border border-zinc-200 dark:border-white/[0.08] shadow-xl p-2 z-20">
               <div className="grid grid-cols-8 gap-1">
-                {["#000000","#ffffff","#dc2626","#ea580c","#d97706","#65a30d","#16a34a","#0891b2","#2563eb","#7c3aed","#db2777","#78716c"].map((c) => (
+                {["#000000","#ffffff","#dc2626","#ea580c","#d97706","#65a30d","#16a34a","#0891b2","#2563eb","#C9A84C","#db2777","#78716c"].map((c) => (
                   <button key={c} type="button" onClick={() => setColor(c)} className="w-6 h-6 rounded-lg border border-zinc-200 dark:border-zinc-600 hover:scale-110 transition-transform" style={{ backgroundColor: c }} title={c} />
                 ))}
               </div>

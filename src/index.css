@@ -24,7 +24,7 @@
   --border: hsl(214 32% 91%);
   --input: hsl(214 32% 91%);
   --ring: #C9A84C;
-  --radius: 0.625rem;
+  --radius: 0.5rem;
   --section-spacing: 5rem;
   --container-max: 1200px;
   --gradient-primary: linear-gradient(135deg, #C9A84C 0%, #E6C97A 100%);
@@ -470,7 +470,9 @@
   .animate-float-delayed,
   .animate-blob,
   .animate-spin-slow,
-  .ring-counter-spin {
+  .ring-counter-spin,
+  .hero-particle,
+  .hero-glow-orb {
     animation: none !important;
   }
 
