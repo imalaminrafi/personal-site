@@ -40,7 +40,7 @@ export default function ProfessionalFooter() {
                             <span className="text-white font-semibold">Alamin Rafi</span>
                         </div>
                         <p className="text-zinc-400 text-xs leading-relaxed">
-                            AI tools, smart strategy, and professional websites to help your business grow.
+                            Helping small businesses worldwide grow smarter with AI strategy and high-performance websites.
                         </p>
                     </div>
 

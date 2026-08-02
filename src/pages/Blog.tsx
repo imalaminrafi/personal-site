@@ -63,7 +63,7 @@ export default function Blog() {
         <section className="relative pt-32 pb-20 px-6 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-violet-50/50 to-transparent dark:from-violet-950/10 dark:to-transparent pointer-events-none" />
           <div className="max-w-6xl mx-auto relative">
-            <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">Blog</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">Growth Insights</p>
             <h1 className="text-4xl sm:text-5xl font-black text-zinc-900 dark:text-white mb-4">Insights & Stories</h1>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-xl text-sm">Tutorials, guides, and stories about web development, design, and building a business online.</p>
           </div>

@@ -41,10 +41,10 @@ const defaultSettings: SiteSettings = {
 };
 
 const defaultSEO: SEOSettings = {
-  metaTitle: "Alamin Rafi — Website & Digital Services",
-  metaDescription: "Modern, affordable websites for businesses. Web design, development, WordPress, UI/UX — all in one place.",
+  metaTitle: "Alamin Rafi — AI Business Growth & Web Development",
+  metaDescription: "I help small businesses and entrepreneurs grow smarter with AI strategy, professional websites, and digital growth consulting. Work with Alamin Rafi.",
   ogImage: "https://alaminrafi.com/5.png",
-  keywords: "web design, web development, wordpress, ui ux, digital services",
+  keywords: "ai business consulting, small business growth with ai, web development for small business, digital business strategy, ai consultant, business growth",
   robots: "index, follow",
   sitemap: "/sitemap.xml",
 };

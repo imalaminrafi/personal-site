@@ -42,7 +42,7 @@ const experiences = [
         company: "Independent Projects",
         title: "Web Developer & UI/UX Designer",
         period: "2021 – 2023",
-        type: "Freelance",
+        type: "Independent",
         description: "Built websites, landing pages, and UI designs for clients across various industries.",
         responsibilities: [
             "Designed and developed custom WordPress websites and landing pages for small businesses",
@@ -53,13 +53,13 @@ const experiences = [
     },
     {
         company: "Fiverr & Upwork",
-        title: "Freelance Web Designer & Digital Marketer",
+        title: "Web Designer & Digital Marketer",
         period: "2020 – 2021",
-        type: "Freelance",
-        description: "International freelance work serving clients from the US, UK, and South Asia with 4.9+ ratings.",
+        type: "Independent",
+        description: "International client work serving businesses from the US, UK, and across South Asia.",
         responsibilities: [
             "Provided web design, WordPress setup, and digital marketing services to international clients",
-            "Maintained 4.9+ client satisfaction ratings through quality deliverables and clear communication",
+            "Earned strong client satisfaction through quality deliverables and clear communication",
             "Managed multiple concurrent projects with varying requirements and tight deadlines",
             "Built a strong portfolio demonstrating versatility across design styles and industries",
         ],
@@ -70,7 +70,7 @@ const typeColor: Record<string, string> = {
     "Full-time": "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400",
     "Part-time": "bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400",
     "Contract": "bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400",
-    "Freelance": "bg-violet-50 text-violet-700 dark:bg-violet-900/20 dark:text-violet-400",
+    "Independent": "bg-violet-50 text-violet-700 dark:bg-violet-900/20 dark:text-violet-400",
 };
 
 export default function ProfessionalExperience() {

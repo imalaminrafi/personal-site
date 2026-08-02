@@ -24,7 +24,7 @@ export default function ProfessionalContact() {
         setTimeout(() => setSubmitted(false), 5000);
     };
 
-    const whatsappMsg = encodeURIComponent("Hi Alamin! I'd like to discuss a web project with you.");
+    const whatsappMsg = encodeURIComponent("Hi Alamin! I'd like to discuss a project with you.");
 
     return (
         <section id="contact" className="bg-zinc-50 dark:bg-[#0D1B33] py-24 border-t border-zinc-100 dark:border-white/[0.05]">
@@ -166,11 +166,10 @@ export default function ProfessionalContact() {
                                         className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#14233F] border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:border-transparent transition-all text-sm"
                                     >
                                         <option value="">Select a service...</option>
-                                        <option value="Website Design & Development">Website Design & Development</option>
-                                        <option value="WordPress Website">WordPress Website</option>
-                                        <option value="Landing Page Design">Landing Page Design</option>
-                                        <option value="UI/UX Design">UI/UX Design</option>
-                                        <option value="Digital Marketing Support">Digital Marketing Support</option>
+                                        <option value="AI Growth Strategy">AI Growth Strategy</option>
+                                        <option value="Web Design & Development">Web Design & Development</option>
+                                        <option value="SEO & Digital Marketing">SEO & Digital Marketing</option>
+                                        <option value="UI/UX & Brand Design">UI/UX & Brand Design</option>
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>

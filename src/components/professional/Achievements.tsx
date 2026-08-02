@@ -10,7 +10,7 @@ const achievements = [
     "150% organic traffic growth via SEO at RangTVBD.com",
     "Led digital transformation at Medi-Aid Hospital",
     "Content workflow serving 500,000+ monthly readers",
-    "4.9+ rating across 50+ freelance projects",
+    "Consistently high ratings from international clients",
     "Multi-channel marketing campaigns with measurable ROI",
     "Squad Leader — National Cadet Corps (NCC)",
 ];
