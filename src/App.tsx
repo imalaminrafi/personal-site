@@ -14,6 +14,7 @@ import ProjectTrackerPage from "./pages/ProjectTracker";
 import BlogPage from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPost";
 import PortfolioPage from "./pages/Portfolio";
+import PortfolioProjectPage from "./pages/PortfolioProject";
 import SitemapPage from "./pages/Sitemap";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/Dashboard";
@@ -66,6 +67,7 @@ const App = () => (
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/project/:id" element={<ProjectTrackerPage />} />
                 <Route path="/portfolio" element={<PortfolioPage />} />
+                <Route path="/portfolio/:slug" element={<PortfolioProjectPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
                 <Route path="/books" element={<BooksPage />} />
