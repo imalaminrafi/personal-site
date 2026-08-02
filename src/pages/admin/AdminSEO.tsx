@@ -175,12 +175,12 @@ export default function AdminSEO() {
                 <Eye className="w-4 h-4 text-violet-500" />
                 <h3 className="text-xs font-bold text-zinc-900 dark:text-white">Google Preview</h3>
               </div>
-              <div className="bg-white border border-zinc-200 rounded-xl p-4 max-w-sm">
-                <p className="text-xs text-green-700 truncate">https://alaminrafi.com</p>
-                <p className="text-sm text-blue-800 font-medium leading-tight truncate hover:underline cursor-pointer">
+              <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 max-w-sm">
+                <p className="text-xs text-green-700 dark:text-green-400 truncate">https://alaminrafi.com</p>
+                <p className="text-sm text-blue-800 dark:text-blue-300 font-medium leading-tight truncate hover:underline cursor-pointer">
                   {settings.metaTitle || "Alamin Rafi — Website & Digital Services"}
                 </p>
-                <p className="text-xs text-zinc-600 line-clamp-2 mt-0.5">
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mt-0.5">
                   {settings.metaDescription || "Modern, affordable websites for businesses. Web design, development, WordPress, UI/UX — all in one place."}
                 </p>
               </div>
@@ -192,7 +192,7 @@ export default function AdminSEO() {
                 <Smartphone className="w-4 h-4 text-violet-500" />
                 <h3 className="text-xs font-bold text-zinc-900 dark:text-white">Social Share Preview</h3>
               </div>
-              <div className="bg-white border border-zinc-200 rounded-xl overflow-hidden max-w-sm">
+              <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden max-w-sm">
                 <div className="h-32 bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center">
                   {settings.ogImage ? (
                     <img src={settings.ogImage} alt="" className="w-full h-full object-cover" />
@@ -201,11 +201,11 @@ export default function AdminSEO() {
                   )}
                 </div>
                 <div className="p-3">
-                  <p className="text-[10px] text-zinc-500 uppercase tracking-wider">alaminrafi.com</p>
-                  <p className="text-xs font-bold text-zinc-800 leading-snug truncate">
+                  <p className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">alaminrafi.com</p>
+                  <p className="text-xs font-bold text-zinc-800 dark:text-zinc-200 leading-snug truncate">
                     {settings.metaTitle || "Alamin Rafi — Website & Digital Services"}
                   </p>
-                  <p className="text-[10px] text-zinc-600 line-clamp-2 mt-0.5">
+                  <p className="text-[10px] text-zinc-600 dark:text-zinc-400 line-clamp-2 mt-0.5">
                     {settings.metaDescription || "Modern, affordable websites for businesses."}
                   </p>
                 </div>

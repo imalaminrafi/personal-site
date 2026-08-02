@@ -15,9 +15,9 @@ export function ThemeToggle() {
 
     const getIcon = () => {
         if (theme === "dark") {
-            return <Moon className="h-5 w-5" />;
+            return <Sun className="h-5 w-5" />;
         }
-        return <Sun className="h-5 w-5" />;
+        return <Moon className="h-5 w-5" />;
     };
 
     return (
