@@ -39,6 +39,7 @@ import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AnalyticsTracker from "./components/analytics/AnalyticsTracker";
 import ConsentBanner from "./components/analytics/ConsentBanner";
 import BooksPage from "./pages/Books";
+import BookDetailPage from "./pages/BookDetail";
 import ContactPage from "./pages/Contact";
 import PricingPage from "./pages/Pricing";
 import TestimonialsPage from "./pages/Testimonials";
@@ -71,6 +72,7 @@ const App = () => (
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
                 <Route path="/books" element={<BooksPage />} />
+                <Route path="/books/:id" element={<BookDetailPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/testimonials" element={<TestimonialsPage />} />
