@@ -1,3 +1,5 @@
+import MobileFooter from "./MobileFooter";
+
 const currentYear = new Date().getFullYear();
 
 const links = [
@@ -20,7 +22,12 @@ const socials = [
 
 export default function ProfessionalFooter() {
     return (
-        <footer className="bg-zinc-900 dark:bg-zinc-950 text-zinc-300 py-10 sm:py-14 border-t border-zinc-800">
+        <>
+            {/* Mobile footer */}
+            <MobileFooter />
+
+            {/* Desktop footer */}
+            <footer className="hidden sm:block bg-zinc-900 dark:bg-zinc-950 text-zinc-300 py-10 sm:py-14 border-t border-zinc-800">
             <div className="max-w-6xl mx-auto px-5 sm:px-6">
 
                 {/* Main row */}
@@ -81,7 +88,8 @@ export default function ProfessionalFooter() {
                     <p className="text-xs text-zinc-500">© {currentYear} Alamin Rafi. All rights reserved.</p>
                     <p className="text-xs text-zinc-600">Modern · Affordable · Scalable</p>
                 </div>
-            </div>
-        </footer>
+                </div>
+            </footer>
+        </>
     );
 }
