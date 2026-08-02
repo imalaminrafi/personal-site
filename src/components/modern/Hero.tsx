@@ -27,7 +27,7 @@ function SocialLink({ href, label, icon }: SocialLinkProps) {
 /* ─── Main Hero ─────────────────────────────────────────────────────── */
 export default function ModernHeroVisual() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-zinc-900">
       
       {/* ─── Background Image with Overlay ─── */}
       <div className="absolute inset-0 z-0">
