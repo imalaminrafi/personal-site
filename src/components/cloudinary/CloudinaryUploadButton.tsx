@@ -85,7 +85,7 @@ export default function CloudinaryUploadButton({
         isRaw ? (
           /* PDF / raw file card */
           <div className="flex items-center gap-4">
-            <div className="relative w-36 h-24 rounded-xl border border-zinc-200 dark:border-white/[0.08] shrink-0 bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+            <div className="relative w-36 h-24 rounded-xl border border-zinc-200 dark:border-white/[0.08] shrink-0 bg-zinc-100 dark:bg-[#0F2040] flex items-center justify-center">
               <FileText className="w-10 h-10 text-red-500" />
               <button
                 type="button"
@@ -123,7 +123,7 @@ export default function CloudinaryUploadButton({
         ) : (
           /* Image preview */
           <div className="flex items-center gap-4">
-            <div className="relative w-36 h-24 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shrink-0 bg-zinc-100 dark:bg-zinc-900">
+            <div className="relative w-36 h-24 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shrink-0 bg-zinc-100 dark:bg-[#0F2040]">
               <img
                 src={getOptimizedUrl(value, { width: 400 })}
                 alt=""

@@ -27,7 +27,7 @@ export default function ProfessionalContact() {
     const whatsappMsg = encodeURIComponent("Hi Alamin! I'd like to discuss a web project with you.");
 
     return (
-        <section id="contact" className="bg-zinc-50 dark:bg-zinc-900/50 py-24 border-t border-zinc-100 dark:border-zinc-800">
+        <section id="contact" className="bg-zinc-50 dark:bg-[#0D1B33] py-24 border-t border-zinc-100 dark:border-white/[0.05]">
             <div className="max-w-6xl mx-auto px-6">
                 <p className="text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">Contact</p>
                 <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-4 leading-snug">
@@ -45,9 +45,9 @@ export default function ProfessionalContact() {
                             href="mailto:hello@alaminrafi.com"
                             data-ga="email_click"
                             data-ga-location="contact"
-                            className="flex items-start gap-4 bg-white dark:bg-zinc-900 p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 group"
+                            className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 group"
                         >
-                            <div className="h-11 w-11 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 shrink-0 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300">
+                            <div className="h-11 w-11 rounded-xl bg-[#C9A84C]/12 dark:bg-[#C9A84C]/15 flex items-center justify-center text-[#C9A84C] dark:text-[#E0C77E] shrink-0 group-hover:bg-[#C9A84C] group-hover:text-[#0A1628] transition-all duration-300">
                                 <Mail className="h-5 w-5" />
                             </div>
                             <div>
@@ -64,7 +64,7 @@ export default function ProfessionalContact() {
                             rel="noopener noreferrer"
                             data-ga="whatsapp_click"
                             data-ga-location="contact"
-                            className="flex items-start gap-4 bg-white dark:bg-zinc-900 p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 group"
+                            className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 group"
                         >
                             <div className="h-11 w-11 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
                                 <MessageCircle className="h-5 w-5" />
@@ -77,28 +77,28 @@ export default function ProfessionalContact() {
                         </a>
 
                         {/* Location */}
-                        <div className="flex items-start gap-4 bg-white dark:bg-zinc-900 p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800">
-                            <div className="h-11 w-11 rounded-xl bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 shrink-0">
+                        <div className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-white/[0.08]">
+                            <div className="h-11 w-11 rounded-xl bg-slate-100 dark:bg-slate-400/10 flex items-center justify-center text-slate-600 dark:text-slate-300 shrink-0">
                                 <MapPin className="h-5 w-5" />
                             </div>
                             <div>
                                 <p className="text-xs text-zinc-400 font-medium uppercase tracking-wider mb-1">Location</p>
-                                <p className="text-zinc-900 dark:text-white font-medium">Faridganj, Chandpur</p>
-                                <p className="text-xs text-zinc-400 mt-0.5">Available Remotely</p>
+                                <p className="text-zinc-900 dark:text-white font-medium">Remote — Worldwide</p>
+                                <p className="text-xs text-zinc-400 mt-0.5">Serving clients globally</p>
                             </div>
                         </div>
 
                         {/* Availability note */}
-                        <div className="bg-gradient-to-r from-violet-600 to-cyan-500 p-5 rounded-2xl text-white">
+                        <div className="bg-gradient-to-r from-[#C9A84C] to-[#E6C97A] p-5 rounded-2xl text-[#0A1628]">
                             <p className="font-semibold mb-1">🟢 Currently Available</p>
-                            <p className="text-sm text-violet-100 leading-relaxed">
+                            <p className="text-sm text-[#0A1628]/80 leading-relaxed">
                                 I'm open to freelance projects, website contracts, and long-term digital partnerships. Let's talk!
                             </p>
                         </div>
                     </div>
 
                     {/* Contact Form – Right */}
-                    <div className="lg:col-span-3 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-8 shadow-sm">
+                    <div className="lg:col-span-3 bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-8 shadow-sm">
                         {submitted ? (
                             <div className="h-full flex flex-col items-center justify-center text-center py-16">
                                 <CheckCircle2 className="h-12 w-12 text-emerald-500 mb-4" />
@@ -118,7 +118,7 @@ export default function ProfessionalContact() {
                                             value={form.name}
                                             onChange={handleChange}
                                             placeholder="John Doe"
-                                            className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all text-sm"
+                                            className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#14233F] border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:border-transparent transition-all text-sm"
                                         />
                                     </div>
                                     <div>
@@ -131,7 +131,7 @@ export default function ProfessionalContact() {
                                             value={form.email}
                                             onChange={handleChange}
                                             placeholder="you@example.com"
-                                            className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all text-sm"
+                                            className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#14233F] border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:border-transparent transition-all text-sm"
                                         />
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@ export default function ProfessionalContact() {
                                         required
                                         value={form.service}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all text-sm"
+                                        className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#14233F] border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:border-transparent transition-all text-sm"
                                     >
                                         <option value="">Select a service...</option>
                                         <option value="Website Design & Development">Website Design & Development</option>
@@ -166,13 +166,13 @@ export default function ProfessionalContact() {
                                         value={form.message}
                                         onChange={handleChange}
                                         placeholder="Tell me about your project, timeline, and budget..."
-                                        className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all text-sm resize-none"
+                                        className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#14233F] border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:border-transparent transition-all text-sm resize-none"
                                     />
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full flex items-center justify-center gap-2 bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100 text-white font-semibold py-3.5 rounded-xl transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
+                                    className="w-full flex items-center justify-center gap-2 bg-[#C9A84C] text-[#0A1628] font-semibold py-3.5 rounded-xl transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-[#C9A84C]/25 active:scale-[0.99]"
                                 >
                                     <Send className="h-4 w-4" />
                                     Send Message

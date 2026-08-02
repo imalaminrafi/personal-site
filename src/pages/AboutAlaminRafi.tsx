@@ -140,7 +140,7 @@ export default function AboutAlaminRafi() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#070711]">
+    <div className="min-h-screen bg-white dark:bg-[#0A1628]">
       <Header />
 
       <main>
@@ -208,7 +208,7 @@ export default function AboutAlaminRafi() {
 
         {/* ===== SECTION 3: CURRENT FOCUS ===== */}
         {data.visibility.focus && (
-          <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
+          <section className="bg-zinc-50 dark:bg-[#0F2040]/20 px-6 py-20">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-4 text-center">
                 {data.focus.heading}
@@ -220,7 +220,7 @@ export default function AboutAlaminRafi() {
                 {data.focus.items.map((item, i) => (
                   <div
                     key={i}
-                    className="group p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 hover:shadow-lg hover:shadow-violet-500/5 transition-all"
+                    className="group p-6 rounded-2xl bg-white dark:bg-[#0F2040]/60 border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 hover:shadow-lg hover:shadow-violet-500/5 transition-all"
                   >
                     <div className="w-11 h-11 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 mb-4 group-hover:scale-110 transition-transform">
                       {getIcon(item.title, <Target className="w-5 h-5" />)}
@@ -245,20 +245,20 @@ export default function AboutAlaminRafi() {
               <div className="space-y-8">
                 {data.experience.items.map((item, i) => (
                   <div key={i} className="relative sm:pl-14">
-                    <div className="hidden sm:flex absolute left-2.5 top-1.5 w-5 h-5 rounded-full bg-white dark:bg-zinc-900 border-2 border-violet-500 items-center justify-center z-10">
+                    <div className="hidden sm:flex absolute left-2.5 top-1.5 w-5 h-5 rounded-full bg-white dark:bg-[#0F2040] border-2 border-violet-500 items-center justify-center z-10">
                       <div className="w-1.5 h-1.5 rounded-full bg-violet-500" />
                     </div>
                     <div className="sm:hidden flex items-center gap-3 mb-3">
                       <div className="w-3 h-3 rounded-full bg-violet-500 shrink-0" />
                       <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400">{item.period}</span>
                     </div>
-                    <div className="bg-white dark:bg-zinc-900/40 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
+                    <div className="bg-white dark:bg-[#0F2040]/40 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
                       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
                         <div>
                           <h3 className="text-lg font-bold text-zinc-900 dark:text-white">{item.title}</h3>
                           <p className="text-violet-600 dark:text-violet-400 font-medium text-sm">{item.company}</p>
                         </div>
-                        <span className="hidden sm:block text-xs font-bold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-lg shrink-0">{item.period}</span>
+                        <span className="hidden sm:block text-xs font-bold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-[#14233F] px-3 py-1 rounded-lg shrink-0">{item.period}</span>
                       </div>
                       <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">{item.description}</p>
                     </div>
@@ -271,14 +271,14 @@ export default function AboutAlaminRafi() {
 
         {/* ===== SECTION 5: SKILLS ===== */}
         {data.visibility.skills && (
-          <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
+          <section className="bg-zinc-50 dark:bg-[#0F2040]/20 px-6 py-20">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-12 text-center">
                 {data.skills.heading}
               </h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {data.skills.categories.map((cat, i) => (
-                  <div key={i} className="bg-white dark:bg-zinc-900/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6">
+                  <div key={i} className="bg-white dark:bg-[#0F2040]/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6">
                     <h3 className="text-sm font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider mb-4">
                       {cat.category}
                     </h3>
@@ -286,7 +286,7 @@ export default function AboutAlaminRafi() {
                       {cat.items.map((skill, j) => (
                         <span
                           key={j}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-xs font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/[0.06]"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-[#14233F] text-xs font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/[0.06]"
                         >
                           {skill}
                         </span>
@@ -307,7 +307,7 @@ export default function AboutAlaminRafi() {
             </h2>
             <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
               {data.education.items.map((item, i) => (
-                <div key={i} className="bg-white dark:bg-zinc-900/40 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 text-center hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
+                <div key={i} className="bg-white dark:bg-[#0F2040]/40 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 text-center hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
                   <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center mx-auto mb-4">
                     <GraduationCap className="w-6 h-6 text-violet-600 dark:text-violet-400" />
                   </div>
@@ -322,14 +322,14 @@ export default function AboutAlaminRafi() {
 
         {/* ===== SECTION 7: CERTIFICATIONS ===== */}
         {data.visibility.certifications && (
-          <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
+          <section className="bg-zinc-50 dark:bg-[#0F2040]/20 px-6 py-20">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-12 text-center">
                 {data.certifications.heading}
               </h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-3xl mx-auto">
                 {data.certifications.items.map((item, i) => (
-                  <div key={i} className="bg-white dark:bg-zinc-900/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all group">
+                  <div key={i} className="bg-white dark:bg-[#0F2040]/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-6 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all group">
                     <div className="w-11 h-11 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       <Award className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                     </div>
@@ -355,7 +355,7 @@ export default function AboutAlaminRafi() {
               {data.tools.items.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-white dark:bg-zinc-900/40 border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 hover:bg-violet-50/50 dark:hover:bg-violet-900/20 transition-all group"
+                  className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-white dark:bg-[#0F2040]/40 border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 hover:bg-violet-50/50 dark:hover:bg-violet-900/20 transition-all group"
                 >
                   <span className="text-violet-500 dark:text-violet-400 group-hover:scale-110 transition-transform">
                     {toolIcons[item.name] || <Code2 className="w-4 h-4" />}
@@ -369,7 +369,7 @@ export default function AboutAlaminRafi() {
 
         {/* ===== SECTION 9: PERSONAL VALUES ===== */}
         {data.visibility.values && (
-          <section className="bg-zinc-50 dark:bg-zinc-900/20 px-6 py-20">
+          <section className="bg-zinc-50 dark:bg-[#0F2040]/20 px-6 py-20">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white mb-4 text-center">
                 {data.values.heading}
@@ -381,7 +381,7 @@ export default function AboutAlaminRafi() {
                 {data.values.items.map((item, i) => (
                   <div
                     key={i}
-                    className="bg-white dark:bg-zinc-900/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-5 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all group"
+                    className="bg-white dark:bg-[#0F2040]/60 rounded-2xl border border-zinc-100 dark:border-white/[0.05] p-5 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 mb-3 group-hover:scale-110 transition-transform">
                       {getIcon(item.title, <Heart className="w-5 h-5" />)}
@@ -409,7 +409,7 @@ export default function AboutAlaminRafi() {
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
                   to={data.cta.buttonLink}
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-violet-500/20"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-[#0A1628] font-bold text-sm hover:brightness-110 transition-all shadow-lg shadow-violet-500/20"
                 >
                   {data.cta.buttonText} <ArrowRight className="w-4 h-4" />
                 </Link>

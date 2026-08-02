@@ -16,7 +16,7 @@ export default function PricingSection() {
     return (
         <section
             id="pricing"
-            className="py-10 sm:py-14 bg-white dark:bg-[#070711] border-t border-zinc-100 dark:border-white/[0.05] relative overflow-hidden"
+            className="py-10 sm:py-14 bg-white dark:bg-[#0A1628] border-t border-zinc-100 dark:border-white/[0.05] relative overflow-hidden"
         >
             <div className="relative max-w-5xl mx-auto px-6">
                 {/* ─── Section Header ─── */}
@@ -38,8 +38,8 @@ export default function PricingSection() {
                                     relative flex flex-col rounded-2xl overflow-hidden text-left p-6
                                     border transition-all duration-300
                                     ${plan.highlighted
-                                        ? "border-violet-200 dark:border-violet-800/40 bg-violet-50/20 dark:bg-violet-900/10 shadow-sm"
-                                        : "border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-zinc-900/40"
+                                        ? "border-[#C9A84C]/50 dark:border-[#C9A84C]/40 bg-[#C9A84C]/5 dark:bg-[#C9A84C]/[0.06] shadow-md shadow-[#C9A84C]/10"
+                                        : "border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-[#0F2040]"
                                     }
                                 `}
                             >
@@ -79,8 +79,8 @@ export default function PricingSection() {
                                     className={`
                                         w-full py-3 rounded-xl font-bold text-sm text-center transition-all
                                         ${plan.highlighted
-                                            ? "bg-violet-600 text-white shadow-lg shadow-violet-600/20 hover:bg-violet-700"
-                                            : "bg-zinc-900 dark:bg-zinc-800 text-white hover:bg-black dark:hover:bg-zinc-700"
+                                            ? "bg-[#C9A84C] text-[#0A1628] shadow-lg shadow-[#C9A84C]/20 hover:brightness-110"
+                                            : "bg-zinc-900 dark:bg-[#14233F] text-white hover:bg-black dark:hover:bg-[#1C2A47]"
                                         }
                                     `}
                                 >
@@ -98,7 +98,7 @@ export default function PricingSection() {
                         {addons.map((addon) => (
                             <div 
                                 key={addon.id}
-                                className="p-4 rounded-xl border border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-zinc-900/40 flex justify-between items-center"
+                                className="p-4 rounded-xl border border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-[#0F2040]/40 flex justify-between items-center"
                             >
                                 <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{addon.name}</span>
                                 <span className="text-xs font-bold text-violet-600 dark:text-violet-400">{addon.priceLabel}</span>
@@ -108,7 +108,7 @@ export default function PricingSection() {
                 </div>
 
                 {/* ─── Maintenance Option ─── */}
-                <div className="mt-8 p-6 rounded-xl border border-dashed border-zinc-200 dark:border-zinc-800 bg-zinc-50/30 dark:bg-zinc-900/20 text-center">
+                <div className="mt-8 p-6 rounded-xl border border-dashed border-zinc-200 dark:border-zinc-800 bg-zinc-50/30 dark:bg-[#0F2040]/20 text-center">
                     <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-2">{maintenanceOption.name}</h3>
                     <a 
                         href="#contact" 

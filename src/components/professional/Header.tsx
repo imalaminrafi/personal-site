@@ -1,6 +1,6 @@
 export default function ProfessionalHeader() {
     return (
-        <header className="border-b border-gray-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+        <header className="border-b border-gray-200 bg-white dark:border-zinc-800 dark:bg-[#0A1628]">
             <div className="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
                 <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Alamin Rafi</h1>
 

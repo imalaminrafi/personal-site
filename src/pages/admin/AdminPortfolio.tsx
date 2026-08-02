@@ -131,9 +131,9 @@ export default function AdminPortfolio() {
         <div className="flex items-center gap-3 flex-wrap">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
-            <input type="text" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 pr-4 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none w-48" />
+            <input type="text" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 pr-4 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm focus:outline-none w-48" />
           </div>
-          <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)} className="px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none">
+          <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)} className="px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm focus:outline-none">
             {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
           </select>
         </div>
@@ -142,7 +142,7 @@ export default function AdminPortfolio() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {filtered.map((item, index) => (
-          <div key={item.id} className="bg-white dark:bg-[#0d0b1f] rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden group">
+          <div key={item.id} className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden group">
             <div className="aspect-video bg-zinc-100 dark:bg-white/[0.03] relative">
               {item.image ? <img src={item.image} alt={item.title} className="w-full h-full object-cover" /> : <div className="flex items-center justify-center h-full text-zinc-400 text-xs">No Image</div>}
               <div className="absolute top-2 right-2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -179,7 +179,7 @@ export default function AdminPortfolio() {
       {/* Editor modal */}
       {showModal && form && (
         <div className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center p-4" onClick={() => setShowModal(false)}>
-          <div className="bg-white dark:bg-[#0d0b1f] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05] shrink-0">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">{isNew ? "Add Project" : "Edit Project"}</h2>
               <button onClick={() => setShowModal(false)} className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"><X className="w-5 h-5" /></button>
@@ -209,7 +209,7 @@ export default function AdminPortfolio() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                   <div>
                     <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Category</label>
-                    <select value={form.category} onChange={(e) => update({ category: e.target.value })} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f] text-sm focus:outline-none">
+                    <select value={form.category} onChange={(e) => update({ category: e.target.value })} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm focus:outline-none">
                       {CATEGORIES.filter((c) => c !== "All").map((c) => <option key={c}>{c}</option>)}
                     </select>
                   </div>
@@ -342,7 +342,7 @@ export default function AdminPortfolio() {
       {/* Review editor modal */}
       {reviewEditor && form && (
         <div className="fixed inset-0 z-[70] bg-black/50 flex items-center justify-center p-4" onClick={() => setReviewEditor(null)}>
-          <div className="bg-white dark:bg-[#0d0b1f] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05]">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
                 {form.reviews.some((r) => r.id === reviewEditor.id) ? "Edit Review" : "Add Review"}

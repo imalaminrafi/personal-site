@@ -55,7 +55,7 @@ export default function MobileBottomNav() {
     return (
         /* Mobile only — hidden on sm+ */
         <div className="sm:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-[70]">
-            <div className="flex items-center gap-1 px-3 py-2.5 rounded-[24px] bg-white/95 dark:bg-zinc-900/95 border border-zinc-200/80 dark:border-zinc-700/60 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+            <div className="flex items-center gap-1 px-3 py-2.5 rounded-[24px] bg-white/95 dark:bg-[#0F2040]/95 border border-zinc-200/80 dark:border-zinc-700/60 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
                 {navItems.map((item) => {
                     const isActive = active === item.id;
                     const isTapped = tapped === item.id;
@@ -116,8 +116,8 @@ export default function MobileBottomNav() {
                 <svg width="0" height="0" className="absolute">
                     <defs>
                         <linearGradient id="navGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#7c3aed" />
-                            <stop offset="100%" stopColor="#06b6d4" />
+                            <stop offset="0%" stopColor="#C9A84C" />
+                            <stop offset="100%" stopColor="#E6C97A" />
                         </linearGradient>
                     </defs>
                 </svg>

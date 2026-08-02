@@ -6,11 +6,10 @@ import { useAuth } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-    { href: "/#about", label: "About" },
+    { href: "/", label: "Home" },
     { href: "/#services", label: "Services" },
-    { href: "/portfolio", label: "Portfolio" },
     { href: "/blog", label: "Blog" },
-    { href: "/#pricing", label: "Pricing" },
+    { href: "/#about", label: "About" },
     { href: "/#contact", label: "Contact" },
 ];
 
@@ -72,7 +71,7 @@ export default function ModernHeader() {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
                 isScrolled
-                    ? "py-3 bg-white/95 dark:bg-[#070711]/95 border-b border-zinc-200 dark:border-white/[0.06] shadow-sm"
+                    ? "py-3 bg-white/95 dark:bg-[#0A1628]/95 border-b border-zinc-200 dark:border-white/[0.06] shadow-sm"
                     : "py-5 bg-transparent"
             )}
         >
@@ -82,7 +81,7 @@ export default function ModernHeader() {
                     to="/"
                     className="text-xl font-black tracking-tighter text-zinc-900 dark:text-white flex items-center gap-2.5"
                 >
-                    <div className="bg-brand-gradient h-8 w-8 rounded-lg flex items-center justify-center text-white font-black text-sm shadow-md">
+                    <div className="bg-brand-gradient h-8 w-8 rounded-lg flex items-center justify-center text-[#0A1628] font-black text-sm shadow-md">
                         AR
                     </div>
                     <span className="hidden sm:block bg-gradient-to-r from-violet-600 to-cyan-500 dark:from-violet-400 dark:to-cyan-400 bg-clip-text text-transparent">Alamin Rafi</span>
@@ -139,9 +138,9 @@ export default function ModernHeader() {
                             <a
                                 href="#contact"
                                 onClick={(e) => scrollToSection(e, "#contact")}
-                                className="bg-brand-gradient px-5 py-2 text-sm font-semibold rounded-full text-white transition-all hover:scale-105"
+                                className="btn-gold"
                             >
-                                Hire Me
+                                Book a Call
                             </a>
                         </div>
                     )}
@@ -168,7 +167,7 @@ export default function ModernHeader() {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-[#0d0b1f]/95 border-b border-zinc-200 dark:border-white/[0.08] shadow-lg">
+                <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-[#0F2040]/95 border-b border-zinc-200 dark:border-white/[0.08] shadow-lg">
                     <nav id="mobile-navigation" className="flex flex-col p-6 space-y-1" aria-label="Mobile navigation">
                         {navLinks.map((link) => (
                             <Link
@@ -213,9 +212,9 @@ export default function ModernHeader() {
                                 <a
                                     href="#contact"
                                     onClick={(e) => scrollToSection(e, "#contact")}
-                                    className="bg-brand-gradient mt-2 px-4 py-3 rounded-xl text-base font-semibold text-white text-center"
+                                    className="btn-gold mt-2 w-full text-center rounded-xl py-3"
                                 >
-                                    Hire Me
+                                    Book a Call
                                 </a>
                             </>
                         )}

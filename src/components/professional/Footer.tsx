@@ -1,7 +1,5 @@
 import MobileFooter from "./MobileFooter";
 
-const currentYear = new Date().getFullYear();
-
 const links = [
     { href: "#about",    label: "About" },
     { href: "#services", label: "Services" },
@@ -27,7 +25,7 @@ export default function ProfessionalFooter() {
             <MobileFooter />
 
             {/* Desktop footer */}
-            <footer className="hidden sm:block bg-zinc-900 dark:bg-zinc-950 text-zinc-300 py-10 sm:py-14 border-t border-zinc-800">
+            <footer className="hidden sm:block bg-[#060E1A] text-zinc-300 py-10 sm:py-14 border-t border-white/[0.06]">
             <div className="max-w-6xl mx-auto px-5 sm:px-6">
 
                 {/* Main row */}
@@ -36,13 +34,13 @@ export default function ProfessionalFooter() {
                     {/* Brand */}
                     <div className="max-w-xs">
                         <div className="flex items-center gap-2 mb-2.5">
-                            <div className="h-7 w-7 bg-gradient-to-br from-violet-600 to-cyan-500 rounded-md flex items-center justify-center text-white font-bold text-xs">
+                            <div className="h-7 w-7 bg-brand-gradient rounded-md flex items-center justify-center text-[#0A1628] font-bold text-xs">
                                 AR
                             </div>
                             <span className="text-white font-semibold">Alamin Rafi</span>
                         </div>
                         <p className="text-zinc-400 text-xs leading-relaxed">
-                            Digital Service Provider. Modern, affordable websites for businesses.
+                            AI tools, smart strategy, and professional websites to help your business grow.
                         </p>
                     </div>
 
@@ -64,7 +62,7 @@ export default function ProfessionalFooter() {
 
                         {/* Contact */}
                         <div>
-                            <p className="text-zinc-500 text-[11px] font-semibold uppercase tracking-wider mb-3">Contact</p>
+                            <p className="text-zinc-500 text-[11px] font-semibold uppercase tracking-wider mb-3">Connect</p>
                             <ul className="space-y-1.5">
                                 {socials.map(social => (
                                     <li key={social.href}>
@@ -72,7 +70,7 @@ export default function ProfessionalFooter() {
                                             href={social.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-xs text-zinc-400 hover:text-violet-400 transition-colors"
+                                            className="text-xs text-zinc-400 hover:text-[#C9A84C] transition-colors"
                                         >
                                             {social.label}
                                         </a>
@@ -84,9 +82,9 @@ export default function ProfessionalFooter() {
                 </div>
 
                 {/* Bottom */}
-                <div className="pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-2">
-                    <p className="text-xs text-zinc-500">© {currentYear} Alamin Rafi. All rights reserved.</p>
-                    <p className="text-xs text-zinc-600">Modern · Affordable · Scalable</p>
+                <div className="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-2">
+                    <p className="text-xs text-zinc-500">© 2027 Alamin Rafi. All rights reserved.</p>
+                    <p className="text-xs text-zinc-500">Remote-first · Serving clients worldwide</p>
                 </div>
                 </div>
             </footer>

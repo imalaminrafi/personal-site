@@ -57,8 +57,8 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
   ];
 
   return (
-    <div className="rounded-xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden bg-zinc-50 dark:bg-zinc-900">
-      <div className="flex items-center justify-between px-3 py-2 border-b border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0d0b1f]">
+    <div className="rounded-xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden bg-zinc-50 dark:bg-[#0F2040]">
+      <div className="flex items-center justify-between px-3 py-2 border-b border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040]">
         <div className="flex items-center gap-1 flex-wrap">
           {toolbar.map(({ icon: Icon, label, action }) => (
             <button
@@ -72,7 +72,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg p-0.5">
+        <div className="flex items-center gap-1 bg-zinc-100 dark:bg-[#14233F] rounded-lg p-0.5">
           <button
             type="button"
             onClick={() => setTab("editor")}

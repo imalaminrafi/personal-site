@@ -81,36 +81,36 @@ const skillGroups = [
 type Accent = (typeof skillGroups)[number]["accent"];
 
 const iconBg: Record<Accent, string> = {
-    violet: "bg-violet-100 dark:bg-violet-900/25 text-violet-600 dark:text-violet-400",
-    cyan:   "bg-cyan-100   dark:bg-cyan-900/25   text-cyan-600   dark:text-cyan-400",
-    indigo: "bg-indigo-100 dark:bg-indigo-900/25 text-indigo-600 dark:text-indigo-400",
-    pink:   "bg-pink-100   dark:bg-pink-900/25   text-pink-600   dark:text-pink-400",
-    emerald:"bg-emerald-100 dark:bg-emerald-900/25 text-emerald-600 dark:text-emerald-400",
-    amber:  "bg-amber-100  dark:bg-amber-900/25  text-amber-600  dark:text-amber-400",
+    violet: "bg-[#C9A84C]/12 text-[#C9A84C] dark:bg-[#C9A84C]/15 dark:text-[#E0C77E]",
+    cyan:   "bg-slate-100 text-slate-600 dark:bg-slate-400/10 dark:text-slate-300",
+    indigo: "bg-blue-100 text-blue-700 dark:bg-blue-400/10 dark:text-blue-300",
+    pink:   "bg-rose-100 text-rose-600 dark:bg-rose-400/10 dark:text-rose-300",
+    emerald:"bg-emerald-100 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300",
+    amber:  "bg-amber-100 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300",
 };
 
 const badgeHover: Record<Accent, string> = {
-    violet: "hover:bg-violet-100 dark:hover:bg-violet-900/30 hover:text-violet-700 dark:hover:text-violet-300",
-    cyan:   "hover:bg-cyan-100   dark:hover:bg-cyan-900/30   hover:text-cyan-700   dark:hover:text-cyan-300",
-    indigo: "hover:bg-indigo-100 dark:hover:bg-indigo-900/30 hover:text-indigo-700 dark:hover:text-indigo-300",
-    pink:   "hover:bg-pink-100   dark:hover:bg-pink-900/30   hover:text-pink-700   dark:hover:text-pink-300",
-    emerald:"hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:text-emerald-700 dark:hover:text-emerald-300",
-    amber:  "hover:bg-amber-100  dark:hover:bg-amber-900/30  hover:text-amber-700  dark:hover:text-amber-300",
+    violet: "hover:bg-[#C9A84C]/15 hover:text-[#B08C36] dark:hover:bg-[#C9A84C]/20 dark:hover:text-[#E0C77E]",
+    cyan:   "hover:bg-slate-100 hover:text-slate-800 dark:hover:bg-slate-400/20 dark:hover:text-slate-200",
+    indigo: "hover:bg-blue-100 hover:text-blue-800 dark:hover:bg-blue-400/20 dark:hover:text-blue-200",
+    pink:   "hover:bg-rose-100 hover:text-rose-700 dark:hover:bg-rose-400/20 dark:hover:text-rose-200",
+    emerald:"hover:bg-emerald-100 hover:text-emerald-800 dark:hover:bg-emerald-400/20 dark:hover:text-emerald-200",
+    amber:  "hover:bg-amber-100 hover:text-amber-800 dark:hover:bg-amber-400/20 dark:hover:text-amber-200",
 };
 
 const borderAccent: Record<Accent, string> = {
-    violet: "hover:border-violet-200 dark:hover:border-violet-800/60",
-    cyan:   "hover:border-cyan-200   dark:hover:border-cyan-800/60",
-    indigo: "hover:border-indigo-200 dark:hover:border-indigo-800/60",
-    pink:   "hover:border-pink-200   dark:hover:border-pink-800/60",
-    emerald:"hover:border-emerald-200 dark:hover:border-emerald-800/60",
-    amber:  "hover:border-amber-200  dark:hover:border-amber-800/60",
+    violet: "hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40",
+    cyan:   "hover:border-slate-200 dark:hover:border-slate-500/50",
+    indigo: "hover:border-blue-200 dark:hover:border-blue-500/50",
+    pink:   "hover:border-rose-200 dark:hover:border-rose-500/50",
+    emerald:"hover:border-emerald-200 dark:hover:border-emerald-500/50",
+    amber:  "hover:border-amber-200 dark:hover:border-amber-500/50",
 };
 
 /* ─── Component ──────────────────────────────────────────────────────── */
 export default function ProfessionalSkills() {
     return (
-        <section className="bg-zinc-50 dark:bg-zinc-900/50 py-16 sm:py-24 border-t border-zinc-100 dark:border-zinc-800">
+        <section className="bg-zinc-50 dark:bg-[#0D1B33] py-16 sm:py-24 border-t border-zinc-100 dark:border-white/[0.05]">
 
             {/* Section header */}
             <div className="max-w-6xl mx-auto px-5 sm:px-6">
@@ -154,7 +154,7 @@ export default function ProfessionalSkills() {
                     {skillGroups.map((group, index) => (
                         <div
                             key={index}
-                            className="shrink-0 snap-start bg-white dark:bg-zinc-900 rounded-2xl p-4 border border-zinc-100 dark:border-zinc-800 flex flex-col w-[78vw]"
+                            className="shrink-0 snap-start bg-white dark:bg-[#0F2040] rounded-2xl p-4 border border-zinc-100 dark:border-zinc-800 flex flex-col w-[78vw]"
                         >
                             {/* Card header */}
                             <div className="flex items-center gap-2.5 mb-3">
@@ -171,7 +171,7 @@ export default function ProfessionalSkills() {
                                 {group.skills.map((skill, idx) => (
                                     <span
                                         key={idx}
-                                        className="px-2.5 py-0.5 text-[11px] font-medium rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"
+                                        className="px-2.5 py-0.5 text-[11px] font-medium rounded-full bg-zinc-100 dark:bg-[#14233F] text-zinc-600 dark:text-zinc-400"
                                     >
                                         {skill}
                                     </span>
@@ -193,7 +193,7 @@ export default function ProfessionalSkills() {
                     {skillGroups.map((group, index) => (
                         <div
                             key={index}
-                            className={`group bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800
+                            className={`group bg-white dark:bg-[#0F2040] rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800
                                 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300
                                 ${borderAccent[group.accent]}`}
                         >
@@ -213,7 +213,7 @@ export default function ProfessionalSkills() {
                                     <span
                                         key={idx}
                                         className={`px-3 py-1 text-xs font-medium rounded-full
-                                            bg-zinc-100 dark:bg-zinc-800
+                                            bg-zinc-100 dark:bg-[#14233F]
                                             text-zinc-600 dark:text-zinc-400
                                             transition-colors duration-200 cursor-default
                                             ${badgeHover[group.accent]}`}

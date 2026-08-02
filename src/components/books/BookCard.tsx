@@ -14,7 +14,7 @@ export default function BookCard({ book }: { book: Book }) {
       {/* Cover tile */}
       <Link
         to={`/books/${book.id}`}
-        className="relative block aspect-[16/10] overflow-hidden rounded-xl border border-zinc-200/80 dark:border-white/[0.08] bg-zinc-100 dark:bg-zinc-900"
+        className="relative block aspect-[16/10] overflow-hidden rounded-xl border border-zinc-200/80 dark:border-white/[0.08] bg-zinc-100 dark:bg-[#0F2040]"
       >
         {book.cover ? (
           <img

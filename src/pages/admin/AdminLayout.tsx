@@ -88,7 +88,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
     : [];
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-[#070711] flex">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0A1628] flex">
       {/* Mobile overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setMobileOpen(false)} />
@@ -97,7 +97,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 bg-white dark:bg-[#0d0b1f] border-r border-zinc-200 dark:border-white/[0.06] transition-all duration-300 flex flex-col overflow-hidden",
+          "fixed inset-y-0 left-0 z-50 bg-white dark:bg-[#0F2040] border-r border-zinc-200 dark:border-white/[0.06] transition-all duration-300 flex flex-col overflow-hidden",
           sidebarOpen ? "w-60" : "w-16",
           mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
@@ -129,7 +129,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
               />
               {/* Search results dropdown */}
               {searchOpen && searchQuery && searchResults.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-[#0d0b1f] rounded-xl border border-zinc-200 dark:border-white/[0.08] shadow-lg z-50 py-1 max-h-48 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-[#0F2040] rounded-xl border border-zinc-200 dark:border-white/[0.08] shadow-lg z-50 py-1 max-h-48 overflow-y-auto">
                   {searchResults.map((item) => (
                     <Link
                       key={item.href}
@@ -236,7 +236,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
       {/* Main content */}
       <div className={cn("flex-1 flex flex-col min-w-0 transition-all duration-300", sidebarOpen ? "lg:ml-60" : "lg:ml-16")}>
         {/* Header */}
-        <header className="h-14 bg-white dark:bg-[#070711] border-b border-zinc-200 dark:border-white/[0.06] flex items-center justify-between px-4 lg:px-6 shrink-0">
+        <header className="h-14 bg-white dark:bg-[#0A1628] border-b border-zinc-200 dark:border-white/[0.06] flex items-center justify-between px-4 lg:px-6 shrink-0">
           <div className="flex items-center gap-3">
             <button className="lg:hidden p-1.5 -ml-1.5 text-zinc-400" onClick={() => setMobileOpen(true)} aria-label="Open Sidebar">
               <Menu className="w-5 h-5" />

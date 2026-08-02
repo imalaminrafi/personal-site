@@ -55,7 +55,7 @@ const page = (element: React.ReactNode) => <PageBoundary>{element}</PageBoundary
 /** Shown briefly while a lazily-loaded route's chunk downloads. */
 function RouteLoading() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-zinc-950" aria-hidden="true">
+    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-[#0A1628]" aria-hidden="true">
       <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-200 border-t-violet-600" />
     </div>
   );

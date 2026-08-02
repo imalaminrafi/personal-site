@@ -37,7 +37,7 @@ export default function ProjectTrackerPage() {
     /* Loading */
     if (project === undefined) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950">
+            <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-[#0A1628]">
                 <div className="w-8 h-8 border-2 border-violet-500 border-t-transparent rounded-full animate-spin" />
             </div>
         );
@@ -46,7 +46,7 @@ export default function ProjectTrackerPage() {
     /* Not found */
     if (project === null) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-zinc-50 dark:bg-zinc-950 px-6 text-center">
+            <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-zinc-50 dark:bg-[#0A1628] px-6 text-center">
                 <AlertCircle className="w-12 h-12 text-zinc-300 dark:text-zinc-600" />
                 <h1 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100">Project not found</h1>
                 <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-xs">
@@ -54,7 +54,7 @@ export default function ProjectTrackerPage() {
                 </p>
                 <button
                     onClick={() => navigate("/")}
-                    className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-200 hover:border-violet-400 transition-colors"
+                    className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-white dark:bg-[#14233F] border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-200 hover:border-violet-400 transition-colors"
                 >
                     <ArrowLeft className="w-4 h-4" /> Back to Home
                 </button>
@@ -65,13 +65,13 @@ export default function ProjectTrackerPage() {
     const progressPct = Math.min(100, Math.max(0, project.progress));
 
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 pb-24">
+        <div className="min-h-screen bg-zinc-50 dark:bg-[#0A1628] pb-24">
 
             {/* ── Top gradient bar ── */}
             <div className="h-1 w-full bg-gradient-to-r from-violet-600 to-cyan-500" />
 
             {/* ── Header ── */}
-            <header className="bg-white dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 px-5 py-4">
+            <header className="bg-white dark:bg-[#0F2040] border-b border-zinc-100 dark:border-zinc-800 px-5 py-4">
                 <div className="max-w-2xl mx-auto flex items-center justify-between">
                     <button
                         onClick={() => navigate("/")}
@@ -86,7 +86,7 @@ export default function ProjectTrackerPage() {
             <main className="max-w-2xl mx-auto px-5 py-8 space-y-6">
 
                 {/* ════════════════════ SECTION 1: Project Header ════════════════════ */}
-                <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-6 shadow-sm">
+                <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-6 shadow-sm">
                     <div className="flex items-start justify-between gap-4 mb-3">
                         <div>
                             <p className="text-xs text-zinc-400 dark:text-zinc-500 mb-1">{project.clientName}</p>
@@ -104,7 +104,7 @@ export default function ProjectTrackerPage() {
                 </div>
 
                 {/* ════════════════════ SECTION 2: Progress Tracker ════════════════════ */}
-                <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-6 shadow-sm">
+                <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-6 shadow-sm">
                     <div className="flex items-center justify-between mb-5">
                         <h2 className="text-sm font-semibold text-zinc-900 dark:text-white">Progress</h2>
                         <span className="text-sm font-bold bg-gradient-to-r from-violet-600 to-cyan-500 bg-clip-text text-transparent">
@@ -113,7 +113,7 @@ export default function ProjectTrackerPage() {
                     </div>
 
                     {/* Progress bar */}
-                    <div className="h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full mb-7 overflow-hidden">
+                    <div className="h-2 bg-zinc-100 dark:bg-[#14233F] rounded-full mb-7 overflow-hidden">
                         <div
                             className="h-full rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 transition-all duration-700"
                             style={{ width: `${progressPct}%` }}
@@ -133,7 +133,7 @@ export default function ProjectTrackerPage() {
                                     <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold transition-all
                                         ${done    ? "bg-gradient-to-br from-violet-600 to-cyan-500 text-white" : ""}
                                         ${current ? "ring-2 ring-violet-500 ring-offset-2 dark:ring-offset-zinc-900 bg-violet-500 text-white" : ""}
-                                        ${pending ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500" : ""}
+                                        ${pending ? "bg-zinc-100 dark:bg-[#14233F] text-zinc-400 dark:text-zinc-500" : ""}
                                     `}>
                                         {done ? <CheckCircle2 className="w-4 h-4" /> : idx + 1}
                                     </div>
@@ -175,11 +175,11 @@ export default function ProjectTrackerPage() {
                 </div>
 
                 {/* ════════════════════ SECTION 4: Update Timeline ════════════════════ */}
-                <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-6 shadow-sm">
+                <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-6 shadow-sm">
                     <h2 className="text-sm font-semibold text-zinc-900 dark:text-white mb-5">Update Timeline</h2>
                     <div className="relative pl-4">
                         {/* Vertical line */}
-                        <div className="absolute left-0 top-2 bottom-2 w-px bg-zinc-100 dark:bg-zinc-800" />
+                        <div className="absolute left-0 top-2 bottom-2 w-px bg-zinc-100 dark:bg-[#14233F]" />
 
                         <div className="space-y-5">
                             {project.updates.map((upd, i) => (
@@ -188,7 +188,7 @@ export default function ProjectTrackerPage() {
                                     <span className={`absolute -left-[17px] top-1.5 w-2.5 h-2.5 rounded-full border-2 ${
                                         i === 0
                                             ? "bg-violet-500 border-violet-500"
-                                            : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700"
+                                            : "bg-white dark:bg-[#0F2040] border-zinc-200 dark:border-zinc-700"
                                     }`} />
 
                                     <p className="text-[10px] text-zinc-400 dark:text-zinc-500 mb-1">{formatDate(upd.date)}</p>
@@ -200,7 +200,7 @@ export default function ProjectTrackerPage() {
                 </div>
 
                 {/* ════════════════════ SECTION 5: Action Buttons ════════════════════ */}
-                <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-5 shadow-sm">
+                <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-5 shadow-sm">
                     <h2 className="text-sm font-semibold text-zinc-900 dark:text-white mb-4">Get in Touch</h2>
                     <div className="flex flex-col sm:flex-row gap-3">
                         <a
@@ -213,7 +213,7 @@ export default function ProjectTrackerPage() {
                         </a>
                         <a
                             href={`mailto:${project.email}`}
-                            className="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-sm font-semibold transition-colors"
+                            className="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-zinc-100 dark:bg-[#14233F] hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-sm font-semibold transition-colors"
                         >
                             <Mail className="w-4 h-4" /> Email
                         </a>

@@ -1,6 +1,6 @@
 export default function ProfessionalHero() {
     return (
-        <section className="bg-white dark:bg-zinc-950 py-20">
+        <section className="bg-white dark:bg-[#0A1628] py-20">
             <div className="max-w-5xl mx-auto px-6">
                 <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
                     Alamin Rafi

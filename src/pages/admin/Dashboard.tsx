@@ -63,7 +63,7 @@ export default function AdminDashboard() {
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white dark:bg-[#0d0b1f] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4 hover:shadow-md hover:shadow-violet-500/5 transition-shadow"
+            className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4 hover:shadow-md hover:shadow-violet-500/5 transition-shadow"
           >
             <div className="flex items-center justify-between mb-3">
               <div className={`w-9 h-9 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center`}>
@@ -80,7 +80,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Quick Actions */}
         <div className="lg:col-span-2">
-          <div className="bg-white dark:bg-[#0d0b1f] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
+          <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-bold text-zinc-900 dark:text-white">Quick Actions</h3>
               <Link to="/admin/blog" className="text-xs font-bold text-violet-600 dark:text-violet-400 hover:text-violet-700 transition-colors">
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
                   to={action.href}
                   className="flex flex-col items-center justify-center p-4 rounded-xl border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 hover:bg-violet-50/50 dark:hover:bg-violet-900/10 transition-all group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800/50 flex items-center justify-center text-zinc-500 dark:text-zinc-400 group-hover:text-violet-600 dark:group-hover:text-violet-400 group-hover:bg-violet-100 dark:group-hover:bg-violet-900/30 transition-colors mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-[#14233F]/50 flex items-center justify-center text-zinc-500 dark:text-zinc-400 group-hover:text-violet-600 dark:group-hover:text-violet-400 group-hover:bg-violet-100 dark:group-hover:bg-violet-900/30 transition-colors mb-2">
                     <action.icon className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300 text-center leading-tight">{action.label}</span>
@@ -105,7 +105,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Recent Activity */}
-          <div className="bg-white dark:bg-[#0d0b1f] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5 mt-6">
+          <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5 mt-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-bold text-zinc-900 dark:text-white">Recent Activity</h3>
               <span className="text-[10px] text-zinc-400 font-medium">Past 7 days</span>
@@ -157,7 +157,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Drafts */}
-          <div className="bg-white dark:bg-[#0d0b1f] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
+          <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
             <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-4">Content Overview</h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between">

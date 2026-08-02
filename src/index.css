@@ -6,55 +6,63 @@
 :root {
   color-scheme: light;
   --background: hsl(0 0% 100%);
-  --foreground: hsl(222 47% 11%);
+  --foreground: hsl(215 47% 10%);
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(222 47% 11%);
+  --card-foreground: hsl(215 47% 10%);
   --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(222 47% 11%);
-  --primary: hsl(222 47% 20%);
-  --primary-foreground: hsl(210 40% 98%);
-  --secondary: hsl(214 32% 91%);
-  --secondary-foreground: hsl(222 47% 11%);
+  --popover-foreground: hsl(215 47% 10%);
+  --primary: #C9A84C;
+  --primary-foreground: #0A1628;
+  --secondary: hsl(214 32% 93%);
+  --secondary-foreground: hsl(215 47% 10%);
   --muted: hsl(210 40% 96%);
-  --muted-foreground: hsl(215 16% 47%);
-  --accent: hsl(199 89% 48%);
-  --accent-foreground: hsl(0 0% 100%);
+  --muted-foreground: hsl(215 16% 45%);
+  --accent: #C9A84C;
+  --accent-foreground: #0A1628;
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(210 40% 98%);
   --border: hsl(214 32% 91%);
   --input: hsl(214 32% 91%);
-  --ring: hsl(222 47% 20%);
-  --radius: 0.75rem;
+  --ring: #C9A84C;
+  --radius: 0.625rem;
   --section-spacing: 5rem;
   --container-max: 1200px;
-  --gradient-primary: linear-gradient(135deg, hsl(222 47% 20%) 0%, hsl(199 89% 48%) 100%);
+  --gradient-primary: linear-gradient(135deg, #C9A84C 0%, #E6C97A 100%);
   --gradient-subtle: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(0 0% 100%) 100%);
-  --shadow-card: 0 1px 3px 0 hsl(222 47% 11% / 0.1), 0 1px 2px -1px hsl(222 47% 11% / 0.1);
-  --shadow-card-hover: 0 10px 15px -3px hsl(222 47% 11% / 0.1), 0 4px 6px -4px hsl(222 47% 11% / 0.1);
+  --shadow-card: 0 1px 3px 0 hsl(215 47% 10% / 0.08), 0 1px 2px -1px hsl(215 47% 10% / 0.08);
+  --shadow-card-hover: 0 12px 24px -8px hsl(215 47% 10% / 0.12), 0 4px 6px -4px hsl(215 47% 10% / 0.08);
   --font-heading: "Plus Jakarta Sans", "system-ui", sans-serif;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E6C97A;
+  --color-navy: #0A1628;
+  --color-navy-card: #0F2040;
+  --color-navy-footer: #060E1A;
 }
 
 .dark {
   color-scheme: dark;
-  --background: hsl(222 47% 6%);
+  --background: #0A1628;
   --foreground: hsl(210 40% 98%);
-  --card: hsl(222 47% 8%);
+  --card: #0F2040;
   --card-foreground: hsl(210 40% 98%);
-  --popover: hsl(222 47% 8%);
+  --popover: #0D1B33;
   --popover-foreground: hsl(210 40% 98%);
-  --primary: hsl(199 89% 48%);
-  --primary-foreground: hsl(222 47% 11%);
-  --secondary: hsl(217 33% 17%);
+  --primary: #C9A84C;
+  --primary-foreground: #0A1628;
+  --secondary: hsl(216 45% 16%);
   --secondary-foreground: hsl(210 40% 98%);
-  --muted: hsl(217 33% 17%);
-  --muted-foreground: hsl(215 20% 65%);
-  --accent: hsl(199 89% 48%);
-  --accent-foreground: hsl(222 47% 11%);
+  --muted: hsl(217 45% 15%);
+  --muted-foreground: #94A3B8;
+  --accent: #C9A84C;
+  --accent-foreground: #0A1628;
   --destructive: hsl(0 63% 31%);
   --destructive-foreground: hsl(210 40% 98%);
-  --border: hsl(217 33% 17%);
-  --input: hsl(217 33% 17%);
-  --ring: hsl(199 89% 48%);
+  --border: hsl(220 42% 20%);
+  --input: hsl(220 42% 20%);
+  --ring: #C9A84C;
+  --gradient-subtle: linear-gradient(180deg, hsl(217 45% 12%) 0%, hsl(217 45% 8%) 100%);
+  --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.4);
+  --shadow-card-hover: 0 12px 24px -8px hsl(0 0% 0% / 0.6), 0 4px 6px -4px hsl(0 0% 0% / 0.4);
 }
 
 @theme inline {
@@ -85,6 +93,51 @@
 @theme {
   --font-family-sans: "Inter", "system-ui", sans-serif;
   --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+
+  /* Gold — remaps the old violet scale (brand accent) */
+  --color-violet-50: #FBF6E6;
+  --color-violet-100: #F7EED0;
+  --color-violet-200: #EEDFAD;
+  --color-violet-300: #E4CC86;
+  --color-violet-400: #E0C77E;
+  --color-violet-500: #D2B257;
+  --color-violet-600: #C9A84C;
+  --color-violet-700: #B08C36;
+  --color-violet-800: #8A6C2A;
+  --color-violet-900: #5C4A1C;
+  --color-violet-950: #382D11;
+
+  /* Champagne — remaps the old cyan scale (gradient companion to gold) */
+  --color-cyan-50: #FCF8EA;
+  --color-cyan-100: #F8F0D4;
+  --color-cyan-200: #F0E1AB;
+  --color-cyan-300: #E7D184;
+  --color-cyan-400: #E0C675;
+  --color-cyan-500: #D5B963;
+  --color-cyan-600: #C9A84C;
+  --color-cyan-700: #A98A3A;
+  --color-cyan-800: #7F6729;
+  --color-cyan-900: #55441B;
+  --color-cyan-950: #332912;
+
+  /* Steel navy — remaps the old indigo scale (secondary accent) */
+  --color-indigo-50: #EDF2F8;
+  --color-indigo-100: #DCE5F0;
+  --color-indigo-200: #C0CEE1;
+  --color-indigo-300: #9BB0CC;
+  --color-indigo-400: #7694B6;
+  --color-indigo-500: #5A7CA3;
+  --color-indigo-600: #44638C;
+  --color-indigo-700: #364F72;
+  --color-indigo-800: #28395A;
+  --color-indigo-900: #1A2740;
+  --color-indigo-950: #101A2B;
+
+  /* Slightly wider heading letter-spacing (was -0.025em / -0.05em) */
+  --tracking-tight: 0.015em;
+  --tracking-tighter: 0.02em;
+
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
   --animate-fade-in: fade-in 0.5s ease-out forwards;
   --animate-slide-up: slide-up 0.7s ease-out forwards;
   --animate-slide-right: slide-right 0.7s ease-out forwards;
@@ -172,8 +225,9 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    @apply font-bold;
     font-family: var(--font-heading);
+    letter-spacing: 0.015em;
   }
 
   html,
@@ -224,6 +278,42 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* ─── Gold buttons (premium brand CTA) ────────────────────────────── */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-[#C9A84C] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition-all duration-200;
+  }
+  .btn-gold:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 8px 24px -6px rgb(201 168 76 / 0.5);
+  }
+  .btn-gold:active {
+    transform: scale(0.98);
+  }
+
+  .btn-gold-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-[#C9A84C] px-5 py-2.5 text-sm font-bold text-[#C9A84C] transition-all duration-200;
+  }
+  .btn-gold-outline:hover {
+    background: rgb(201 168 76 / 0.1);
+    box-shadow: 0 8px 24px -8px rgb(201 168 76 / 0.3);
+  }
+  .btn-gold-outline:active {
+    transform: scale(0.98);
+  }
+
+  .gold-eyebrow {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C] text-xs font-bold uppercase tracking-[0.2em];
+  }
+
+  /* ─── Premium card treatment ──────────────────────────────────────── */
+  .premium-card {
+    @apply rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] transition-all duration-300;
+  }
+  .premium-card:hover {
+    @apply dark:border-[#C9A84C]/40;
+    box-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.35), 0 0 0 1px rgb(201 168 76 / 0.08);
+  }
 }
 
 @layer utilities {
@@ -253,14 +343,14 @@
 
 .dark .hero-grid-texture {
   background-image:
-    linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(201, 168, 76, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 168, 76, 0.05) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 .hero-grid-texture {
   background-image:
-    linear-gradient(rgba(139, 92, 246, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 
@@ -270,11 +360,11 @@
 }
 
 .dark .hero-watermark-text {
-  -webkit-text-stroke: 1px rgba(139, 92, 246, 0.10);
+  -webkit-text-stroke: 1px rgba(201, 168, 76, 0.12);
   text-shadow: none;
 }
 .hero-watermark-text {
-  -webkit-text-stroke: 1px rgba(139, 92, 246, 0.05);
+  -webkit-text-stroke: 1px rgba(201, 168, 76, 0.07);
   text-shadow: none;
 }
 
@@ -288,22 +378,22 @@
 }
 
 .dark .hero-spotlight {
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, rgba(6, 182, 212, 0.15) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.28) 0%, rgba(68, 99, 140, 0.18) 50%, transparent 75%);
   filter: blur(30px);
 }
 
 .dark .hero-accent-glow {
-  background: radial-gradient(ellipse, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(201, 168, 76, 0.22) 0%, transparent 70%);
   filter: blur(20px);
 }
 
 .dark .hero-photo-frame {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.6) 0%, rgba(6, 182, 212, 0.4) 50%, rgba(139, 92, 246, 0.2) 100%);
-  box-shadow: 0 0 60px rgba(139, 92, 246, 0.25), 0 0 120px rgba(6, 182, 212, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.6) 0%, rgba(230, 201, 122, 0.35) 50%, rgba(201, 168, 76, 0.2) 100%);
+  box-shadow: 0 0 60px rgba(201, 168, 76, 0.2), 0 0 120px rgba(201, 168, 76, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .hero-photo-frame {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
-  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.18) 0%, rgba(201, 168, 76, 0.08) 100%);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12);
 }
 
 .dark .hero-photo-img {
@@ -312,22 +402,61 @@
 }
 
 .dark .hero-photo-fade {
-  background: linear-gradient(to top, #070711 0%, transparent 100%);
+  background: linear-gradient(to top, #0A1628 0%, transparent 100%);
 }
 .hero-photo-fade {
   background: linear-gradient(to top, #ffffff 0%, transparent 100%);
 }
 
 .dark .hero-section-fade {
-  background: linear-gradient(to bottom, transparent, #070711);
+  background: linear-gradient(to bottom, transparent, #0A1628);
 }
 .hero-section-fade {
   background: linear-gradient(to bottom, transparent, #fafafa);
 }
 
-/* Violet-to-cyan brand gradient */
+/* Gold brand gradient */
 .bg-brand-gradient {
-  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  background: linear-gradient(135deg, #C9A84C, #E6C97A);
+}
+
+/* ─── Hero particle field ───────────────────────────────────────────── */
+@keyframes hero-particle-rise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(-60vh) translateX(var(--drift, 12px)); opacity: 0; }
+}
+
+@keyframes hero-glow-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+}
+
+.hero-particle {
+  position: absolute;
+  bottom: -2vh;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: rgba(201, 168, 76, 0.8);
+  box-shadow: 0 0 8px 1px rgba(201, 168, 76, 0.55);
+  animation: hero-particle-rise var(--duration, 9s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.hero-glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.35) 0%, transparent 70%);
+  filter: blur(30px);
+  animation: hero-glow-pulse 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-particle, .hero-glow-orb {
+    animation: none;
+  }
 }
 
 @media (max-width: 639px) {
@@ -369,13 +498,21 @@ a, button, [role="button"], input, select, textarea, label {
 
 /* Consistent keyboard focus ring */
 :focus-visible {
-  outline: 3px solid #7c3aed;
+  outline: 3px solid #C9A84C;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 .dark :focus-visible {
-  outline-color: #a78bfa;
+  outline-color: #E6C97A;
+}
+
+/* ─── Mobile-first & accessibility base ─────────────────────────────── */
+/* Slightly larger base type on small screens for readability */
+@media (max-width: 767px) {
+  html {
+    font-size: 17px;
+  }
 }
 
 /* Reduced motion */
@@ -397,4 +534,14 @@ a, button, [role="button"], input, select, textarea, label {
 }
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+/* ─── Gold button text override ─────────────────────────────────────── */
+/* bg-violet-600 is remapped to the brand gold (#C9A84C); force dark navy
+   text so gold CTAs keep accessible contrast regardless of inline text-white. */
+.bg-violet-600 {
+  color: #0A1628;
+}
+.bg-violet-700 {
+  color: #0A1628;
 }
