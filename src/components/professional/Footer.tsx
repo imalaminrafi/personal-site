@@ -14,6 +14,8 @@ const socials = [
     { href: "https://www.facebook.com/alamin.rafiofficial", label: "Facebook" },
     { href: "https://x.com/imalaminrafi",                  label: "Twitter / X" },
     { href: "https://www.behance.net/imalaminrafi",        label: "Behance" },
+    { href: "https://www.fiverr.com/alaminseller",         label: "Fiverr" },
+    { href: "https://www.youtube.com/@alaminrafi",         label: "YouTube" },
     { href: "https://wa.me/8801917443161",                  label: "WhatsApp" },
     { href: "mailto:hello@alaminrafi.com",                  label: "Email" },
 ];

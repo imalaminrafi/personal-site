@@ -66,6 +66,9 @@ export default function ModernHeroVisual() {
       <div className="absolute inset-0 z-0 bg-[#0A1628]/70" />
       <div className="absolute inset-0 z-0 hero-grid-texture opacity-50" />
 
+      {/* Static subtle gradient (mobile) — replaces animated effects */}
+      <div className="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-[#0D1B33]/90 via-[#0A1628] to-[#0A1628]" />
+
       {/* Soft gold glow orbs */}
       <div className="hero-glow-orb w-[28rem] h-[28rem] -top-32 left-1/2 -translate-x-1/2" />
       <div className="hero-glow-orb w-80 h-80 bottom-0 right-8" style={{ animationDelay: "2.2s" }} />
@@ -89,24 +92,30 @@ export default function ModernHeroVisual() {
       {/* ─── Centered Content ─── */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 py-20 text-center">
 
-        <div className="gold-eyebrow mb-8">
+        <div className="gold-eyebrow mb-6 sm:mb-8">
           <Sparkles className="w-3.5 h-3.5" />
           AI &amp; Digital Strategy
         </div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight mb-6 drop-shadow-xl">
+        <h1 className="text-[32px] leading-[1.15] sm:text-6xl lg:text-7xl sm:leading-[1.08] font-black text-white tracking-tight mb-5 sm:mb-6 drop-shadow-xl">
           From Small Business to{" "}
           <span className="bg-gradient-to-r from-[#C9A84C] to-[#E6C97A] bg-clip-text text-transparent">
             Smart Business
           </span>{" "}
-          — with AI
+          <span className="hidden sm:inline">— with AI</span>
         </h1>
 
-        <p className="text-zinc-200 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-12 drop-shadow-sm font-medium">
+        {/* Mobile subheadline (max 3 lines) */}
+        <p className="sm:hidden text-zinc-200 text-base leading-[1.6] max-w-xs mx-auto mb-8 font-medium">
+          AI strategy. Professional websites. Real business growth — for entrepreneurs who want to compete globally.
+        </p>
+
+        {/* Desktop subheadline */}
+        <p className="hidden sm:block text-zinc-200 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-12 drop-shadow-sm font-medium">
           I help small businesses worldwide grow smarter with AI-driven strategy, high-performance websites, and digital marketing that turns visitors into customers.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
           <a href="#contact" className="btn-gold w-full sm:w-auto px-10 py-4 text-base rounded-lg">
             Work With Me
           </a>
@@ -115,8 +124,24 @@ export default function ModernHeroVisual() {
           </a>
         </div>
 
-        {/* Socials */}
-        <div className="mt-16 flex items-center justify-center gap-4">
+        {/* Mobile trust stats */}
+        <div className="sm:hidden mt-10 grid grid-cols-3 gap-2 max-w-sm mx-auto">
+          <div className="text-center">
+            <p className="text-white font-black text-xl leading-none">50+</p>
+            <p className="text-zinc-400 text-xs mt-1.5">Clients</p>
+          </div>
+          <div className="text-center border-x border-white/[0.1]">
+            <p className="text-white font-black text-xl leading-none">3+</p>
+            <p className="text-zinc-400 text-xs mt-1.5">Years</p>
+          </div>
+          <div className="text-center">
+            <p className="text-white font-black text-xl leading-none">Global</p>
+            <p className="text-zinc-400 text-xs mt-1.5">Work</p>
+          </div>
+        </div>
+
+        {/* Socials (desktop) */}
+        <div className="hidden sm:flex mt-16 items-center justify-center gap-4">
           <SocialLink href="https://github.com/imalaminrafi" label="GitHub" icon={<Github className="w-5 h-5" />} />
           <SocialLink href="https://www.linkedin.com/in/imalaminrafi/" label="LinkedIn" icon={<Linkedin className="w-5 h-5" />} />
           <SocialLink href="https://x.com/imalaminrafi" label="Twitter" icon={<Twitter className="w-5 h-5" />} />

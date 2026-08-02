@@ -9,6 +9,7 @@ import { AdminAuthProvider } from "@/context/AdminAuthContext";
 import Index from "./pages/Index";
 import AnalyticsTracker from "./components/analytics/AnalyticsTracker";
 import ConsentBanner from "./components/analytics/ConsentBanner";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import PageBoundary from "./components/PageBoundary";
 
 const LoginPage = lazy(() => import("./pages/Login"));
@@ -71,6 +72,7 @@ const App = () => (
             <AdminAuthProvider>
               <AnalyticsTracker />
               <ConsentBanner />
+              <FloatingWhatsApp />
               <Suspense fallback={<RouteLoading />}>
                 <Routes>
                   <Route path="/" element={page(<Index />)} />

@@ -1,9 +1,8 @@
 import ModernHeader from "@/components/modern/Header";
 import ProfessionalFooter from "@/components/professional/Footer";
-import MobileBottomNav from "@/components/professional/MobileNav";
 import SectionBoundary from "@/components/SectionBoundary";
 
-/** Shared chrome for public pages: header + footer + mobile bottom nav. */
+/** Shared chrome for public pages: header + footer. */
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-white dark:bg-[#0A1628] transition-colors duration-300">
@@ -12,7 +11,6 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         <SectionBoundary name="PageContent">{children}</SectionBoundary>
       </main>
       <ProfessionalFooter />
-      <MobileBottomNav />
     </div>
   );
 }

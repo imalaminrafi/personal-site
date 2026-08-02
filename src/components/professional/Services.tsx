@@ -1,28 +1,28 @@
-import { Sparkles, Code2, Figma, BarChart3 } from "lucide-react";
+import { Brain, Globe, TrendingUp, Rocket, ArrowRight } from "lucide-react";
 
 const services = [
     {
-        icon: <Sparkles className="h-6 w-6" />,
-        title: "AI Growth Strategy",
-        description: "Use AI to work smarter and scale",
+        icon: <Brain className="h-8 w-8" />,
+        title: "AI Business Strategy",
+        description: "Practical AI plans to automate busywork, save time, and grow revenue.",
         color: "violet",
     },
     {
-        icon: <Code2 className="h-6 w-6" />,
-        title: "Web Design & Development",
-        description: "Fast, modern, conversion-ready websites",
+        icon: <Globe className="h-8 w-8" />,
+        title: "Professional Website",
+        description: "Fast, modern, mobile-first websites built to win customers.",
         color: "cyan",
     },
     {
-        icon: <BarChart3 className="h-6 w-6" />,
-        title: "SEO & Digital Marketing",
-        description: "Get found and grow your customers",
+        icon: <TrendingUp className="h-8 w-8" />,
+        title: "Digital Growth Consulting",
+        description: "Clear advice on SEO, content, and marketing that actually converts.",
         color: "emerald",
     },
     {
-        icon: <Figma className="h-6 w-6" />,
-        title: "UI/UX & Brand Design",
-        description: "Designs your customers trust",
+        icon: <Rocket className="h-8 w-8" />,
+        title: "Online Business Setup",
+        description: "From idea to online store — launched ready to sell globally.",
         color: "pink",
     },
 ];
@@ -52,24 +52,19 @@ export default function ServicesSection() {
                             key={i}
                             className="group bg-white dark:bg-[#0F2040] rounded-xl p-5 border border-zinc-200 dark:border-white/[0.08] transition-all duration-300 hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 hover:shadow-lg flex flex-col items-center text-center"
                         >
-                            <div className={`h-10 w-10 rounded-full flex items-center justify-center mb-3 ${colorMap[service.color]}`}>
+                            <div className={`h-14 w-14 rounded-full flex items-center justify-center mb-3 ${colorMap[service.color]}`}>
                                 {service.icon}
                             </div>
-                            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1">{service.title}</h3>
-                            <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-1">{service.description}</p>
+                            <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-1.5">{service.title}</h3>
+                            <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-2">{service.description}</p>
+                            <a
+                                href="#contact"
+                                className="mt-auto pt-3 inline-flex items-center gap-1 text-[#C9A84C] font-semibold text-sm group-hover:gap-2 transition-all"
+                            >
+                                Learn More <ArrowRight className="w-4 h-4" />
+                            </a>
                         </div>
                     ))}
-                    
-                    {/* Simple CTA card */}
-                    <div className="bg-brand-gradient rounded-xl p-5 flex flex-col items-center justify-center text-center text-[#0A1628]">
-                        <p className="text-xs font-bold mb-3">Custom Project?</p>
-                        <a
-                            href="#contact"
-                            className="bg-[#0A1628] text-[#C9A84C] font-bold text-[10px] px-4 py-2 rounded-full hover:bg-[#0A1628]/90 transition-colors uppercase tracking-wider"
-                        >
-                            Contact Me
-                        </a>
-                    </div>
                 </div>
             </div>
         </section>

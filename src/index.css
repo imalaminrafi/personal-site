@@ -519,6 +519,26 @@ a, button, [role="button"], input, select, textarea, label {
   html {
     font-size: 17px;
   }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Keep tap targets ≥ 44px for key CTAs without forcing tiny icon buttons */
+  .btn-gold,
+  .btn-gold-outline,
+  input,
+  select,
+  textarea {
+    min-height: 48px;
+  }
 }
 
 /* Reduced motion */
