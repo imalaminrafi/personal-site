@@ -1,29 +1,16 @@
-import { useRef, useState } from "react";
-import { Check } from "lucide-react";
+import { Check, Zap, Star, Crown } from "lucide-react";
 import { plans, addons, maintenanceOption, PricingPlan } from "@/data/pricingData";
 
-export default function PricingSection() {
-    const scrollerRef = useRef<HTMLDivElement>(null);
-    const [active, setActive] = useState(0);
+const iconMap = {
+    Zap: <Zap className="w-5 h-5" />,
+    Star: <Star className="w-5 h-5" />,
+    Crown: <Crown className="w-5 h-5" />,
+};
 
+export default function PricingSection() {
     const scrollToContact = (e: React.MouseEvent) => {
         e.preventDefault();
         document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-    };
-
-    const handleScroll = () => {
-        const el = scrollerRef.current;
-        if (!el) return;
-        const cardWidth = el.firstElementChild?.getBoundingClientRect().width ?? el.clientWidth;
-        const idx = Math.min(plans.length - 1, Math.round(el.scrollLeft / (cardWidth + 16)));
-        setActive(idx);
-    };
-
-    const scrollToCard = (i: number) => {
-        const el = scrollerRef.current;
-        if (!el) return;
-        const cardWidth = el.firstElementChild?.getBoundingClientRect().width ?? el.clientWidth;
-        el.scrollTo({ left: i * (cardWidth + 16), behavior: "smooth" });
     };
 
     return (
@@ -45,84 +32,131 @@ export default function PricingSection() {
                     </p>
                 </div>
 
-                {/* Horizontal scroll on mobile, 3-col grid on md+ */}
-                <div
-                    ref={scrollerRef}
-                    onScroll={handleScroll}
-                    className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 scrollbar-none md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0 md:snap-none"
-                >
+                {/* ─── Mobile: horizontal scroll row (75vw cards) ─── */}
+                <div className="md:hidden -mx-6 px-6 flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none [scrollbar-width:none] pb-2">
+                    {plans.map((plan: PricingPlan) => (
+                        <div
+                            key={plan.id}
+                            className={`snap-start min-w-[75vw] w-[75vw] relative flex flex-col rounded-2xl overflow-hidden text-left p-6
+                                border transition-all duration-300 bg-white dark:bg-[#0F2040]
+                                ${plan.highlighted
+                                    ? "border-[#C9A84C] dark:border-[#C9A84C] shadow-lg shadow-[#C9A84C]/10"
+                                    : "border-[#C9A84C]/20 dark:border-[#C9A84C]/20"
+                                }`}
+                        >
+                            {plan.highlighted && (
+                                <span className="absolute top-4 right-4 z-10 text-[10px] font-bold uppercase tracking-wider bg-[#C9A84C] text-[#0A1628] px-2.5 py-1 rounded-full">
+                                    Most Popular
+                                </span>
+                            )}
+
+                            {/* Icon + Name */}
+                            <div className="flex items-center gap-3 mb-5">
+                                <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${plan.iconBg}`}>
+                                    {iconMap[plan.iconName]}
+                                </div>
+                                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">{plan.name}</h3>
+                            </div>
+
+                            {/* Tagline */}
+                            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-5">{plan.priceNote}</p>
+
+                            <div className="border-t border-zinc-100 dark:border-white/[0.06] mb-5" />
+
+                            {/* Features */}
+                            <ul className="space-y-3 mb-6 grow">
+                                {plan.features.map((f, i) => (
+                                    <li key={i} className="flex items-center gap-2.5">
+                                        <Check className="w-3.5 h-3.5 text-[#C9A84C]" strokeWidth={3} />
+                                        <span className="text-sm text-zinc-600 dark:text-zinc-300">{f}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="border-t border-zinc-100 dark:border-white/[0.06] mb-4" />
+
+                            {/* Price */}
+                            <p className="text-2xl font-black text-zinc-900 dark:text-white mb-4">
+                                {plan.priceLabel}
+                            </p>
+
+                            <a
+                                href="#contact"
+                                onClick={scrollToContact}
+                                className="w-full py-3.5 rounded-xl bg-[#C9A84C] text-[#0A1628] font-bold text-sm text-center shadow-lg shadow-[#C9A84C]/20 hover:brightness-110 transition-all"
+                            >
+                                {plan.ctaLabel}
+                            </a>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Swipe hint (mobile) */}
+                <p className="md:hidden mt-4 flex items-center justify-center gap-1.5 text-xs font-medium text-zinc-400">
+                    <span aria-hidden="true">←</span> Swipe to see all plans <span aria-hidden="true">→</span>
+                </p>
+
+                {/* ─── Desktop: 3-column grid ─── */}
+                <div className="hidden md:grid grid-cols-3 gap-6 items-stretch">
                     {plans.map((plan: PricingPlan) => {
                         return (
                             <div
                                 key={plan.id}
                                 className={`
-                                    relative flex flex-col rounded-2xl p-6 pt-8
+                                    relative flex flex-col rounded-2xl overflow-hidden text-left p-6
                                     border transition-all duration-300
-                                    snap-start shrink-0 w-[75vw] max-w-[320px] md:w-auto md:max-w-none
                                     ${plan.highlighted
-                                        ? "border-[#C9A84C] bg-[#0F2040] shadow-lg shadow-[#C9A84C]/15"
-                                        : "border-[#C9A84C]/20 bg-[#0F2040]"
+                                        ? "border-[#C9A84C]/50 dark:border-[#C9A84C]/40 bg-[#C9A84C]/5 dark:bg-[#C9A84C]/[0.06] shadow-md shadow-[#C9A84C]/10"
+                                        : "border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-[#0F2040]"
                                     }
                                 `}
                             >
-                                {plan.highlighted && (
-                                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#C9A84C] px-3 py-1 text-xs font-bold text-[#0A1628] whitespace-nowrap">
-                                        Most Popular
-                                    </span>
-                                )}
+                                {/* Icon + Name */}
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${plan.iconBg}`}>
+                                        {iconMap[plan.iconName]}
+                                    </div>
+                                    <h3 className="text-lg font-bold text-zinc-900 dark:text-white">{plan.name}</h3>
+                                </div>
 
-                                {/* Name + tagline */}
-                                <h3 className="text-lg font-bold text-white">{plan.name}</h3>
-                                <p className="mt-1 text-sm text-zinc-400">{plan.priceNote}</p>
+                                {/* Price */}
+                                <div className="mb-6">
+                                    <p className="text-3xl font-black text-zinc-900 dark:text-white">
+                                        {plan.priceLabel}
+                                    </p>
+                                    <p className="text-[11px] font-medium text-zinc-400 uppercase tracking-widest mt-1">
+                                        {plan.priceNote}
+                                    </p>
+                                </div>
 
-                                <div className="border-t border-white/[0.08] my-5" />
+                                <div className="border-t border-zinc-100 dark:border-white/[0.06] mb-6" />
 
                                 {/* Features */}
-                                <ul className="space-y-3 mb-6 grow">
+                                <ul className="space-y-3 mb-8 grow">
                                     {plan.features.map((f, i) => (
-                                        <li key={i} className="flex items-start gap-2.5">
-                                            <Check className="w-4 h-4 text-[#C9A84C] shrink-0 mt-0.5" strokeWidth={3} />
-                                            <span className="text-sm text-zinc-300">{f}</span>
+                                        <li key={i} className="flex items-center gap-2.5">
+                                            <Check className="w-3.5 h-3.5 text-violet-500" strokeWidth={3} />
+                                            <span className="text-sm text-zinc-600 dark:text-zinc-300">{f}</span>
                                         </li>
                                     ))}
                                 </ul>
 
-                                <div className="border-t border-white/[0.08] mb-5" />
-
-                                {/* Price */}
-                                <p className="text-sm text-zinc-400">
-                                    Price: <span className="text-white font-black text-lg">{plan.priceLabel}</span>
-                                </p>
-
                                 <a
                                     href="#contact"
                                     onClick={scrollToContact}
-                                    className="mt-4 w-full py-3.5 rounded-xl bg-[#C9A84C] text-[#0A1628] font-bold text-sm text-center transition-all hover:brightness-110 active:scale-[0.99]"
+                                    className={`
+                                        w-full py-3 rounded-xl font-bold text-sm text-center transition-all
+                                        ${plan.highlighted
+                                            ? "bg-[#C9A84C] text-[#0A1628] shadow-lg shadow-[#C9A84C]/20 hover:brightness-110"
+                                            : "bg-zinc-900 dark:bg-[#14233F] text-white hover:bg-black dark:hover:bg-[#1C2A47]"
+                                        }
+                                    `}
                                 >
                                     {plan.ctaLabel}
                                 </a>
                             </div>
                         );
                     })}
-                </div>
-
-                {/* Swipe hint + dots (mobile only) */}
-                <div className="md:hidden mt-4">
-                    <div className="flex items-center justify-center gap-1.5">
-                        {plans.map((plan, i) => (
-                            <button
-                                key={plan.id}
-                                onClick={() => scrollToCard(i)}
-                                aria-label={`Go to ${plan.name} plan`}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${
-                                    active === i ? "w-5 bg-[#C9A84C]" : "w-1.5 bg-zinc-400/50"
-                                }`}
-                            />
-                        ))}
-                    </div>
-                    <p className="mt-3 text-center text-xs text-zinc-500 dark:text-zinc-400">
-                        Swipe → for more plans
-                    </p>
                 </div>
 
                 {/* ─── Add-ons Section ─── */}

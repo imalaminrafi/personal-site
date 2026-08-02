@@ -15,6 +15,10 @@ export interface Book {
   description: string;
   cover: string;
   price: string;
+  /** Optional strikethrough original price (shown when a discount exists). */
+  originalPrice?: string;
+  /** Short bullet points shown under "What you'll learn". */
+  learnPoints?: string[];
   priceNote: string;
   buyUrl: string;
   previewUrl: string;
@@ -58,6 +62,12 @@ const defaults: Book[] = [
     description: "A practical roadmap to starting a freelance web design & development business — pricing, clients, portfolios, and scaling without burning out.",
     cover: "",
     price: "$9.99",
+    originalPrice: "$14.99",
+    learnPoints: [
+      "Pricing your services with confidence",
+      "Landing your first paying clients",
+      "Scaling a web business without burnout",
+    ],
     priceNote: "One-time purchase · Instant PDF",
     buyUrl: "https://payhip.com",
     previewUrl: "",
@@ -75,6 +85,12 @@ const defaults: Book[] = [
     description: "Learn how modern, high-converting websites are designed — layouts, color, typography, mobile-first thinking, and performance.",
     cover: "",
     price: "$7.99",
+    originalPrice: "$12.99",
+    learnPoints: [
+      "High-converting page layouts",
+      "Color, typography & mobile-first design",
+      "Speed and performance essentials",
+    ],
     priceNote: "One-time purchase · Instant PDF",
     buyUrl: "https://payhip.com",
     previewUrl: "",
@@ -92,6 +108,12 @@ const defaults: Book[] = [
     description: "Step-by-step WordPress setup for small businesses — hosting, themes, plugins, speed, SEO, and keeping your site secure.",
     cover: "",
     price: "$5.99",
+    originalPrice: "$9.99",
+    learnPoints: [
+      "Hosting, setup & security basics",
+      "Choosing the right themes and plugins",
+      "SEO and speed out of the box",
+    ],
     priceNote: "One-time purchase · Instant PDF",
     buyUrl: "https://payhip.com",
     previewUrl: "",
@@ -112,6 +134,8 @@ function migrate(raw: Book[]): Book[] {
     description: b.description || "",
     cover: b.cover || "",
     price: b.price || "",
+    originalPrice: b.originalPrice || "",
+    learnPoints: Array.isArray(b.learnPoints) ? b.learnPoints.slice(0, 3) : [],
     priceNote: b.priceNote || "",
     buyUrl: b.buyUrl || "",
     previewUrl: b.previewUrl || "",

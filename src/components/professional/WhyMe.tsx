@@ -25,7 +25,7 @@ const reasons = [
 
 export default function WhyMeSection() {
     return (
-        <section id="why-me" className="bg-white dark:bg-[#0A1628] py-10 sm:py-14 border-t border-zinc-100 dark:border-white/[0.05]">
+        <section id="why-me" className="bg-white dark:bg-[#0A1628] py-12 sm:py-14 border-t border-zinc-100 dark:border-white/[0.05]">
             <div className="max-w-5xl mx-auto px-5 sm:px-6">
                 <div className="mb-8 sm:mb-12">
                     <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-2">

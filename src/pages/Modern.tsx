@@ -7,6 +7,7 @@ import AboutSection from "@/components/professional/About";
 import ProfessionalContact from "@/components/professional/Contact";
 import ProfessionalFooter from "@/components/professional/Footer";
 import GrowthInsightsSection from "@/components/professional/GrowthInsights";
+import MyBooksSection from "@/components/professional/MyBooks";
 import GetStartedButton from "@/components/professional/GetStarted";
 import SectionBoundary from "@/components/SectionBoundary";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
@@ -22,6 +23,7 @@ export default function ModernPage() {
                 <SectionBoundary name="Insights"><GrowthInsightsSection /></SectionBoundary>
                 <SectionBoundary name="Pricing"><PricingSection /></SectionBoundary>
                 <SectionBoundary name="WhyMe"><WhyMeSection /></SectionBoundary>
+                <SectionBoundary name="Books"><MyBooksSection /></SectionBoundary>
                 <SectionBoundary name="Contact"><ProfessionalContact /></SectionBoundary>
             </main>
             <GetStartedButton />

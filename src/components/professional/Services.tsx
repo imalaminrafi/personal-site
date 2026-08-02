@@ -5,31 +5,31 @@ const services = [
         icon: <Brain className="h-7 w-7" />,
         title: "AI Business Strategy",
         description: "Practical AI plans to automate busywork, save time, and grow revenue.",
-        cta: "Learn More",
+        link: "Learn More",
     },
     {
         icon: <Globe className="h-7 w-7" />,
         title: "Professional Website",
         description: "Fast, modern, mobile-first websites built to win customers.",
-        cta: "Learn More",
+        link: "Learn More",
     },
     {
         icon: <TrendingUp className="h-7 w-7" />,
         title: "Digital Growth Consulting",
         description: "Clear advice on SEO, content, and marketing that actually converts.",
-        cta: "Learn More",
+        link: "Learn More",
     },
     {
         icon: <Rocket className="h-7 w-7" />,
         title: "Online Business Setup",
         description: "From idea to online store — launched ready to sell globally.",
-        cta: "Learn More",
+        link: "Learn More",
     },
     {
         icon: <Palette className="h-7 w-7" />,
         title: "Graphic Design",
         description: "Professional flyers, banners, social media graphics, brand materials, and visual content — designed to impress your audience and represent your business with style.",
-        cta: "Get a Design",
+        link: "Get a Design",
     },
 ];
 
@@ -44,22 +44,22 @@ export default function ServicesSection() {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className="group bg-[#0F2040] rounded-xl p-4 border border-white/[0.06] transition-all duration-300 hover:border-[#C9A84C]/50 hover:shadow-lg flex flex-col items-start text-left"
+                            className="group bg-white dark:bg-[#0F2040] rounded-xl p-4 border border-zinc-200 dark:border-white/[0.06] transition-all duration-300 hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 hover:shadow-lg flex flex-col items-center text-center"
                         >
-                            <div className="text-[#C9A84C] mb-3 group-hover:scale-110 transition-transform">
+                            <div className="h-14 w-14 rounded-full flex items-center justify-center mb-3 bg-[#C9A84C]/12 text-[#C9A84C] dark:bg-[#C9A84C]/15 dark:text-[#E0C77E]">
                                 {service.icon}
                             </div>
-                            <h3 className="text-[15px] font-bold text-white mb-1.5">{service.title}</h3>
-                            <p className="text-zinc-400 text-xs leading-relaxed line-clamp-3">{service.description}</p>
+                            <h3 className="text-[15px] font-bold text-zinc-900 dark:text-white mb-1.5 leading-snug">{service.title}</h3>
+                            <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed line-clamp-3">{service.description}</p>
                             <a
                                 href="#contact"
-                                className="mt-auto pt-3 inline-flex items-center gap-1 text-[#C9A84C] font-semibold text-xs group-hover:gap-2 transition-all"
+                                className="mt-auto pt-3 inline-flex items-center gap-1 text-[#C9A84C] font-semibold text-[13px] group-hover:gap-2 transition-all"
                             >
-                                {service.cta} <ArrowRight className="w-3.5 h-3.5" />
+                                {service.link} <ArrowRight className="w-3.5 h-3.5" />
                             </a>
                         </div>
                     ))}

@@ -1,16 +1,16 @@
 import {
-  Home, Briefcase, BookOpen, DollarSign, PenLine, User, Mail, LayoutGrid
+  Home, User, Briefcase, LayoutGrid, DollarSign, PenLine, BookOpen, Mail
 } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
   { href: "/#services", label: "Services", icon: Briefcase },
   { href: "/books", label: "Books", icon: BookOpen },
-  { href: "/pricing", label: "Pricing", icon: DollarSign },
+  { href: "/#pricing", label: "Pricing", icon: DollarSign },
   { href: "/blog", label: "Blog", icon: PenLine },
-  { href: "/portfolio", label: "Work", icon: LayoutGrid },
-  { href: "/about-alamin-rafi", label: "About", icon: User },
-  { href: "/contact", label: "Contact", icon: Mail },
+  { href: "/#about", label: "About", icon: User },
+  { href: "/#contact", label: "Contact", icon: Mail },
+  { href: "/portfolio", label: "Portfolio", icon: LayoutGrid },
 ];
 
 const socials = [
@@ -37,7 +37,7 @@ const socials = [
   {
     label: "Fiverr",
     href: "https://www.fiverr.com/alaminseller",
-    icon: <Briefcase className="h-6 w-6" />,
+    icon: <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6"><path d="M9.177 5.737a.905.905 0 0 0 .905-.904V3.374H7.954v1.459c0 .498.407.904.905.904h.318zM10.877 8.55h3.02v3.02h-3.02V8.55zM10.877 15.572v3.02h3.02v-3.02h-3.02zM15.097 4.65v1.09a.906.906 0 0 1-.905.905h-.434v3.905h3.02V4.65h3.06a.936.936 0 0 0 .935-.936V2.47h-6.27c-.497 0-.905.408-.905.905v.613h.09a.906.906 0 0 1 .906.662h.503zM15.097 15.572h2.932a.905.905 0 0 0 0-1.81h-2.932v3.02h2.115a.936.936 0 0 1 .936.935v1.155a.936.936 0 0 1-.936.935h-6.57a.905.905 0 0 1-.905-.905V12.13h-3.02v6.77c0 .498.408.905.905.905h6.27v.001h-1.5a.936.936 0 0 0 .936.935h1.5V21h-1.135v1.532h2.87V21h-1.135v-1.14h1.135a.936.936 0 0 0 .936-.935v-.292h2.109a.905.905 0 0 0 0-1.81h-2.109V15.57h-2.115v.002h-1.233v-2.004h3.348a.905.905 0 0 0 0-1.81H15.097v-2.813h-2.553V8.551h-1.667v7.021z" /></svg>,
   },
   {
     label: "WhatsApp",
@@ -50,7 +50,7 @@ export default function MobileFooter() {
   return (
     <footer className="sm:hidden">
       <div className="px-4 pb-8 pt-2">
-        <div className="rounded-3xl border border-white/[0.08] bg-[#060E1A] px-5 pb-6 pt-6">
+        <div className="rounded-3xl border border-white/[0.08] bg-[#060E1A] px-3 pb-5 pt-6">
           {/* Brand */}
           <div className="flex items-center justify-center gap-2.5">
             <div className="flex h-[42px] w-[42px] items-center justify-center rounded-xl bg-gradient-to-br from-[#C9A84C] to-[#E6C97A] text-sm font-black text-[#0A1628] shadow-lg shadow-[#C9A84C]/20">
@@ -65,7 +65,7 @@ export default function MobileFooter() {
               <a
                 key={link.label}
                 href={link.href}
-                className="flex min-h-11 flex-col items-center justify-center gap-1.5 rounded-2xl py-2 text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-white active:bg-white/[0.09]"
+                className="flex flex-col items-center gap-1.5 rounded-2xl py-2.5 text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-white active:bg-white/[0.09]"
               >
                 <link.icon className="h-5 w-5" />
                 <span className="text-[13px] font-medium leading-none">{link.label}</span>
@@ -73,8 +73,8 @@ export default function MobileFooter() {
             ))}
           </nav>
 
-          {/* Socials — single row, equal spacing */}
-          <div className="mt-6 flex items-center justify-center gap-4">
+          {/* Socials */}
+          <div className="mt-5 flex items-center justify-center gap-2.5">
             {socials.map((social) => (
               <a
                 key={social.label}
@@ -82,7 +82,7 @@ export default function MobileFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C] transition-colors hover:bg-[#C9A84C]/20 hover:text-[#E6C97A]"
+                className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C] transition-colors hover:bg-[#C9A84C]/20 hover:text-[#E6C97A]"
               >
                 {social.icon}
               </a>
@@ -90,7 +90,7 @@ export default function MobileFooter() {
           </div>
 
           {/* Copyright */}
-          <div className="mt-6 border-t border-white/[0.06] pt-4 text-center">
+          <div className="mt-5 border-t border-white/[0.06] pt-4 text-center">
             <p className="text-[13px] font-medium text-zinc-500">© 2027 Alamin Rafi. All rights reserved.</p>
             <p className="mt-0.5 text-[13px] text-zinc-500">Building smarter businesses with AI.</p>
           </div>
