@@ -125,18 +125,18 @@ export default function ModernHeroVisual() {
         </div>
 
         {/* Mobile trust stats */}
-        <div className="sm:hidden mt-10 grid grid-cols-3 gap-2 max-w-sm mx-auto">
-          <div className="text-center">
-            <p className="text-white font-black text-xl leading-none">50+</p>
-            <p className="text-zinc-400 text-xs mt-1.5">Clients</p>
+        <div className="sm:hidden mt-10 grid grid-cols-3 divide-x divide-white/[0.12] max-w-sm mx-auto">
+          <div className="text-center px-2">
+            <p className="text-white font-bold text-[22px] leading-none">76+</p>
+            <p className="text-[#94A3B8] text-xs mt-1.5">Clients</p>
           </div>
-          <div className="text-center border-x border-white/[0.1]">
-            <p className="text-white font-black text-xl leading-none">3+</p>
-            <p className="text-zinc-400 text-xs mt-1.5">Years</p>
+          <div className="text-center px-2">
+            <p className="text-white font-bold text-[22px] leading-none">8+</p>
+            <p className="text-[#94A3B8] text-xs mt-1.5">Years</p>
           </div>
-          <div className="text-center">
-            <p className="text-white font-black text-xl leading-none">Global</p>
-            <p className="text-zinc-400 text-xs mt-1.5">Work</p>
+          <div className="text-center px-2">
+            <p className="text-white font-bold text-[22px] leading-none">Global</p>
+            <p className="text-[#94A3B8] text-xs mt-1.5">Work</p>
           </div>
         </div>
 
