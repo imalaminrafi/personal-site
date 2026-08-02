@@ -2,6 +2,10 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
+/* Class-based dark mode: follows the .dark class set by the theme provider
+   (default dark), instead of the OS prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ─── Base theme variables ──────────────────────────────────────────── */
 :root {
   color-scheme: light;
@@ -91,7 +95,7 @@
 }
 
 @theme {
-  --font-family-sans: "Inter", "system-ui", sans-serif;
+  --font-sans: "Inter", "system-ui", sans-serif;
   --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
 
   /* Gold — remaps the old violet scale (brand accent) */
