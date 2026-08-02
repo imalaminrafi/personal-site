@@ -36,9 +36,6 @@ import ProfessionalPage from "./pages/Professional";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AnalyticsTracker from "./components/analytics/AnalyticsTracker";
 import ConsentBanner from "./components/analytics/ConsentBanner";
-import { AppUiProvider } from "./components/app/app-ui-context";
-import MoreSheet from "./components/app/MoreSheet";
-import SearchOverlay from "./components/app/SearchOverlay";
 import BooksPage from "./pages/Books";
 import ContactPage from "./pages/Contact";
 import PricingPage from "./pages/Pricing";
@@ -57,14 +54,11 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <AppUiProvider>
-            <BrowserRouter>
-              <AdminAuthProvider>
-                <AnalyticsTracker />
-                <ConsentBanner />
-                <MoreSheet />
-                <SearchOverlay />
-                <Routes>
+          <BrowserRouter>
+            <AdminAuthProvider>
+              <AnalyticsTracker />
+              <ConsentBanner />
+              <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
@@ -108,7 +102,6 @@ const App = () => (
               </Routes>
               </AdminAuthProvider>
             </BrowserRouter>
-            </AppUiProvider>
           </TooltipProvider>
         </AuthProvider>
       </ThemeProvider>

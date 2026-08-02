@@ -1,7 +1,7 @@
 import ModernHeader from "@/components/modern/Header";
 import ProjectsSection from "@/components/professional/Projects";
 import ProfessionalFooter from "@/components/professional/Footer";
-import BottomNav from "@/components/app/BottomNav";
+import MobileBottomNav from "@/components/professional/MobileNav";
 import { useEffect } from "react";
 import { trackPortfolioView } from "@/utils/analytics";
 
@@ -20,7 +20,7 @@ export default function PortfolioPage() {
                 <ProjectsSection isLanding={false} />
             </main>
             <ProfessionalFooter />
-            <BottomNav />
+            <MobileBottomNav />
         </div>
     );
 }

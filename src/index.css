@@ -371,18 +371,6 @@ a, button, [role="button"], input, select, textarea, label {
   outline-color: #a78bfa;
 }
 
-/* Respect notched / gesture-bar phones */
-.pb-safe {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-/* Clearance so fixed bottom nav never covers page content (mobile & tablet) */
-@media (max-width: 1023px) {
-  .with-bottom-nav {
-    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
-  }
-}
-
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
