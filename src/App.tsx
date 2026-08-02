@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,53 +7,67 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/context/AuthContext";
 import { AdminAuthProvider } from "@/context/AdminAuthContext";
-import Index from "./pages/Index";
-import LoginPage from "./pages/Login";
-import SignupPage from "./pages/Signup";
-import DashboardPage from "./pages/Dashboard";
-import ProjectTrackerPage from "./pages/ProjectTracker";
-import BlogPage from "./pages/Blog";
-import BlogPostPage from "./pages/BlogPost";
-import PortfolioPage from "./pages/Portfolio";
-import PortfolioProjectPage from "./pages/PortfolioProject";
-import SitemapPage from "./pages/Sitemap";
-import AdminLogin from "./pages/admin/AdminLogin";
-import AdminDashboard from "./pages/admin/Dashboard";
-import AdminBlog from "./pages/admin/AdminBlog";
-import AdminPricing from "./pages/admin/AdminPricing";
-import AdminPortfolio from "./pages/admin/AdminPortfolio";
-import AdminTestimonials from "./pages/admin/AdminTestimonials";
-import AdminGallery from "./pages/admin/AdminGallery";
-import AdminMessages from "./pages/admin/AdminMessages";
-import AdminMedia from "./pages/admin/AdminMedia";
-import AdminSEO from "./pages/admin/AdminSEO";
-import AdminSettings from "./pages/admin/AdminSettings";
-import AdminAbout from "./pages/admin/AdminAbout";
-import AdminBook from "./pages/admin/AdminBook";
-import NotFound from "./pages/NotFound";
-import AboutMe from "./pages/AboutMe";
-import AboutAlaminRafi from "./pages/AboutAlaminRafi";
-import RssFeed from "./pages/RssFeed";
-import AdminProjects from "./pages/AdminProjects";
-import ProfessionalPage from "./pages/Professional";
-import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AnalyticsTracker from "./components/analytics/AnalyticsTracker";
 import ConsentBanner from "./components/analytics/ConsentBanner";
 import PageBoundary from "./components/PageBoundary";
-import BooksPage from "./pages/Books";
-import BookDetailPage from "./pages/BookDetail";
-import ContactPage from "./pages/Contact";
-import PricingPage from "./pages/Pricing";
-import TestimonialsPage from "./pages/Testimonials";
-import GalleryPage from "./pages/Gallery";
-import FAQPage from "./pages/FAQ";
-import PrivacyPage from "./pages/Privacy";
-import TermsPage from "./pages/Terms";
+import Index from "./pages/Index";
+
+const LoginPage = lazy(() => import("./pages/Login"));
+const SignupPage = lazy(() => import("./pages/Signup"));
+const DashboardPage = lazy(() => import("./pages/Dashboard"));
+const ProjectTrackerPage = lazy(() => import("./pages/ProjectTracker"));
+const BlogPage = lazy(() => import("./pages/Blog"));
+const BlogPostPage = lazy(() => import("./pages/BlogPost"));
+const PortfolioPage = lazy(() => import("./pages/Portfolio"));
+const PortfolioProjectPage = lazy(() => import("./pages/PortfolioProject"));
+const SitemapPage = lazy(() => import("./pages/Sitemap"));
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
+const AdminDashboard = lazy(() => import("./pages/admin/Dashboard"));
+const AdminBlog = lazy(() => import("./pages/admin/AdminBlog"));
+const AdminPricing = lazy(() => import("./pages/admin/AdminPricing"));
+const AdminPortfolio = lazy(() => import("./pages/admin/AdminPortfolio"));
+const AdminTestimonials = lazy(() => import("./pages/admin/AdminTestimonials"));
+const AdminGallery = lazy(() => import("./pages/admin/AdminGallery"));
+const AdminMessages = lazy(() => import("./pages/admin/AdminMessages"));
+const AdminMedia = lazy(() => import("./pages/admin/AdminMedia"));
+const AdminSEO = lazy(() => import("./pages/admin/AdminSEO"));
+const AdminSettings = lazy(() => import("./pages/admin/AdminSettings"));
+const AdminAbout = lazy(() => import("./pages/admin/AdminAbout"));
+const AdminBook = lazy(() => import("./pages/admin/AdminBook"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const AboutMe = lazy(() => import("./pages/AboutMe"));
+const AboutAlaminRafi = lazy(() => import("./pages/AboutAlaminRafi"));
+const RssFeed = lazy(() => import("./pages/RssFeed"));
+const AdminProjects = lazy(() => import("./pages/AdminProjects"));
+const ProfessionalPage = lazy(() => import("./pages/Professional"));
+const AdminAnalytics = lazy(() => import("./pages/admin/AdminAnalytics"));
+const BooksPage = lazy(() => import("./pages/Books"));
+const BookDetailPage = lazy(() => import("./pages/BookDetail"));
+const ContactPage = lazy(() => import("./pages/Contact"));
+const PricingPage = lazy(() => import("./pages/Pricing"));
+const TestimonialsPage = lazy(() => import("./pages/Testimonials"));
+const GalleryPage = lazy(() => import("./pages/Gallery"));
+const FAQPage = lazy(() => import("./pages/FAQ"));
+const PrivacyPage = lazy(() => import("./pages/Privacy"));
+const TermsPage = lazy(() => import("./pages/Terms"));
 
 const queryClient = new QueryClient();
 
+/** Route-level loading fallback shown while a lazy chunk resolves. */
+function PageLoader() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-zinc-950">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-300 border-t-violet-600" />
+    </div>
+  );
+}
+
 /** Wrap each route so a crashing page can't blank the whole app. */
-const page = (element: React.ReactNode) => <PageBoundary>{element}</PageBoundary>;
+const page = (element: React.ReactNode) => (
+  <PageBoundary>
+    <Suspense fallback={<PageLoader />}>{element}</Suspense>
+  </PageBoundary>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
