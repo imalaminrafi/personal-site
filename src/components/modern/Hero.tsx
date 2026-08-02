@@ -31,13 +31,19 @@ export default function ModernHeroVisual() {
       
       {/* ─── Background Image with Overlay ─── */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/5.png"
-          alt="Alamin Rafi - Digital Service Provider"
-          className="w-full h-full object-cover object-center"
-          loading="eager"
-          fetchPriority="high"
-        />
+        <picture>
+          <source type="image/avif" srcSet="/5.avif" sizes="100vw" />
+          <source type="image/webp" srcSet="/5-800.webp 800w, /5.webp 1536w" sizes="100vw" />
+          <img
+            src="/5.png"
+            alt="Alamin Rafi - Digital Service Provider"
+            className="w-full h-full object-cover object-center"
+            loading="eager"
+            fetchPriority="high"
+            width={1536}
+            height={1024}
+          />
+        </picture>
         {/* Soft light overlay (approx 25%) */}
         <div className="absolute inset-0 bg-black/25 dark:bg-black/40" />
       </div>

@@ -101,7 +101,7 @@ const defaultAboutData: AboutData = {
   hero: {
     name: "Alamin Rafi",
     title: "Digital Specialist & Web Project Manager",
-    image: "/Profile.png",
+    image: "/Profile.webp",
     paragraphs: [
       "I'm a Digital Specialist and Web Project Manager passionate about building modern, high-quality web solutions that help businesses grow. I lead cross-functional teams to deliver responsive, performance-optimized websites that make a real impact.",
       "My work bridges the gap between business goals and technical execution. With strong project management skills and a deep understanding of web systems, UI/UX design, and client communication, I ensure every project is delivered on time, within scope, and aligned with client expectations.",

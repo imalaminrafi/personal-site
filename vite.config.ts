@@ -27,20 +27,12 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: "dist",
     sourcemap: false,
-    chunkSizeWarningLimit: 700,
     rollupOptions: {
       output: {
-        experimentalMinChunkSize: 2048,
-        manualChunks(id: string) {
-          const nm = id.split(/node_modules[/\\]+/).pop() || "";
-          if (!nm) return undefined;
-          const parts = nm.split("/");
-          const pkg = parts[0].startsWith("@") ? `${parts[0]}/${parts[1]}` : parts[0];
-          if (pkg === "@tanstack/react-query") return "query";
-          if (pkg === "react-router" || pkg === "react-router-dom") return "router";
-          if (pkg.startsWith("@radix-ui") || pkg === "sonner" || pkg === "class-variance-authority" || pkg === "tailwind-merge" || pkg === "clsx") return "ui";
-          if (pkg === "react" || pkg === "react-dom" || pkg === "scheduler" || pkg === "react-is") return "vendor";
-          return undefined;
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+          if (id.includes("react-router") || id.includes("@remix-run")) return "router";
+          if (id.includes("node_modules/react/") || id.includes("node_modules/react-dom/") || id.includes("node_modules/scheduler/")) return "vendor";
         },
       },
     },

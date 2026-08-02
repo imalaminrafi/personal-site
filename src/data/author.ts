@@ -21,7 +21,7 @@ export const author: AuthorProfile = {
   jobTitle: "Website Developer & Designer",
   description:
     "Professional website developer and designer building modern, responsive, and SEO-optimized websites for businesses worldwide. Specializes in WordPress development, UI/UX design, front-end development, SEO, and digital marketing. Serving clients globally with remote collaboration.",
-  image: "/Profile.png",
+  image: "/Profile.webp",
   url: "https://alaminrafi.com",
   sameAs: [
     { platform: "LinkedIn", url: "https://www.linkedin.com/in/imalaminrafi/", icon: "linkedin" },
