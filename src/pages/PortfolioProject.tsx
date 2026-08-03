@@ -58,7 +58,7 @@ export default function PortfolioProjectPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-white dark:bg-[#0A1628]">
+      <div className="min-h-screen bg-white dark:bg-[#0F172A]">
         <ModernHeader />
         <main className="pt-32 pb-24 px-6 text-center">
           <p className="text-6xl mb-4">🔍</p>
@@ -75,7 +75,7 @@ export default function PortfolioProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0A1628]">
+    <div className="min-h-screen bg-white dark:bg-[#0F172A]">
       <ModernHeader />
       <main className="pt-24 pb-16">
         {/* ── Hero ── */}
@@ -198,7 +198,7 @@ export default function PortfolioProjectPage() {
         {/* ── Case Study ── */}
         {hasCaseStudy && (
           <section id="case-study" className="max-w-6xl mx-auto px-5 sm:px-6 mt-12 scroll-mt-24">
-            <div className="rounded-3xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-6 sm:p-10">
+            <div className="rounded-3xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-6 sm:p-10">
               <div className="flex items-center gap-2 mb-8">
                 <BookOpen className="w-5 h-5 text-violet-500" />
                 <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white">Case Study</h2>
@@ -245,7 +245,7 @@ export default function PortfolioProjectPage() {
               {project.reviews.map((review) => (
                 <div
                   key={review.id}
-                  className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5 flex flex-col"
+                  className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-5 flex flex-col"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <StarRating rating={review.rating} size="md" />
@@ -284,19 +284,19 @@ export default function PortfolioProjectPage() {
         <div className="max-w-6xl mx-auto px-5 sm:px-6 mt-14">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-gradient-to-r from-[#C9A84C] to-[#E6C97A] p-6 sm:p-8">
             <div>
-              <h3 className="text-lg sm:text-xl font-bold text-[#0A1628]">Like this project?</h3>
-              <p className="text-sm text-[#0A1628]/80 mt-1">Let's build something great for your business too.</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#0F172A]">Like this project?</h3>
+              <p className="text-sm text-[#0F172A]/80 mt-1">Let's build something great for your business too.</p>
             </div>
             <div className="flex gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0A1628] text-[#C9A84C] text-sm font-bold hover:bg-[#0A1628]/90 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0F172A] text-[#C9A84C] text-sm font-bold hover:bg-[#0F172A]/90 transition-colors"
               >
                 Get in Touch
               </Link>
               <Link
                 to="/portfolio"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/20 text-[#0A1628] text-sm font-bold hover:bg-white/40 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/20 text-[#0F172A] text-sm font-bold hover:bg-white/40 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" /> All Projects
               </Link>
@@ -314,7 +314,7 @@ export default function PortfolioProjectPage() {
             <div className="max-w-6xl mx-auto px-5 sm:px-6 mt-10">
               <Link
                 to={`/portfolio/${next.slug}`}
-                className="group flex items-center justify-between rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5 hover:border-violet-300 dark:hover:border-violet-700 transition-colors"
+                className="group flex items-center justify-between rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-5 hover:border-violet-300 dark:hover:border-violet-700 transition-colors"
               >
                 <div>
                   <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Next Project</p>

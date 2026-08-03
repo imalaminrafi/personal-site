@@ -62,7 +62,7 @@ export default function BookDetailPage() {
         {/* Header */}
         <div className="flex flex-col gap-8 sm:flex-row">
           {/* Cover */}
-          <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#0F2040] sm:aspect-auto sm:h-72 sm:w-56">
+          <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#162032] sm:aspect-auto sm:h-72 sm:w-56">
             {book.cover ? (
               <img
                 src={getOptimizedUrl(book.cover, { width: 700, crop: "limit", quality: "auto", format: "auto" })}

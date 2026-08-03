@@ -7,7 +7,7 @@ import { Briefcase, GraduationCap, Award, CheckCircle2, UserCircle2 } from "luci
 
 export default function AboutMe() {
     return (
-        <div className="min-h-screen bg-white dark:bg-[#0A1628] transition-colors duration-300 flex flex-col">
+        <div className="min-h-screen bg-white dark:bg-[#0F172A] transition-colors duration-300 flex flex-col">
             <ModernHeader />
             
             <main className="flex-1 pt-32 pb-24 px-6 sm:px-8">
@@ -24,7 +24,7 @@ export default function AboutMe() {
                                 className="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white dark:border-zinc-900"
                             />
                         ) : (
-                            <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-violet-600 to-cyan-500 flex items-center justify-center text-white shadow-lg border-4 border-white dark:border-zinc-900">
+                            <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-violet-600 to-cyan-500 flex items-center justify-center text-[#0F172A] shadow-lg border-4 border-white dark:border-zinc-900">
                                 <UserCircle2 className="w-16 h-16 opacity-80" />
                             </div>
                         )}
@@ -89,7 +89,7 @@ export default function AboutMe() {
                                 </div>
                                 <div className="space-y-6">
                                     {cvData.education.map((edu, idx) => (
-                                        <div key={idx} className="bg-zinc-50 dark:bg-[#0F2040]/50 p-6 rounded-2xl border border-zinc-100 dark:border-zinc-800">
+                                        <div key={idx} className="bg-zinc-50 dark:bg-[#162032]/50 p-6 rounded-2xl border border-zinc-100 dark:border-zinc-800">
                                             <h4 className="text-lg font-semibold text-zinc-900 dark:text-white mb-1">{edu.degree}</h4>
                                             <div className="text-zinc-600 dark:text-zinc-400">{edu.institution}</div>
                                             <div className="text-sm text-zinc-500 mt-2 font-medium">{edu.period}</div>

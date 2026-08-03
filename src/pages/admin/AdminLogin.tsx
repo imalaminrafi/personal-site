@@ -42,9 +42,9 @@ export default function AdminLogin() {
 
   if (mustChange) {
     return (
-      <div className="min-h-screen bg-zinc-50 dark:bg-[#0A1628] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-zinc-50 dark:bg-[#0F172A] flex items-center justify-center p-4">
         <div className="w-full max-w-md">
-          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-sm p-8">
+          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-sm p-8">
             <div className="text-center mb-8">
               <div className="w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
                 <ShieldAlert className="w-7 h-7 text-amber-600 dark:text-amber-400" />
@@ -92,16 +92,16 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-[#0A1628] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0F172A] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="bg-brand-gradient h-14 w-14 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-black text-lg">AR</span>
+            <span className="text-[#0F172A] font-black text-lg">AR</span>
           </div>
           <h1 className="text-xl font-black text-zinc-900 dark:text-white">Admin Login</h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Sign in to manage your website</p>
         </div>
-        <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-sm p-8">
+        <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-sm p-8">
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1.5">Email</label>

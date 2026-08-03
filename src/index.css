@@ -16,13 +16,13 @@
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(215 47% 10%);
   --primary: #C9A84C;
-  --primary-foreground: #0A1628;
+  --primary-foreground: #0F172A;
   --secondary: hsl(214 32% 93%);
   --secondary-foreground: hsl(215 47% 10%);
   --muted: hsl(210 40% 96%);
   --muted-foreground: hsl(215 16% 45%);
   --accent: #C9A84C;
-  --accent-foreground: #0A1628;
+  --accent-foreground: #0F172A;
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(210 40% 98%);
   --border: hsl(214 32% 91%);
@@ -38,31 +38,31 @@
   --font-heading: "Plus Jakarta Sans", "system-ui", sans-serif;
   --color-gold: #C9A84C;
   --color-gold-light: #E6C97A;
-  --color-navy: #0A1628;
-  --color-navy-card: #0F2040;
+  --color-navy: #0F172A;
+  --color-navy-card: #162032;
   --color-navy-footer: #060E1A;
 }
 
 .dark {
   color-scheme: dark;
-  --background: #0A1628;
-  --foreground: hsl(210 40% 98%);
-  --card: #0F2040;
-  --card-foreground: hsl(210 40% 98%);
-  --popover: #0D1B33;
-  --popover-foreground: hsl(210 40% 98%);
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --card: #162032;
+  --card-foreground: #F8FAFC;
+  --popover: #1E293B;
+  --popover-foreground: #F8FAFC;
   --primary: #C9A84C;
-  --primary-foreground: #0A1628;
+  --primary-foreground: #0F172A;
   --secondary: hsl(216 45% 16%);
-  --secondary-foreground: hsl(210 40% 98%);
+  --secondary-foreground: #F8FAFC;
   --muted: hsl(217 45% 15%);
   --muted-foreground: #94A3B8;
   --accent: #C9A84C;
-  --accent-foreground: #0A1628;
+  --accent-foreground: #0F172A;
   --destructive: hsl(0 63% 31%);
-  --destructive-foreground: hsl(210 40% 98%);
-  --border: hsl(220 42% 20%);
-  --input: hsl(220 42% 20%);
+  --destructive-foreground: #F8FAFC;
+  --border: #1E3A5F;
+  --input: #1E3A5F;
   --ring: #C9A84C;
   --gradient-subtle: linear-gradient(180deg, hsl(217 45% 12%) 0%, hsl(217 45% 8%) 100%);
   --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.4);
@@ -98,6 +98,17 @@
   --font-sans: "Inter", "system-ui", sans-serif;
   --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
 
+  /* ─── Premium dark + gold color system ──────────────────────────── */
+  --color-primary-bg: #0F172A;
+  --color-secondary-bg: #1E293B;
+  --color-card-bg: #162032;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-accent: #C9A84C;
+  --color-accent-hover: #D4B86A;
+  --color-border: #1E3A5F;
+  --color-success: #10B981;
+
   /* Gold — remaps the old violet scale (brand accent) */
   --color-violet-50: #FBF6E6;
   --color-violet-100: #F7EED0;
@@ -106,7 +117,7 @@
   --color-violet-400: #E0C77E;
   --color-violet-500: #D2B257;
   --color-violet-600: #C9A84C;
-  --color-violet-700: #B08C36;
+  --color-violet-700: #D4B86A;
   --color-violet-800: #8A6C2A;
   --color-violet-900: #5C4A1C;
   --color-violet-950: #382D11;
@@ -285,7 +296,7 @@
 
   /* ─── Gold buttons (premium brand CTA) ────────────────────────────── */
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-[#C9A84C] px-5 py-2.5 text-sm font-bold text-[#0A1628] transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-[#C9A84C] px-5 py-2.5 text-sm font-bold text-[#0F172A] transition-all duration-200;
   }
   .btn-gold:hover {
     filter: brightness(1.1);
@@ -312,7 +323,7 @@
 
   /* ─── Premium card treatment ──────────────────────────────────────── */
   .premium-card {
-    @apply rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] transition-all duration-300;
+    @apply rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] transition-all duration-300;
   }
   .premium-card:hover {
     @apply dark:border-[#C9A84C]/40;
@@ -406,14 +417,14 @@
 }
 
 .dark .hero-photo-fade {
-  background: linear-gradient(to top, #0A1628 0%, transparent 100%);
+  background: linear-gradient(to top, #0F172A 0%, transparent 100%);
 }
 .hero-photo-fade {
   background: linear-gradient(to top, #ffffff 0%, transparent 100%);
 }
 
 .dark .hero-section-fade {
-  background: linear-gradient(to bottom, transparent, #0A1628);
+  background: linear-gradient(to bottom, transparent, #0F172A);
 }
 .hero-section-fade {
   background: linear-gradient(to bottom, transparent, #fafafa);
@@ -566,8 +577,8 @@ a, button, [role="button"], input, select, textarea, label {
 /* bg-violet-600 is remapped to the brand gold (#C9A84C); force dark navy
    text so gold CTAs keep accessible contrast regardless of inline text-white. */
 .bg-violet-600 {
-  color: #0A1628;
+  color: #0F172A;
 }
 .bg-violet-700 {
-  color: #0A1628;
+  color: #0F172A;
 }

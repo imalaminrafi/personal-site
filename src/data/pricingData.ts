@@ -45,7 +45,7 @@ export const plans: PricingPlan[] = [
     features: ["4–7 pages website", "SEO setup", "Speed optimization", "Social integration"],
     ctaLabel: "Get a Quote",
     accentFrom: "from-violet-500",
-    accentTo: "to-fuchsia-500",
+    accentTo: "to-cyan-500",
     iconBg: "bg-violet-50/50 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400",
   },
   {

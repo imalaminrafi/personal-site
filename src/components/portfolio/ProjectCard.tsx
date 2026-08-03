@@ -9,9 +9,9 @@ export default function ProjectCard({ project }: { project: PortfolioItem }) {
   const hasCaseStudy = Boolean(project.caseStudy?.challenge || project.caseStudy?.results?.length);
 
   return (
-    <article className="group bg-white dark:bg-[#0F2040] rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+    <article className="group bg-white dark:bg-[#162032] rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
       {/* Featured image */}
-      <Link to={`/portfolio/${project.slug}`} className="relative aspect-[16/10] overflow-hidden block bg-zinc-100 dark:bg-[#0F2040]">
+      <Link to={`/portfolio/${project.slug}`} className="relative aspect-[16/10] overflow-hidden block bg-zinc-100 dark:bg-[#162032]">
         {project.image ? (
           <img
             src={getOptimizedUrl(project.image, { width: 900, crop: "limit", quality: "auto", format: "auto" })}

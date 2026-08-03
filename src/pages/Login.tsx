@@ -25,7 +25,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-[#0A1628] px-4 py-16">
+        <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-[#0F172A] px-4 py-16">
             {/* Background glow */}
             <div className="pointer-events-none fixed inset-0 overflow-hidden hidden dark:block">
                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-violet-700/15 to-transparent blur-[100px]" />
@@ -37,7 +37,7 @@ export default function LoginPage() {
                     <Link to="/" className="inline-flex items-center gap-2 text-zinc-500 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 text-sm font-medium transition-colors mb-6">
                         ← Back to portfolio
                     </Link>
-                    <div className="inline-flex w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 items-center justify-center text-white font-black text-lg shadow-lg mb-4">
+                    <div className="inline-flex w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 items-center justify-center text-[#0F172A] font-black text-lg shadow-lg mb-4">
                         AR
                     </div>
                     <h1 className="text-3xl font-black text-zinc-900 dark:text-white tracking-tight">Welcome back</h1>
@@ -45,7 +45,7 @@ export default function LoginPage() {
                 </div>
 
                 {/* Card */}
-                <div className="bg-white dark:bg-[#0F2040]/80 backdrop-blur-sm border border-zinc-200 dark:border-white/[0.08] rounded-3xl p-8 shadow-xl shadow-black/5 dark:shadow-black/40">
+                <div className="bg-white dark:bg-[#162032]/80 backdrop-blur-sm border border-zinc-200 dark:border-white/[0.08] rounded-3xl p-8 shadow-xl shadow-black/5 dark:shadow-black/40">
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Email */}
                         <div>
@@ -59,7 +59,7 @@ export default function LoginPage() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="you@example.com"
-                                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 dark:border-white/[0.10] bg-zinc-50 dark:bg-[#14233F]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
+                                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 dark:border-white/[0.10] bg-zinc-50 dark:bg-[#1E293B]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
                                 />
                             </div>
                         </div>
@@ -76,7 +76,7 @@ export default function LoginPage() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="••••••••"
-                                    className="w-full pl-10 pr-10 py-3 rounded-xl border border-zinc-200 dark:border-white/[0.10] bg-zinc-50 dark:bg-[#14233F]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
+                                    className="w-full pl-10 pr-10 py-3 rounded-xl border border-zinc-200 dark:border-white/[0.10] bg-zinc-50 dark:bg-[#1E293B]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
                                 />
                                 <button
                                     type="button"
@@ -99,9 +99,9 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="relative w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl font-semibold text-[15px] text-white overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
+                            className="relative w-full flex items-center justify-center gap-2.5 py-3.5 rounded-xl font-semibold text-[15px] text-[#0F172A] overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(201,168,76,0.4)] disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
                         >
-                            <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-500" />
+                            <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-cyan-500" />
                             {loading
                                 ? <><Loader2 className="relative w-4 h-4 animate-spin" /> Signing in…</>
                                 : <><span className="relative">Sign In</span><ArrowRight className="relative w-4 h-4" /></>

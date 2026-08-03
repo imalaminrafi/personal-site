@@ -110,7 +110,7 @@ const borderAccent: Record<Accent, string> = {
 /* ─── Component ──────────────────────────────────────────────────────── */
 export default function ProfessionalSkills() {
     return (
-        <section className="bg-zinc-50 dark:bg-[#0D1B33] py-16 sm:py-24 border-t border-zinc-100 dark:border-white/[0.05]">
+        <section className="bg-zinc-50 dark:bg-[#1E293B] py-16 sm:py-24 border-t border-zinc-100 dark:border-white/[0.05]">
 
             {/* Section header */}
             <div className="max-w-6xl mx-auto px-5 sm:px-6">
@@ -154,7 +154,7 @@ export default function ProfessionalSkills() {
                     {skillGroups.map((group, index) => (
                         <div
                             key={index}
-                            className="shrink-0 snap-start bg-white dark:bg-[#0F2040] rounded-2xl p-4 border border-zinc-100 dark:border-zinc-800 flex flex-col w-[78vw]"
+                            className="shrink-0 snap-start bg-white dark:bg-[#162032] rounded-2xl p-4 border border-zinc-100 dark:border-zinc-800 flex flex-col w-[78vw]"
                         >
                             {/* Card header */}
                             <div className="flex items-center gap-2.5 mb-3">
@@ -171,7 +171,7 @@ export default function ProfessionalSkills() {
                                 {group.skills.map((skill, idx) => (
                                     <span
                                         key={idx}
-                                        className="px-2.5 py-0.5 text-[11px] font-medium rounded-full bg-zinc-100 dark:bg-[#14233F] text-zinc-600 dark:text-zinc-400"
+                                        className="px-2.5 py-0.5 text-[11px] font-medium rounded-full bg-zinc-100 dark:bg-[#1E293B] text-zinc-600 dark:text-zinc-400"
                                     >
                                         {skill}
                                     </span>
@@ -193,7 +193,7 @@ export default function ProfessionalSkills() {
                     {skillGroups.map((group, index) => (
                         <div
                             key={index}
-                            className={`group bg-white dark:bg-[#0F2040] rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800
+                            className={`group bg-white dark:bg-[#162032] rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800
                                 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300
                                 ${borderAccent[group.accent]}`}
                         >
@@ -213,7 +213,7 @@ export default function ProfessionalSkills() {
                                     <span
                                         key={idx}
                                         className={`px-3 py-1 text-xs font-medium rounded-full
-                                            bg-zinc-100 dark:bg-[#14233F]
+                                            bg-zinc-100 dark:bg-[#1E293B]
                                             text-zinc-600 dark:text-zinc-400
                                             transition-colors duration-200 cursor-default
                                             ${badgeHover[group.accent]}`}

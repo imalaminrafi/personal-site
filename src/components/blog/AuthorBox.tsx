@@ -18,7 +18,7 @@ export default function AuthorBox() {
   const showFallback = !author.image || imgError;
 
   return (
-    <div className="rounded-2xl border border-zinc-100 dark:border-white/[0.05] bg-zinc-50 dark:bg-[#0F2040]/40 p-6">
+    <div className="rounded-2xl border border-zinc-100 dark:border-white/[0.05] bg-zinc-50 dark:bg-[#162032]/40 p-6">
       <div className="flex items-start gap-4">
         {showFallback ? (
           <div className="w-16 h-16 rounded-full bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center">

@@ -107,7 +107,7 @@ export default function MediaLibraryPicker({
       onClick={onClose}
     >
       <div
-        className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden"
+        className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -143,7 +143,7 @@ export default function MediaLibraryPicker({
                   className={cn(
                     "px-2.5 py-1 rounded-md text-[11px] font-bold transition-colors",
                     typeFilter === f
-                      ? "bg-white dark:bg-[#1C2A47] text-violet-600 dark:text-violet-400 shadow-sm"
+                      ? "bg-white dark:bg-[#1E293B] text-violet-600 dark:text-violet-400 shadow-sm"
                       : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white"
                   )}
                 >
@@ -154,7 +154,7 @@ export default function MediaLibraryPicker({
             <select
               value={folderFilter}
               onChange={(e) => { setFolderFilter(e.target.value); setPage(0); }}
-              className="px-2.5 py-1.5 rounded-lg border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-[11px] font-medium text-zinc-700 dark:text-zinc-300 focus:outline-none"
+              className="px-2.5 py-1.5 rounded-lg border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-[11px] font-medium text-zinc-700 dark:text-zinc-300 focus:outline-none"
             >
               {folders.map((f) => (
                 <option key={f} value={f}>{f === "all" ? "All Folders" : f}</option>
@@ -191,7 +191,7 @@ export default function MediaLibraryPicker({
                     )}
                   >
                     {isRaw || isVideo ? (
-                      <div className="aspect-square bg-zinc-100 dark:bg-[#0F2040] flex flex-col items-center justify-center gap-2">
+                      <div className="aspect-square bg-zinc-100 dark:bg-[#162032] flex flex-col items-center justify-center gap-2">
                         <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400">
                           {isRaw ? <FileText className="w-5 h-5" /> : <Film className="w-5 h-5" />}
                         </div>
@@ -200,7 +200,7 @@ export default function MediaLibraryPicker({
                         </span>
                       </div>
                     ) : (
-                      <div className="aspect-square bg-zinc-100 dark:bg-[#0F2040]">
+                      <div className="aspect-square bg-zinc-100 dark:bg-[#162032]">
                         <img src={getThumbnailUrl(m.url, 300)} alt={m.name} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                     )}

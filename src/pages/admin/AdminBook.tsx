@@ -105,8 +105,8 @@ export default function AdminBook() {
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((book) => (
-          <div key={book.id} className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-4 flex gap-4 relative">
-            <div className="w-20 h-28 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shrink-0 bg-zinc-100 dark:bg-[#0F2040] flex items-center justify-center">
+          <div key={book.id} className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-4 flex gap-4 relative">
+            <div className="w-20 h-28 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shrink-0 bg-zinc-100 dark:bg-[#162032] flex items-center justify-center">
               {book.cover ? (
                 <img src={getOptimizedUrl(book.cover, { width: 300 })} alt={book.title} className="w-full h-full object-cover" />
               ) : (
@@ -164,7 +164,7 @@ export default function AdminBook() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center p-4" onClick={() => setModal(null)}>
-          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05] shrink-0">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
                 {list.find((b) => b.id === modal.id) ? "Edit Book" : "New Book"}
@@ -199,7 +199,7 @@ export default function AdminBook() {
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Category</label>
                   <select value={modal.category} onChange={(e) => setModal({ ...modal, category: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm text-zinc-900 dark:text-white focus:outline-none">
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm text-zinc-900 dark:text-white focus:outline-none">
                     {CATEGORIES.map((cat) => <option key={cat} value={cat}>{cat}</option>)}
                   </select>
                 </div>
@@ -307,7 +307,7 @@ export default function AdminBook() {
       {/* Review editor modal */}
       {reviewEditor && (
         <div className="fixed inset-0 z-[70] bg-black/50 flex items-center justify-center p-4" onClick={() => setReviewEditor(null)}>
-          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05]">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
                 {modal?.reviews.some((r) => r.id === reviewEditor.id) ? "Edit Review" : "Add Review"}

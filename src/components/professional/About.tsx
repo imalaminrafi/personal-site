@@ -9,7 +9,7 @@ const highlights = [
 
 export default function ProfessionalAbout() {
     return (
-        <section id="about" className="bg-white dark:bg-[#0A1628] py-12 sm:py-24 border-t border-zinc-100 dark:border-zinc-800">
+        <section id="about" className="bg-white dark:bg-[#0F172A] py-12 sm:py-24 border-t border-zinc-100 dark:border-zinc-800">
             <div className="max-w-6xl mx-auto px-5 sm:px-6">
                 {/* Section Label */}
                 <p className="text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">About</p>

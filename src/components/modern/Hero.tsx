@@ -43,7 +43,7 @@ const particles = [
 /* ─── Main Hero ─────────────────────────────────────────────────────── */
 export default function ModernHeroVisual() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#0A1628]">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#0F172A]">
 
       {/* ─── Subdued background image (kept as subtle texture) ─── */}
       <div className="absolute inset-0 z-0 opacity-[0.14]">
@@ -63,11 +63,11 @@ export default function ModernHeroVisual() {
       </div>
 
       {/* Navy overlay + subtle grid */}
-      <div className="absolute inset-0 z-0 bg-[#0A1628]/70" />
+      <div className="absolute inset-0 z-0 bg-[#0F172A]/70" />
       <div className="absolute inset-0 z-0 hero-grid-texture opacity-50" />
 
       {/* Static subtle gradient (mobile) — replaces animated effects */}
-      <div className="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-[#0D1B33]/90 via-[#0A1628] to-[#0A1628]" />
+      <div className="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-[#1E293B]/90 via-[#0F172A] to-[#0F172A]" />
 
       {/* Soft gold glow orbs */}
       <div className="hero-glow-orb w-[28rem] h-[28rem] -top-32 left-1/2 -translate-x-1/2" />

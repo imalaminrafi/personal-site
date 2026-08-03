@@ -63,7 +63,7 @@ export default function AdminDashboard() {
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4 hover:shadow-md hover:shadow-violet-500/5 transition-shadow"
+            className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4 hover:shadow-md hover:shadow-violet-500/5 transition-shadow"
           >
             <div className="flex items-center justify-between mb-3">
               <div className={`w-9 h-9 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center`}>
@@ -80,7 +80,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Quick Actions */}
         <div className="lg:col-span-2">
-          <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
+          <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-bold text-zinc-900 dark:text-white">Quick Actions</h3>
               <Link to="/admin/blog" className="text-xs font-bold text-violet-600 dark:text-violet-400 hover:text-violet-700 transition-colors">
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
                   to={action.href}
                   className="flex flex-col items-center justify-center p-4 rounded-xl border border-zinc-100 dark:border-white/[0.05] hover:border-violet-200 dark:hover:border-violet-800/40 hover:bg-violet-50/50 dark:hover:bg-violet-900/10 transition-all group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-[#14233F]/50 flex items-center justify-center text-zinc-500 dark:text-zinc-400 group-hover:text-violet-600 dark:group-hover:text-violet-400 group-hover:bg-violet-100 dark:group-hover:bg-violet-900/30 transition-colors mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-[#1E293B]/50 flex items-center justify-center text-zinc-500 dark:text-zinc-400 group-hover:text-violet-600 dark:group-hover:text-violet-400 group-hover:bg-violet-100 dark:group-hover:bg-violet-900/30 transition-colors mb-2">
                     <action.icon className="w-5 h-5" />
                   </div>
                   <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300 text-center leading-tight">{action.label}</span>
@@ -105,7 +105,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Recent Activity */}
-          <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5 mt-6">
+          <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5 mt-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-bold text-zinc-900 dark:text-white">Recent Activity</h3>
               <span className="text-[10px] text-zinc-400 font-medium">Past 7 days</span>
@@ -136,28 +136,28 @@ export default function AdminDashboard() {
         {/* Right Column */}
         <div className="space-y-6">
           {/* Site Status */}
-          <div className="bg-gradient-to-br from-violet-600 to-cyan-500 rounded-2xl p-5 text-white">
+          <div className="bg-gradient-to-br from-violet-600 to-cyan-500 rounded-2xl p-5 text-[#0F172A]">
             <h3 className="text-sm font-bold mb-1">Site Status</h3>
-            <p className="text-white/70 text-xs mb-5">Everything is running smoothly.</p>
+            <p className="text-[#0F172A]/70 text-xs mb-5">Everything is running smoothly.</p>
             <div className="space-y-4">
               <div>
                 <div className="flex items-center justify-between text-xs mb-1.5">
-                  <span className="text-white/70">Performance Score</span>
+                  <span className="text-[#0F172A]/70">Performance Score</span>
                   <span className="font-bold">98/100</span>
                 </div>
-                <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
-                  <div className="h-full bg-white w-[98%] rounded-full" />
+                <div className="w-full h-1.5 bg-[#0F172A]/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-[#0F172A] w-[98%] rounded-full" />
                 </div>
               </div>
               <div className="flex items-center gap-2 text-xs">
-                <CheckCircle2 className="w-3.5 h-3.5 text-white/80" />
-                <span className="text-white/80">All systems operational</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#0F172A]/80" />
+                <span className="text-[#0F172A]/80">All systems operational</span>
               </div>
             </div>
           </div>
 
           {/* Drafts */}
-          <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
+          <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
             <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-4">Content Overview</h3>
             <div className="space-y-3">
               <div className="flex items-center justify-between">

@@ -10,7 +10,7 @@ export default function MyBooksSection() {
     if (books.length === 0) return null;
 
     return (
-        <section id="books" className="bg-white dark:bg-[#0A1628] py-12 sm:py-14 border-t border-zinc-100 dark:border-white/[0.05]">
+        <section id="books" className="bg-white dark:bg-[#0F172A] py-12 sm:py-14 border-t border-zinc-100 dark:border-white/[0.05]">
             <div className="max-w-5xl mx-auto px-5 sm:px-6">
                 {/* ─── Section Header ─── */}
                 <div className="mb-8 sm:mb-12">
@@ -33,7 +33,7 @@ export default function MyBooksSection() {
                         return (
                             <article
                                 key={book.id}
-                                className="flex gap-4 bg-white dark:bg-[#0F2040] rounded-2xl border border-[#C9A84C]/15 p-4"
+                                className="flex gap-4 bg-white dark:bg-[#162032] rounded-2xl border border-[#C9A84C]/15 p-4"
                             >
                                 {/* Cover (left) */}
                                 <Link
@@ -50,8 +50,8 @@ export default function MyBooksSection() {
                                         />
                                     ) : (
                                         <>
-                                            <BookOpen className="h-8 w-8 text-[#0A1628]" />
-                                            <span className="px-2 text-center text-[10px] font-bold text-[#0A1628] leading-tight line-clamp-3">
+                                            <BookOpen className="h-8 w-8 text-[#0F172A]" />
+                                            <span className="px-2 text-center text-[10px] font-bold text-[#0F172A] leading-tight line-clamp-3">
                                                 {book.title}
                                             </span>
                                         </>
@@ -107,7 +107,7 @@ export default function MyBooksSection() {
                                             data-ga="buy_button_click"
                                             data-ga-location={book.title}
                                             onClick={() => trackBuyButton(book.title, book.price)}
-                                            className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#C9A84C] py-3 text-sm font-bold text-[#0A1628] transition-all hover:brightness-110 active:scale-[0.99]"
+                                            className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#C9A84C] py-3 text-sm font-bold text-[#0F172A] transition-all hover:brightness-110 active:scale-[0.99]"
                                         >
                                             <ShoppingCart className="h-4 w-4" /> Buy Now
                                         </a>

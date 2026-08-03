@@ -39,7 +39,7 @@ export default function ImageUploader({ value, onChange, label = "Image" }: Imag
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center gap-1 bg-zinc-100 dark:bg-[#14233F] rounded-lg p-0.5 w-fit">
+      <div className="flex items-center gap-1 bg-zinc-100 dark:bg-[#1E293B] rounded-lg p-0.5 w-fit">
         {(["upload", "url", "drive"] as const).map((t) => (
           <button key={t} type="button" onClick={() => setTab(t)}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition-colors capitalize ${
@@ -65,14 +65,14 @@ export default function ImageUploader({ value, onChange, label = "Image" }: Imag
 
       {tab === "url" && (
         <div className="flex gap-2">
-          <input type="text" placeholder="Paste image URL..." value={urlInput} onChange={(e) => setUrlInput(e.target.value)} className="flex-1 px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm focus:outline-none" />
+          <input type="text" placeholder="Paste image URL..." value={urlInput} onChange={(e) => setUrlInput(e.target.value)} className="flex-1 px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" />
           <button type="button" onClick={handleUrl} className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-colors">Set</button>
         </div>
       )}
 
       {tab === "drive" && (
         <div className="flex gap-2">
-          <input type="text" placeholder="Paste Google Drive share link..." value={driveInput} onChange={(e) => setDriveInput(e.target.value)} className="flex-1 px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm focus:outline-none" />
+          <input type="text" placeholder="Paste Google Drive share link..." value={driveInput} onChange={(e) => setDriveInput(e.target.value)} className="flex-1 px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" />
           <button type="button" onClick={handleDrive} className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-colors">Convert</button>
         </div>
       )}

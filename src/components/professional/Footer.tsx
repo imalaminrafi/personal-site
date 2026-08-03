@@ -36,7 +36,7 @@ export default function ProfessionalFooter() {
                     {/* Brand */}
                     <div className="max-w-xs">
                         <div className="flex items-center gap-2 mb-2.5">
-                            <div className="h-7 w-7 bg-brand-gradient rounded-md flex items-center justify-center text-[#0A1628] font-bold text-xs">
+                            <div className="h-7 w-7 bg-brand-gradient rounded-md flex items-center justify-center text-[#0F172A] font-bold text-xs">
                                 AR
                             </div>
                             <span className="text-white font-semibold">Alamin Rafi</span>

@@ -129,7 +129,7 @@ export default function BlogPost() {
     : cleanContent + `<p class="mt-8"><a href="/about-alamin-rafi" class="text-violet-600 dark:text-violet-400 font-bold hover:underline">About Alamin Rafi</a> — Professional website developer and designer helping businesses grow online.</p>`;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0A1628]">
+    <div className="min-h-screen bg-white dark:bg-[#0F172A]">
       <Header />
 
       <article className="max-w-4xl mx-auto px-6 pt-32 pb-20">
@@ -208,11 +208,11 @@ export default function BlogPost() {
           )}
 
           {post.faq && post.faq.length > 0 && (
-            <div className="mt-12 bg-zinc-50 dark:bg-[#0F2040]/40 rounded-2xl p-6 border border-zinc-100 dark:border-white/[0.05]">
+            <div className="mt-12 bg-zinc-50 dark:bg-[#162032]/40 rounded-2xl p-6 border border-zinc-100 dark:border-white/[0.05]">
               <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4">Frequently Asked Questions</h3>
               <div className="space-y-3">
                 {post.faq.map((item, i) => (
-                  <details key={i} className="group bg-white dark:bg-[#0F2040] rounded-xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden">
+                  <details key={i} className="group bg-white dark:bg-[#162032] rounded-xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden">
                     <summary className="px-4 py-3 font-bold text-sm text-zinc-900 dark:text-white cursor-pointer hover:bg-zinc-50 dark:hover:bg-white/[0.02] transition-colors list-none flex items-center justify-between">
                       <span>{item.question}</span>
                       <svg className="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -228,7 +228,7 @@ export default function BlogPost() {
             <div className="mt-10 flex flex-wrap items-center gap-2">
               <Tag className="w-4 h-4 text-zinc-400" />
               {post.tags.map((tag) => (
-                <Link key={tag} to={`/blog?tag=${encodeURIComponent(tag)}`} className="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-[#14233F] text-zinc-600 dark:text-zinc-400 text-[11px] font-bold hover:bg-violet-100 dark:hover:bg-violet-900/20 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">{tag}</Link>
+                <Link key={tag} to={`/blog?tag=${encodeURIComponent(tag)}`} className="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-[#1E293B] text-zinc-600 dark:text-zinc-400 text-[11px] font-bold hover:bg-violet-100 dark:hover:bg-violet-900/20 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">{tag}</Link>
               ))}
             </div>
           )}
@@ -278,8 +278,8 @@ export default function BlogPost() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {relatedPosts.map((rp) => (
-              <Link key={rp.id} to={`/blog/${rp.slug}`} className="group flex flex-col rounded-2xl overflow-hidden border border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-[#0F2040]/40 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
-                <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-[#14233F]">
+              <Link key={rp.id} to={`/blog/${rp.slug}`} className="group flex flex-col rounded-2xl overflow-hidden border border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-[#162032]/40 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
+                <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-[#1E293B]">
                   {rp.featuredImage ? (
                     <img src={getOptimizedUrl(rp.featuredImage, { width: 600, crop: "limit", quality: "auto", format: "auto" })} alt={rp.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
                   ) : (

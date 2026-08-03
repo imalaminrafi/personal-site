@@ -32,7 +32,7 @@ export default function FAQPage() {
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="rounded-2xl border border-zinc-100 px-4 dark:border-white/[0.06] bg-zinc-50/60 dark:bg-[#0F2040]/40"
+                className="rounded-2xl border border-zinc-100 px-4 dark:border-white/[0.06] bg-zinc-50/60 dark:bg-[#162032]/40"
               >
                 <AccordionTrigger className="min-h-[52px] px-2 py-3 text-left text-sm font-bold text-zinc-900 dark:text-white">
                   <span className="flex items-start gap-2.5">
@@ -48,7 +48,7 @@ export default function FAQPage() {
           </Accordion>
         )}
 
-        <div className="mt-10 rounded-2xl border border-zinc-100 dark:border-white/[0.06] bg-zinc-50/60 dark:bg-[#0F2040]/40 p-6 text-center">
+        <div className="mt-10 rounded-2xl border border-zinc-100 dark:border-white/[0.06] bg-zinc-50/60 dark:bg-[#162032]/40 p-6 text-center">
           <p className="text-sm font-bold text-zinc-900 dark:text-white mb-1">Still have a question?</p>
           <p className="text-xs text-zinc-500 mb-4">I usually reply within a few hours on business days.</p>
           <div className="flex flex-wrap justify-center gap-2">

@@ -53,7 +53,7 @@ export default function MobileFooter() {
         <div className="rounded-3xl border border-white/[0.08] bg-[#060E1A] px-3 pb-5 pt-6">
           {/* Brand */}
           <div className="flex items-center justify-center gap-2.5">
-            <div className="flex h-[42px] w-[42px] items-center justify-center rounded-xl bg-gradient-to-br from-[#C9A84C] to-[#E6C97A] text-sm font-black text-[#0A1628] shadow-lg shadow-[#C9A84C]/20">
+            <div className="flex h-[42px] w-[42px] items-center justify-center rounded-xl bg-gradient-to-br from-[#C9A84C] to-[#E6C97A] text-sm font-black text-[#0F172A] shadow-lg shadow-[#C9A84C]/20">
               AR
             </div>
             <span className="text-[15px] font-bold tracking-tight text-white">Alamin Rafi</span>

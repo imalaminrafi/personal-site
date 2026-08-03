@@ -24,7 +24,7 @@ export default function ProfessionalAchievements() {
     return (
         <>
             {/* Key Achievements */}
-            <section className="bg-white dark:bg-[#0A1628] py-14 sm:py-20 border-t border-zinc-100 dark:border-zinc-800">
+            <section className="bg-white dark:bg-[#0F172A] py-14 sm:py-20 border-t border-zinc-100 dark:border-zinc-800">
                 <div className="max-w-5xl mx-auto px-5 sm:px-6">
                     <p className="text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">Highlights</p>
                     <h2 className="text-2xl sm:text-3xl font-semibold text-zinc-900 dark:text-white mb-8 sm:mb-10">Key Achievements</h2>
@@ -41,7 +41,7 @@ export default function ProfessionalAchievements() {
             </section>
 
             {/* Certifications */}
-            <section className="bg-zinc-50 dark:bg-[#0F2040]/50 py-14 sm:py-20 border-t border-zinc-100 dark:border-zinc-800">
+            <section className="bg-zinc-50 dark:bg-[#162032]/50 py-14 sm:py-20 border-t border-zinc-100 dark:border-zinc-800">
                 <div className="max-w-5xl mx-auto px-5 sm:px-6">
                     <p className="text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">Learning</p>
                     <h2 className="text-2xl sm:text-3xl font-semibold text-zinc-900 dark:text-white mb-6 sm:mb-8">Certifications</h2>
@@ -51,7 +51,7 @@ export default function ProfessionalAchievements() {
                         {certifications.map((cert, i) => (
                             <div
                                 key={i}
-                                className="bg-white dark:bg-[#0F2040] rounded-xl p-3 sm:p-4 border border-zinc-100 dark:border-zinc-800"
+                                className="bg-white dark:bg-[#162032] rounded-xl p-3 sm:p-4 border border-zinc-100 dark:border-zinc-800"
                             >
                                 <p className="text-xs font-semibold text-violet-600 dark:text-violet-400 mb-1">{cert.provider}</p>
                                 <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-snug">{cert.course}</p>
@@ -62,7 +62,7 @@ export default function ProfessionalAchievements() {
             </section>
 
             {/* Community */}
-            <section className="bg-white dark:bg-[#0A1628] py-12 sm:py-16 border-t border-zinc-100 dark:border-zinc-800">
+            <section className="bg-white dark:bg-[#0F172A] py-12 sm:py-16 border-t border-zinc-100 dark:border-zinc-800">
                 <div className="max-w-5xl mx-auto px-5 sm:px-6">
                     <p className="text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">Community</p>
                     <h2 className="text-2xl sm:text-3xl font-semibold text-zinc-900 dark:text-white mb-6">Community Experience</h2>
@@ -71,7 +71,7 @@ export default function ProfessionalAchievements() {
                         {community.map((exp, i) => (
                             <div
                                 key={i}
-                                className="bg-zinc-50 dark:bg-[#0F2040]/50 rounded-xl p-4 border border-zinc-100 dark:border-zinc-800"
+                                className="bg-zinc-50 dark:bg-[#162032]/50 rounded-xl p-4 border border-zinc-100 dark:border-zinc-800"
                             >
                                 <p className="text-sm font-semibold text-zinc-900 dark:text-white mb-0.5">{exp.org}</p>
                                 <p className="text-xs text-violet-600 dark:text-violet-400 font-medium">{exp.role}</p>

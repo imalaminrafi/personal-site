@@ -31,7 +31,7 @@ export default function TestimonialsPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {sorted.map((t) => (
-              <figure key={t.id} className="flex flex-col rounded-2xl border border-zinc-100 dark:border-white/[0.08] bg-zinc-50/60 dark:bg-[#12233F] p-6 hover:border-[#C9A84C]/40 hover:shadow-lg transition-all duration-300">
+              <figure key={t.id} className="flex flex-col rounded-2xl border border-zinc-100 dark:border-white/[0.08] bg-zinc-50/60 dark:bg-[#162032] p-6 hover:border-[#C9A84C]/40 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center justify-between mb-4">
                   <Quote className="h-6 w-6 text-violet-300 dark:text-violet-700" />
                   <span className="flex items-center gap-0.5" aria-label={`${t.rating} out of 5 stars`}>

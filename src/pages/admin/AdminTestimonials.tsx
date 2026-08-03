@@ -58,7 +58,7 @@ export default function AdminTestimonials() {
 
       <div className="grid gap-4">
         {list.map((t) => (
-          <div key={t.id} className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-5 flex items-start gap-4">
+          <div key={t.id} className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-5 flex items-start gap-4">
             <div className="w-12 h-12 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-bold text-sm shrink-0">
               {t.clientName.charAt(0) || "?"}
             </div>
@@ -73,7 +73,7 @@ export default function AdminTestimonials() {
                   <Star key={s} className={`w-3 h-3 ${s <= t.rating ? "text-amber-400 fill-amber-400" : "text-zinc-300 dark:text-zinc-600"}`} />
                 ))}
                 {t.featured && <span className="ml-2 text-[10px] font-bold text-violet-500 bg-violet-50 dark:bg-violet-500/10 px-1.5 py-0.5 rounded">FEATURED</span>}
-                {!t.published && <span className="ml-1 text-[10px] font-bold text-zinc-400 bg-zinc-100 dark:bg-[#14233F] px-1.5 py-0.5 rounded">DRAFT</span>}
+                {!t.published && <span className="ml-1 text-[10px] font-bold text-zinc-400 bg-zinc-100 dark:bg-[#1E293B] px-1.5 py-0.5 rounded">DRAFT</span>}
               </div>
               <p className="text-sm text-zinc-600 dark:text-zinc-300 mt-1.5 line-clamp-2">{t.review}</p>
             </div>
@@ -101,7 +101,7 @@ export default function AdminTestimonials() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={() => setModal(null)}>
-          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05]">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
                 {list.find((t) => t.id === modal.id) ? "Edit Testimonial" : "New Testimonial"}

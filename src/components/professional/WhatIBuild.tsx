@@ -10,7 +10,7 @@ const websiteTypes = [
 
 export default function WhatIBuild() {
     return (
-        <section className="bg-white dark:bg-[#0A1628] py-14 sm:py-20 border-t border-zinc-100 dark:border-zinc-800">
+        <section className="bg-white dark:bg-[#0F172A] py-14 sm:py-20 border-t border-zinc-100 dark:border-zinc-800">
             <div className="max-w-5xl mx-auto px-5 sm:px-6">
 
                 {/* Label + Headline */}
@@ -31,7 +31,7 @@ export default function WhatIBuild() {
                     {websiteTypes.map(({ label, icon }, i) => (
                         <span
                             key={i}
-                            className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-zinc-50 dark:bg-[#14233F]/80 text-zinc-700 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 hover:border-violet-400 dark:hover:border-violet-500 transition-colors duration-150 cursor-default"
+                            className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-zinc-50 dark:bg-[#1E293B]/80 text-zinc-700 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 hover:border-violet-400 dark:hover:border-violet-500 transition-colors duration-150 cursor-default"
                         >
                             <span className="text-sm leading-none">{icon}</span>
                             {label}

@@ -25,7 +25,7 @@ export default function ConsentBanner() {
       aria-label="Cookie consent"
       className="fixed inset-x-3 bottom-[calc(84px+env(safe-area-inset-bottom))] z-[75] lg:bottom-6 lg:left-auto lg:right-6 lg:w-[400px]"
     >
-      <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xl shadow-zinc-900/15 dark:border-white/10 dark:bg-[#0F2040] dark:shadow-black/50">
+      <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xl shadow-zinc-900/15 dark:border-white/10 dark:bg-[#162032] dark:shadow-black/50">
         <div className="flex items-start justify-between gap-3">
           <p className="text-sm font-bold text-zinc-900 dark:text-white">We value your privacy</p>
           <button

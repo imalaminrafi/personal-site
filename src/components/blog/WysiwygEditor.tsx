@@ -183,8 +183,8 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
   const Divider = () => <div className="w-px h-5 bg-zinc-200 dark:bg-white/[0.08]" />;
 
   return (
-    <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden bg-white dark:bg-[#0F2040]">
-      <div className="flex flex-wrap items-center gap-0.5 px-3 py-2 border-b border-zinc-200 dark:border-white/[0.08] bg-zinc-50/50 dark:bg-[#0F2040]/50 sticky top-0 z-10">
+    <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden bg-white dark:bg-[#162032]">
+      <div className="flex flex-wrap items-center gap-0.5 px-3 py-2 border-b border-zinc-200 dark:border-white/[0.08] bg-zinc-50/50 dark:bg-[#162032]/50 sticky top-0 z-10">
         {/* History */}
         <ToolbarBtn onClick={() => editor.chain().focus().undo().run()} title="Undo"><Undo2 className="w-4 h-4" /></ToolbarBtn>
         <ToolbarBtn onClick={() => editor.chain().focus().redo().run()} title="Redo"><Redo2 className="w-4 h-4" /></ToolbarBtn>
@@ -202,7 +202,7 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
         <div className="relative">
           <ToolbarBtn onClick={() => { setShowFontSize(!showFontSize); setShowColors(false); }} title="Font Size"><Type className="w-4 h-4" /></ToolbarBtn>
           {showFontSize && (
-            <div className="absolute top-full left-0 mt-1 bg-white dark:bg-[#14233F] rounded-xl border border-zinc-200 dark:border-white/[0.08] shadow-xl p-1.5 flex gap-1 z-20">
+            <div className="absolute top-full left-0 mt-1 bg-white dark:bg-[#1E293B] rounded-xl border border-zinc-200 dark:border-white/[0.08] shadow-xl p-1.5 flex gap-1 z-20">
               {[12, 14, 16, 18, 20, 24, 28, 32, 36, 48].map((s) => (
                 <button key={s} type="button" onClick={() => setFontSize(String(s))} className="px-2 py-1 rounded-lg text-xs font-bold text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white transition-colors" style={{ fontSize: `${Math.min(s, 20)}px` }}>{s}</button>
               ))}
@@ -214,7 +214,7 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
         <div className="relative">
           <ToolbarBtn onClick={() => { setShowColors(!showColors); setShowFontSize(false); }} title="Text Color"><Palette className="w-4 h-4" /></ToolbarBtn>
           {showColors && (
-            <div className="absolute top-full left-0 mt-1 bg-white dark:bg-[#14233F] rounded-xl border border-zinc-200 dark:border-white/[0.08] shadow-xl p-2 z-20">
+            <div className="absolute top-full left-0 mt-1 bg-white dark:bg-[#1E293B] rounded-xl border border-zinc-200 dark:border-white/[0.08] shadow-xl p-2 z-20">
               <div className="grid grid-cols-8 gap-1">
                 {["#000000","#ffffff","#dc2626","#ea580c","#d97706","#65a30d","#16a34a","#0891b2","#2563eb","#C9A84C","#db2777","#78716c"].map((c) => (
                   <button key={c} type="button" onClick={() => setColor(c)} className="w-6 h-6 rounded-lg border border-zinc-200 dark:border-zinc-600 hover:scale-110 transition-transform" style={{ backgroundColor: c }} title={c} />
@@ -256,7 +256,7 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
 
         {showLinkInput && (
           <div className="flex items-center gap-2 ml-2">
-            <input type="url" value={linkUrl} onChange={(e) => setLinkUrl(e.target.value)} placeholder="https://..." className="px-2 py-1 rounded-lg border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-xs w-48 focus:outline-none" autoFocus onKeyDown={(e) => { if (e.key === "Enter") addLink(); if (e.key === "Escape") setShowLinkInput(false); }} />
+            <input type="url" value={linkUrl} onChange={(e) => setLinkUrl(e.target.value)} placeholder="https://..." className="px-2 py-1 rounded-lg border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-xs w-48 focus:outline-none" autoFocus onKeyDown={(e) => { if (e.key === "Enter") addLink(); if (e.key === "Escape") setShowLinkInput(false); }} />
             <button type="button" onClick={addLink} className="px-2 py-1 rounded-lg bg-violet-600 text-white text-xs font-bold">Apply</button>
           </div>
         )}
@@ -274,7 +274,7 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
         <EditorContent editor={editor} className="[&_.ProseMirror]:min-h-[500px] [&_.ProseMirror]:outline-none [&_.ProseMirror]:px-6 [&_.ProseMirror]:py-4" />
       )}
 
-      <div className="flex items-center justify-between px-6 py-2 border-t border-zinc-200 dark:border-white/[0.08] bg-zinc-50/50 dark:bg-[#0F2040]/50 text-[11px] text-zinc-500">
+      <div className="flex items-center justify-between px-6 py-2 border-t border-zinc-200 dark:border-white/[0.08] bg-zinc-50/50 dark:bg-[#162032]/50 text-[11px] text-zinc-500">
         <div className="flex items-center gap-4">
           <span>{wordCount} words</span>
           <span>~{readingTime} min read</span>

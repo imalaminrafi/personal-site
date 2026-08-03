@@ -53,7 +53,7 @@ export default function AdminSiteSettings() {
   return (
     <AdminLayout title="Site Settings">
       <div className="max-w-2xl">
-        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-6 sm:p-8">
+        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-6">
             <Settings className="w-5 h-5 text-violet-500" />
             <h2 className="text-lg font-bold text-zinc-900 dark:text-white">General Settings</h2>

@@ -63,7 +63,7 @@ export default function AdminAnalytics() {
       <div className="max-w-3xl space-y-5">
         {/* Status header */}
         <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5">
+          <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-5">
             <div className="flex items-center justify-between">
               <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Status</p>
               <Activity className="h-4 w-4 text-zinc-300 dark:text-zinc-600" />
@@ -75,7 +75,7 @@ export default function AdminAnalytics() {
             <p className="mt-1 text-[11px] text-zinc-400">Google Analytics 4</p>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5">
+          <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-5">
             <div className="flex items-center justify-between">
               <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Connection</p>
               <RefreshCw className="h-4 w-4 text-zinc-300 dark:text-zinc-600" />
@@ -87,7 +87,7 @@ export default function AdminAnalytics() {
             <p className="mt-1 text-[11px] text-zinc-400">gtag.js {status.scriptLoaded ? "loaded" : "pending"}</p>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5">
+          <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-5">
             <div className="flex items-center justify-between">
               <p className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Last Event</p>
               <Zap className="h-4 w-4 text-zinc-300 dark:text-zinc-600" />
@@ -107,7 +107,7 @@ export default function AdminAnalytics() {
         </div>
 
         {/* Measurement ID */}
-        <form onSubmit={handleSave} className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5 sm:p-6">
+        <form onSubmit={handleSave} className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-5 sm:p-6">
           <div className="mb-4 flex items-center gap-2.5">
             <BarChart3 className="h-5 w-5 text-violet-500" />
             <h2 className="text-base font-bold text-zinc-900 dark:text-white">Measurement ID</h2>
@@ -148,7 +148,7 @@ export default function AdminAnalytics() {
         </form>
 
         {/* Privacy & consent */}
-        <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5 sm:p-6">
+        <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-5 sm:p-6">
           <div className="mb-3 flex items-center gap-2.5">
             <ShieldCheck className="h-5 w-5 text-emerald-500" />
             <h2 className="text-base font-bold text-zinc-900 dark:text-white">Privacy & Consent Mode</h2>
@@ -170,7 +170,7 @@ export default function AdminAnalytics() {
         </div>
 
         {/* Test + recent events */}
-        <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5 sm:p-6">
+        <div className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] p-5 sm:p-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
               <Zap className="h-5 w-5 text-amber-500" />
