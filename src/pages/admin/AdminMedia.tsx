@@ -5,8 +5,10 @@ import {
   Grid3X3, List, Loader2, FolderOpen, FileText, Download, Film
 } from "lucide-react";
 import {
-  uploadToCloudinary, deleteFromCloudinary, getThumbnailUrl, getOptimizedUrl,
-  formatBytes, isCloudinaryUrl, getDownloadUrl
+  uploadToCloudinary, deleteCloudinaryAsset, detectResourceType
+} from "@/services/cloudinaryUpload";
+import {
+  getThumbnailUrl, getOptimizedUrl, formatBytes, isCloudinaryUrl, getDownloadUrl
 } from "@/utils/cloudinary";
 import {
   MediaLibraryItem, loadMediaLibrary, saveMediaLibrary, fromCloudinaryAsset,
@@ -49,10 +51,12 @@ export default function AdminMedia() {
     setUploadError("");
     const listOf = Array.from(files);
     for (const file of listOf) {
-      const isImage = file.type.startsWith("image/");
-      const isPdf = file.type === "application/pdf";
-      if (!isImage && !isPdf) {
-        setUploadError(`"${file.name}" is not an image or PDF and was skipped.`);
+      const resourceType = detectResourceType(file);
+      const isImage = resourceType === "image";
+      const isPdf = resourceType === "raw";
+      const isVideo = resourceType === "video";
+      if (!isImage && !isPdf && !isVideo) {
+        setUploadError(`"${file.name}" is not an image, PDF or video and was skipped.`);
         continue;
       }
       setUploading(true);
@@ -60,7 +64,7 @@ export default function AdminMedia() {
       try {
         const asset = await uploadToCloudinary(file, {
           folder: "alaminrafi",
-          resourceType: isPdf ? "raw" : "image",
+          resourceType,
           onProgress: setProgress,
         });
         const item = fromCloudinaryAsset(asset, file.name);
@@ -97,7 +101,7 @@ export default function AdminMedia() {
     if (!confirm(`Delete "${item.name}" from Cloudinary and the media library?`)) return;
     setDeletingId(id);
     if (item.publicId && isCloudinaryUrl(item.url)) {
-      await deleteFromCloudinary(item.publicId);
+      await deleteCloudinaryAsset(item.publicId);
     }
     const updated = list.filter((i) => i.id !== id);
     saveMediaLibrary(updated);
@@ -112,7 +116,7 @@ export default function AdminMedia() {
     for (const id of selected) {
       const item = list.find((i) => i.id === id);
       if (item?.publicId && isCloudinaryUrl(item.url)) {
-        await deleteFromCloudinary(item.publicId);
+        await deleteCloudinaryAsset(item.publicId);
       }
     }
     const updated = list.filter((i) => !selected.includes(i.id));
@@ -213,7 +217,7 @@ export default function AdminMedia() {
             : "border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032]"
         }`}
       >
-        <input ref={fileRef} type="file" accept="image/*,.pdf,application/pdf" multiple className="hidden" onChange={(e) => e.target.files && handleUploadFiles(e.target.files)} />
+        <input ref={fileRef} type="file" accept="image/*,.pdf,application/pdf,video/*" multiple className="hidden" onChange={(e) => e.target.files && handleUploadFiles(e.target.files)} />
         {uploading ? (
           <div>
             <Loader2 className="w-8 h-8 text-violet-500 animate-spin mx-auto mb-2" />
@@ -229,7 +233,7 @@ export default function AdminMedia() {
               <Upload className="w-6 h-6" />
             </div>
             <p className="text-sm font-bold text-zinc-900 dark:text-white">Upload to Cloudinary</p>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Drag & drop images or PDFs here or click to browse</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Drag & drop images, PDFs or videos here or click to browse</p>
           </button>
         )}
         {uploadError && <p className="mt-3 text-xs text-red-600 dark:text-red-400">{uploadError}</p>}

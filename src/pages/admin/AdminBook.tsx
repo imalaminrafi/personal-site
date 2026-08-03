@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { Book, BookReview, loadBooks, saveBooks, getBookAverageRating, getBookReviewCount } from "@/data/books";
 import { BookOpen, Plus, Trash2, Search, X, Star, FileText, CheckCircle2, Edit2, MessageSquareQuote } from "lucide-react";
-import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
+import CloudinaryUploader from "@/components/cloudinary/CloudinaryUploader";
 import { getOptimizedUrl } from "@/utils/cloudinary";
 import { cn } from "@/lib/utils";
 
@@ -176,7 +176,7 @@ export default function AdminBook() {
             <form onSubmit={handleSave} className="p-6 space-y-4 overflow-y-auto">
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Cover Image</label>
-                <CloudinaryUploadButton value={modal.cover} onChange={(url) => setModal({ ...modal, cover: url })} label="Upload Cover" />
+                <CloudinaryUploader value={modal.cover} onChange={(url) => setModal({ ...modal, cover: url })} label="Upload Cover" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -233,7 +233,7 @@ export default function AdminBook() {
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Preview PDF (optional)</label>
-                <CloudinaryUploadButton value={modal.previewUrl} onChange={(url) => setModal({ ...modal, previewUrl: url })} label="Upload Preview PDF" acceptType="raw" />
+                <CloudinaryUploader value={modal.previewUrl} onChange={(url) => setModal({ ...modal, previewUrl: url })} label="Upload Preview PDF" accept="raw" />
               </div>
               {/* Customer Reviews */}
               <div>

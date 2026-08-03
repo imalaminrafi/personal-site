@@ -1,4 +1,4 @@
-import type { CloudinaryAsset } from "@/utils/cloudinary";
+import type { CloudinaryUploadResult } from "@/services/cloudinaryUpload";
 import { isCloudinaryUrl } from "@/utils/cloudinary";
 
 export interface MediaLibraryItem {
@@ -38,19 +38,19 @@ export function addToMediaLibrary(item: MediaLibraryItem) {
   saveMediaLibrary([item, ...current]);
 }
 
-export function fromCloudinaryAsset(asset: CloudinaryAsset, fallbackName = ""): MediaLibraryItem {
+export function fromCloudinaryAsset(asset: CloudinaryUploadResult, fallbackName = ""): MediaLibraryItem {
   return {
-    id: asset.publicId || `m${Date.now()}`,
-    name: fallbackName || asset.publicId.split("/").pop() || asset.publicId || "Untitled",
-    url: asset.secureUrl || asset.url,
-    publicId: asset.publicId,
+    id: asset.public_id || `m${Date.now()}`,
+    name: fallbackName || asset.public_id.split("/").pop() || asset.public_id || "Untitled",
+    url: asset.secure_url || asset.url,
+    publicId: asset.public_id,
     folder: asset.folder || "",
-    type: (asset.resourceType as MediaLibraryItem["type"]) || "image",
+    type: asset.resource_type || "image",
     size: asset.bytes,
     width: asset.width,
     height: asset.height,
     format: asset.format,
-    createdAt: asset.createdAt,
+    createdAt: asset.created_at,
   };
 }
 

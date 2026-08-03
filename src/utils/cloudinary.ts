@@ -1,44 +1,18 @@
 /**
- * Cloudinary media management layer.
+ * Cloudinary media delivery helpers.
  *
- * SECURITY NOTE:
- * The API secret is NEVER exposed in the frontend bundle. Uploads use an
- * unsigned upload preset, which only requires the Cloud Name + preset.
- * Deletion requires the API secret and must go through a serverless
- * function. Set VITE_CLOUDINARY_DELETE_URL to a deployed endpoint
- * (see /api/cloudinary-delete.*) to enable real deletion. Without it,
- * assets are removed from the local media library but kept on Cloudinary.
+ * These functions ONLY build/optimize delivery URLs for assets that are
+ * already stored in Cloudinary. Uploads are handled by the dedicated
+ * service in `src/services/cloudinaryUpload.ts`.
+ *
+ * Delivery only needs the public Cloud Name (never the API secret), read
+ * from VITE_CLOUDINARY_CLOUD_NAME. The upload preset is only used by the
+ * upload service and is never hardcoded here.
  */
 
-export const CLOUDINARY_CONFIG = {
-  cloudName: (import.meta.env.VITE_CLOUDINARY_CLOUD_NAME as string) || "root",
-  uploadPreset: (import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET as string) || "alaminrafi_upload",
-  folder: (import.meta.env.VITE_CLOUDINARY_FOLDER as string) || "alaminrafi",
-  /** Endpoint of an optional serverless function that performs signed deletes. */
-  deleteUrl: (import.meta.env.VITE_CLOUDINARY_DELETE_URL as string) || "",
-};
-
-export interface CloudinaryAsset {
-  publicId: string;
-  url: string;
-  secureUrl: string;
-  width: number;
-  height: number;
-  bytes: number;
-  format: string;
-  resourceType: string;
-  createdAt: string;
-  folder: string;
-}
-
-export interface UploadOptions {
-  folder?: string;
-  publicId?: string;
-  resourceType?: "image" | "raw" | "video" | "auto";
-  tags?: string[];
-  onProgress?: (percent: number) => void;
-  /** Keep true unless the preset itself already forces this behaviour. */
-  eager?: boolean;
+/** Public Cloud Name for delivery URL building, or "" when unconfigured. */
+export function getCloudinaryCloudName(): string {
+  return (import.meta.env.VITE_CLOUDINARY_CLOUD_NAME as string) || "";
 }
 
 export const isCloudinaryUrl = (url: string): boolean =>
@@ -53,136 +27,16 @@ export function getPublicIdFromUrl(url: string): string {
 }
 
 /**
- * Upload a file directly to Cloudinary using an unsigned preset.
- * The API secret is never involved in this flow.
- */
-export function uploadToCloudinary(
-  file: File,
-  options: UploadOptions = {}
-): Promise<CloudinaryAsset> {
-  const { folder = CLOUDINARY_CONFIG.folder, publicId, resourceType = "auto", tags = [], onProgress, eager = true } = options;
-
-  return new Promise((resolve, reject) => {
-    const form = new FormData();
-    form.append("file", file);
-    form.append("upload_preset", CLOUDINARY_CONFIG.uploadPreset);
-    form.append("folder", folder);
-    if (publicId) form.append("public_id", publicId);
-    if (tags.length) form.append("tags", tags.join(","));
-    // Auto-generate WebP/AVIF + resized variants for fast delivery.
-    if (eager) {
-      form.append("eager", [
-        "w_400,c_limit,q_auto,f_auto",
-        "w_800,c_limit,q_auto,f_auto",
-        "w_1200,c_limit,q_auto,f_auto",
-        "w_1600,c_limit,q_auto,f_auto",
-      ].join("|"));
-      form.append("eager_async", "true");
-    }
-
-    const endpoint = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CONFIG.cloudName}/${resourceType === "auto" ? "image" : resourceType}/upload`;
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", endpoint);
-
-    xhr.upload.onprogress = (e) => {
-      if (e.lengthComputable && onProgress) {
-        onProgress(Math.round((e.loaded / e.total) * 100));
-      }
-    };
-
-    xhr.onload = () => {
-      if (xhr.status >= 200 && xhr.status < 300) {
-        try {
-          const data = JSON.parse(xhr.responseText);
-          resolve(normalizeAsset(data));
-        } catch (err) {
-          reject(new Error("Cloudinary returned an invalid response."));
-        }
-      } else {
-        let msg = `Cloudinary upload failed (${xhr.status}).`;
-        try {
-          const data = JSON.parse(xhr.responseText);
-          if (data?.error?.message) msg = data.error.message;
-        } catch { /* keep default */ }
-        reject(new Error(msg));
-      }
-    };
-
-    xhr.onerror = () => reject(new Error("Network error during upload. Please try again."));
-    xhr.send(form);
-  });
-}
-
-interface CloudinaryUploadResponse {
-  public_id?: string;
-  url?: string;
-  secure_url?: string;
-  width?: number | string;
-  height?: number | string;
-  bytes?: number | string;
-  format?: string;
-  resource_type?: string;
-  created_at?: string;
-}
-
-function normalizeAsset(data: CloudinaryUploadResponse): CloudinaryAsset {
-  return {
-    publicId: data.public_id || "",
-    url: data.url || data.secure_url || "",
-    secureUrl: data.secure_url || data.url || "",
-    width: Number(data.width) || 0,
-    height: Number(data.height) || 0,
-    bytes: Number(data.bytes) || 0,
-    format: data.format || "",
-    resourceType: data.resource_type || "image",
-    createdAt: data.created_at || new Date().toISOString(),
-    folder: (data.public_id || "").includes("/")
-      ? (data.public_id || "").split("/").slice(0, -1).join("/")
-      : "",
-  };
-}
-
-/**
- * Delete an asset from Cloudinary. Requires a serverless endpoint because
- * the API secret must never ship to the browser.
- */
-export async function deleteFromCloudinary(publicId: string): Promise<boolean> {
-  if (!CLOUDINARY_CONFIG.deleteUrl) {
-    console.warn(
-      "[cloudinary] Deletion skipped: no VITE_CLOUDINARY_DELETE_URL configured. " +
-      "The API secret cannot be used in the browser."
-    );
-    return false;
-  }
-  try {
-    const res = await fetch(CLOUDINARY_CONFIG.deleteUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ publicId }),
-    });
-    if (!res.ok) return false;
-    const data = await res.json();
-    return data?.result === "ok";
-  } catch {
-    return false;
-  }
-}
-
-/** Delete an asset by its full URL (extracts the public ID first). */
-export async function deleteAssetByUrl(url: string): Promise<boolean> {
-  const publicId = getPublicIdFromUrl(url);
-  if (!publicId) return false;
-  return deleteFromCloudinary(publicId);
-}
-
-/**
  * Return the base Cloudinary delivery URL for a public ID, without
  * transformations. Safe to call for both full URLs and public IDs.
  */
 export function getBaseDeliveryUrl(input: string): string {
   if (isCloudinaryUrl(input)) {
     const publicId = getPublicIdFromUrl(input);
-    return `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/${publicId}`;
+    const cloudName =
+      input.match(/res\.cloudinary\.com\/([^/]+)\//)?.[1] ||
+      getCloudinaryCloudName();
+    return `https://res.cloudinary.com/${cloudName}/image/upload/${publicId}`;
   }
   return input;
 }
@@ -264,12 +118,12 @@ export function getSizes(defaultSize = "100vw"): string {
 export function getVideoUrl(publicId: string, opts: { width?: number } = {}): string {
   const parts = ["q_auto", "f_auto"];
   if (opts.width) parts.unshift(`w_${opts.width}`);
-  return `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/video/upload/${parts.join(",")}/${publicId}`;
+  return `https://res.cloudinary.com/${getCloudinaryCloudName()}/video/upload/${parts.join(",")}/${publicId}`;
 }
 
 /** Future-ready: raw asset (PDF, ebook, course file) delivery URL. */
 export function getRawUrl(publicId: string): string {
-  return `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/raw/upload/${publicId}`;
+  return `https://res.cloudinary.com/${getCloudinaryCloudName()}/raw/upload/${publicId}`;
 }
 
 /**

@@ -17,7 +17,7 @@ import { Youtube } from "@tiptap/extension-youtube";
 import { FontFamily } from "@tiptap/extension-font-family";
 import { Dropcursor } from "@tiptap/extension-dropcursor";
 import { optimizeImage, readFileAsDataURL } from "@/utils/imageOptimizer";
-import { uploadToCloudinary } from "@/utils/cloudinary";
+import { uploadToCloudinary } from "@/services/cloudinaryUpload";
 import { addToMediaLibrary, fromCloudinaryAsset } from "@/data/cloudinaryMedia";
 import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough, List, ListOrdered,
@@ -118,7 +118,7 @@ export default function WysiwygEditor({ value, onChange, onAutoSave }: WysiwygEd
     try {
       const asset = await uploadToCloudinary(file, { folder: "alaminrafi" });
       addToMediaLibrary(fromCloudinaryAsset(asset, file.name));
-      editor.chain().focus().setImage({ src: asset.secureUrl || asset.url }).run();
+      editor.chain().focus().setImage({ src: asset.secure_url || asset.url }).run();
     } catch {
       try {
         const opt = await optimizeImage(file, { maxWidth: 1920, quality: 0.8, format: "image/webp" });

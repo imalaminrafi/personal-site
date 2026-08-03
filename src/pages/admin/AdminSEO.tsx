@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { loadSEOSettings, saveSEOSettings, SEOSettings } from "@/data/settings";
 import { Globe, CheckCircle2, AlertTriangle, TrendingUp, Search, Eye, Smartphone } from "lucide-react";
-import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
+import CloudinaryUploader from "@/components/cloudinary/CloudinaryUploader";
 
 const robotsOptions = [
   "index, follow",
@@ -126,7 +126,7 @@ export default function AdminSEO() {
 
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">OG Image</label>
-                <CloudinaryUploadButton value={settings.ogImage} onChange={(url) => update({ ogImage: url })} label="OG Image" />
+                <CloudinaryUploader value={settings.ogImage} onChange={(url) => update({ ogImage: url })} label="OG Image" />
               </div>
 
               <div>

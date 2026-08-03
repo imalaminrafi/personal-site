@@ -3,7 +3,7 @@ import AdminLayout from "./AdminLayout";
 import { Link } from "react-router-dom";
 import { loadSettings, saveSettings, SiteSettings } from "@/data/settings";
 import { Settings, Plus, Trash2, CheckCircle2, BarChart3 } from "lucide-react";
-import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
+import CloudinaryUploader from "@/components/cloudinary/CloudinaryUploader";
 
 export default function AdminSiteSettings() {
   const [settings, setSettings] = useState<SiteSettings | null>(null);
@@ -63,11 +63,11 @@ export default function AdminSiteSettings() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Logo</label>
-                <CloudinaryUploadButton value={settings.logo} onChange={(url) => update({ logo: url })} label="Logo" />
+                <CloudinaryUploader value={settings.logo} onChange={(url) => update({ logo: url })} label="Logo" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Favicon</label>
-                <CloudinaryUploadButton value={settings.favicon} onChange={(url) => update({ favicon: url })} label="Favicon" />
+                <CloudinaryUploader value={settings.favicon} onChange={(url) => update({ favicon: url })} label="Favicon" />
               </div>
             </div>
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { Testimonial, loadTestimonials, saveTestimonials } from "@/data/testimonials";
 import { Plus, Edit2, Trash2, Star, X, CheckCircle2 } from "lucide-react";
-import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
+import CloudinaryUploader from "@/components/cloudinary/CloudinaryUploader";
 
 const empty: Testimonial = {
   id: "", clientName: "", company: "", country: "", rating: 5, review: "",
@@ -148,7 +148,7 @@ export default function AdminTestimonials() {
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Client Photo</label>
-                <CloudinaryUploadButton value={modal.photo} onChange={(url) => setModal({ ...modal, photo: url })} label="Client Photo" />
+                <CloudinaryUploader value={modal.photo} onChange={(url) => setModal({ ...modal, photo: url })} label="Client Photo" />
               </div>
               <div className="flex items-center gap-6 pt-2">
                 <label className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">

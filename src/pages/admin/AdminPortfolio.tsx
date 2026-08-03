@@ -7,8 +7,7 @@ import {
 import {
   loadPortfolio, savePortfolio, CATEGORIES, slugify, PortfolioItem, ProjectReview
 } from "@/data/portfolio";
-import CloudinaryUploadButton from "@/components/cloudinary/CloudinaryUploadButton";
-import CloudinaryMultiUploader from "@/components/cloudinary/CloudinaryMultiUploader";
+import CloudinaryUploader from "@/components/cloudinary/CloudinaryUploader";
 import StarRating from "@/components/portfolio/StarRating";
 import { cn } from "@/lib/utils";
 
@@ -240,11 +239,11 @@ export default function AdminPortfolio() {
                 <h3 className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-3">Media</h3>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Featured Image</label>
-                  <CloudinaryUploadButton value={form.image} onChange={(url) => update({ image: url })} label="Upload Project Image" />
+                  <CloudinaryUploader value={form.image} onChange={(url) => update({ image: url })} label="Upload Project Image" />
                 </div>
                 <div className="mt-4">
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Gallery</label>
-                  <CloudinaryMultiUploader value={galleryText} onChange={setGalleryText} label="gallery images" max={12} />
+                  <CloudinaryUploader multiple value={galleryText} onChange={setGalleryText} label="gallery images" max={12} />
                 </div>
               </div>
 
