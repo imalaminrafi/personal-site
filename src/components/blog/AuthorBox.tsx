@@ -18,7 +18,7 @@ export default function AuthorBox() {
   const showFallback = !author.image || imgError;
 
   return (
-    <div className="rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/40 p-6">
+    <div className="rounded-2xl border border-zinc-100 dark:border-white/[0.05] bg-zinc-50 dark:bg-[#0F2040]/40 p-6">
       <div className="flex items-start gap-4">
         {showFallback ? (
           <div className="w-16 h-16 rounded-full bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center">
@@ -69,7 +69,7 @@ export default function AuthorBox() {
         })}
       </div>
 
-      <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-[#1E3A5F]">
+      <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
         <Link
           to="/about-alamin-rafi"
           className="inline-flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"

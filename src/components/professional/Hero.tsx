@@ -1,6 +1,6 @@
 export default function ProfessionalHero() {
     return (
-        <section className="bg-white dark:bg-[#0F172A] py-20">
+        <section className="bg-white dark:bg-[#0A1628] py-20">
             <div className="max-w-5xl mx-auto px-6">
                 <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
                     Alamin Rafi
@@ -28,7 +28,7 @@ export default function ProfessionalHero() {
                     </a>
                     <a
                         href="#contact"
-                        className="px-6 py-3 border border-gray-300 text-gray-900 text-sm font-medium hover:border-gray-400 transition-colors dark:border-[#1E3A5F] dark:text-zinc-100 dark:hover:border-zinc-500"
+                        className="px-6 py-3 border border-gray-300 text-gray-900 text-sm font-medium hover:border-gray-400 transition-colors dark:border-zinc-700 dark:text-zinc-100 dark:hover:border-zinc-500"
                     >
                         Contact
                     </a>

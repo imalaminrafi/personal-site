@@ -56,9 +56,9 @@ export default function ProjectViewer({ url, title }: ProjectViewerProps) {
   };
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] shadow-sm">
+    <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] shadow-sm">
       {/* Toolbar */}
-      <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-zinc-100 dark:border-[#1E3A5F]">
+      <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-zinc-100 dark:border-white/[0.05]">
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="flex gap-1.5 shrink-0">
             <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
@@ -93,7 +93,7 @@ export default function ProjectViewer({ url, title }: ProjectViewerProps) {
       </div>
 
       {/* Body */}
-      <div className="relative bg-zinc-100 dark:bg-[#162032]" style={{ height: "min(70vh, 640px)" }}>
+      <div className="relative bg-zinc-100 dark:bg-[#0F2040]" style={{ height: "min(70vh, 640px)" }}>
         {status === "blocked" ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
             <div className="w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-500/10 flex items-center justify-center text-amber-500 mb-4">
@@ -133,7 +133,7 @@ export default function ProjectViewer({ url, title }: ProjectViewerProps) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             />
             {status === "loading" && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-zinc-100 dark:bg-[#162032] pointer-events-none">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-zinc-100 dark:bg-[#0F2040] pointer-events-none">
                 <Loader2 className="w-6 h-6 animate-spin text-violet-500" />
                 <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Loading live preview…</p>
               </div>

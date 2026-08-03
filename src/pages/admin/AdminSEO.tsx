@@ -56,7 +56,7 @@ export default function AdminSEO() {
     <AdminLayout title="SEO Settings">
       <div className="max-w-4xl">
         {/* SEO Score */}
-        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-5 mb-6">
+        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5 mb-6">
           <div className="flex items-center gap-4 flex-wrap">
             <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white font-black text-lg ${
               seoScore >= 80 ? "bg-emerald-500" : seoScore >= 50 ? "bg-amber-500" : "bg-rose-500"
@@ -65,7 +65,7 @@ export default function AdminSEO() {
             </div>
             <div className="flex-1">
               <p className="text-sm font-bold text-zinc-900 dark:text-white">SEO Score</p>
-              <div className="w-full h-2 bg-zinc-100 dark:bg-[#1E293B] rounded-full mt-2 overflow-hidden">
+              <div className="w-full h-2 bg-zinc-100 dark:bg-[#14233F] rounded-full mt-2 overflow-hidden">
                 <div className={`h-full rounded-full transition-all ${
                   seoScore >= 80 ? "bg-emerald-500" : seoScore >= 50 ? "bg-amber-500" : "bg-rose-500"
                 }`} style={{ width: `${seoScore}%` }} />
@@ -81,7 +81,7 @@ export default function AdminSEO() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left - Settings */}
-          <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-5">
+          <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
             <div className="flex items-center gap-2.5 mb-5">
               <Globe className="w-5 h-5 text-violet-500" />
               <h2 className="text-sm font-bold text-zinc-900 dark:text-white">Search Engine Optimisation</h2>
@@ -96,7 +96,7 @@ export default function AdminSEO() {
                     value={settings.keywords}
                     onChange={(e) => update({ keywords: e.target.value })}
                     placeholder="e.g. web design, development"
-                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                   />
                 </div>
               </div>
@@ -108,7 +108,7 @@ export default function AdminSEO() {
                 <input
                   value={settings.metaTitle}
                   onChange={(e) => update({ metaTitle: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                 />
               </div>
 
@@ -120,7 +120,7 @@ export default function AdminSEO() {
                   value={settings.metaDescription}
                   onChange={(e) => update({ metaDescription: e.target.value })}
                   rows={3}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none"
+                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none"
                 />
               </div>
 
@@ -134,7 +134,7 @@ export default function AdminSEO() {
                 <select
                   value={settings.robots}
                   onChange={(e) => update({ robots: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 appearance-none"
+                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 appearance-none"
                 >
                   {robotsOptions.map((opt) => (
                     <option key={opt} value={opt}>{opt}</option>
@@ -148,7 +148,7 @@ export default function AdminSEO() {
                   value={settings.sitemap}
                   onChange={(e) => update({ sitemap: e.target.value })}
                   placeholder="/sitemap.xml"
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                 />
               </div>
 
@@ -170,12 +170,12 @@ export default function AdminSEO() {
           {/* Right - Previews */}
           <div className="space-y-6">
             {/* Google Preview */}
-            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-5">
+            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
               <div className="flex items-center gap-2 mb-4">
                 <Eye className="w-4 h-4 text-violet-500" />
                 <h3 className="text-xs font-bold text-zinc-900 dark:text-white">Google Preview</h3>
               </div>
-              <div className="bg-white dark:bg-[#162032] border border-zinc-200 dark:border-[#1E3A5F] rounded-xl p-4 max-w-sm">
+              <div className="bg-white dark:bg-[#0F2040] border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 max-w-sm">
                 <p className="text-xs text-green-700 dark:text-green-400 truncate">https://alaminrafi.com</p>
                 <p className="text-sm text-blue-800 dark:text-blue-300 font-medium leading-tight truncate hover:underline cursor-pointer">
                   {settings.metaTitle || "Alamin Rafi — Website & Digital Services"}
@@ -187,12 +187,12 @@ export default function AdminSEO() {
             </div>
 
             {/* Social Preview */}
-            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-5">
+            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
               <div className="flex items-center gap-2 mb-4">
                 <Smartphone className="w-4 h-4 text-violet-500" />
                 <h3 className="text-xs font-bold text-zinc-900 dark:text-white">Social Share Preview</h3>
               </div>
-              <div className="bg-white dark:bg-[#162032] border border-zinc-200 dark:border-[#1E3A5F] rounded-xl overflow-hidden max-w-sm">
+              <div className="bg-white dark:bg-[#0F2040] border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden max-w-sm">
                 <div className="h-32 bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center">
                   {settings.ogImage ? (
                     <img src={settings.ogImage} alt="" className="w-full h-full object-cover" />
@@ -213,7 +213,7 @@ export default function AdminSEO() {
             </div>
 
             {/* Checklist */}
-            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-5">
+            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
               <h3 className="text-xs font-bold text-zinc-900 dark:text-white mb-3">Optimization Checklist</h3>
               <div className="space-y-2">
                 {[

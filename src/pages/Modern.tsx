@@ -14,7 +14,7 @@ import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 
 export default function ModernPage() {
     return (
-        <div className="min-h-screen bg-white dark:bg-[#0F172A]">
+        <div className="min-h-screen bg-white dark:bg-[#0A1628]">
             <ModernHeader />
             <main>
                 <SectionBoundary name="Hero"><ModernHeroVisual /></SectionBoundary>

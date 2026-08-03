@@ -9,9 +9,9 @@ export default function ProjectCard({ project }: { project: PortfolioItem }) {
   const hasCaseStudy = Boolean(project.caseStudy?.challenge || project.caseStudy?.results?.length);
 
   return (
-    <article className="group bg-white dark:bg-[#162032] rounded-2xl overflow-hidden border border-zinc-200 dark:border-[#1E3A5F] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+    <article className="group bg-white dark:bg-[#0F2040] rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
       {/* Featured image */}
-      <Link to={`/portfolio/${project.slug}`} className="relative aspect-[16/10] overflow-hidden block bg-zinc-100 dark:bg-[#162032]">
+      <Link to={`/portfolio/${project.slug}`} className="relative aspect-[16/10] overflow-hidden block bg-zinc-100 dark:bg-[#0F2040]">
         {project.image ? (
           <img
             src={getOptimizedUrl(project.image, { width: 900, crop: "limit", quality: "auto", format: "auto" })}
@@ -31,7 +31,7 @@ export default function ProjectCard({ project }: { project: PortfolioItem }) {
           {project.category}
         </span>
         {project.featured && (
-          <span className="absolute top-3 right-3 bg-white/95 dark:bg-black/90 text-zinc-900 dark:text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-black/5 dark:border-[#1E3A5F] shadow-sm">
+          <span className="absolute top-3 right-3 bg-white/95 dark:bg-black/90 text-zinc-900 dark:text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-black/5 dark:border-white/10 shadow-sm">
             Featured
           </span>
         )}
@@ -64,7 +64,7 @@ export default function ProjectCard({ project }: { project: PortfolioItem }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 text-[10px] sm:text-[11px] font-medium rounded-md bg-zinc-100 dark:bg-white/[0.06] text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-[#1E3A5F]"
+                className="px-2 py-0.5 text-[10px] sm:text-[11px] font-medium rounded-md bg-zinc-100 dark:bg-white/[0.06] text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-white/[0.08]"
               >
                 {tag}
               </span>
@@ -84,7 +84,7 @@ export default function ProjectCard({ project }: { project: PortfolioItem }) {
           </Link>
           <Link
             to={`/portfolio/${project.slug}#case-study`}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-zinc-100 dark:bg-white/[0.06] text-zinc-800 dark:text-white text-xs font-bold border border-zinc-200 dark:border-[#1E3A5F] hover:bg-zinc-200 dark:hover:bg-white/[0.1] transition-colors"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-zinc-100 dark:bg-white/[0.06] text-zinc-800 dark:text-white text-xs font-bold border border-zinc-200 dark:border-white/[0.08] hover:bg-zinc-200 dark:hover:bg-white/[0.1] transition-colors"
           >
             <BookOpen className="w-3.5 h-3.5" /> Case Study
           </Link>

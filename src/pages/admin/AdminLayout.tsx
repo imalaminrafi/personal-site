@@ -88,7 +88,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
     : [];
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-[#0F172A] flex">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0A1628] flex">
       {/* Mobile overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setMobileOpen(false)} />
@@ -97,13 +97,13 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 bg-white dark:bg-[#162032] border-r border-zinc-200 dark:border-[#1E3A5F] transition-all duration-300 flex flex-col overflow-hidden",
+          "fixed inset-y-0 left-0 z-50 bg-white dark:bg-[#0F2040] border-r border-zinc-200 dark:border-white/[0.06] transition-all duration-300 flex flex-col overflow-hidden",
           sidebarOpen ? "w-60" : "w-16",
           mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
       >
         {/* Logo */}
-        <div className={cn("flex items-center gap-2.5 shrink-0 border-b border-zinc-100 dark:border-[#1E3A5F]", sidebarOpen ? "p-4" : "p-3 justify-center")}>
+        <div className={cn("flex items-center gap-2.5 shrink-0 border-b border-zinc-100 dark:border-white/[0.05]", sidebarOpen ? "p-4" : "p-3 justify-center")}>
           <Link to="/admin/dashboard" className="flex items-center gap-2.5 min-w-0">
             <div className="bg-gradient-to-r from-violet-600 to-cyan-500 h-8 w-8 rounded-lg flex items-center justify-center text-white font-black text-xs shrink-0">
               AR
@@ -129,7 +129,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
               />
               {/* Search results dropdown */}
               {searchOpen && searchQuery && searchResults.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-[#162032] rounded-xl border border-zinc-200 dark:border-[#1E3A5F] shadow-lg z-50 py-1 max-h-48 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-[#0F2040] rounded-xl border border-zinc-200 dark:border-white/[0.08] shadow-lg z-50 py-1 max-h-48 overflow-y-auto">
                   {searchResults.map((item) => (
                     <Link
                       key={item.href}
@@ -199,7 +199,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
         </nav>
 
         {/* Bottom actions */}
-        <div className="border-t border-zinc-100 dark:border-[#1E3A5F] p-3 space-y-1 shrink-0">
+        <div className="border-t border-zinc-100 dark:border-white/[0.05] p-3 space-y-1 shrink-0">
           {sidebarOpen && (
             <Link
               to="/"
@@ -227,7 +227,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
         {/* Collapse toggle */}
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="hidden lg:flex items-center justify-center h-8 border-t border-zinc-100 dark:border-[#1E3A5F] text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors shrink-0"
+          className="hidden lg:flex items-center justify-center h-8 border-t border-zinc-100 dark:border-white/[0.05] text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors shrink-0"
         >
           {sidebarOpen ? <ChevronLeft className="w-4 h-4" /> : <PanelRightOpen className="w-4 h-4" />}
         </button>
@@ -236,7 +236,7 @@ export default function AdminLayout({ children, title }: AdminLayoutProps) {
       {/* Main content */}
       <div className={cn("flex-1 flex flex-col min-w-0 transition-all duration-300", sidebarOpen ? "lg:ml-60" : "lg:ml-16")}>
         {/* Header */}
-        <header className="h-14 bg-white dark:bg-[#0F172A] border-b border-zinc-200 dark:border-[#1E3A5F] flex items-center justify-between px-4 lg:px-6 shrink-0">
+        <header className="h-14 bg-white dark:bg-[#0A1628] border-b border-zinc-200 dark:border-white/[0.06] flex items-center justify-between px-4 lg:px-6 shrink-0">
           <div className="flex items-center gap-3">
             <button className="lg:hidden p-1.5 -ml-1.5 text-zinc-400" onClick={() => setMobileOpen(true)} aria-label="Open Sidebar">
               <Menu className="w-5 h-5" />

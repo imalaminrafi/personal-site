@@ -94,12 +94,12 @@ export default function AdminAbout() {
           return (
             <div
               key={card.key}
-              className={`bg-white dark:bg-[#162032] rounded-2xl border transition-all ${
+              className={`bg-white dark:bg-[#0F2040] rounded-2xl border transition-all ${
                 isEditing
                   ? "border-violet-500 ring-2 ring-violet-500/20"
                   : card.visible
-                    ? "border-zinc-200 dark:border-[#1E3A5F] hover:border-violet-200 dark:hover:border-violet-800/40"
-                    : "border-zinc-200/50 dark:border-[#1E3A5F] opacity-60"
+                    ? "border-zinc-200 dark:border-white/[0.06] hover:border-violet-200 dark:hover:border-violet-800/40"
+                    : "border-zinc-200/50 dark:border-white/[0.04] opacity-60"
               }`}
             >
               <div className="p-4">
@@ -107,7 +107,7 @@ export default function AdminAbout() {
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${
                     card.visible
                       ? "bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400"
-                      : "bg-zinc-100 dark:bg-[#1E293B] text-zinc-400"
+                      : "bg-zinc-100 dark:bg-[#14233F] text-zinc-400"
                   }`}>
                     <Icon className="w-4.5 h-4.5" />
                   </div>
@@ -146,7 +146,7 @@ export default function AdminAbout() {
 
       {/* Editing Panel */}
       {editingSection && (
-        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-5 sm:p-6">
+        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5 sm:p-6">
           <div className="flex items-center justify-between mb-5">
             <h3 className="text-sm font-bold text-zinc-900 dark:text-white">
               Editing: {sectionMeta[editingSection].label}
@@ -204,14 +204,14 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 function Input({ value, onChange, placeholder }: { value: string; onChange: (v: string) => void; placeholder?: string }) {
   return (
     <input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder}
-      className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/50 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+      className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0F2040]/50 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
   );
 }
 
 function Textarea({ value, onChange, rows = 3, placeholder }: { value: string; onChange: (v: string) => void; rows?: number; placeholder?: string }) {
   return (
     <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={rows} placeholder={placeholder}
-      className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/50 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none" />
+      className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0F2040]/50 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none" />
   );
 }
 
@@ -261,7 +261,7 @@ function FocusEditor({ data, update }: { data: AboutData; update: (partial: Part
       <Field label="Subheading"><Textarea value={data.focus.subheading} onChange={(v) => update({ focus: { ...data.focus, subheading: v } })} /></Field>
       <Field label="Focus Items">
         {items.map((item, i) => (
-          <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/40 mb-3">
+          <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0F2040]/40 mb-3">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-zinc-500">Item {i + 1}</span>
               <button onClick={() => update({ focus: { ...data.focus, items: items.filter((_, j) => j !== i) } })} className="p-1.5 rounded-lg text-zinc-400 hover:text-red-500"><Trash2 className="w-3.5 h-3.5" /></button>
@@ -283,7 +283,7 @@ function ExperienceEditor({ data, update }: { data: AboutData; update: (partial:
   return (
     <Field label="Timeline Items">
       {items.map((item, i) => (
-        <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/40 mb-3">
+        <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0F2040]/40 mb-3">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-bold text-zinc-500">Position {i + 1}</span>
             <button onClick={() => update({ experience: { ...data.experience, items: items.filter((_, j) => j !== i) } })} className="p-1.5 rounded-lg text-zinc-400 hover:text-red-500"><Trash2 className="w-3.5 h-3.5" /></button>
@@ -308,7 +308,7 @@ function SkillsEditor({ data, update }: { data: AboutData; update: (partial: Par
   return (
     <Field label="Skill Categories">
       {cats.map((cat, i) => (
-        <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/40 mb-3">
+        <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0F2040]/40 mb-3">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold text-zinc-500">Category {i + 1}</span>
             <button onClick={() => update({ skills: { ...data.skills, categories: cats.filter((_, j) => j !== i) } })} className="p-1.5 rounded-lg text-zinc-400 hover:text-red-500"><Trash2 className="w-3.5 h-3.5" /></button>
@@ -335,7 +335,7 @@ function EducationEditor({ data, update }: { data: AboutData; update: (partial: 
   return (
     <Field label="Education Items">
       {items.map((item, i) => (
-        <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/40 mb-3">
+        <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0F2040]/40 mb-3">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold text-zinc-500">Item {i + 1}</span>
             <button onClick={() => update({ education: { ...data.education, items: items.filter((_, j) => j !== i) } })} className="p-1.5 rounded-lg text-zinc-400 hover:text-red-500"><Trash2 className="w-3.5 h-3.5" /></button>
@@ -357,7 +357,7 @@ function CertificationsEditor({ data, update }: { data: AboutData; update: (part
   return (
     <Field label="Certifications">
       {items.map((item, i) => (
-        <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/40 mb-3">
+        <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0F2040]/40 mb-3">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold text-zinc-500">Cert {i + 1}</span>
             <button onClick={() => update({ certifications: { ...data.certifications, items: items.filter((_, j) => j !== i) } })} className="p-1.5 rounded-lg text-zinc-400 hover:text-red-500"><Trash2 className="w-3.5 h-3.5" /></button>
@@ -380,7 +380,7 @@ function ToolsEditor({ data, update }: { data: AboutData; update: (partial: Part
     <Field label="Tools">
       <div className="flex flex-wrap gap-2 mb-3">
         {items.map((item, i) => (
-          <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-[#1E293B] border border-zinc-200 dark:border-[#1E3A5F]">
+          <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-[#14233F] border border-zinc-200 dark:border-white/[0.06]">
             <input value={item.name} onChange={(e) => { const ni = [...items]; ni[i] = { ...ni[i], name: e.target.value }; update({ tools: { ...data.tools, items: ni } }); }} className="bg-transparent text-xs font-medium text-zinc-900 dark:text-white border-none outline-none w-24" />
             <button onClick={() => update({ tools: { ...data.tools, items: items.filter((_, j) => j !== i) } })} className="text-zinc-400 hover:text-red-500"><Trash2 className="w-3 h-3" /></button>
           </div>
@@ -398,7 +398,7 @@ function ValuesEditor({ data, update }: { data: AboutData; update: (partial: Par
       <Field label="Subheading"><Textarea value={data.values.subheading} onChange={(v) => update({ values: { ...data.values, subheading: v } })} /></Field>
       <Field label="Values">
         {items.map((item, i) => (
-          <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032]/40 mb-3">
+          <div key={i} className="p-4 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#0F2040]/40 mb-3">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-zinc-500">Value {i + 1}</span>
               <button onClick={() => update({ values: { ...data.values, items: items.filter((_, j) => j !== i) } })} className="p-1.5 rounded-lg text-zinc-400 hover:text-red-500"><Trash2 className="w-3.5 h-3.5" /></button>

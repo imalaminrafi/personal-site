@@ -91,7 +91,7 @@ export default function ModernHeader() {
                 className={cn(
                     "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
                     isScrolled
-                        ? "py-2 sm:py-3 bg-white/95 dark:bg-[#0F172A]/95 border-b border-zinc-200 dark:border-[#1E3A5F] shadow-sm backdrop-blur-sm"
+                        ? "py-2 sm:py-3 bg-white/95 dark:bg-[#0A1628]/95 border-b border-zinc-200 dark:border-white/[0.06] shadow-sm backdrop-blur-sm"
                         : "py-2 sm:py-3 bg-transparent"
                 )}
             >
@@ -102,7 +102,7 @@ export default function ModernHeader() {
                         onClick={() => setIsMenuOpen(false)}
                         className="flex items-center gap-2.5 text-lg font-black tracking-tighter text-zinc-900 dark:text-white"
                     >
-                        <div className="bg-brand-gradient h-8 w-8 rounded-lg flex items-center justify-center text-[#0F172A] font-black text-sm shadow-md">
+                        <div className="bg-brand-gradient h-8 w-8 rounded-lg flex items-center justify-center text-[#0A1628] font-black text-sm shadow-md">
                             AR
                         </div>
                         <span className="hidden sm:block bg-gradient-to-r from-violet-600 to-cyan-500 dark:from-violet-400 dark:to-cyan-400 bg-clip-text text-transparent">Alamin Rafi</span>
@@ -166,7 +166,7 @@ export default function ModernHeader() {
                             </div>
                         )}
 
-                        <div className="pl-3 border-l border-zinc-200 dark:border-[#1E3A5F]">
+                        <div className="pl-3 border-l border-zinc-200 dark:border-zinc-800">
                             <ThemeToggle />
                         </div>
                     </nav>
@@ -191,15 +191,15 @@ export default function ModernHeader() {
             {isMenuOpen && (
                 <div
                     id="mobile-navigation"
-                    className="lg:hidden fixed inset-0 z-[80] bg-[#0F172A] flex flex-col"
+                    className="lg:hidden fixed inset-0 z-[80] bg-[#0A1628] flex flex-col"
                     role="dialog"
                     aria-modal="true"
                     aria-label="Menu"
                 >
                     {/* Top bar with close */}
-                    <div className="flex items-center justify-between h-14 px-4 sm:px-6 border-b border-[#1E3A5F]">
+                    <div className="flex items-center justify-between h-14 px-4 sm:px-6 border-b border-white/[0.08]">
                         <div className="flex items-center gap-2.5">
-                            <div className="bg-brand-gradient h-8 w-8 rounded-lg flex items-center justify-center text-[#0F172A] font-black text-sm">
+                            <div className="bg-brand-gradient h-8 w-8 rounded-lg flex items-center justify-center text-[#0A1628] font-black text-sm">
                                 AR
                             </div>
                             <span className="text-white font-black tracking-tighter">Alamin Rafi</span>
@@ -220,7 +220,7 @@ export default function ModernHeader() {
                                 key={link.href}
                                 onClick={(e) => handleMenuLink(e, link.href)}
                                 className={cn(
-                                    "w-full text-left py-4 px-2 rounded-xl text-xl font-semibold text-white hover:bg-white/[0.06] transition-colors border-b border-[#1E3A5F]",
+                                    "w-full text-left py-4 px-2 rounded-xl text-xl font-semibold text-white hover:bg-white/[0.06] transition-colors border-b border-white/[0.06]",
                                     activeSection === link.href.split("#")[1] && link.href.includes("#")
                                         ? "text-[#E0C77E]"
                                         : ""
@@ -232,19 +232,19 @@ export default function ModernHeader() {
                     </nav>
 
                     {/* Book a Call — always visible */}
-                    <div className="px-5 pb-10 pt-4 border-t border-[#1E3A5F] bg-[#0F172A]">
+                    <div className="px-5 pb-10 pt-4 border-t border-white/[0.08] bg-[#0A1628]">
                         {user && (
                             <div className="mb-3 flex items-center gap-2">
                                 <Link
                                     to="/dashboard"
                                     onClick={() => setIsMenuOpen(false)}
-                                    className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-[#1E3A5F] px-4 py-3 text-sm font-semibold text-white"
+                                    className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-white/[0.12] px-4 py-3 text-sm font-semibold text-white"
                                 >
                                     <User className="w-4 h-4" /> My Dashboard
                                 </Link>
                                 <button
                                     onClick={() => { logout(); navigate("/"); setIsMenuOpen(false); }}
-                                    className="px-4 py-3 rounded-xl border border-[#1E3A5F] text-zinc-300"
+                                    className="px-4 py-3 rounded-xl border border-white/[0.12] text-zinc-300"
                                     aria-label="Logout"
                                 >
                                     <LogOut className="w-4 h-4" />

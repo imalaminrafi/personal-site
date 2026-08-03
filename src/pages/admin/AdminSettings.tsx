@@ -53,7 +53,7 @@ export default function AdminSiteSettings() {
   return (
     <AdminLayout title="Site Settings">
       <div className="max-w-2xl">
-        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-6 sm:p-8">
+        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-6">
             <Settings className="w-5 h-5 text-violet-500" />
             <h2 className="text-lg font-bold text-zinc-900 dark:text-white">General Settings</h2>
@@ -76,7 +76,7 @@ export default function AdminSiteSettings() {
               <input
                 value={settings.siteName}
                 onChange={(e) => update({ siteName: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
               />
             </div>
 
@@ -86,7 +86,7 @@ export default function AdminSiteSettings() {
                 <input
                   value={settings.email}
                   onChange={(e) => update({ email: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                 />
               </div>
               <div>
@@ -94,7 +94,7 @@ export default function AdminSiteSettings() {
                 <input
                   value={settings.phone}
                   onChange={(e) => update({ phone: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                 />
               </div>
               <div>
@@ -102,7 +102,7 @@ export default function AdminSiteSettings() {
                 <input
                   value={settings.whatsapp}
                   onChange={(e) => update({ whatsapp: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                 />
               </div>
             </div>
@@ -126,13 +126,13 @@ export default function AdminSiteSettings() {
                       value={link.platform}
                       onChange={(e) => updateSocial(idx, "platform", e.target.value)}
                       placeholder="Platform"
-                      className="flex-1 px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                      className="flex-1 px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                     />
                     <input
                       value={link.url}
                       onChange={(e) => updateSocial(idx, "url", e.target.value)}
                       placeholder="URL"
-                      className="flex-[2] px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                      className="flex-[2] px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                     />
                     <button
                       type="button"
@@ -152,7 +152,7 @@ export default function AdminSiteSettings() {
                 value={settings.footer}
                 onChange={(e) => update({ footer: e.target.value })}
                 rows={3}
-                className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none"
+                className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none"
               />
             </div>
 
@@ -162,7 +162,7 @@ export default function AdminSiteSettings() {
               </label>
               <Link
                 to="/admin/analytics"
-                className="flex items-center gap-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-white/[0.03] p-4 transition-colors hover:border-violet-300 dark:hover:border-violet-700"
+                className="flex items-center gap-3 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-white/[0.03] p-4 transition-colors hover:border-violet-300 dark:hover:border-violet-700"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-100 text-violet-600 dark:bg-violet-500/15 dark:text-violet-300">
                   <BarChart3 className="w-5 h-5" />

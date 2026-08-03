@@ -54,7 +54,7 @@ export default function AdminMessages() {
         {list.map((msg) => {
           const open = expanded === msg.id;
           return (
-            <div key={msg.id} className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] overflow-hidden">
+            <div key={msg.id} className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden">
               <button onClick={() => setExpanded(open ? null : msg.id)}
                 className="w-full flex items-start gap-4 p-5 text-left">
                 <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-bold text-sm shrink-0">
@@ -76,7 +76,7 @@ export default function AdminMessages() {
               </button>
 
               {open && (
-                <div className="px-5 pb-5 pt-0 border-t border-zinc-100 dark:border-[#1E3A5F]">
+                <div className="px-5 pb-5 pt-0 border-t border-zinc-100 dark:border-white/[0.05]">
                   <div className="mt-4 space-y-2">
                     <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300">
                       <Mail className="w-4 h-4 text-zinc-400" /> {msg.email}
@@ -88,7 +88,7 @@ export default function AdminMessages() {
                   <p className="mt-4 text-sm text-zinc-700 dark:text-zinc-200 whitespace-pre-wrap">{msg.message}</p>
                   <div className="flex items-center gap-2 mt-4">
                     <button onClick={() => toggleReplied(msg.id)}
-                      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-colors ${msg.replied ? "bg-zinc-100 dark:bg-[#1E293B] text-zinc-500" : "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-500/20"}`}>
+                      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-colors ${msg.replied ? "bg-zinc-100 dark:bg-[#14233F] text-zinc-500" : "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-500/20"}`}>
                       <CheckCircle2 className="w-3.5 h-3.5" /> {msg.replied ? "Mark Unread" : "Mark Replied"}
                     </button>
                     <button onClick={() => deleteMsg(msg.id)}

@@ -58,7 +58,7 @@ export default function AdminTestimonials() {
 
       <div className="grid gap-4">
         {list.map((t) => (
-          <div key={t.id} className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-5 flex items-start gap-4">
+          <div key={t.id} className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-5 flex items-start gap-4">
             <div className="w-12 h-12 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-bold text-sm shrink-0">
               {t.clientName.charAt(0) || "?"}
             </div>
@@ -73,7 +73,7 @@ export default function AdminTestimonials() {
                   <Star key={s} className={`w-3 h-3 ${s <= t.rating ? "text-amber-400 fill-amber-400" : "text-zinc-300 dark:text-zinc-600"}`} />
                 ))}
                 {t.featured && <span className="ml-2 text-[10px] font-bold text-violet-500 bg-violet-50 dark:bg-violet-500/10 px-1.5 py-0.5 rounded">FEATURED</span>}
-                {!t.published && <span className="ml-1 text-[10px] font-bold text-zinc-400 bg-zinc-100 dark:bg-[#1E293B] px-1.5 py-0.5 rounded">DRAFT</span>}
+                {!t.published && <span className="ml-1 text-[10px] font-bold text-zinc-400 bg-zinc-100 dark:bg-[#14233F] px-1.5 py-0.5 rounded">DRAFT</span>}
               </div>
               <p className="text-sm text-zinc-600 dark:text-zinc-300 mt-1.5 line-clamp-2">{t.review}</p>
             </div>
@@ -101,8 +101,8 @@ export default function AdminTestimonials() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={() => setModal(null)}>
-          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-[#1E3A5F] shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-[#1E3A5F]">
+          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05]">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
                 {list.find((t) => t.id === modal.id) ? "Edit Testimonial" : "New Testimonial"}
               </h2>
@@ -115,19 +115,19 @@ export default function AdminTestimonials() {
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Client Name</label>
                   <input value={modal.clientName} onChange={(e) => setModal({ ...modal, clientName: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" required />
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" required />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Company</label>
                   <input value={modal.company} onChange={(e) => setModal({ ...modal, company: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Country</label>
                   <input value={modal.country} onChange={(e) => setModal({ ...modal, country: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Rating (1-5)</label>
@@ -144,7 +144,7 @@ export default function AdminTestimonials() {
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Review</label>
                 <textarea value={modal.review} onChange={(e) => setModal({ ...modal, review: e.target.value })}
-                  rows={4} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none" required />
+                  rows={4} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none" required />
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Client Photo</label>
@@ -154,12 +154,12 @@ export default function AdminTestimonials() {
                 <label className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
                   <input type="checkbox" checked={modal.featured}
                     onChange={(e) => setModal({ ...modal, featured: e.target.checked })}
-                    className="rounded border-zinc-300 dark:border-[#1E3A5F]" /> Featured
+                    className="rounded border-zinc-300 dark:border-zinc-600" /> Featured
                 </label>
                 <label className="flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
                   <input type="checkbox" checked={modal.published}
                     onChange={(e) => setModal({ ...modal, published: e.target.checked })}
-                    className="rounded border-zinc-300 dark:border-[#1E3A5F]" /> Published
+                    className="rounded border-zinc-300 dark:border-zinc-600" /> Published
                 </label>
               </div>
               <div className="flex justify-end gap-3 pt-2">

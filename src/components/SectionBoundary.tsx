@@ -35,7 +35,7 @@ export function SectionFallback({ label }: { label: string }) {
   return (
     <div role="alert" className="py-10 sm:py-14">
       <div className="mx-auto max-w-5xl px-5 sm:px-6">
-        <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-[#1E3A5F] dark:bg-[#162032]/60">
+        <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-[#0F2040]/60">
           <svg
             className="mx-auto mb-3 h-6 w-6 text-amber-500"
             fill="none"

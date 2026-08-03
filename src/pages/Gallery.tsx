@@ -57,7 +57,7 @@ export default function GalleryPage() {
                 key={item.id}
                 onClick={() => setLightbox(i)}
                 aria-label={`View ${item.alt}`}
-                className="group relative aspect-square overflow-hidden rounded-xl bg-zinc-100 dark:bg-[#1E293B]"
+                className="group relative aspect-square overflow-hidden rounded-xl bg-zinc-100 dark:bg-[#14233F]"
               >
                 <img
                   src={getOptimizedUrl(item.src, { width: 500, crop: "limit", quality: "auto", format: "auto" })}

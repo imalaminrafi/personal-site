@@ -15,7 +15,7 @@ function SocialLink({ href, label, icon }: SocialLinkProps) {
       rel="noopener noreferrer"
       aria-label={label}
       title={label}
-      className="w-10 h-10 rounded-xl bg-white/[0.06] backdrop-blur-md border border-[#1E3A5F]
+      className="w-10 h-10 rounded-xl bg-white/[0.06] backdrop-blur-md border border-white/10
         flex items-center justify-center text-white hover:text-[#C9A84C] hover:border-[#C9A84C]/40
         transition-colors"
     >
@@ -43,7 +43,7 @@ const particles = [
 /* ─── Main Hero ─────────────────────────────────────────────────────── */
 export default function ModernHeroVisual() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#0F172A]">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#0A1628]">
 
       {/* ─── Subdued background image (kept as subtle texture) ─── */}
       <div className="absolute inset-0 z-0 opacity-[0.14]">
@@ -63,11 +63,11 @@ export default function ModernHeroVisual() {
       </div>
 
       {/* Navy overlay + subtle grid */}
-      <div className="absolute inset-0 z-0 bg-[#0F172A]/70" />
+      <div className="absolute inset-0 z-0 bg-[#0A1628]/70" />
       <div className="absolute inset-0 z-0 hero-grid-texture opacity-50" />
 
       {/* Static subtle gradient (mobile) — replaces animated effects */}
-      <div className="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-[#1E293B]/90 via-[#0F172A] to-[#0F172A]" />
+      <div className="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-[#0D1B33]/90 via-[#0A1628] to-[#0A1628]" />
 
       {/* Soft gold glow orbs */}
       <div className="hero-glow-orb w-[28rem] h-[28rem] -top-32 left-1/2 -translate-x-1/2" />
@@ -99,7 +99,7 @@ export default function ModernHeroVisual() {
 
         <h1 className="text-[32px] leading-[1.15] sm:text-6xl lg:text-7xl sm:leading-[1.08] font-black text-white tracking-tight mb-5 sm:mb-6 drop-shadow-xl">
           From Small Business to{" "}
-          <span className="bg-gradient-to-r from-[#C9A84C] to-[#D4B86A] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#C9A84C] to-[#E6C97A] bg-clip-text text-transparent">
             Smart Business
           </span>{" "}
           <span className="hidden sm:inline">— with AI</span>

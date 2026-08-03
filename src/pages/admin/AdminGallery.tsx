@@ -64,14 +64,14 @@ export default function AdminGallery() {
         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
         <input value={search} onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by alt text..."
-          className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+          className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
       </div>
 
       {/* Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filtered.map((item) => (
-          <div key={item.id} className="group bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] overflow-hidden">
-            <div className="aspect-[4/3] bg-zinc-100 dark:bg-[#162032] flex items-center justify-center">
+          <div key={item.id} className="group bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden">
+            <div className="aspect-[4/3] bg-zinc-100 dark:bg-[#0F2040] flex items-center justify-center">
               {item.src ? (
                 <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
               ) : (
@@ -104,8 +104,8 @@ export default function AdminGallery() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={() => setModal(null)}>
-          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-[#1E3A5F] shadow-xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-[#1E3A5F]">
+          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05]">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
                 {list.find((item) => item.id === modal.id) ? "Edit Item" : "New Gallery Item"}
               </h2>
@@ -121,12 +121,12 @@ export default function AdminGallery() {
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Alt Text</label>
                 <input value={modal.alt} onChange={(e) => setModal({ ...modal, alt: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" required />
+                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" required />
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Category</label>
                 <select value={modal.category} onChange={(e) => setModal({ ...modal, category: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40">
+                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40">
                   {CATEGORIES.map((cat) => (
                     <option key={cat} value={cat}>{cat}</option>
                   ))}

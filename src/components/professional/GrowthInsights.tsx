@@ -22,7 +22,7 @@ export default function GrowthInsights() {
     if (posts.length === 0) return null;
 
     return (
-        <section id="insights" className="bg-white dark:bg-[#0F172A] py-12 sm:py-14 border-t border-zinc-100 dark:border-[#1E3A5F]">
+        <section id="insights" className="bg-white dark:bg-[#0A1628] py-12 sm:py-14 border-t border-zinc-100 dark:border-white/[0.05]">
             <div className="max-w-5xl mx-auto px-5 sm:px-6">
                 <div className="mb-8 sm:mb-12">
                     <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-2">
@@ -41,9 +41,9 @@ export default function GrowthInsights() {
                         <Link
                             key={post.id}
                             to={`/blog/${post.slug}`}
-                            className="group flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 hover:shadow-lg transition-all duration-300"
+                            className="group flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 hover:shadow-lg transition-all duration-300"
                         >
-                            <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-[#1E293B]">
+                            <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-[#14233F]">
                                 {post.featuredImage ? (
                                     <img
                                         src={getOptimizedUrl(post.featuredImage, { width: 800, crop: "limit", quality: "auto", format: "auto" })}

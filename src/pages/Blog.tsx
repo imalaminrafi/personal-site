@@ -56,7 +56,7 @@ export default function Blog() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0F172A]">
+    <div className="min-h-screen bg-white dark:bg-[#0A1628]">
       <Header />
 
       <main>
@@ -73,12 +73,12 @@ export default function Blog() {
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <div className="relative flex-1 min-w-[200px] max-w-sm">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
-              <input type="text" placeholder="Search articles..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] text-sm focus:outline-none focus:border-violet-400 dark:focus:border-violet-500 transition-colors" />
+              <input type="text" placeholder="Search articles..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm focus:outline-none focus:border-violet-400 dark:focus:border-violet-500 transition-colors" />
             </div>
-            <select value={category} onChange={(e) => setCategory(e.target.value)} className="px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] text-sm focus:outline-none">
+            <select value={category} onChange={(e) => setCategory(e.target.value)} className="px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm focus:outline-none">
               {["All", ...CATEGORIES].map((c) => <option key={c}>{c}</option>)}
             </select>
-            <select value={sort} onChange={(e) => setSort(e.target.value as "newest" | "oldest")} className="px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] text-sm focus:outline-none">
+            <select value={sort} onChange={(e) => setSort(e.target.value as "newest" | "oldest")} className="px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm focus:outline-none">
               <option value="newest">Newest First</option><option value="oldest">Oldest First</option>
             </select>
           </div>
@@ -87,7 +87,7 @@ export default function Blog() {
             <div className="flex flex-wrap items-center gap-2 mb-8">
               <span className="text-[11px] font-bold uppercase text-zinc-400 mr-1">Tags:</span>
               {allTags.map((tag) => (
-                <button key={tag} onClick={() => handleTagClick(tag)} className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-colors ${selectedTag === tag ? "bg-violet-600 text-white" : "bg-zinc-100 dark:bg-[#1E293B] text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700"}`}>{tag}</button>
+                <button key={tag} onClick={() => handleTagClick(tag)} className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-colors ${selectedTag === tag ? "bg-violet-600 text-white" : "bg-zinc-100 dark:bg-[#14233F] text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700"}`}>{tag}</button>
               ))}
             </div>
           )}
@@ -103,8 +103,8 @@ export default function Blog() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginated.map((post) => (
-                  <Link key={post.id} to={`/blog/${post.slug}`} className="group flex flex-col rounded-2xl overflow-hidden border border-zinc-100 dark:border-[#1E3A5F] bg-zinc-50/50 dark:bg-[#162032] hover:border-violet-200 dark:hover:border-violet-800/40 hover:shadow-lg hover:shadow-violet-500/5 transition-all duration-300">
-                    <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-[#1E293B]">
+                  <Link key={post.id} to={`/blog/${post.slug}`} className="group flex flex-col rounded-2xl overflow-hidden border border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-[#0F2040] hover:border-violet-200 dark:hover:border-violet-800/40 hover:shadow-lg hover:shadow-violet-500/5 transition-all duration-300">
+                    <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-[#14233F]">
                       {post.featuredImage ? (
                         <img
                           src={getOptimizedUrl(post.featuredImage, { width: 800, crop: "limit", quality: "auto", format: "auto" })}
@@ -141,11 +141,11 @@ export default function Blog() {
 
               {totalPages > 1 && (
                 <div className="flex items-center justify-center gap-2 mt-12">
-                  <button onClick={() => setPage(Math.max(1, page - 1))} disabled={page === 1} className="p-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"><ChevronLeft className="w-4 h-4" /></button>
+                  <button onClick={() => setPage(Math.max(1, page - 1))} disabled={page === 1} className="p-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"><ChevronLeft className="w-4 h-4" /></button>
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                    <button key={p} onClick={() => setPage(p)} className={`w-9 h-9 rounded-xl text-xs font-bold transition-colors ${page === p ? "bg-violet-600 text-white" : "border border-zinc-200 dark:border-[#1E3A5F] text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"}`}>{p}</button>
+                    <button key={p} onClick={() => setPage(p)} className={`w-9 h-9 rounded-xl text-xs font-bold transition-colors ${page === p ? "bg-violet-600 text-white" : "border border-zinc-200 dark:border-white/[0.08] text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"}`}>{p}</button>
                   ))}
-                  <button onClick={() => setPage(Math.min(totalPages, page + 1))} disabled={page === totalPages} className="p-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"><ChevronRight className="w-4 h-4" /></button>
+                  <button onClick={() => setPage(Math.min(totalPages, page + 1))} disabled={page === totalPages} className="p-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"><ChevronRight className="w-4 h-4" /></button>
                 </div>
               )}
             </>

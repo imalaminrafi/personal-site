@@ -31,7 +31,7 @@ export default function AdminPricing() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {plans.map((plan, idx) => (
-              <div key={plan.id} className="bg-white dark:bg-[#162032] p-6 rounded-2xl border border-zinc-200 dark:border-[#1E3A5F]">
+              <div key={plan.id} className="bg-white dark:bg-[#0F2040] p-6 rounded-2xl border border-zinc-200 dark:border-white/[0.08]">
                 <p className="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest mb-1">{plan.name}</p>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-2xl font-black text-zinc-900 dark:text-white">{plan.priceLabel}</span>
@@ -40,7 +40,7 @@ export default function AdminPricing() {
                   <label htmlFor={`price-label-${plan.id}`} className="block text-xs font-bold text-zinc-400 uppercase">Edit Price Label</label>
                   <input 
                     id={`price-label-${plan.id}`}
-                    className="w-full px-3 py-2 rounded-lg border border-zinc-100 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032] text-sm"
+                    className="w-full px-3 py-2 rounded-lg border border-zinc-100 dark:border-white/[0.05] bg-zinc-50 dark:bg-[#0F2040] text-sm"
                     defaultValue={plan.priceLabel}
                     onBlur={(e) => {
                       const updated = [...plans];
@@ -61,10 +61,10 @@ export default function AdminPricing() {
               <Plus className="w-5 h-5 text-violet-500" /> Add-ons
             </h2>
           </div>
-          <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] overflow-hidden">
+          <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden">
             <table className="w-full text-left">
               <thead>
-                <tr className="border-b border-zinc-100 dark:border-[#1E3A5F]">
+                <tr className="border-b border-zinc-100 dark:border-white/[0.05]">
                   <th className="px-6 py-4 text-xs font-bold text-zinc-400 uppercase tracking-widest">Name</th>
                   <th className="px-6 py-4 text-xs font-bold text-zinc-400 uppercase tracking-widest">Price Label</th>
                   <th className="px-6 py-4 text-xs font-bold text-zinc-400 uppercase tracking-widest text-right">Actions</th>
@@ -78,7 +78,7 @@ export default function AdminPricing() {
                        <label htmlFor={`addon-price-${addon.id}`} className="sr-only">Price Label for {addon.name}</label>
                        <input 
                         id={`addon-price-${addon.id}`}
-                        className="px-3 py-1.5 rounded-lg border border-zinc-100 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#162032] text-sm"
+                        className="px-3 py-1.5 rounded-lg border border-zinc-100 dark:border-white/[0.05] bg-zinc-50 dark:bg-[#0F2040] text-sm"
                         defaultValue={addon.priceLabel}
                         onBlur={(e) => {
                           const updated = [...addons];
@@ -106,15 +106,15 @@ export default function AdminPricing() {
         {/* Maintenance */}
         <section>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-white mb-6">Maintenance Option</h2>
-          <div className="bg-white dark:bg-[#162032] p-6 rounded-2xl border border-zinc-200 dark:border-[#1E3A5F]">
+          <div className="bg-white dark:bg-[#0F2040] p-6 rounded-2xl border border-zinc-200 dark:border-white/[0.08]">
              <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
                   <label htmlFor="maint-name" className="block text-xs font-bold text-zinc-400 uppercase mb-2">Label</label>
-                   <input id="maint-name" className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#162032] border-zinc-100 dark:border-[#1E3A5F]" defaultValue={maint.name} onBlur={(e) => saveMaint({ ...maint, name: e.target.value })} />
+                   <input id="maint-name" className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#0F2040] border-zinc-100 dark:border-white/[0.05]" defaultValue={maint.name} onBlur={(e) => saveMaint({ ...maint, name: e.target.value })} />
                 </div>
                 <div className="flex-1">
                   <label htmlFor="maint-price" className="block text-xs font-bold text-zinc-400 uppercase mb-2">Price Info</label>
-                  <input id="maint-price" className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#162032] border-zinc-100 dark:border-[#1E3A5F]" defaultValue={maint.priceLabel} onBlur={(e) => saveMaint({ ...maint, priceLabel: e.target.value })} />
+                  <input id="maint-price" className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-[#0F2040] border-zinc-100 dark:border-white/[0.05]" defaultValue={maint.priceLabel} onBlur={(e) => saveMaint({ ...maint, priceLabel: e.target.value })} />
                 </div>
              </div>
           </div>

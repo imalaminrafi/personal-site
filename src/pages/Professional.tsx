@@ -10,7 +10,7 @@ import SectionBoundary from "@/components/SectionBoundary";
 
 export default function ProfessionalPage() {
     return (
-        <div className="min-h-screen bg-white dark:bg-[#0F172A]">
+        <div className="min-h-screen bg-white dark:bg-[#0A1628]">
             <ProfessionalHeader />
             <main>
                 <SectionBoundary name="Hero"><ProfessionalHero /></SectionBoundary>

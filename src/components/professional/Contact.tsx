@@ -39,10 +39,10 @@ export default function ProfessionalContact() {
     };
 
     const inputClasses =
-        "w-full px-4 py-3.5 rounded-xl bg-zinc-50 dark:bg-[#1E293B] border border-zinc-200 dark:border-[#1E3A5F] text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:border-transparent transition-all text-[15px]";
+        "w-full px-4 py-3.5 rounded-xl bg-zinc-50 dark:bg-[#14233F] border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#C9A84C] focus:border-transparent transition-all text-[15px]";
 
     return (
-        <section id="contact" className="bg-zinc-50 dark:bg-[#1E293B] py-12 sm:py-24 border-t border-zinc-100 dark:border-[#1E3A5F]">
+        <section id="contact" className="bg-zinc-50 dark:bg-[#0D1B33] py-12 sm:py-24 border-t border-zinc-100 dark:border-white/[0.05]">
             <div className="max-w-6xl mx-auto px-5 sm:px-6">
                 {/* ─── Mobile headline ─── */}
                 <div className="sm:hidden mb-8">
@@ -89,7 +89,7 @@ export default function ProfessionalContact() {
                     <a
                         href="#contact-form"
                         onClick={scrollToForm}
-                        className="flex items-center justify-center gap-2 w-full border border-zinc-300 dark:border-[#1E3A5F] text-zinc-700 dark:text-zinc-200 font-bold py-4 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06] active:scale-[0.99] transition-all"
+                        className="flex items-center justify-center gap-2 w-full border border-zinc-300 dark:border-white/20 text-zinc-700 dark:text-zinc-200 font-bold py-4 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06] active:scale-[0.99] transition-all"
                     >
                         <Mail className="h-5 w-5" /> Send a Message
                     </a>
@@ -103,9 +103,9 @@ export default function ProfessionalContact() {
                             href="mailto:hello@alaminrafi.com"
                             data-ga="email_click"
                             data-ga-location="contact"
-                            className="flex items-start gap-4 bg-white dark:bg-[#162032] p-5 rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 group"
+                            className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 group"
                         >
-                            <div className="h-11 w-11 rounded-xl bg-[#C9A84C]/12 dark:bg-[#C9A84C]/15 flex items-center justify-center text-[#C9A84C] dark:text-[#E0C77E] shrink-0 group-hover:bg-[#C9A84C] group-hover:text-[#0F172A] transition-all duration-300">
+                            <div className="h-11 w-11 rounded-xl bg-[#C9A84C]/12 dark:bg-[#C9A84C]/15 flex items-center justify-center text-[#C9A84C] dark:text-[#E0C77E] shrink-0 group-hover:bg-[#C9A84C] group-hover:text-[#0A1628] transition-all duration-300">
                                 <Mail className="h-5 w-5" />
                             </div>
                             <div>
@@ -122,7 +122,7 @@ export default function ProfessionalContact() {
                             rel="noopener noreferrer"
                             data-ga="whatsapp_click"
                             data-ga-location="contact"
-                            className="flex items-start gap-4 bg-white dark:bg-[#162032] p-5 rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] hover:shadow-md hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 group"
+                            className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-emerald-200 dark:hover:border-emerald-800 transition-all duration-300 group"
                         >
                             <div className="h-11 w-11 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
                                 <MessageCircle className="h-5 w-5" />
@@ -139,9 +139,9 @@ export default function ProfessionalContact() {
                             href={FIVERR_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-start gap-4 bg-white dark:bg-[#162032] p-5 rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] hover:shadow-md hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 transition-all duration-300 group"
+                            className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 transition-all duration-300 group"
                         >
-                            <div className="h-11 w-11 rounded-xl bg-[#C9A84C]/12 dark:bg-[#C9A84C]/15 flex items-center justify-center text-[#C9A84C] dark:text-[#E0C77E] shrink-0 group-hover:bg-[#C9A84C] group-hover:text-[#0F172A] transition-all duration-300">
+                            <div className="h-11 w-11 rounded-xl bg-[#C9A84C]/12 dark:bg-[#C9A84C]/15 flex items-center justify-center text-[#C9A84C] dark:text-[#E0C77E] shrink-0 group-hover:bg-[#C9A84C] group-hover:text-[#0A1628] transition-all duration-300">
                                 <Briefcase className="h-5 w-5" />
                             </div>
                             <div>
@@ -158,9 +158,9 @@ export default function ProfessionalContact() {
                             rel="noopener noreferrer"
                             data-ga="website_click"
                             data-ga-location="contact"
-                            className="flex items-start gap-4 bg-white dark:bg-[#162032] p-5 rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 group"
+                            className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-zinc-800 hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 group"
                         >
-                            <div className="h-11 w-11 rounded-xl bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 group-hover:bg-[#C9A84C] group-hover:text-[#0F172A] transition-all duration-300">
+                            <div className="h-11 w-11 rounded-xl bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 group-hover:bg-[#C9A84C] group-hover:text-[#0A1628] transition-all duration-300">
                                 <Globe className="h-5 w-5" />
                             </div>
                             <div>
@@ -171,7 +171,7 @@ export default function ProfessionalContact() {
                         </a>
 
                         {/* Location */}
-                        <div className="flex items-start gap-4 bg-white dark:bg-[#162032] p-5 rounded-2xl border border-zinc-100 dark:border-[#1E3A5F]">
+                        <div className="flex items-start gap-4 bg-white dark:bg-[#0F2040] p-5 rounded-2xl border border-zinc-100 dark:border-white/[0.08]">
                             <div className="h-11 w-11 rounded-xl bg-slate-100 dark:bg-slate-400/10 flex items-center justify-center text-slate-600 dark:text-slate-300 shrink-0">
                                 <MapPin className="h-5 w-5" />
                             </div>
@@ -183,16 +183,16 @@ export default function ProfessionalContact() {
                         </div>
 
                         {/* Availability note */}
-                        <div className="bg-gradient-to-r from-[#C9A84C] to-[#D4B86A] p-5 rounded-2xl text-[#0F172A]">
+                        <div className="bg-gradient-to-r from-[#C9A84C] to-[#E6C97A] p-5 rounded-2xl text-[#0A1628]">
                             <p className="font-semibold mb-1">🟢 Currently Available</p>
-                            <p className="text-sm text-[#0F172A]/80 leading-relaxed">
+                            <p className="text-sm text-[#0A1628]/80 leading-relaxed">
                                 I'm open to new website projects, growth partnerships, and long-term digital support. Let's talk!
                             </p>
                         </div>
                     </div>
 
                     {/* Contact Form – Right */}
-                    <div id="contact-form" className="lg:col-span-3 bg-white dark:bg-[#162032] rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] p-6 sm:p-8 shadow-sm scroll-mt-24">
+                    <div id="contact-form" className="lg:col-span-3 bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-6 sm:p-8 shadow-sm scroll-mt-24">
                         {submitted ? (
                             <div className="h-full flex flex-col items-center justify-center text-center py-16">
                                 <CheckCircle2 className="h-12 w-12 text-emerald-500 mb-4" />
@@ -246,7 +246,7 @@ export default function ProfessionalContact() {
 
                                 <button
                                     type="submit"
-                                    className="w-full flex items-center justify-center gap-2 bg-[#C9A84C] text-[#0F172A] font-semibold py-4 rounded-xl transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-[#C9A84C]/25 active:scale-[0.99]"
+                                    className="w-full flex items-center justify-center gap-2 bg-[#C9A84C] text-[#0A1628] font-semibold py-4 rounded-xl transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-[#C9A84C]/25 active:scale-[0.99]"
                                 >
                                     <Send className="h-4 w-4" />
                                     Send Message

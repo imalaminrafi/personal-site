@@ -14,7 +14,7 @@ export default function BookCard({ book }: { book: Book }) {
       {/* Cover tile */}
       <Link
         to={`/books/${book.id}`}
-        className="relative block aspect-[16/10] overflow-hidden rounded-xl border border-zinc-200/80 dark:border-[#1E3A5F] bg-zinc-100 dark:bg-[#162032]"
+        className="relative block aspect-[16/10] overflow-hidden rounded-xl border border-zinc-200/80 dark:border-white/[0.08] bg-zinc-100 dark:bg-[#0F2040]"
       >
         {book.cover ? (
           <img
@@ -50,7 +50,7 @@ export default function BookCard({ book }: { book: Book }) {
         </div>
 
         {/* Price + buy */}
-        <div className="mt-4 flex items-center justify-between gap-3 border-t border-zinc-100 pt-3 dark:border-[#1E3A5F]">
+        <div className="mt-4 flex items-center justify-between gap-3 border-t border-zinc-100 pt-3 dark:border-white/[0.06]">
           <span className="text-[15px] font-bold text-zinc-900 dark:text-white">{book.price}</span>
           <a
             href={book.buyUrl}

@@ -113,9 +113,9 @@ export default function CloudinaryMultiUploader({
       {urls.length > 0 && (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3">
           {urls.map((url, i) => (
-            <div key={i} className="relative aspect-square rounded-xl overflow-hidden border border-zinc-200 dark:border-[#1E3A5F] group">
+            <div key={i} className="relative aspect-square rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] group">
               {url.toLowerCase().endsWith(".pdf") ? (
-                <div className="w-full h-full bg-zinc-100 dark:bg-[#162032] flex items-center justify-center text-red-500">
+                <div className="w-full h-full bg-zinc-100 dark:bg-[#0F2040] flex items-center justify-center text-red-500">
                   <div className="text-center">
                     <div className="text-[10px] font-black uppercase bg-red-500/10 text-red-500 rounded px-1.5 py-0.5 inline-block">PDF</div>
                   </div>
@@ -171,7 +171,7 @@ export default function CloudinaryMultiUploader({
         className={`border-2 border-dashed rounded-xl p-5 text-center transition-all ${
           dragOver
             ? "border-violet-500 bg-violet-50 dark:bg-violet-900/20"
-            : "border-zinc-200 dark:border-[#1E3A5F]"
+            : "border-zinc-200 dark:border-white/[0.08]"
         }`}
       >
         <input

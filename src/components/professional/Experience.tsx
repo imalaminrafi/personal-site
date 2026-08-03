@@ -75,7 +75,7 @@ const typeColor: Record<string, string> = {
 
 export default function ProfessionalExperience() {
     return (
-        <section className="bg-white dark:bg-[#0F172A] py-24 border-t border-zinc-100 dark:border-[#1E3A5F]">
+        <section className="bg-white dark:bg-[#0A1628] py-24 border-t border-zinc-100 dark:border-zinc-800">
             <div className="max-w-6xl mx-auto px-6">
                 <p className="text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">Experience</p>
                 <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-16 max-w-2xl leading-snug">
@@ -90,11 +90,11 @@ export default function ProfessionalExperience() {
                         {experiences.map((exp, index) => (
                             <div key={index} className="md:pl-12 relative">
                                 {/* Timeline dot */}
-                                <div className="absolute left-0 top-1.5 h-6 w-6 rounded-full border-2 border-violet-500 bg-white dark:bg-[#0F172A] hidden md:flex items-center justify-center">
+                                <div className="absolute left-0 top-1.5 h-6 w-6 rounded-full border-2 border-violet-500 bg-white dark:bg-[#0A1628] hidden md:flex items-center justify-center">
                                     <div className="h-2 w-2 rounded-full bg-violet-500" />
                                 </div>
 
-                                <div className="bg-zinc-50 dark:bg-[#162032] rounded-2xl p-7 border border-zinc-100 dark:border-[#1E3A5F] hover:shadow-md transition-shadow duration-300">
+                                <div className="bg-zinc-50 dark:bg-[#0F2040] rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:shadow-md transition-shadow duration-300">
                                     {/* Header */}
                                     <div className="flex flex-wrap items-start justify-between gap-3 mb-1">
                                         <div>

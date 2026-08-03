@@ -129,7 +129,7 @@ export default function BlogPost() {
     : cleanContent + `<p class="mt-8"><a href="/about-alamin-rafi" class="text-violet-600 dark:text-violet-400 font-bold hover:underline">About Alamin Rafi</a> — Professional website developer and designer helping businesses grow online.</p>`;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0F172A]">
+    <div className="min-h-screen bg-white dark:bg-[#0A1628]">
       <Header />
 
       <article className="max-w-4xl mx-auto px-6 pt-32 pb-20">
@@ -161,7 +161,7 @@ export default function BlogPost() {
         </header>
 
         {(post.featuredImage || post.ogImage) && (
-          <div className="aspect-[21/9] rounded-3xl overflow-hidden mb-12 border border-zinc-100 dark:border-[#1E3A5F] shadow-xl shadow-zinc-200/20 dark:shadow-none">
+          <div className="aspect-[21/9] rounded-3xl overflow-hidden mb-12 border border-zinc-100 dark:border-white/[0.05] shadow-xl shadow-zinc-200/20 dark:shadow-none">
             <img
               src={getOptimizedUrl(post.featuredImage || post.ogImage, { width: 1600, crop: "limit", quality: "auto", format: "auto" })}
               srcSet={getSrcSet(post.featuredImage || post.ogImage) || undefined}
@@ -176,7 +176,7 @@ export default function BlogPost() {
           </div>
         )}
 
-        <div className="flex items-center gap-4 pb-8 mb-10 border-b border-zinc-100 dark:border-[#1E3A5F]">
+        <div className="flex items-center gap-4 pb-8 mb-10 border-b border-zinc-100 dark:border-white/[0.05]">
           <Link to="/about-alamin-rafi" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-bold text-sm overflow-hidden">
               {author.image ? <img src={author.image} alt={author.name} className="w-full h-full object-cover" /> : (post.author || "AR").charAt(0).toUpperCase()}
@@ -199,7 +199,7 @@ export default function BlogPost() {
               <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4">Gallery</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {post.galleryImages.map((img, i) => (
-                  <a key={i} href={img} target="_blank" rel="noopener noreferrer" className="aspect-video rounded-xl overflow-hidden border border-zinc-200 dark:border-[#1E3A5F]">
+                  <a key={i} href={img} target="_blank" rel="noopener noreferrer" className="aspect-video rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08]">
                     <img src={getOptimizedUrl(img, { width: 600, crop: "limit", quality: "auto", format: "auto" })} alt={`${post.title} gallery ${i + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                   </a>
                 ))}
@@ -208,11 +208,11 @@ export default function BlogPost() {
           )}
 
           {post.faq && post.faq.length > 0 && (
-            <div className="mt-12 bg-zinc-50 dark:bg-[#162032]/40 rounded-2xl p-6 border border-zinc-100 dark:border-[#1E3A5F]">
+            <div className="mt-12 bg-zinc-50 dark:bg-[#0F2040]/40 rounded-2xl p-6 border border-zinc-100 dark:border-white/[0.05]">
               <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-4">Frequently Asked Questions</h3>
               <div className="space-y-3">
                 {post.faq.map((item, i) => (
-                  <details key={i} className="group bg-white dark:bg-[#162032] rounded-xl border border-zinc-200 dark:border-[#1E3A5F] overflow-hidden">
+                  <details key={i} className="group bg-white dark:bg-[#0F2040] rounded-xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden">
                     <summary className="px-4 py-3 font-bold text-sm text-zinc-900 dark:text-white cursor-pointer hover:bg-zinc-50 dark:hover:bg-white/[0.02] transition-colors list-none flex items-center justify-between">
                       <span>{item.question}</span>
                       <svg className="w-4 h-4 text-zinc-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
@@ -228,12 +228,12 @@ export default function BlogPost() {
             <div className="mt-10 flex flex-wrap items-center gap-2">
               <Tag className="w-4 h-4 text-zinc-400" />
               {post.tags.map((tag) => (
-                <Link key={tag} to={`/blog?tag=${encodeURIComponent(tag)}`} className="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-[#1E293B] text-zinc-600 dark:text-zinc-400 text-[11px] font-bold hover:bg-violet-100 dark:hover:bg-violet-900/20 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">{tag}</Link>
+                <Link key={tag} to={`/blog?tag=${encodeURIComponent(tag)}`} className="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-[#14233F] text-zinc-600 dark:text-zinc-400 text-[11px] font-bold hover:bg-violet-100 dark:hover:bg-violet-900/20 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">{tag}</Link>
               ))}
             </div>
           )}
 
-          <div className="mt-10 pt-8 border-t border-zinc-100 dark:border-[#1E3A5F]">
+          <div className="mt-10 pt-8 border-t border-zinc-100 dark:border-white/[0.05]">
             <p className="text-sm font-bold text-zinc-700 dark:text-zinc-300 mb-3">Share this article</p>
             <SocialShare url={postUrl} title={post.title} />
           </div>
@@ -249,7 +249,7 @@ export default function BlogPost() {
         <section className="max-w-4xl mx-auto px-6 pb-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {prev ? (
-              <Link to={`/blog/${prev.slug}`} className="flex items-center gap-3 p-4 rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors group">
+              <Link to={`/blog/${prev.slug}`} className="flex items-center gap-3 p-4 rounded-2xl border border-zinc-100 dark:border-white/[0.05] hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors group">
                 <ChevronLeft className="w-5 h-5 text-zinc-400 shrink-0" />
                 <div className="min-w-0">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-0.5">Previous</p>
@@ -258,7 +258,7 @@ export default function BlogPost() {
               </Link>
             ) : <div />}
             {next ? (
-              <Link to={`/blog/${next.slug}`} className="flex items-center gap-3 p-4 rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors group text-right justify-end">
+              <Link to={`/blog/${next.slug}`} className="flex items-center gap-3 p-4 rounded-2xl border border-zinc-100 dark:border-white/[0.05] hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors group text-right justify-end">
                 <div className="min-w-0">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-0.5">Next</p>
                   <p className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors truncate">{next.title}</p>
@@ -273,13 +273,13 @@ export default function BlogPost() {
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="max-w-6xl mx-auto px-6 pb-20">
-          <div className="border-t border-zinc-100 dark:border-[#1E3A5F] pt-12 mb-8">
+          <div className="border-t border-zinc-100 dark:border-white/[0.05] pt-12 mb-8">
             <h2 className="text-2xl font-black text-zinc-900 dark:text-white">Related Articles</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {relatedPosts.map((rp) => (
-              <Link key={rp.id} to={`/blog/${rp.slug}`} className="group flex flex-col rounded-2xl overflow-hidden border border-zinc-100 dark:border-[#1E3A5F] bg-zinc-50/50 dark:bg-[#162032]/40 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
-                <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-[#1E293B]">
+              <Link key={rp.id} to={`/blog/${rp.slug}`} className="group flex flex-col rounded-2xl overflow-hidden border border-zinc-100 dark:border-white/[0.05] bg-zinc-50/50 dark:bg-[#0F2040]/40 hover:border-violet-200 dark:hover:border-violet-800/40 transition-all">
+                <div className="aspect-[16/9] overflow-hidden bg-zinc-200 dark:bg-[#14233F]">
                   {rp.featuredImage ? (
                     <img src={getOptimizedUrl(rp.featuredImage, { width: 600, crop: "limit", quality: "auto", format: "auto" })} alt={rp.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
                   ) : (
