@@ -27,7 +27,7 @@ export default function ProfessionalFooter() {
             <MobileFooter />
 
             {/* Desktop footer */}
-            <footer className="hidden sm:block bg-[#060E1A] text-zinc-300 py-10 sm:py-14 border-t border-white/[0.06]">
+            <footer className="hidden sm:block bg-[#060E1A] text-zinc-300 py-10 sm:py-14 border-t border-[#1E3A5F]">
             <div className="max-w-6xl mx-auto px-5 sm:px-6">
 
                 {/* Main row */}
@@ -36,7 +36,7 @@ export default function ProfessionalFooter() {
                     {/* Brand */}
                     <div className="max-w-xs">
                         <div className="flex items-center gap-2 mb-2.5">
-                            <div className="h-7 w-7 bg-brand-gradient rounded-md flex items-center justify-center text-[#0A1628] font-bold text-xs">
+                            <div className="h-7 w-7 bg-brand-gradient rounded-md flex items-center justify-center text-[#0F172A] font-bold text-xs">
                                 AR
                             </div>
                             <span className="text-white font-semibold">Alamin Rafi</span>
@@ -84,7 +84,7 @@ export default function ProfessionalFooter() {
                 </div>
 
                 {/* Bottom */}
-                <div className="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div className="pt-6 border-t border-[#1E3A5F] flex flex-col sm:flex-row justify-between items-center gap-2">
                     <p className="text-xs text-zinc-500">© 2027 Alamin Rafi. All rights reserved.</p>
                     <p className="text-xs text-zinc-500">Remote-first · Serving clients worldwide</p>
                 </div>

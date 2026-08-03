@@ -35,7 +35,7 @@ const services = [
 
 export default function ServicesSection() {
     return (
-        <section id="services" className="bg-white dark:bg-[#0A1628] py-12 sm:py-14 border-t border-zinc-100 dark:border-zinc-800">
+        <section id="services" className="bg-white dark:bg-[#0F172A] py-12 sm:py-14 border-t border-zinc-100 dark:border-[#1E3A5F]">
             <div className="max-w-5xl mx-auto px-5 sm:px-6">
                 <div className="mb-8 sm:mb-12">
                     <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-2">Services</p>
@@ -48,7 +48,7 @@ export default function ServicesSection() {
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className="group bg-white dark:bg-[#0F2040] rounded-xl p-4 border border-zinc-200 dark:border-white/[0.06] transition-all duration-300 hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 hover:shadow-lg flex flex-col items-center text-center"
+                            className="group bg-white dark:bg-[#162032] rounded-xl p-4 border border-zinc-200 dark:border-[#1E3A5F] transition-all duration-300 hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 hover:shadow-lg flex flex-col items-center text-center"
                         >
                             <div className="h-14 w-14 rounded-full flex items-center justify-center mb-3 bg-[#C9A84C]/12 text-[#C9A84C] dark:bg-[#C9A84C]/15 dark:text-[#E0C77E]">
                                 {service.icon}

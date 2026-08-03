@@ -25,7 +25,7 @@ export default function PortfolioPage() {
   }, [category]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0A1628]">
+    <div className="min-h-screen bg-white dark:bg-[#0F172A]">
       <ModernHeader />
       <main className="pt-24 pb-16">
         <section className="max-w-6xl mx-auto px-5 sm:px-6">
@@ -56,7 +56,7 @@ export default function PortfolioPage() {
                   "px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 border",
                   category === c
                     ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border-transparent shadow-sm"
-                    : "bg-white dark:bg-[#0F2040] text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 border-zinc-200 dark:border-zinc-700"
+                    : "bg-white dark:bg-[#162032] text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 border-zinc-200 dark:border-[#1E3A5F]"
                 )}
               >
                 {c}

@@ -34,7 +34,7 @@ export default function GetStartedButton() {
         >
             <button
                 onClick={handleClick}
-                className="w-full bg-[#C9A84C] text-[#0A1628] font-bold text-base py-4 rounded-xl shadow-lg shadow-black/30 hover:brightness-110 active:scale-[0.99] transition-all"
+                className="w-full bg-[#C9A84C] text-[#0F172A] font-bold text-base py-4 rounded-xl shadow-lg shadow-black/30 hover:brightness-110 active:scale-[0.99] transition-all"
             >
                 Get Started — Free Consultation
             </button>

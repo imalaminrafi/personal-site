@@ -27,7 +27,7 @@ export default function SignupPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-[#0A1628] px-4 py-16">
+        <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-[#0F172A] px-4 py-16">
             {/* Background glow */}
             <div className="pointer-events-none fixed inset-0 overflow-hidden hidden dark:block">
                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gradient-radial from-violet-700/15 to-transparent blur-[100px]" />
@@ -47,7 +47,7 @@ export default function SignupPage() {
                 </div>
 
                 {/* Card */}
-                <div className="bg-white dark:bg-[#0F2040]/80 backdrop-blur-sm border border-zinc-200 dark:border-white/[0.08] rounded-3xl p-8 shadow-xl shadow-black/5 dark:shadow-black/40">
+                <div className="bg-white dark:bg-[#162032]/80 backdrop-blur-sm border border-zinc-200 dark:border-[#1E3A5F] rounded-3xl p-8 shadow-xl shadow-black/5 dark:shadow-black/40">
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Name */}
                         <div>
@@ -61,7 +61,7 @@ export default function SignupPage() {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     placeholder="Your name"
-                                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 dark:border-white/[0.10] bg-zinc-50 dark:bg-[#14233F]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
+                                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#1E293B]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
                                 />
                             </div>
                         </div>
@@ -78,7 +78,7 @@ export default function SignupPage() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="you@example.com"
-                                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 dark:border-white/[0.10] bg-zinc-50 dark:bg-[#14233F]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
+                                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#1E293B]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
                                 />
                             </div>
                         </div>
@@ -95,7 +95,7 @@ export default function SignupPage() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Min. 6 characters"
-                                    className="w-full pl-10 pr-10 py-3 rounded-xl border border-zinc-200 dark:border-white/[0.10] bg-zinc-50 dark:bg-[#14233F]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
+                                    className="w-full pl-10 pr-10 py-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#1E293B]/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 dark:focus:border-violet-400 transition-all text-sm"
                                 />
                                 <button
                                     type="button"

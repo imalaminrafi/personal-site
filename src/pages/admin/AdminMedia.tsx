@@ -156,7 +156,7 @@ export default function AdminMedia() {
   const AssetThumb = ({ item, size }: { item: MediaLibraryItem; size: number }) => {
     if (item.type === "raw") {
       return (
-        <div className="w-full h-full bg-zinc-100 dark:bg-[#0F2040] flex items-center justify-center">
+        <div className="w-full h-full bg-zinc-100 dark:bg-[#162032] flex items-center justify-center">
           <div className="text-center">
             <FileText className={cn("text-red-500 mx-auto", size >= 200 ? "w-10 h-10" : "w-5 h-5")} />
             <span className="text-[9px] font-black uppercase bg-red-500/10 text-red-500 rounded px-1.5 py-0.5 inline-block mt-1">
@@ -168,7 +168,7 @@ export default function AdminMedia() {
     }
     if (item.type === "video") {
       return (
-        <div className="w-full h-full bg-zinc-100 dark:bg-[#0F2040] flex items-center justify-center">
+        <div className="w-full h-full bg-zinc-100 dark:bg-[#162032] flex items-center justify-center">
           <Film className="w-8 h-8 text-violet-400" />
         </div>
       );
@@ -180,23 +180,23 @@ export default function AdminMedia() {
     <AdminLayout title="Media Library">
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
-        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4">
+        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-4">
           <p className="text-2xl font-black text-zinc-900 dark:text-white">{list.length}</p>
           <p className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Total Files</p>
         </div>
-        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4">
+        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-4">
           <p className="text-2xl font-black text-zinc-900 dark:text-white">{cloudinaryCount}</p>
           <p className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Cloudinary Assets</p>
         </div>
-        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4">
+        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-4">
           <p className="text-2xl font-black text-zinc-900 dark:text-white">{pdfCount}</p>
           <p className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">PDFs</p>
         </div>
-        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4">
+        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-4">
           <p className="text-2xl font-black text-zinc-900 dark:text-white">{formatBytes(totalSize)}</p>
           <p className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Total Size</p>
         </div>
-        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-4">
+        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-4">
           <p className="text-2xl font-black text-zinc-900 dark:text-white">{folders.length - 1}</p>
           <p className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">Folders</p>
         </div>
@@ -210,7 +210,7 @@ export default function AdminMedia() {
         className={`mb-6 rounded-2xl border-2 border-dashed p-8 text-center transition-all ${
           dragOver
             ? "border-violet-500 bg-violet-50 dark:bg-violet-900/20"
-            : "border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040]"
+            : "border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032]"
         }`}
       >
         <input ref={fileRef} type="file" accept="image/*,.pdf,application/pdf" multiple className="hidden" onChange={(e) => e.target.files && handleUploadFiles(e.target.files)} />
@@ -244,7 +244,7 @@ export default function AdminMedia() {
               value={search}
               onChange={(e) => { setSearch(e.target.value); setPage(0); }}
               placeholder="Search media..."
-              className="w-full pl-9 pr-4 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+              className="w-full pl-9 pr-4 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
             />
           </div>
           <div className="flex items-center gap-2 shrink-0">
@@ -267,7 +267,7 @@ export default function AdminMedia() {
             <select
               value={folderFilter}
               onChange={(e) => { setFolderFilter(e.target.value); setPage(0); }}
-              className="px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm text-zinc-900 dark:text-white focus:outline-none"
+              className="px-3 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] text-sm text-zinc-900 dark:text-white focus:outline-none"
             >
               {folders.map((f) => (
                 <option key={f} value={f}>{f === "all" ? "All Folders" : f}</option>
@@ -304,14 +304,14 @@ export default function AdminMedia() {
             {pageItems.map((m) => (
               <div
                 key={m.id}
-                className={`bg-white dark:bg-[#0F2040] rounded-2xl border overflow-hidden group transition-all ${
+                className={`bg-white dark:bg-[#162032] rounded-2xl border overflow-hidden group transition-all ${
                   selected.includes(m.id)
                     ? "border-violet-500 ring-2 ring-violet-500/20"
-                    : "border-zinc-200 dark:border-white/[0.06] hover:border-violet-200 dark:hover:border-violet-800/40"
+                    : "border-zinc-200 dark:border-[#1E3A5F] hover:border-violet-200 dark:hover:border-violet-800/40"
                 }`}
               >
                 <div
-                  className="aspect-square bg-zinc-100 dark:bg-[#0F2040] relative cursor-pointer"
+                  className="aspect-square bg-zinc-100 dark:bg-[#162032] relative cursor-pointer"
                   onClick={() => toggleSelect(m.id)}
                 >
                   <AssetThumb item={m} size={300} />
@@ -356,7 +356,7 @@ export default function AdminMedia() {
               <button
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}
-                className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-white/[0.08] hover:bg-zinc-100 dark:hover:bg-white/[0.05] disabled:opacity-30"
+                className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-[#1E3A5F] hover:bg-zinc-100 dark:hover:bg-white/[0.05] disabled:opacity-30"
               >
                 Prev
               </button>
@@ -366,7 +366,7 @@ export default function AdminMedia() {
               <button
                 onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
                 disabled={page >= pageCount - 1}
-                className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-white/[0.08] hover:bg-zinc-100 dark:hover:bg-white/[0.05] disabled:opacity-30"
+                className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-[#1E3A5F] hover:bg-zinc-100 dark:hover:bg-white/[0.05] disabled:opacity-30"
               >
                 Next
               </button>
@@ -377,12 +377,12 @@ export default function AdminMedia() {
 
       {/* List View */}
       {viewMode === "list" && (
-        <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.06] overflow-hidden">
+        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] overflow-hidden">
           <div className="divide-y divide-zinc-100 dark:divide-white/[0.05]">
             {pageItems.map((m) => (
               <div key={m.id} className={`flex items-center gap-4 p-3 hover:bg-zinc-50 dark:hover:bg-white/[0.02] transition-colors ${selected.includes(m.id) ? "bg-violet-50/50 dark:bg-violet-500/5" : ""}`}>
-                <input type="checkbox" checked={selected.includes(m.id)} onChange={() => toggleSelect(m.id)} className="rounded border-zinc-300 dark:border-zinc-600" />
-                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-[#0F2040] overflow-hidden shrink-0">
+                <input type="checkbox" checked={selected.includes(m.id)} onChange={() => toggleSelect(m.id)} className="rounded border-zinc-300 dark:border-[#1E3A5F]" />
+                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-[#162032] overflow-hidden shrink-0">
                   <AssetThumb item={m} size={100} />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -416,11 +416,11 @@ export default function AdminMedia() {
             ))}
           </div>
           {pageCount > 1 && (
-            <div className="flex items-center justify-center gap-4 py-3 border-t border-zinc-100 dark:border-white/[0.05]">
+            <div className="flex items-center justify-center gap-4 py-3 border-t border-zinc-100 dark:border-[#1E3A5F]">
               <button
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}
-                className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-white/[0.08] hover:bg-zinc-100 dark:hover:bg-white/[0.05] disabled:opacity-30"
+                className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-[#1E3A5F] hover:bg-zinc-100 dark:hover:bg-white/[0.05] disabled:opacity-30"
               >
                 Prev
               </button>
@@ -430,7 +430,7 @@ export default function AdminMedia() {
               <button
                 onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
                 disabled={page >= pageCount - 1}
-                className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-white/[0.08] hover:bg-zinc-100 dark:hover:bg-white/[0.05] disabled:opacity-30"
+                className="px-3 py-1.5 rounded-lg text-xs font-bold text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-[#1E3A5F] hover:bg-zinc-100 dark:hover:bg-white/[0.05] disabled:opacity-30"
               >
                 Next
               </button>
@@ -442,16 +442,16 @@ export default function AdminMedia() {
       {/* Preview / Info modal */}
       {preview && (
         <div className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center p-4" onClick={() => setPreview(null)}>
-          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-5 pb-4 border-b border-zinc-100 dark:border-white/[0.05]">
+          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-[#1E3A5F] shadow-xl w-full max-w-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-5 pb-4 border-b border-zinc-100 dark:border-[#1E3A5F]">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">File Information</h2>
               <button onClick={() => setPreview(null)} className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200">
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="bg-zinc-50 dark:bg-[#0F2040]/50 flex items-center justify-center p-4">
+            <div className="bg-zinc-50 dark:bg-[#162032]/50 flex items-center justify-center p-4">
               {preview.item.type === "raw" ? (
-                <div className="h-64 w-full flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-zinc-200 dark:border-white/[0.1]">
+                <div className="h-64 w-full flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-zinc-200 dark:border-[#1E3A5F]">
                   <FileText className="w-14 h-14 text-red-500" />
                   <p className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{preview.item.name}</p>
                   <p className="text-[11px] text-zinc-500">{formatBytes(preview.item.size)} · {preview.item.format?.toUpperCase() || "PDF"}</p>
@@ -495,11 +495,11 @@ export default function AdminMedia() {
               </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Cloudinary Public ID</p>
-                <p className="text-[11px] font-mono bg-zinc-100 dark:bg-[#0F2040] rounded-lg px-2.5 py-1.5 text-zinc-600 dark:text-zinc-300 break-all">{preview.item.publicId}</p>
+                <p className="text-[11px] font-mono bg-zinc-100 dark:bg-[#162032] rounded-lg px-2.5 py-1.5 text-zinc-600 dark:text-zinc-300 break-all">{preview.item.publicId}</p>
               </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Secure URL</p>
-                <p className="text-[11px] font-mono bg-zinc-100 dark:bg-[#0F2040] rounded-lg px-2.5 py-1.5 text-zinc-600 dark:text-zinc-300 break-all">{preview.item.url}</p>
+                <p className="text-[11px] font-mono bg-zinc-100 dark:bg-[#162032] rounded-lg px-2.5 py-1.5 text-zinc-600 dark:text-zinc-300 break-all">{preview.item.url}</p>
               </div>
               <div className="flex gap-2 pt-2">
                 <button

@@ -6,7 +6,7 @@ export default function RssFeed() {
   const xml = generateRssFeed(posts);
 
   return (
-    <pre className="whitespace-pre-wrap font-mono bg-white text-black dark:bg-[#0A1628] dark:text-zinc-100 p-5 text-sm leading-relaxed">
+    <pre className="whitespace-pre-wrap font-mono bg-white text-black dark:bg-[#0F172A] dark:text-zinc-100 p-5 text-sm leading-relaxed">
       {xml}
     </pre>
   );

@@ -58,7 +58,7 @@ export default function PortfolioProjectPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-white dark:bg-[#0A1628]">
+      <div className="min-h-screen bg-white dark:bg-[#0F172A]">
         <ModernHeader />
         <main className="pt-32 pb-24 px-6 text-center">
           <p className="text-6xl mb-4">🔍</p>
@@ -75,7 +75,7 @@ export default function PortfolioProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0A1628]">
+    <div className="min-h-screen bg-white dark:bg-[#0F172A]">
       <ModernHeader />
       <main className="pt-24 pb-16">
         {/* ── Hero ── */}
@@ -114,7 +114,7 @@ export default function PortfolioProjectPage() {
               {project.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-5">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-zinc-100 dark:bg-white/[0.06] text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-white/[0.08]">
+                    <span key={tag} className="px-2.5 py-1 text-[11px] font-semibold rounded-lg bg-zinc-100 dark:bg-white/[0.06] text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-[#1E3A5F]">
                       {tag}
                     </span>
                   ))}
@@ -136,7 +136,7 @@ export default function PortfolioProjectPage() {
                 <a
                   href="#case-study"
                   onClick={() => trackPortfolioButton(project.title, "case_study")}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-100 dark:bg-white/[0.06] text-zinc-800 dark:text-white text-sm font-bold border border-zinc-200 dark:border-white/[0.08] hover:bg-zinc-200 dark:hover:bg-white/[0.1] transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-100 dark:bg-white/[0.06] text-zinc-800 dark:text-white text-sm font-bold border border-zinc-200 dark:border-[#1E3A5F] hover:bg-zinc-200 dark:hover:bg-white/[0.1] transition-colors"
                 >
                   <BookOpen className="w-4 h-4" /> Case Study
                 </a>
@@ -148,7 +148,7 @@ export default function PortfolioProjectPage() {
         {/* ── Featured image ── */}
         {project.image && (
           <section className="max-w-6xl mx-auto px-5 sm:px-6 mt-10">
-            <div className="rounded-3xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shadow-xl">
+            <div className="rounded-3xl overflow-hidden border border-zinc-200 dark:border-[#1E3A5F] shadow-xl">
               <img
                 src={getOptimizedUrl(project.image, { width: 1600, crop: "limit", quality: "auto", format: "auto" })}
                 alt={project.title}
@@ -181,7 +181,7 @@ export default function PortfolioProjectPage() {
                   href={getOptimizedUrl(url, { width: 1200 })}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] block"
+                  className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-[#1E3A5F] block"
                 >
                   <img
                     src={getOptimizedUrl(url, { width: 800 })}
@@ -198,7 +198,7 @@ export default function PortfolioProjectPage() {
         {/* ── Case Study ── */}
         {hasCaseStudy && (
           <section id="case-study" className="max-w-6xl mx-auto px-5 sm:px-6 mt-12 scroll-mt-24">
-            <div className="rounded-3xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-6 sm:p-10">
+            <div className="rounded-3xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] p-6 sm:p-10">
               <div className="flex items-center gap-2 mb-8">
                 <BookOpen className="w-5 h-5 text-violet-500" />
                 <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white">Case Study</h2>
@@ -245,7 +245,7 @@ export default function PortfolioProjectPage() {
               {project.reviews.map((review) => (
                 <div
                   key={review.id}
-                  className="rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5 flex flex-col"
+                  className="rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] p-5 flex flex-col"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <StarRating rating={review.rating} size="md" />
@@ -256,7 +256,7 @@ export default function PortfolioProjectPage() {
                     )}
                   </div>
                   <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed grow">“{review.text}”</p>
-                  <div className="mt-5 pt-4 border-t border-zinc-100 dark:border-white/[0.05]">
+                  <div className="mt-5 pt-4 border-t border-zinc-100 dark:border-[#1E3A5F]">
                     <div className="flex items-center justify-between gap-2">
                       <div>
                         <p className="text-sm font-bold text-zinc-900 dark:text-white">{review.clientName}</p>
@@ -282,21 +282,21 @@ export default function PortfolioProjectPage() {
 
         {/* ── Footer CTA ── */}
         <div className="max-w-6xl mx-auto px-5 sm:px-6 mt-14">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-gradient-to-r from-[#C9A84C] to-[#E6C97A] p-6 sm:p-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-gradient-to-r from-[#C9A84C] to-[#D4B86A] p-6 sm:p-8">
             <div>
-              <h3 className="text-lg sm:text-xl font-bold text-[#0A1628]">Like this project?</h3>
-              <p className="text-sm text-[#0A1628]/80 mt-1">Let's build something great for your business too.</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#0F172A]">Like this project?</h3>
+              <p className="text-sm text-[#0F172A]/80 mt-1">Let's build something great for your business too.</p>
             </div>
             <div className="flex gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0A1628] text-[#C9A84C] text-sm font-bold hover:bg-[#0A1628]/90 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0F172A] text-[#C9A84C] text-sm font-bold hover:bg-[#0F172A]/90 transition-colors"
               >
                 Get in Touch
               </Link>
               <Link
                 to="/portfolio"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/20 text-[#0A1628] text-sm font-bold hover:bg-white/40 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/20 text-[#0F172A] text-sm font-bold hover:bg-white/40 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" /> All Projects
               </Link>
@@ -314,7 +314,7 @@ export default function PortfolioProjectPage() {
             <div className="max-w-6xl mx-auto px-5 sm:px-6 mt-10">
               <Link
                 to={`/portfolio/${next.slug}`}
-                className="group flex items-center justify-between rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] p-5 hover:border-violet-300 dark:hover:border-violet-700 transition-colors"
+                className="group flex items-center justify-between rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] p-5 hover:border-violet-300 dark:hover:border-violet-700 transition-colors"
               >
                 <div>
                   <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Next Project</p>

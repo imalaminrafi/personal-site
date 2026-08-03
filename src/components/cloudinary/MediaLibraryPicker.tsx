@@ -107,11 +107,11 @@ export default function MediaLibraryPicker({
       onClick={onClose}
     >
       <div
-        className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden"
+        className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-[#1E3A5F] shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-100 dark:border-white/[0.05] shrink-0">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-100 dark:border-[#1E3A5F] shrink-0">
           <div>
             <h2 className="text-lg font-bold text-zinc-900 dark:text-white">{title}</h2>
             <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
@@ -131,7 +131,7 @@ export default function MediaLibraryPicker({
               value={search}
               onChange={(e) => { setSearch(e.target.value); setPage(0); }}
               placeholder="Search media..."
-              className="w-full pl-9 pr-4 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+              className="w-full pl-9 pr-4 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/40"
             />
           </div>
           <div className="flex items-center gap-2 flex-wrap">
@@ -154,7 +154,7 @@ export default function MediaLibraryPicker({
             <select
               value={folderFilter}
               onChange={(e) => { setFolderFilter(e.target.value); setPage(0); }}
-              className="px-2.5 py-1.5 rounded-lg border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-[11px] font-medium text-zinc-700 dark:text-zinc-300 focus:outline-none"
+              className="px-2.5 py-1.5 rounded-lg border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] text-[11px] font-medium text-zinc-700 dark:text-zinc-300 focus:outline-none"
             >
               {folders.map((f) => (
                 <option key={f} value={f}>{f === "all" ? "All Folders" : f}</option>
@@ -187,11 +187,11 @@ export default function MediaLibraryPicker({
                       "relative rounded-2xl border overflow-hidden transition-all text-left group",
                       isSelected
                         ? "border-violet-500 ring-2 ring-violet-500/30"
-                        : "border-zinc-200 dark:border-white/[0.08] hover:border-violet-300 dark:hover:border-violet-800/50"
+                        : "border-zinc-200 dark:border-[#1E3A5F] hover:border-violet-300 dark:hover:border-violet-800/50"
                     )}
                   >
                     {isRaw || isVideo ? (
-                      <div className="aspect-square bg-zinc-100 dark:bg-[#0F2040] flex flex-col items-center justify-center gap-2">
+                      <div className="aspect-square bg-zinc-100 dark:bg-[#162032] flex flex-col items-center justify-center gap-2">
                         <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400">
                           {isRaw ? <FileText className="w-5 h-5" /> : <Film className="w-5 h-5" />}
                         </div>
@@ -200,7 +200,7 @@ export default function MediaLibraryPicker({
                         </span>
                       </div>
                     ) : (
-                      <div className="aspect-square bg-zinc-100 dark:bg-[#0F2040]">
+                      <div className="aspect-square bg-zinc-100 dark:bg-[#162032]">
                         <img src={getThumbnailUrl(m.url, 300)} alt={m.name} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                     )}
@@ -221,7 +221,7 @@ export default function MediaLibraryPicker({
         </div>
 
         {/* Footer */}
-        <div className="px-5 py-3 border-t border-zinc-100 dark:border-white/[0.05] flex items-center justify-between gap-3 shrink-0">
+        <div className="px-5 py-3 border-t border-zinc-100 dark:border-[#1E3A5F] flex items-center justify-between gap-3 shrink-0">
           <div className="flex items-center gap-1.5">
             <button
               onClick={() => setPage((p) => Math.max(0, p - 1))}

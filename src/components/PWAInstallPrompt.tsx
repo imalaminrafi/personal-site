@@ -80,7 +80,7 @@ export default function PWAInstallPrompt() {
 
     return (
         <div className="sm:hidden fixed bottom-[90px] left-4 right-4 z-[80] animate-in slide-in-from-bottom-4 duration-300">
-            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] p-4 flex flex-col gap-3">
+            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] shadow-[0_8px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] p-4 flex flex-col gap-3">
                 <div className="flex items-start gap-3">
                     {/* Icon */}
                     <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center shrink-0">
@@ -102,13 +102,13 @@ export default function PWAInstallPrompt() {
                 <div className="flex items-center gap-2 mt-1">
                     <button
                         onClick={handleInstall}
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 text-[#0A1628] text-sm font-semibold hover:brightness-110 transition-all"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 text-[#0F172A] text-sm font-semibold hover:brightness-110 transition-all"
                     >
                         <Download className="w-4 h-4" /> Install
                     </button>
                     <button
                         onClick={dismiss}
-                        className="flex-1 px-4 py-2 rounded-xl bg-zinc-100 dark:bg-[#14233F] text-zinc-600 dark:text-zinc-300 text-sm font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+                        className="flex-1 px-4 py-2 rounded-xl bg-zinc-100 dark:bg-[#1E293B] text-zinc-600 dark:text-zinc-300 text-sm font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
                     >
                         Later
                     </button>

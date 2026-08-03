@@ -11,7 +11,7 @@ export default function PageBoundary({ children }: { children: ReactNode }) {
     <ErrorBoundary
       name="page"
       fallback={(reset) => (
-        <div className="flex min-h-screen flex-col items-center justify-center bg-white px-6 dark:bg-[#0A1628]">
+        <div className="flex min-h-screen flex-col items-center justify-center bg-white px-6 dark:bg-[#0F172A]">
           <div className="mx-auto w-full max-w-md text-center">
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-500/10">
               <svg
@@ -44,7 +44,7 @@ export default function PageBoundary({ children }: { children: ReactNode }) {
               </button>
               <Link
                 to="/"
-                className="rounded-xl bg-zinc-100 px-5 py-2.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-[#14233F] dark:text-zinc-200 dark:hover:bg-zinc-700"
+                className="rounded-xl bg-zinc-100 px-5 py-2.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-[#1E293B] dark:text-zinc-200 dark:hover:bg-zinc-700"
               >
                 Go to Homepage
               </Link>

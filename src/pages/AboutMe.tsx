@@ -7,24 +7,24 @@ import { Briefcase, GraduationCap, Award, CheckCircle2, UserCircle2 } from "luci
 
 export default function AboutMe() {
     return (
-        <div className="min-h-screen bg-white dark:bg-[#0A1628] transition-colors duration-300 flex flex-col">
+        <div className="min-h-screen bg-white dark:bg-[#0F172A] transition-colors duration-300 flex flex-col">
             <ModernHeader />
             
             <main className="flex-1 pt-32 pb-24 px-6 sm:px-8">
                 <div className="max-w-4xl mx-auto">
                     
                     {/* Header Section */}
-                    <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16 pb-12 border-b border-zinc-200 dark:border-zinc-800">
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-16 pb-12 border-b border-zinc-200 dark:border-[#1E3A5F]">
                         {cvData.personal.image ? (
                             <img 
                                 src={getOptimizedUrl(cvData.personal.image, { width: 256, crop: "fill", quality: "auto", format: "auto" })} 
                                 alt={cvData.personal.name} 
                                 loading="lazy"
                                 decoding="async"
-                                className="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white dark:border-zinc-900"
+                                className="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white dark:border-[#1E3A5F]"
                             />
                         ) : (
-                            <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-violet-600 to-cyan-500 flex items-center justify-center text-white shadow-lg border-4 border-white dark:border-zinc-900">
+                            <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-violet-600 to-cyan-500 flex items-center justify-center text-white shadow-lg border-4 border-white dark:border-[#1E3A5F]">
                                 <UserCircle2 className="w-16 h-16 opacity-80" />
                             </div>
                         )}
@@ -57,7 +57,7 @@ export default function AboutMe() {
                                     {cvData.experience.map((exp, idx) => (
                                         <div key={idx} className="relative pl-8 sm:pl-0">
                                             {/* Mobile timeline dot */}
-                                            <div className="sm:hidden absolute left-0 top-1.5 h-3 w-3 rounded-full bg-violet-500 border-2 border-white dark:border-zinc-950" />
+                                            <div className="sm:hidden absolute left-0 top-1.5 h-3 w-3 rounded-full bg-violet-500 border-2 border-white dark:border-[#1E3A5F]" />
                                             
                                             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-2 gap-1 sm:gap-4">
                                                 <h4 className="text-xl font-semibold text-zinc-900 dark:text-white">{exp.title}</h4>
@@ -89,7 +89,7 @@ export default function AboutMe() {
                                 </div>
                                 <div className="space-y-6">
                                     {cvData.education.map((edu, idx) => (
-                                        <div key={idx} className="bg-zinc-50 dark:bg-[#0F2040]/50 p-6 rounded-2xl border border-zinc-100 dark:border-zinc-800">
+                                        <div key={idx} className="bg-zinc-50 dark:bg-[#162032]/50 p-6 rounded-2xl border border-zinc-100 dark:border-[#1E3A5F]">
                                             <h4 className="text-lg font-semibold text-zinc-900 dark:text-white mb-1">{edu.degree}</h4>
                                             <div className="text-zinc-600 dark:text-zinc-400">{edu.institution}</div>
                                             <div className="text-sm text-zinc-500 mt-2 font-medium">{edu.period}</div>
@@ -102,7 +102,7 @@ export default function AboutMe() {
                         {/* Sidebar: Skills & Certifications */}
                         <div className="space-y-12">
                             <section>
-                                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800">Core Expertise</h3>
+                                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-6 pb-4 border-b border-zinc-200 dark:border-[#1E3A5F]">Core Expertise</h3>
                                 <div className="space-y-8">
                                     {cvData.skills.map((skillGroup, idx) => (
                                         <div key={idx}>
@@ -121,7 +121,7 @@ export default function AboutMe() {
                             </section>
 
                             <section>
-                                <div className="flex items-center gap-2 mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+                                <div className="flex items-center gap-2 mb-6 pb-4 border-b border-zinc-200 dark:border-[#1E3A5F]">
                                     <Award className="w-5 h-5 text-amber-500" />
                                     <h3 className="text-xl font-bold text-zinc-900 dark:text-white">Certifications</h3>
                                 </div>

@@ -51,7 +51,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
 function DefaultFallback({ onRetry, error }: { onRetry: () => void; error: Error | null }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-6 dark:bg-[#0A1628]">
+    <div className="min-h-screen flex items-center justify-center bg-white px-6 dark:bg-[#0F172A]">
       <div className="text-center max-w-md">
         <div className="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mx-auto mb-6">
           <svg
@@ -93,7 +93,7 @@ function DefaultFallback({ onRetry, error }: { onRetry: () => void; error: Error
             <summary className="text-xs text-zinc-500 dark:text-zinc-600 cursor-pointer hover:text-zinc-400 transition-colors">
               View error details
             </summary>
-            <pre className="mt-3 p-4 bg-zinc-100 dark:bg-[#0F2040] rounded-xl text-xs text-red-600 dark:text-red-400 overflow-auto max-h-40 border border-zinc-200 dark:border-zinc-800">
+            <pre className="mt-3 p-4 bg-zinc-100 dark:bg-[#162032] rounded-xl text-xs text-red-600 dark:text-red-400 overflow-auto max-h-40 border border-zinc-200 dark:border-[#1E3A5F]">
               {error.message}
             </pre>
           </details>

@@ -62,7 +62,7 @@ export default function BookDetailPage() {
         {/* Header */}
         <div className="flex flex-col gap-8 sm:flex-row">
           {/* Cover */}
-          <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#0F2040] sm:aspect-auto sm:h-72 sm:w-56">
+          <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-[#1E3A5F] dark:bg-[#162032] sm:aspect-auto sm:h-72 sm:w-56">
             {book.cover ? (
               <img
                 src={getOptimizedUrl(book.cover, { width: 700, crop: "limit", quality: "auto", format: "auto" })}
@@ -120,7 +120,7 @@ export default function BookDetailPage() {
                   href={book.previewUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 items-center gap-2 rounded-xl border border-zinc-200 bg-white px-5 text-sm font-semibold text-zinc-700 transition-colors hover:border-violet-300 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-200"
+                  className="inline-flex h-11 items-center gap-2 rounded-xl border border-zinc-200 bg-white px-5 text-sm font-semibold text-zinc-700 transition-colors hover:border-violet-300 dark:border-[#1E3A5F] dark:bg-white/[0.04] dark:text-zinc-200"
                 >
                   <Eye className="h-4 w-4" /> Preview
                 </a>
@@ -131,7 +131,7 @@ export default function BookDetailPage() {
 
         {/* Reviews */}
         <div className="mt-14">
-          <div className="flex items-end justify-between gap-4 border-b border-zinc-100 pb-4 dark:border-white/[0.06]">
+          <div className="flex items-end justify-between gap-4 border-b border-zinc-100 pb-4 dark:border-[#1E3A5F]">
             <div>
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">Customer Reviews</h2>
               <p className="mt-0.5 text-xs text-zinc-400">
@@ -153,7 +153,7 @@ export default function BookDetailPage() {
                   <p className="mt-3 text-[15px] leading-relaxed text-zinc-700 dark:text-zinc-200">
                     “{review.text}”
                   </p>
-                  <div className="mt-4 flex items-center justify-between gap-3 border-t border-zinc-100 pt-3 dark:border-white/[0.06]">
+                  <div className="mt-4 flex items-center justify-between gap-3 border-t border-zinc-100 pt-3 dark:border-[#1E3A5F]">
                     <div className="min-w-0">
                       <p className="text-sm font-semibold text-zinc-900 dark:text-white">{review.name}</p>
                       <p className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-zinc-400">

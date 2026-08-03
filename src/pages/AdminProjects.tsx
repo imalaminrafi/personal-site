@@ -63,7 +63,7 @@ function ProjectForm({
     return (
         <div className="space-y-5">
             {/* Basic info */}
-            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-5 space-y-4">
+            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] p-5 space-y-4">
                 <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Project Info</h3>
 
                 <div className="grid sm:grid-cols-2 gap-3">
@@ -79,7 +79,7 @@ function ProjectForm({
                         <select
                             value={p.status}
                             onChange={e => set("status", e.target.value as ProjectStatus)}
-                            className="w-full text-sm py-2 px-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-[#14233F] text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                            className="w-full text-sm py-2 px-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#1E293B] text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                         >
                             {STATUS_OPTIONS.map(s => <option key={s}>{s}</option>)}
                         </select>
@@ -89,7 +89,7 @@ function ProjectForm({
                         <select
                             value={p.currentStep}
                             onChange={e => set("currentStep", Number(e.target.value))}
-                            className="w-full text-sm py-2 px-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-[#14233F] text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                            className="w-full text-sm py-2 px-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#1E293B] text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                         >
                             {STEPS.map((s, i) => <option key={s} value={i}>{i + 1}. {s}</option>)}
                         </select>
@@ -111,14 +111,14 @@ function ProjectForm({
             </div>
 
             {/* Status message */}
-            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-5 space-y-3">
+            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] p-5 space-y-3">
                 <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Status Message</h3>
                 <Field label="Current work update" value={p.currentMessage} onChange={v => set("currentMessage", v)} textarea />
                 <Field label="Next update in" value={p.nextUpdateIn} onChange={v => set("nextUpdateIn", v)} placeholder="e.g. 24 hours, 2 days" />
             </div>
 
             {/* Contact & files */}
-            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-5 space-y-3">
+            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] p-5 space-y-3">
                 <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Contact & Files</h3>
                 <div className="grid sm:grid-cols-2 gap-3">
                     <Field label="WhatsApp number" value={p.whatsapp} onChange={v => set("whatsapp", v)} placeholder="8801917443161" />
@@ -128,7 +128,7 @@ function ProjectForm({
             </div>
 
             {/* Timeline updates */}
-            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-5 space-y-4">
+            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] p-5 space-y-4">
                 <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Timeline Updates</h3>
                 <div className="flex gap-2">
                     <input
@@ -136,7 +136,7 @@ function ProjectForm({
                         onChange={e => setNewUpdate(e.target.value)}
                         onKeyDown={e => e.key === "Enter" && addUpdate()}
                         placeholder="Add new update..."
-                        className="flex-1 text-sm py-2 px-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-[#14233F] text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                        className="flex-1 text-sm py-2 px-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#1E293B] text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/40"
                     />
                     <button onClick={addUpdate} className="px-4 rounded-xl bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 transition-colors">
                         Add
@@ -144,7 +144,7 @@ function ProjectForm({
                 </div>
                 <div className="space-y-2">
                     {p.updates.map((upd, i) => (
-                        <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-zinc-50 dark:bg-[#14233F]">
+                        <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-zinc-50 dark:bg-[#1E293B]">
                             <div className="flex-1 min-w-0">
                                 <p className="text-[10px] text-zinc-400 mb-0.5">{new Date(upd.date).toLocaleString()}</p>
                                 <p className="text-xs text-zinc-700 dark:text-zinc-300">{upd.message}</p>
@@ -160,7 +160,7 @@ function ProjectForm({
 
             {/* Actions */}
             <div className="flex items-center justify-between gap-3">
-                <button onClick={onCancel} className="px-5 py-2.5 rounded-xl text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 transition-colors">
+                <button onClick={onCancel} className="px-5 py-2.5 rounded-xl text-sm text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-[#1E3A5F] hover:border-zinc-300 transition-colors">
                     Cancel
                 </button>
                 <div className="flex gap-2">
@@ -188,7 +188,7 @@ function Field({
     label: string; value: string; onChange: (v: string) => void;
     placeholder?: string; textarea?: boolean;
 }) {
-    const cls = "w-full text-sm py-2 px-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-[#14233F] text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/40";
+    const cls = "w-full text-sm py-2 px-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-zinc-50 dark:bg-[#1E293B] text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-500/40";
     return (
         <div>
             <label className="text-xs text-zinc-500 dark:text-zinc-400 font-medium block mb-1">{label}</label>
@@ -236,11 +236,11 @@ export default function AdminProjectsPage() {
 
     /* ── Admin Dashboard ── */
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-[#0A1628] pb-16">
+        <div className="min-h-screen bg-zinc-50 dark:bg-[#0F172A] pb-16">
             <div className="h-1 w-full bg-gradient-to-r from-violet-600 to-cyan-500" />
 
             {/* Header */}
-            <header className="bg-white dark:bg-[#0F2040] border-b border-zinc-100 dark:border-zinc-800 px-5 py-4">
+            <header className="bg-white dark:bg-[#162032] border-b border-zinc-100 dark:border-[#1E3A5F] px-5 py-4">
                 <div className="max-w-2xl mx-auto flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <button onClick={() => navigate("/")} className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors">
@@ -280,13 +280,13 @@ export default function AdminProjectsPage() {
                     <>
                         <p className="text-xs text-zinc-400 dark:text-zinc-500">{projects.length} project{projects.length !== 1 ? "s" : ""} total</p>
                         {projects.length === 0 && (
-                            <div className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 p-10 text-center">
+                            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] p-10 text-center">
                                 <p className="text-sm text-zinc-400">No projects yet. Create your first one!</p>
                             </div>
                         )}
                         <div className="space-y-3">
                             {projects.map(p => (
-                                <div key={p.id} className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-sm overflow-hidden">
+                                <div key={p.id} className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-100 dark:border-[#1E3A5F] shadow-sm overflow-hidden">
                                     <button
                                         onClick={() => setExpanded(expanded === p.id ? null : p.id)}
                                         className="w-full flex items-center justify-between px-5 py-4 text-left gap-3"
@@ -302,12 +302,12 @@ export default function AdminProjectsPage() {
                                     </button>
 
                                     {expanded === p.id && (
-                                        <div className="border-t border-zinc-50 dark:border-zinc-800 px-5 pb-4 pt-3 space-y-3">
+                                        <div className="border-t border-zinc-50 dark:border-[#1E3A5F] px-5 pb-4 pt-3 space-y-3">
                                             <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">{p.currentMessage}</p>
                                             <div className="flex gap-2">
                                                 <button
                                                     onClick={() => { setEditing(p); setIsNew(false); }}
-                                                    className="flex-1 py-2 rounded-xl text-xs font-semibold border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-violet-400 transition-colors"
+                                                    className="flex-1 py-2 rounded-xl text-xs font-semibold border border-zinc-200 dark:border-[#1E3A5F] text-zinc-700 dark:text-zinc-300 hover:border-violet-400 transition-colors"
                                                 >
                                                     Edit
                                                 </button>
@@ -315,7 +315,7 @@ export default function AdminProjectsPage() {
                                                     href={`/project/${p.id}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-50 dark:bg-[#14233F] text-violet-600 dark:text-violet-400 border border-violet-200 dark:border-violet-800 hover:bg-violet-50 dark:hover:bg-violet-900/20 transition-colors"
+                                                    className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-50 dark:bg-[#1E293B] text-violet-600 dark:text-violet-400 border border-violet-200 dark:border-violet-800 hover:bg-violet-50 dark:hover:bg-violet-900/20 transition-colors"
                                                 >
                                                     <ExternalLink className="w-3.5 h-3.5" /> Preview
                                                 </a>

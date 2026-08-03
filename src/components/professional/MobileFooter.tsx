@@ -50,10 +50,10 @@ export default function MobileFooter() {
   return (
     <footer className="sm:hidden">
       <div className="px-4 pb-8 pt-2">
-        <div className="rounded-3xl border border-white/[0.08] bg-[#060E1A] px-3 pb-5 pt-6">
+        <div className="rounded-3xl border border-[#1E3A5F] bg-[#060E1A] px-3 pb-5 pt-6">
           {/* Brand */}
           <div className="flex items-center justify-center gap-2.5">
-            <div className="flex h-[42px] w-[42px] items-center justify-center rounded-xl bg-gradient-to-br from-[#C9A84C] to-[#E6C97A] text-sm font-black text-[#0A1628] shadow-lg shadow-[#C9A84C]/20">
+            <div className="flex h-[42px] w-[42px] items-center justify-center rounded-xl bg-gradient-to-br from-[#C9A84C] to-[#D4B86A] text-sm font-black text-[#0F172A] shadow-lg shadow-[#C9A84C]/20">
               AR
             </div>
             <span className="text-[15px] font-bold tracking-tight text-white">Alamin Rafi</span>
@@ -82,7 +82,7 @@ export default function MobileFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C] transition-colors hover:bg-[#C9A84C]/20 hover:text-[#E6C97A]"
+                className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 text-[#C9A84C] transition-colors hover:bg-[#C9A84C]/20 hover:text-[#D4B86A]"
               >
                 {social.icon}
               </a>
@@ -90,7 +90,7 @@ export default function MobileFooter() {
           </div>
 
           {/* Copyright */}
-          <div className="mt-5 border-t border-white/[0.06] pt-4 text-center">
+          <div className="mt-5 border-t border-[#1E3A5F] pt-4 text-center">
             <p className="text-[13px] font-medium text-zinc-500">© 2027 Alamin Rafi. All rights reserved.</p>
             <p className="mt-0.5 text-[13px] text-zinc-500">Building smarter businesses with AI.</p>
           </div>

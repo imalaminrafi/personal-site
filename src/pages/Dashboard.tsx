@@ -48,7 +48,7 @@ function OrderCard({ order }: { order: Order }) {
     });
 
     return (
-        <div className="bg-white dark:bg-[#0F2040]/80 border border-zinc-200 dark:border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-[#162032]/80 border border-zinc-200 dark:border-[#1E3A5F] rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
                 <div>
                     <div className="flex items-center gap-2 mb-1">
@@ -69,14 +69,14 @@ function OrderCard({ order }: { order: Order }) {
             {order.addons.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mb-4">
                     {order.addons.map((a, i) => (
-                        <span key={i} className="px-2.5 py-1 text-[11px] font-medium rounded-lg bg-zinc-100 dark:bg-[#14233F] text-zinc-600 dark:text-zinc-400">
+                        <span key={i} className="px-2.5 py-1 text-[11px] font-medium rounded-lg bg-zinc-100 dark:bg-[#1E293B] text-zinc-600 dark:text-zinc-400">
                             + {a}
                         </span>
                     ))}
                 </div>
             )}
 
-            <div className="flex items-center justify-between pt-4 border-t border-zinc-100 dark:border-white/[0.06]">
+            <div className="flex items-center justify-between pt-4 border-t border-zinc-100 dark:border-[#1E3A5F]">
                 <span className="text-xs text-zinc-400 dark:text-zinc-500">Ordered {date}</span>
                 <span className="font-black text-lg bg-gradient-to-r from-violet-600 to-cyan-500 bg-clip-text text-transparent">
                     ${order.total}+
@@ -108,14 +108,14 @@ export default function DashboardPage() {
     };
 
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-[#0A1628]">
+        <div className="min-h-screen bg-zinc-50 dark:bg-[#0F172A]">
             {/* Background glow */}
             <div className="pointer-events-none fixed inset-0 overflow-hidden hidden dark:block">
                 <div className="absolute -top-32 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-radial from-violet-700/10 to-transparent blur-[100px]" />
             </div>
 
             {/* Top Nav */}
-            <header className="sticky top-0 z-40 bg-white/90 dark:bg-[#0A1628]/90 backdrop-blur-xl border-b border-zinc-200 dark:border-white/[0.07] shadow-sm dark:shadow-none">
+            <header className="sticky top-0 z-40 bg-white/90 dark:bg-[#0F172A]/90 backdrop-blur-xl border-b border-zinc-200 dark:border-[#1E3A5F] shadow-sm dark:shadow-none">
                 <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-2.5">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center text-white font-black text-sm shadow-md">
@@ -167,7 +167,7 @@ export default function DashboardPage() {
                         { label: "In Progress", value: inProgress, color: "text-blue-600 dark:text-blue-400" },
                         { label: "Pending", value: pending, color: "text-amber-600 dark:text-amber-400" },
                     ].map((s) => (
-                        <div key={s.label} className="bg-white dark:bg-[#0F2040]/80 border border-zinc-200 dark:border-white/[0.08] rounded-2xl p-5 text-center shadow-sm">
+                        <div key={s.label} className="bg-white dark:bg-[#162032]/80 border border-zinc-200 dark:border-[#1E3A5F] rounded-2xl p-5 text-center shadow-sm">
                             <p className={`text-3xl font-black ${s.color}`}>{s.value}</p>
                             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 font-medium">{s.label}</p>
                         </div>
@@ -175,7 +175,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Profile card */}
-                <div className="bg-white dark:bg-[#0F2040]/80 border border-zinc-200 dark:border-white/[0.08] rounded-2xl p-5 sm:p-6 mb-8 flex items-center gap-4">
+                <div className="bg-white dark:bg-[#162032]/80 border border-zinc-200 dark:border-[#1E3A5F] rounded-2xl p-5 sm:p-6 mb-8 flex items-center gap-4">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-white font-black text-xl shrink-0 shadow-lg">
                         {user.name.charAt(0).toUpperCase()}
                     </div>
@@ -193,7 +193,7 @@ export default function DashboardPage() {
                 <div>
                     <h2 className="text-xl font-bold text-zinc-900 dark:text-white mb-5">My Orders</h2>
                     {orders.length === 0 ? (
-                        <div className="bg-white dark:bg-[#0F2040]/80 border border-zinc-200 dark:border-white/[0.08] rounded-2xl p-12 text-center">
+                        <div className="bg-white dark:bg-[#162032]/80 border border-zinc-200 dark:border-[#1E3A5F] rounded-2xl p-12 text-center">
                             <Package className="w-12 h-12 text-zinc-300 dark:text-zinc-700 mx-auto mb-4" />
                             <p className="text-zinc-500 dark:text-zinc-400 font-medium mb-2">No orders yet</p>
                             <p className="text-sm text-zinc-400 dark:text-zinc-500 mb-6">Start a project and your orders will appear here.</p>

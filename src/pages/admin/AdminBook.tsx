@@ -99,14 +99,14 @@ export default function AdminBook() {
         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
         <input value={search} onChange={(e) => setSearch(e.target.value)}
           placeholder="Search books..."
-          className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+          className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
       </div>
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((book) => (
-          <div key={book.id} className="bg-white dark:bg-[#0F2040] rounded-2xl border border-zinc-200 dark:border-white/[0.08] p-4 flex gap-4 relative">
-            <div className="w-20 h-28 rounded-xl overflow-hidden border border-zinc-200 dark:border-white/[0.08] shrink-0 bg-zinc-100 dark:bg-[#0F2040] flex items-center justify-center">
+          <div key={book.id} className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-[#1E3A5F] p-4 flex gap-4 relative">
+            <div className="w-20 h-28 rounded-xl overflow-hidden border border-zinc-200 dark:border-[#1E3A5F] shrink-0 bg-zinc-100 dark:bg-[#162032] flex items-center justify-center">
               {book.cover ? (
                 <img src={getOptimizedUrl(book.cover, { width: 300 })} alt={book.title} className="w-full h-full object-cover" />
               ) : (
@@ -164,8 +164,8 @@ export default function AdminBook() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center p-4" onClick={() => setModal(null)}>
-          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05] shrink-0">
+          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-[#1E3A5F] shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-[#1E3A5F] shrink-0">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
                 {list.find((b) => b.id === modal.id) ? "Edit Book" : "New Book"}
               </h2>
@@ -182,54 +182,54 @@ export default function AdminBook() {
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Title</label>
                   <input value={modal.title} onChange={(e) => setModal({ ...modal, title: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" required />
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" required />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Subtitle</label>
                   <input value={modal.subtitle} onChange={(e) => setModal({ ...modal, subtitle: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                 </div>
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Description</label>
                 <textarea rows={3} value={modal.description} onChange={(e) => setModal({ ...modal, description: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Category</label>
                   <select value={modal.category} onChange={(e) => setModal({ ...modal, category: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#0F2040] text-sm text-zinc-900 dark:text-white focus:outline-none">
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-white dark:bg-[#162032] text-sm text-zinc-900 dark:text-white focus:outline-none">
                     {CATEGORIES.map((cat) => <option key={cat} value={cat}>{cat}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Pages</label>
                   <input type="number" min={0} value={modal.pages} onChange={(e) => setModal({ ...modal, pages: Number(e.target.value) })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Price</label>
                   <input value={modal.price} onChange={(e) => setModal({ ...modal, price: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Base Rating (0–5)</label>
                   <input type="number" step="0.1" min={0} max={5} value={modal.rating} onChange={(e) => setModal({ ...modal, rating: Number(e.target.value) })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                    className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                   <p className="text-[10px] text-zinc-400 mt-1">Visitors see the average of customer reviews. This is used only when a book has no reviews.</p>
                 </div>
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Price Note</label>
                 <input value={modal.priceNote} onChange={(e) => setModal({ ...modal, priceNote: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Buy / Download Link</label>
                 <input type="url" value={modal.buyUrl} onChange={(e) => setModal({ ...modal, buyUrl: e.target.value })}
                   placeholder="https://payhip.com/..."
-                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                  className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Preview PDF (optional)</label>
@@ -245,13 +245,13 @@ export default function AdminBook() {
                   </button>
                 </div>
                 {modal.reviews.length === 0 ? (
-                  <p className="text-xs text-zinc-400 dark:text-zinc-500 bg-zinc-50 dark:bg-white/[0.03] rounded-xl p-4 border border-dashed border-zinc-200 dark:border-white/[0.08]">
+                  <p className="text-xs text-zinc-400 dark:text-zinc-500 bg-zinc-50 dark:bg-white/[0.03] rounded-xl p-4 border border-dashed border-zinc-200 dark:border-[#1E3A5F]">
                     No reviews yet. Add customer reviews to show ratings on the bookstore pages.
                   </p>
                 ) : (
                   <div className="space-y-2.5">
                     {modal.reviews.map((review) => (
-                      <div key={review.id} className="flex items-start gap-3 rounded-xl border border-zinc-200 dark:border-white/[0.08] p-3">
+                      <div key={review.id} className="flex items-start gap-3 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] p-3">
                         <div className="w-9 h-9 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 text-xs font-black shrink-0">
                           {review.name.charAt(0).toUpperCase()}
                         </div>
@@ -282,12 +282,12 @@ export default function AdminBook() {
               <div className="flex items-center gap-5 pt-1">
                 <label className="flex items-center gap-2 text-xs font-bold text-zinc-600 dark:text-zinc-300 cursor-pointer">
                   <input type="checkbox" checked={modal.published} onChange={(e) => setModal({ ...modal, published: e.target.checked })}
-                    className="rounded border-zinc-300 dark:border-zinc-600" />
+                    className="rounded border-zinc-300 dark:border-[#1E3A5F]" />
                   Published
                 </label>
                 <label className="flex items-center gap-2 text-xs font-bold text-zinc-600 dark:text-zinc-300 cursor-pointer">
                   <input type="checkbox" checked={modal.featured} onChange={(e) => setModal({ ...modal, featured: e.target.checked })}
-                    className="rounded border-zinc-300 dark:border-zinc-600" />
+                    className="rounded border-zinc-300 dark:border-[#1E3A5F]" />
                   Featured
                 </label>
               </div>
@@ -307,8 +307,8 @@ export default function AdminBook() {
       {/* Review editor modal */}
       {reviewEditor && (
         <div className="fixed inset-0 z-[70] bg-black/50 flex items-center justify-center p-4" onClick={() => setReviewEditor(null)}>
-          <div className="bg-white dark:bg-[#0F2040] rounded-3xl border border-zinc-200 dark:border-white/[0.08] shadow-xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-white/[0.05]">
+          <div className="bg-white dark:bg-[#162032] rounded-3xl border border-zinc-200 dark:border-[#1E3A5F] shadow-xl w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-6 pb-4 border-b border-zinc-100 dark:border-[#1E3A5F]">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
                 {modal?.reviews.some((r) => r.id === reviewEditor.id) ? "Edit Review" : "Add Review"}
               </h2>
@@ -334,27 +334,27 @@ export default function AdminBook() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Reviewer Name *</label>
-                  <input type="text" value={reviewEditor.name} onChange={(e) => setReviewEditor({ ...reviewEditor, name: e.target.value })} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                  <input type="text" value={reviewEditor.name} onChange={(e) => setReviewEditor({ ...reviewEditor, name: e.target.value })} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Country</label>
-                  <input type="text" value={reviewEditor.country} onChange={(e) => setReviewEditor({ ...reviewEditor, country: e.target.value })} placeholder="Germany, Sweden..." className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                  <input type="text" value={reviewEditor.country} onChange={(e) => setReviewEditor({ ...reviewEditor, country: e.target.value })} placeholder="Germany, Sweden..." className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Review Date</label>
-                  <input type="date" value={reviewEditor.date} onChange={(e) => setReviewEditor({ ...reviewEditor, date: e.target.value })} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                  <input type="date" value={reviewEditor.date} onChange={(e) => setReviewEditor({ ...reviewEditor, date: e.target.value })} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
                 </div>
                 <label className="flex items-center gap-2 text-xs font-bold text-zinc-600 dark:text-zinc-300 cursor-pointer sm:pt-6">
-                  <input type="checkbox" checked={reviewEditor.verified} onChange={(e) => setReviewEditor({ ...reviewEditor, verified: e.target.checked })} className="rounded border-zinc-300 dark:border-zinc-600" />
+                  <input type="checkbox" checked={reviewEditor.verified} onChange={(e) => setReviewEditor({ ...reviewEditor, verified: e.target.checked })} className="rounded border-zinc-300 dark:border-[#1E3A5F]" />
                   Verified Purchase
                 </label>
               </div>
               <div>
                 <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Review Text *</label>
-                <textarea rows={3} value={reviewEditor.text} onChange={(e) => setReviewEditor({ ...reviewEditor, text: e.target.value })} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
+                <textarea rows={3} value={reviewEditor.text} onChange={(e) => setReviewEditor({ ...reviewEditor, text: e.target.value })} className="w-full px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-[#1E3A5F] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40" />
               </div>
             </div>
-            <div className="flex justify-end gap-3 p-6 pt-0 border-t border-zinc-100 dark:border-white/[0.05]">
+            <div className="flex justify-end gap-3 p-6 pt-0 border-t border-zinc-100 dark:border-[#1E3A5F]">
               <button type="button" onClick={() => setReviewEditor(null)} className="px-4 py-2 rounded-xl text-sm font-bold text-zinc-500 hover:bg-zinc-100 dark:hover:bg-white/[0.05] transition-colors">Cancel</button>
               <button type="button" onClick={saveReview} disabled={!reviewEditor.name.trim() || !reviewEditor.text.trim()} className="px-5 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-sm font-bold transition-colors disabled:opacity-50">
                 Save Review

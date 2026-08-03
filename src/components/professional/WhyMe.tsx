@@ -25,7 +25,7 @@ const reasons = [
 
 export default function WhyMeSection() {
     return (
-        <section id="why-me" className="bg-white dark:bg-[#0A1628] py-12 sm:py-14 border-t border-zinc-100 dark:border-white/[0.05]">
+        <section id="why-me" className="bg-white dark:bg-[#0F172A] py-12 sm:py-14 border-t border-zinc-100 dark:border-[#1E3A5F]">
             <div className="max-w-5xl mx-auto px-5 sm:px-6">
                 <div className="mb-8 sm:mb-12">
                     <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-2">
@@ -41,7 +41,7 @@ export default function WhyMeSection() {
                     {reasons.map((reason, i) => (
                         <div
                             key={i}
-                            className="group rounded-xl p-4 sm:p-5 bg-white dark:bg-[#0F2040] border border-zinc-200 dark:border-white/[0.08] transition-all duration-300 hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 hover:shadow-lg"
+                            className="group rounded-xl p-4 sm:p-5 bg-white dark:bg-[#162032] border border-zinc-200 dark:border-[#1E3A5F] transition-all duration-300 hover:border-[#C9A84C]/50 dark:hover:border-[#C9A84C]/40 hover:shadow-lg"
                         >
                             <div className="h-12 w-12 rounded-full bg-[#C9A84C]/12 text-[#C9A84C] dark:bg-[#C9A84C]/15 dark:text-[#E0C77E] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                                 {reason.icon}

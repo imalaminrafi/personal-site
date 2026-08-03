@@ -9,7 +9,7 @@ const highlights = [
 
 export default function ProfessionalAbout() {
     return (
-        <section id="about" className="bg-white dark:bg-[#0A1628] py-12 sm:py-24 border-t border-zinc-100 dark:border-zinc-800">
+        <section id="about" className="bg-white dark:bg-[#0F172A] py-12 sm:py-24 border-t border-zinc-100 dark:border-[#1E3A5F]">
             <div className="max-w-6xl mx-auto px-5 sm:px-6">
                 {/* Section Label */}
                 <p className="text-sm font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">About</p>
@@ -21,7 +21,7 @@ export default function ProfessionalAbout() {
                         alt="Alamin Rafi — AI Business Consultant"
                         loading="lazy"
                         decoding="async"
-                        className="h-28 w-28 rounded-full object-cover border-4 border-white/[0.08] shadow-xl shadow-black/30"
+                        className="h-28 w-28 rounded-full object-cover border-4 border-[#1E3A5F] shadow-xl shadow-black/30"
                     />
                     <h3 className="mt-5 text-xl font-bold text-zinc-900 dark:text-white">
                         Alamin Rafi — AI Business Consultant
