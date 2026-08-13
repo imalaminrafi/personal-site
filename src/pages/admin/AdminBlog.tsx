@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import AdminLayout from "./AdminLayout";
 import { loadPosts, savePosts, CATEGORIES, slugify, estimateReadingTime, type BlogPost } from "@/data/blogData";
-import { lazy, Suspense } from "react";
-import { Plus, Edit2, Trash2, Search, Eye, Calendar, Clock, Tag, Image, Save, X, CheckCircle, Clock9, AlertCircle } from "lucide-react";
+import { Plus, Edit2, Trash2, Eye, Calendar, Clock, Tag, Save, X, CheckCircle, Clock9, AlertCircle, FileText, Tags, Image as ImageIcon, CalendarClock, SearchCheck } from "lucide-react";
 import CloudinaryUploader from "@/components/cloudinary/CloudinaryUploader";
+import { cn } from "@/lib/utils";
+import {
+  Btn, Field, Input, Textarea, Select, Badge, Card, SearchInput,
+  AccordionSection, PageHeader, EmptyState,
+} from "@/components/admin/ui";
 
 const WysiwygEditor = lazy(() => import("@/components/blog/WysiwygEditor"));
 
@@ -88,8 +92,9 @@ export default function AdminBlog() {
     } catch { /* localStorage quota */ }
   }
 
-  function handleSave() {
+  function handleSave(overrideStatus?: Status) {
     if (!form.title.trim()) return;
+    const status = overrideStatus ?? form.status;
     const slug = form.slug || slugify(form.title);
     const tags = form.tags.split(",").map((t) => t.trim()).filter(Boolean);
     const galleryImages = form.galleryImages.split("\n").map((l) => l.trim()).filter(Boolean);
@@ -104,7 +109,7 @@ export default function AdminBlog() {
       slug, title: form.title, shortDescription: form.shortDescription,
       content: form.content, category: form.category, tags, featuredImage: form.featuredImage,
       galleryImages, author: form.author, readingTime,
-      status: form.status, scheduledDate: form.status === "scheduled" ? form.scheduledDate : "",
+      status, scheduledDate: status === "scheduled" ? form.scheduledDate : "",
       publishedDate: editId ? (allPosts.find((p) => p.id === editId)?.publishedDate || now) : now,
       updatedDate: now, seoTitle: form.seoTitle, metaDescription: form.metaDescription,
       focusKeyword: form.focusKeyword, canonicalUrl: form.canonicalUrl,
@@ -137,7 +142,6 @@ export default function AdminBlog() {
     }));
   }
 
-  const allTags = [...new Set(posts.flatMap((p) => p.tags || []))];
   const filteredPosts = posts.filter((p) => {
     if (filter !== "all" && p.status !== filter) return false;
     if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false;
@@ -145,221 +149,288 @@ export default function AdminBlog() {
   });
 
   const statusBadge = (s: string) => {
-    if (s === "published") return { label: "Published", icon: CheckCircle, cls: "text-emerald-600 bg-emerald-50 dark:text-emerald-400 dark:bg-emerald-500/10" };
-    if (s === "scheduled") return { label: "Scheduled", icon: Clock9, cls: "text-amber-600 bg-amber-50 dark:text-amber-400 dark:bg-amber-500/10" };
-    return { label: "Draft", icon: AlertCircle, cls: "text-zinc-600 bg-zinc-100 dark:text-zinc-400 dark:bg-zinc-500/10" };
+    if (s === "published") return { label: "Published", icon: CheckCircle, tone: "emerald" as const };
+    if (s === "scheduled") return { label: "Scheduled", icon: Clock9, tone: "amber" as const };
+    return { label: "Draft", icon: AlertCircle, tone: "zinc" as const };
   };
 
+  /* ── Editor ────────────────────────────────────────────────── */
   if (view === "editor") {
     return (
       <AdminLayout title={editId ? "Edit Post" : "New Post"}>
-        <div className="max-w-4xl mx-auto space-y-8 pb-20">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-black text-zinc-900 dark:text-white">{editId ? "Edit Post" : "New Post"}</h2>
-                <p className="text-xs text-zinc-500 mt-0.5">Fill in the fields below. Most SEO fields are optional but recommended.</p>
-                {autoSaved && <p className="text-xs text-emerald-500 mt-1 font-bold">{autoSaved}</p>}
+        <div className="mx-auto max-w-4xl">
+          <PageHeader
+            title={editId ? "Edit Post" : "New Post"}
+            description="Fill in the fields below. Most SEO fields are optional but recommended."
+            actions={
+              <>
+                <Btn variant="ghost" onClick={() => setView("list")}>Cancel</Btn>
+                <Btn variant="outline" onClick={() => handleSave("draft")}>
+                  <Save className="h-4 w-4" /> {saved ? "Saved!" : "Save Draft"}
+                </Btn>
+                <Btn onClick={() => handleSave("published")}>Publish</Btn>
+              </>
+            }
+          />
+          {autoSaved && <p className="mb-3 text-xs font-semibold text-emerald-600 dark:text-emerald-400">{autoSaved}</p>}
+
+          <div className="space-y-4 pb-24">
+            {/* CONTENT */}
+            <AccordionSection title="Content" icon={FileText}>
+              <div className="space-y-4">
+                <Field label="Title" required>
+                  <Input value={form.title} onChange={(e) => { update("title", e.target.value); if (!editId) update("slug", slugify(e.target.value)); }} placeholder="Enter post title" />
+                </Field>
+                <Field label="Slug">
+                  <Input value={form.slug} onChange={(e) => update("slug", slugify(e.target.value))} className="font-mono text-xs" placeholder="auto-generated from title" />
+                </Field>
+                <Field label="Short Description">
+                  <Textarea rows={3} value={form.shortDescription} onChange={(e) => update("shortDescription", e.target.value)} placeholder="Brief summary shown on the blog listing" />
+                </Field>
+                <Field label="Full Article">
+                  <Suspense fallback={<div className="flex h-[480px] items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 text-sm text-zinc-400 dark:border-white/[0.08] dark:bg-[#162032]">Loading editor...</div>}>
+                    <WysiwygEditor value={form.content} onChange={(html) => update("content", html)} onAutoSave={handleAutoSave} />
+                  </Suspense>
+                </Field>
               </div>
-              <div className="flex items-center gap-3">
-                <button onClick={() => setView("list")} className="px-4 py-2 text-sm font-bold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Cancel</button>
-                <button onClick={handleSave} className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-colors flex items-center gap-2"><Save className="w-4 h-4" /> {saved ? "Saved!" : "Save Post"}</button>
+            </AccordionSection>
+
+            {/* TAXONOMY */}
+            <AccordionSection title="Taxonomy" icon={Tags}>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Field label="Category">
+                  <Select value={form.category} onChange={(e) => update("category", e.target.value)}>
+                    {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
+                  </Select>
+                </Field>
+                <Field label="Author">
+                  <Input value={form.author} onChange={(e) => update("author", e.target.value)} />
+                </Field>
+                <Field label="Tags (comma separated)" className="sm:col-span-2">
+                  <Input value={form.tags} onChange={(e) => update("tags", e.target.value)} placeholder="web development, react, tailwind" />
+                </Field>
               </div>
-            </div>
+            </AccordionSection>
 
-          {/* Content */}
-          <Section title="Content">
-            <Field label="Title"><input type="text" value={form.title} onChange={(e) => { update("title", e.target.value); if (!editId) update("slug", slugify(e.target.value)); }} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-            <Field label="Slug"><input type="text" value={form.slug} onChange={(e) => update("slug", slugify(e.target.value))} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none font-mono text-xs" /></Field>
-            <Field label="Short Description"><textarea rows={3} value={form.shortDescription} onChange={(e) => update("shortDescription", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-            <Field label="Full Article">
-              <Suspense fallback={<div className="h-[500px] rounded-2xl border border-zinc-200 dark:border-white/[0.08] bg-zinc-50 dark:bg-[#162032] flex items-center justify-center text-sm text-zinc-400">Loading editor...</div>}>
-                <WysiwygEditor value={form.content} onChange={(html) => update("content", html)} onAutoSave={handleAutoSave} />
-              </Suspense>
-            </Field>
-          </Section>
-
-          {/* Taxonomy */}
-          <Section title="Taxonomy">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Field label="Category"><select value={form.category} onChange={(e) => update("category", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none">{CATEGORIES.map((c) => <option key={c}>{c}</option>)}</select></Field>
-              <Field label="Author"><input type="text" value={form.author} onChange={(e) => update("author", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-            </div>
-            <Field label="Tags (comma separated)"><input type="text" value={form.tags} onChange={(e) => update("tags", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" placeholder="web development, react, tailwind" /></Field>
-          </Section>
-
-          {/* Image */}
-          <Section title="Images">
-            <Field label="Featured Image">
-              <CloudinaryUploader value={form.featuredImage} onChange={(url) => update("featuredImage", url)} />
-            </Field>
-            <Field label="Gallery Images">
-              <CloudinaryUploader multiple value={form.galleryImages} onChange={(urls) => update("galleryImages", urls)} label="gallery images" />
-            </Field>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Field label="Image Alt Text"><input type="text" value={form.imageAlt} onChange={(e) => update("imageAlt", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-              <Field label="Image Title"><input type="text" value={form.imageTitle} onChange={(e) => update("imageTitle", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-              <Field label="Image Caption"><input type="text" value={form.imageCaption} onChange={(e) => update("imageCaption", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-              <Field label="Image Description"><input type="text" value={form.imageDescription} onChange={(e) => update("imageDescription", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-            </div>
-          </Section>
-
-          {/* Status & Dates */}
-          <Section title="Status & Publishing">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <Field label="Status"><select value={form.status} onChange={(e) => update("status", e.target.value as Status)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none">
-                <option value="draft">Draft</option><option value="published">Published</option><option value="scheduled">Scheduled</option>
-              </select></Field>
-              {form.status === "scheduled" && <Field label="Schedule Date"><input type="datetime-local" value={form.scheduledDate} onChange={(e) => update("scheduledDate", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>}
-            </div>
-            <p className="text-[11px] text-zinc-500 mt-1">Reading time: ~{estimateReadingTime(form.content)} min</p>
-          </Section>
-
-          {/* SEO */}
-          <Section title="SEO Settings">
-            <Field label="SEO Title"><input type="text" value={form.seoTitle} onChange={(e) => update("seoTitle", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" placeholder="Leave blank to use post title" /></Field>
-            <Field label="Meta Description"><textarea rows={2} value={form.metaDescription} onChange={(e) => update("metaDescription", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" placeholder="Brief description for search results" /></Field>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Field label="Focus Keyword"><input type="text" value={form.focusKeyword} onChange={(e) => update("focusKeyword", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-              <Field label="Canonical URL"><input type="text" value={form.canonicalUrl} onChange={(e) => update("canonicalUrl", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-            </div>
-            <div className="bg-zinc-50 dark:bg-white/[0.03] rounded-xl p-4 border border-zinc-200 dark:border-white/[0.08]">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2">Google Preview</p>
-              <p className="text-sm text-blue-600 truncate">https://alaminrafi.com/blog/{form.slug || "post-slug"}</p>
-              <p className="text-base font-bold text-zinc-800 dark:text-zinc-200 truncate">{form.seoTitle || form.title || "Post Title"}</p>
-              <p className="text-xs text-zinc-500 line-clamp-2">{form.metaDescription || form.shortDescription || "Your meta description will appear here..."}</p>
-            </div>
-          </Section>
-
-          {/* Social */}
-          <Section title="Social Sharing">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Field label="OG Title"><input type="text" value={form.ogTitle} onChange={(e) => update("ogTitle", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-              <Field label="Twitter Card"><select value={form.twitterCard} onChange={(e) => update("twitterCard", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none">
-                <option value="summary">Summary</option><option value="summary_large_image">Summary Large Image</option><option value="app">App</option><option value="player">Player</option>
-              </select></Field>
-            </div>
-            <Field label="OG Description"><textarea rows={2} value={form.ogDescription} onChange={(e) => update("ogDescription", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-            <Field label="OG Image">
-              <CloudinaryUploader value={form.ogImage} onChange={(url) => update("ogImage", url)} label="OG Image" />
-            </Field>
-          </Section>
-
-          {/* Schema */}
-          <Section title="Schema.org">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Field label="Schema Type"><select value={form.schemaType} onChange={(e) => update("schemaType", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none">
-                <option value="Article">Article</option><option value="BlogPosting">BlogPosting</option><option value="NewsArticle">NewsArticle</option>
-              </select></Field>
-              <Field label="Breadcrumb Title"><input type="text" value={form.breadcrumbTitle} onChange={(e) => update("breadcrumbTitle", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" /></Field>
-            </div>
-          </Section>
-
-          {/* Related Posts */}
-          <Section title="Related Posts">
-            <div className="flex flex-wrap gap-2">
-              {posts.filter((p) => p.id !== editId && p.status === "published").map((p) => (
-                <label key={p.id} className="flex items-center gap-2 px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] cursor-pointer hover:bg-zinc-50 dark:hover:bg-white/[0.02] text-sm">
-                  <input type="checkbox" checked={form.relatedSlugs.includes(p.slug)} onChange={() => toggleRelated(p.slug)} className="rounded" />
-                  <span className="text-zinc-700 dark:text-zinc-300">{p.title}</span>
-                </label>
-              ))}
-              {posts.filter((p) => p.id !== editId && p.status === "published").length === 0 && <p className="text-xs text-zinc-500">No published posts to link.</p>}
-            </div>
-          </Section>
-
-          {/* FAQ */}
-          <Section title="FAQ Section">
-            {form.faq.map((item, i) => (
-              <div key={i} className="flex gap-3 items-start mb-3">
-                <div className="flex-1 space-y-2">
-                  <input type="text" placeholder="Question" value={item.question} onChange={(e) => updateFaq(i, "question", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" />
-                  <textarea rows={2} placeholder="Answer" value={item.answer} onChange={(e) => updateFaq(i, "answer", e.target.value)} className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none" />
+            {/* IMAGE */}
+            <AccordionSection title="Image" icon={ImageIcon}>
+              <div className="space-y-4">
+                <Field label="Featured Image">
+                  <CloudinaryUploader value={form.featuredImage} onChange={(url) => update("featuredImage", url)} label="Upload featured image" />
+                </Field>
+                <Field label="Gallery Images">
+                  <CloudinaryUploader multiple value={form.galleryImages} onChange={(urls) => update("galleryImages", urls)} label="Upload gallery images" />
+                </Field>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <Field label="Image Alt Text"><Input value={form.imageAlt} onChange={(e) => update("imageAlt", e.target.value)} /></Field>
+                  <Field label="Image Title"><Input value={form.imageTitle} onChange={(e) => update("imageTitle", e.target.value)} /></Field>
+                  <Field label="Image Caption"><Input value={form.imageCaption} onChange={(e) => update("imageCaption", e.target.value)} /></Field>
+                  <Field label="Image Description"><Input value={form.imageDescription} onChange={(e) => update("imageDescription", e.target.value)} /></Field>
                 </div>
-                <button onClick={() => removeFaq(i)} className="p-2 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"><X className="w-4 h-4" /></button>
               </div>
-            ))}
-            <button onClick={addFaq} className="text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors">+ Add FAQ</button>
-          </Section>
+            </AccordionSection>
 
-          <div className="flex justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-white/[0.08]">
-            <button onClick={() => setView("list")} className="px-4 py-2 text-sm font-bold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Cancel</button>
-            <button onClick={handleSave} className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-colors flex items-center gap-2"><Save className="w-4 h-4" /> Save Post</button>
+            {/* PUBLISHING */}
+            <AccordionSection title="Publishing" icon={CalendarClock}>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <Field label="Status">
+                  <Select value={form.status} onChange={(e) => update("status", e.target.value as Status)}>
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                    <option value="scheduled">Scheduled</option>
+                  </Select>
+                </Field>
+                {form.status === "scheduled" && (
+                  <Field label="Schedule Date">
+                    <Input type="datetime-local" value={form.scheduledDate} onChange={(e) => update("scheduledDate", e.target.value)} />
+                  </Field>
+                )}
+              </div>
+              <p className="mt-3 text-[11px] text-zinc-500">Reading time: ~{estimateReadingTime(form.content)} min</p>
+            </AccordionSection>
+
+            {/* SEO */}
+            <AccordionSection title="SEO" icon={SearchCheck}>
+              <div className="space-y-4">
+                <Field label="SEO Title">
+                  <Input value={form.seoTitle} onChange={(e) => update("seoTitle", e.target.value)} placeholder="Leave blank to use post title" />
+                </Field>
+                <Field label="Meta Description">
+                  <Textarea rows={2} value={form.metaDescription} onChange={(e) => update("metaDescription", e.target.value)} placeholder="Brief description for search results" />
+                </Field>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <Field label="Focus Keyword"><Input value={form.focusKeyword} onChange={(e) => update("focusKeyword", e.target.value)} /></Field>
+                  <Field label="Canonical URL"><Input value={form.canonicalUrl} onChange={(e) => update("canonicalUrl", e.target.value)} /></Field>
+                </div>
+                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-white/[0.08] dark:bg-white/[0.03]">
+                  <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Google Preview</p>
+                  <p className="truncate text-sm text-blue-600">https://alaminrafi.com/blog/{form.slug || "post-slug"}</p>
+                  <p className="truncate text-[15px] font-bold text-zinc-800 dark:text-zinc-200">{form.seoTitle || form.title || "Post Title"}</p>
+                  <p className="line-clamp-2 text-xs text-zinc-500">{form.metaDescription || form.shortDescription || "Your meta description will appear here..."}</p>
+                </div>
+              </div>
+            </AccordionSection>
+
+            {/* ADVANCED SEO (collapsed) */}
+            <AccordionSection title="Advanced SEO" defaultOpen={false}>
+              <div className="space-y-5">
+                <div>
+                  <p className="mb-2 text-xs font-semibold text-zinc-600 dark:text-zinc-300">Social Sharing</p>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <Field label="OG Title"><Input value={form.ogTitle} onChange={(e) => update("ogTitle", e.target.value)} /></Field>
+                    <Field label="Twitter Card">
+                      <Select value={form.twitterCard} onChange={(e) => update("twitterCard", e.target.value)}>
+                        <option value="summary">Summary</option>
+                        <option value="summary_large_image">Summary Large Image</option>
+                        <option value="app">App</option>
+                        <option value="player">Player</option>
+                      </Select>
+                    </Field>
+                  </div>
+                  <div className="mt-4 space-y-4">
+                    <Field label="OG Description"><Textarea rows={2} value={form.ogDescription} onChange={(e) => update("ogDescription", e.target.value)} /></Field>
+                    <Field label="OG Image">
+                      <CloudinaryUploader value={form.ogImage} onChange={(url) => update("ogImage", url)} label="Upload OG image" />
+                    </Field>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="mb-2 text-xs font-semibold text-zinc-600 dark:text-zinc-300">Schema.org</p>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <Field label="Schema Type">
+                      <Select value={form.schemaType} onChange={(e) => update("schemaType", e.target.value)}>
+                        <option value="Article">Article</option>
+                        <option value="BlogPosting">BlogPosting</option>
+                        <option value="NewsArticle">NewsArticle</option>
+                      </Select>
+                    </Field>
+                    <Field label="Breadcrumb Title"><Input value={form.breadcrumbTitle} onChange={(e) => update("breadcrumbTitle", e.target.value)} /></Field>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="mb-2 text-xs font-semibold text-zinc-600 dark:text-zinc-300">Related Posts</p>
+                  <div className="flex flex-wrap gap-2">
+                    {posts.filter((p) => p.id !== editId && p.status === "published").map((p) => (
+                      <label key={p.id} className="flex cursor-pointer items-center gap-2 rounded-lg border border-zinc-200 px-3 py-2 text-[13px] transition-colors hover:bg-zinc-50 dark:border-white/[0.08] dark:hover:bg-white/[0.03]">
+                        <input type="checkbox" checked={form.relatedSlugs.includes(p.slug)} onChange={() => toggleRelated(p.slug)} className="rounded border-zinc-300" />
+                        <span className="text-zinc-700 dark:text-zinc-300">{p.title}</span>
+                      </label>
+                    ))}
+                    {posts.filter((p) => p.id !== editId && p.status === "published").length === 0 && (
+                      <p className="text-xs text-zinc-500">No published posts to link.</p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="mb-2 text-xs font-semibold text-zinc-600 dark:text-zinc-300">FAQ Section</p>
+                  {form.faq.map((item, i) => (
+                    <div key={i} className="mb-3 flex items-start gap-2">
+                      <div className="flex-1 space-y-2">
+                        <Input placeholder="Question" value={item.question} onChange={(e) => updateFaq(i, "question", e.target.value)} />
+                        <Textarea rows={2} placeholder="Answer" value={item.answer} onChange={(e) => updateFaq(i, "answer", e.target.value)} />
+                      </div>
+                      <button onClick={() => removeFaq(i)} className="mt-1 rounded-lg p-2 text-zinc-400 transition-colors hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-500/10"><X className="h-4 w-4" /></button>
+                    </div>
+                  ))}
+                  <button onClick={addFaq} className="text-[13px] font-semibold text-violet-600 transition-colors hover:text-violet-700 dark:text-violet-400">+ Add FAQ</button>
+                </div>
+              </div>
+            </AccordionSection>
+          </div>
+
+          {/* Sticky action bar */}
+          <div className="fixed inset-x-0 bottom-0 z-30 border-t border-zinc-200 bg-white/95 px-4 py-3 backdrop-blur dark:border-white/[0.06] dark:bg-[#0F172A]/95 lg:pl-64">
+            <div className="mx-auto flex max-w-4xl items-center justify-end gap-2">
+              <Btn variant="ghost" onClick={() => setView("list")}>Cancel</Btn>
+              <Btn variant="outline" onClick={() => handleSave("draft")}>
+                <Save className="h-4 w-4" /> {saved ? "Saved!" : "Save Draft"}
+              </Btn>
+              <Btn onClick={() => handleSave("published")}>Publish</Btn>
+            </div>
           </div>
         </div>
       </AdminLayout>
     );
   }
 
+  /* ── List ───────────────────────────────────────────────────── */
   return (
     <AdminLayout title="Blog Management">
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-        <div className="flex items-center gap-3 flex-wrap">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
-            <input type="text" placeholder="Search posts..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9 pr-4 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-white dark:bg-[#162032] text-sm focus:outline-none w-48" />
-          </div>
+      <PageHeader
+        title="Blog Posts"
+        description="Create, edit and publish articles on your blog."
+        actions={
+          <Btn onClick={openNew}><Plus className="h-4 w-4" /> New Post</Btn>
+        }
+      />
+
+      <div className="mb-4 flex flex-wrap items-center gap-3">
+        <SearchInput value={search} onChange={setSearch} placeholder="Search posts..." className="w-full sm:w-64" />
+        <div className="flex items-center gap-1 rounded-lg bg-zinc-100 p-0.5 dark:bg-white/[0.06]">
           {(["all", "published", "draft", "scheduled"] as const).map((f) => (
-            <button key={f} onClick={() => setFilter(f)} className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition-colors ${filter === f ? "bg-blue-600 text-white" : "bg-zinc-100 dark:bg-[#1E293B] text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700"}`}>{f}</button>
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={cn(
+                "rounded-md px-2.5 py-1 text-xs font-semibold capitalize transition-colors",
+                filter === f ? "bg-white text-zinc-900 shadow-sm dark:bg-[#1E293B] dark:text-white" : "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
+              )}
+            >
+              {f}
+            </button>
           ))}
         </div>
-        <button onClick={openNew} className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> New Post</button>
+        <span className="ml-auto text-xs font-medium text-zinc-400">{filteredPosts.length} post{filteredPosts.length !== 1 ? "s" : ""}</span>
       </div>
 
-      <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden">
+      <Card>
         {filteredPosts.length === 0 ? (
-          <p className="text-center text-zinc-500 py-12 text-sm">No posts found.</p>
+          <EmptyState
+            icon={FileText}
+            title="No posts found"
+            description={search || filter !== "all" ? "Try a different search or filter." : 'Click "New Post" to write your first article.'}
+          />
         ) : (
           <div className="divide-y divide-zinc-100 dark:divide-white/[0.05]">
             {filteredPosts.map((post) => {
               const badge = statusBadge(post.status || "draft");
               return (
-                <div key={post.id} className="flex items-center gap-4 p-4 hover:bg-zinc-50 dark:hover:bg-white/[0.02] transition-colors">
-                  <div className="w-14 h-14 rounded-xl bg-zinc-100 dark:bg-white/[0.05] overflow-hidden shrink-0">
-                    {post.featuredImage ? <img src={post.featuredImage} alt="" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} /> : <div className="flex items-center justify-center h-full"><Image className="w-5 h-5 text-zinc-300" /></div>}
+                <div key={post.id} className="flex items-center gap-4 p-3.5 transition-colors hover:bg-zinc-50 dark:hover:bg-white/[0.02]">
+                  <div className="h-12 w-16 shrink-0 overflow-hidden rounded-lg bg-zinc-100 dark:bg-white/[0.05]">
+                    {post.featuredImage ? (
+                      <img src={post.featuredImage} alt="" className="h-full w-full object-cover" loading="lazy" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                    ) : (
+                      <div className="flex h-full items-center justify-center"><ImageIcon className="h-5 w-5 text-zinc-300" /></div>
+                    )}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-xs font-bold text-blue-600">{post.category}</span>
-                      <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${badge.cls}`}><badge.icon className="w-3 h-3" />{badge.label}</span>
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-0.5 flex flex-wrap items-center gap-1.5">
+                      <Badge tone="violet">{post.category}</Badge>
+                      <Badge tone={badge.tone} icon={badge.icon}>{badge.label}</Badge>
                     </div>
-                    <p className="text-sm font-bold text-zinc-900 dark:text-white truncate">{post.title}</p>
-                    <div className="flex items-center gap-3 text-[11px] text-zinc-500 mt-0.5">
-                      <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{new Date(post.publishedDate || post.updatedDate).toLocaleDateString()}</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readingTime || "?"} min</span>
+                    <p className="truncate text-[13px] font-bold text-zinc-900 dark:text-white">{post.title}</p>
+                    <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-zinc-500">
+                      <span className="flex items-center gap-1"><Calendar className="h-3 w-3" />{new Date(post.publishedDate || post.updatedDate).toLocaleDateString()}</span>
+                      <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{post.readingTime || "?"} min</span>
                       {(post.tags || []).length > 0 && (
-                        <span className="flex items-center gap-1"><Tag className="w-3 h-3" />{(post.tags || []).slice(0, 2).join(", ")}</span>
+                        <span className="flex items-center gap-1"><Tag className="h-3 w-3" />{(post.tags || []).slice(0, 2).join(", ")}</span>
                       )}
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 shrink-0">
-                    <a href={`/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-zinc-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-500/10 transition-colors"><Eye className="w-4 h-4" /></a>
-                    <button onClick={() => openEdit(post)} className="p-2 rounded-lg text-zinc-400 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-500/10 transition-colors"><Edit2 className="w-4 h-4" /></button>
-                    <button onClick={() => remove(post.id)} className="p-2 rounded-lg text-zinc-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"><Trash2 className="w-4 h-4" /></button>
+                  <div className="flex shrink-0 items-center gap-0.5">
+                    <a href={`/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" title="View post" className="rounded-lg p-2 text-zinc-400 transition-colors hover:bg-violet-50 hover:text-violet-600 dark:hover:bg-violet-500/10"><Eye className="h-4 w-4" /></a>
+                    <button onClick={() => openEdit(post)} title="Edit" className="rounded-lg p-2 text-zinc-400 transition-colors hover:bg-amber-50 hover:text-amber-600 dark:hover:bg-amber-500/10"><Edit2 className="h-4 w-4" /></button>
+                    <button onClick={() => remove(post.id)} title="Delete" className="rounded-lg p-2 text-zinc-400 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-500/10"><Trash2 className="h-4 w-4" /></button>
                   </div>
                 </div>
               );
             })}
           </div>
         )}
-      </div>
+      </Card>
     </AdminLayout>
-  );
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="bg-white dark:bg-[#162032] p-6 rounded-2xl border border-zinc-200 dark:border-white/[0.08]">
-      <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">{title}</h3>
-      <div className="space-y-4">{children}</div>
-    </div>
-  );
-}
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div>
-      <label className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 block mb-1.5">{label}</label>
-      {children}
-    </div>
   );
 }

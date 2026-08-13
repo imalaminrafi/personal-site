@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { ContactMessage, loadMessages, saveMessages } from "@/data/messages";
-import { MessageCircle, Mail, Phone, CheckCircle2, Trash2, Download, ChevronDown, ChevronUp } from "lucide-react";
+import { Mail, Phone, CheckCircle2, Trash2, Download, ChevronDown, ChevronUp, Inbox } from "lucide-react";
+import { Btn, Badge, Card, EmptyState, PageHeader } from "@/components/admin/ui";
 
 export default function AdminMessages() {
   const [list, setList] = useState<ContactMessage[]>([]);
@@ -38,77 +39,72 @@ export default function AdminMessages() {
     URL.revokeObjectURL(url);
   };
 
+  const unread = list.filter((m) => !m.replied).length;
+
   return (
     <AdminLayout title="Messages">
-      <div className="flex items-center justify-between mb-6">
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          {list.length} message{list.length !== 1 ? "s" : ""}
-        </p>
-        <button onClick={exportCSV}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-100 dark:bg-white/[0.05] hover:bg-zinc-200 dark:hover:bg-white/[0.1] text-zinc-700 dark:text-zinc-300 text-sm font-bold transition-colors">
-          <Download className="w-4 h-4" /> Export CSV
-        </button>
-      </div>
+      <PageHeader
+        title="Contact Messages"
+        description={unread > 0 ? `${unread} unread message${unread !== 1 ? "s" : ""} waiting for a reply.` : "All messages have been replied to."}
+        actions={
+          <Btn variant="secondary" onClick={exportCSV}><Download className="h-4 w-4" /> Export CSV</Btn>
+        }
+      />
 
-      <div className="space-y-3">
-        {list.map((msg) => {
-          const open = expanded === msg.id;
-          return (
-            <div key={msg.id} className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden">
-              <button onClick={() => setExpanded(open ? null : msg.id)}
-                className="w-full flex items-start gap-4 p-5 text-left">
-                <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 font-bold text-sm shrink-0">
-                  {msg.name.charAt(0)}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-bold text-sm text-zinc-900 dark:text-white">{msg.name}</span>
-                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${msg.replied ? "text-emerald-500 bg-emerald-50 dark:bg-emerald-500/10" : "text-amber-500 bg-amber-50 dark:bg-amber-500/10"}`}>
-                      {msg.replied ? "Replied" : "New"}
-                    </span>
+      {list.length === 0 ? (
+        <Card>
+          <EmptyState icon={Inbox} title="No messages" description="Incoming contact form submissions will appear here." />
+        </Card>
+      ) : (
+        <div className="space-y-3">
+          {list.map((msg) => {
+            const open = expanded === msg.id;
+            return (
+              <Card key={msg.id} className="overflow-hidden">
+                <button onClick={() => setExpanded(open ? null : msg.id)}
+                  className="flex w-full items-start gap-4 p-4 text-left transition-colors hover:bg-zinc-50 dark:hover:bg-white/[0.02]">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-violet-100 text-sm font-bold text-violet-600 dark:bg-violet-900/30 dark:text-violet-400">
+                    {msg.name.charAt(0)}
                   </div>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-300 mt-0.5">{msg.subject}</p>
-                  <p className="text-xs text-zinc-400 mt-1">{new Date(msg.createdAt).toLocaleDateString()}</p>
-                </div>
-                <div className="flex items-center gap-1 shrink-0">
-                  {open ? <ChevronUp className="w-4 h-4 text-zinc-400" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
-                </div>
-              </button>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-sm font-bold text-zinc-900 dark:text-white">{msg.name}</span>
+                      <Badge tone={msg.replied ? "emerald" : "amber"}>{msg.replied ? "Replied" : "New"}</Badge>
+                    </div>
+                    <p className="mt-0.5 text-[13px] text-zinc-600 dark:text-zinc-300">{msg.subject}</p>
+                    <p className="mt-1 text-xs text-zinc-400">{new Date(msg.createdAt).toLocaleDateString()}</p>
+                  </div>
+                  <div className="shrink-0 text-zinc-400">
+                    {open ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  </div>
+                </button>
 
-              {open && (
-                <div className="px-5 pb-5 pt-0 border-t border-zinc-100 dark:border-white/[0.05]">
-                  <div className="mt-4 space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300">
-                      <Mail className="w-4 h-4 text-zinc-400" /> {msg.email}
+                {open && (
+                  <div className="border-t border-zinc-100 px-4 pb-4 pt-3 dark:border-white/[0.05]">
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-2 text-[13px] text-zinc-600 dark:text-zinc-300">
+                        <Mail className="h-4 w-4 text-zinc-400" /> {msg.email}
+                      </div>
+                      <div className="flex items-center gap-2 text-[13px] text-zinc-600 dark:text-zinc-300">
+                        <Phone className="h-4 w-4 text-zinc-400" /> {msg.phone}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300">
-                      <Phone className="w-4 h-4 text-zinc-400" /> {msg.phone}
+                    <p className="mt-3 whitespace-pre-wrap text-sm text-zinc-700 dark:text-zinc-200">{msg.message}</p>
+                    <div className="mt-4 flex flex-wrap items-center gap-2">
+                      <Btn variant={msg.replied ? "secondary" : "primary"} size="sm" onClick={() => toggleReplied(msg.id)}>
+                        <CheckCircle2 className="h-3.5 w-3.5" /> {msg.replied ? "Mark Unread" : "Mark Replied"}
+                      </Btn>
+                      <Btn variant="danger" size="sm" onClick={() => deleteMsg(msg.id)}>
+                        <Trash2 className="h-3.5 w-3.5" /> Delete
+                      </Btn>
                     </div>
                   </div>
-                  <p className="mt-4 text-sm text-zinc-700 dark:text-zinc-200 whitespace-pre-wrap">{msg.message}</p>
-                  <div className="flex items-center gap-2 mt-4">
-                    <button onClick={() => toggleReplied(msg.id)}
-                      className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-colors ${msg.replied ? "bg-zinc-100 dark:bg-[#1E293B] text-zinc-500" : "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-500/20"}`}>
-                      <CheckCircle2 className="w-3.5 h-3.5" /> {msg.replied ? "Mark Unread" : "Mark Replied"}
-                    </button>
-                    <button onClick={() => deleteMsg(msg.id)}
-                      className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors">
-                      <Trash2 className="w-3.5 h-3.5" /> Delete
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-        {list.length === 0 && (
-          <div className="text-center py-20 text-zinc-400 dark:text-zinc-500">
-            <MessageCircle className="w-10 h-10 mx-auto mb-3 opacity-40" />
-            <p className="font-bold">No messages</p>
-            <p className="text-sm mt-1">Incoming messages will appear here.</p>
-          </div>
-        )}
-      </div>
+                )}
+              </Card>
+            );
+          })}
+        </div>
+      )}
     </AdminLayout>
   );
 }

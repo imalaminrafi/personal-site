@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { loadSEOSettings, saveSEOSettings, SEOSettings } from "@/data/settings";
-import { Globe, CheckCircle2, AlertTriangle, TrendingUp, Search, Eye, Smartphone } from "lucide-react";
+import { Globe, CheckCircle2, AlertTriangle, Eye, Smartphone, Search } from "lucide-react";
 import CloudinaryUploader from "@/components/cloudinary/CloudinaryUploader";
+import { Btn, Card, CardHeader, Field, Input, Textarea, Select, Badge, PageHeader } from "@/components/admin/ui";
+import { cn } from "@/lib/utils";
 
 const robotsOptions = [
   "index, follow",
@@ -52,192 +54,153 @@ export default function AdminSEO() {
     return score;
   })();
 
+  const scoreTone = seoScore >= 80 ? "emerald" : seoScore >= 50 ? "amber" : "red";
+  const scoreBar = seoScore >= 80 ? "bg-emerald-500" : seoScore >= 50 ? "bg-amber-500" : "bg-rose-500";
+
+  const checks = [
+    { label: "Meta title set", done: settings.metaTitle.length > 0 },
+    { label: "Meta title length (40-60 chars)", done: settings.metaTitle.length >= 40 && settings.metaTitle.length <= 60 },
+    { label: "Meta description set", done: settings.metaDescription.length > 0 },
+    { label: "Meta description length (120-160 chars)", done: settings.metaDescription.length >= 120 && settings.metaDescription.length <= 160 },
+    { label: "Keywords defined", done: settings.keywords.length > 0 },
+    { label: "OG image set", done: settings.ogImage.length > 0 },
+    { label: "Indexing enabled", done: settings.robots === "index, follow" },
+  ];
+
   return (
     <AdminLayout title="SEO Settings">
-      <div className="max-w-4xl">
+      <PageHeader
+        title="Search Engine Optimisation"
+        description="Control how your website appears in Google and social share previews."
+      />
+
+      <div className="max-w-5xl space-y-6">
         {/* SEO Score */}
-        <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5 mb-6">
-          <div className="flex items-center gap-4 flex-wrap">
-            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white font-black text-lg ${
+        <Card className="p-5">
+          <div className="flex flex-wrap items-center gap-4">
+            <div className={cn(
+              "flex h-16 w-16 items-center justify-center rounded-xl text-lg font-black text-white",
               seoScore >= 80 ? "bg-emerald-500" : seoScore >= 50 ? "bg-amber-500" : "bg-rose-500"
-            }`}>
+            )}>
               {seoScore}
             </div>
-            <div className="flex-1">
-              <p className="text-sm font-bold text-zinc-900 dark:text-white">SEO Score</p>
-              <div className="w-full h-2 bg-zinc-100 dark:bg-[#1E293B] rounded-full mt-2 overflow-hidden">
-                <div className={`h-full rounded-full transition-all ${
-                  seoScore >= 80 ? "bg-emerald-500" : seoScore >= 50 ? "bg-amber-500" : "bg-rose-500"
-                }`} style={{ width: `${seoScore}%` }} />
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2">
+                <p className="text-sm font-bold text-zinc-900 dark:text-white">SEO Score</p>
+                <Badge tone={scoreTone}>{seoScore >= 80 ? "Excellent" : seoScore >= 50 ? "Good" : "Needs work"}</Badge>
               </div>
-              <p className="text-[11px] text-zinc-500 mt-1">
+              <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-white/[0.06]">
+                <div className={cn("h-full rounded-full transition-all", scoreBar)} style={{ width: `${seoScore}%` }} />
+              </div>
+              <p className="mt-1.5 text-[11px] text-zinc-500 dark:text-zinc-400">
                 {seoScore >= 80 ? "Great shape! Your SEO settings are well optimized." :
                  seoScore >= 50 ? "Good progress. Fill in the missing fields to improve." :
                  "Needs attention. Complete the fields below for better rankings."}
               </p>
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left - Settings */}
-          <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
-            <div className="flex items-center gap-2.5 mb-5">
-              <Globe className="w-5 h-5 text-violet-500" />
-              <h2 className="text-sm font-bold text-zinc-900 dark:text-white">Search Engine Optimisation</h2>
-            </div>
-
-            <form onSubmit={handleSave} className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Focus Keyword</label>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {/* Settings */}
+          <Card>
+            <CardHeader icon={Globe} title="Search Engine Optimisation" description="Metadata used by Google and social platforms." />
+            <form onSubmit={handleSave} className="space-y-4 p-5">
+              <Field label="Focus Keyword">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-400" />
-                  <input
+                  <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-zinc-400" />
+                  <Input
                     value={settings.keywords}
                     onChange={(e) => update({ keywords: e.target.value })}
                     placeholder="e.g. web design, development"
-                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
+                    className="pl-9"
                   />
                 </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">
-                  Meta Title <span className="text-zinc-400 font-normal">({settings.metaTitle.length}/60)</span>
-                </label>
-                <input
-                  value={settings.metaTitle}
-                  onChange={(e) => update({ metaTitle: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">
-                  Meta Description <span className="text-zinc-400 font-normal">({settings.metaDescription.length}/160)</span>
-                </label>
-                <textarea
-                  value={settings.metaDescription}
-                  onChange={(e) => update({ metaDescription: e.target.value })}
-                  rows={3}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 resize-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">OG Image</label>
+              </Field>
+              <Field label={`Meta Title (${settings.metaTitle.length}/60)`}>
+                <Input value={settings.metaTitle} onChange={(e) => update({ metaTitle: e.target.value })} />
+              </Field>
+              <Field label={`Meta Description (${settings.metaDescription.length}/160)`}>
+                <Textarea rows={3} value={settings.metaDescription} onChange={(e) => update({ metaDescription: e.target.value })} />
+              </Field>
+              <Field label="OG Image">
                 <CloudinaryUploader value={settings.ogImage} onChange={(url) => update({ ogImage: url })} label="OG Image" />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Robots</label>
-                <select
-                  value={settings.robots}
-                  onChange={(e) => update({ robots: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 appearance-none"
-                >
+              </Field>
+              <Field label="Robots">
+                <Select value={settings.robots} onChange={(e) => update({ robots: e.target.value })}>
                   {robotsOptions.map((opt) => (
                     <option key={opt} value={opt}>{opt}</option>
                   ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300 mb-1">Sitemap URL</label>
-                <input
-                  value={settings.sitemap}
-                  onChange={(e) => update({ sitemap: e.target.value })}
-                  placeholder="/sitemap.xml"
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-white/[0.08] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40"
-                />
-              </div>
-
-              <div className="flex items-center gap-4 pt-2">
-                <button
-                  type="submit"
-                  disabled={saving}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-sm font-bold transition-colors disabled:opacity-50"
-                >
-                  {saving ? "Saving..." : <><CheckCircle2 className="w-4 h-4" /> Save Changes</>}
-                </button>
-                {saved && (
-                  <span className="text-sm text-green-600 dark:text-green-400 font-medium">Saved!</span>
-                )}
+                </Select>
+              </Field>
+              <Field label="Sitemap URL">
+                <Input value={settings.sitemap} onChange={(e) => update({ sitemap: e.target.value })} placeholder="/sitemap.xml" />
+              </Field>
+              <div className="flex items-center gap-3 pt-1">
+                <Btn type="submit" disabled={saving}>{saving ? "Saving..." : "Save Changes"}</Btn>
+                {saved && <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><CheckCircle2 className="h-3.5 w-3.5" /> Saved!</span>}
               </div>
             </form>
-          </div>
+          </Card>
 
-          {/* Right - Previews */}
+          {/* Previews */}
           <div className="space-y-6">
-            {/* Google Preview */}
-            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
-              <div className="flex items-center gap-2 mb-4">
-                <Eye className="w-4 h-4 text-violet-500" />
-                <h3 className="text-xs font-bold text-zinc-900 dark:text-white">Google Preview</h3>
-              </div>
-              <div className="bg-white dark:bg-[#162032] border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 max-w-sm">
-                <p className="text-xs text-green-700 dark:text-green-400 truncate">https://alaminrafi.com</p>
-                <p className="text-sm text-blue-800 dark:text-blue-300 font-medium leading-tight truncate hover:underline cursor-pointer">
-                  {settings.metaTitle || "Alamin Rafi — Website & Digital Services"}
-                </p>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 mt-0.5">
-                  {settings.metaDescription || "Modern, affordable websites for businesses. Web design, development, WordPress, UI/UX — all in one place."}
-                </p>
-              </div>
-            </div>
-
-            {/* Social Preview */}
-            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
-              <div className="flex items-center gap-2 mb-4">
-                <Smartphone className="w-4 h-4 text-violet-500" />
-                <h3 className="text-xs font-bold text-zinc-900 dark:text-white">Social Share Preview</h3>
-              </div>
-              <div className="bg-white dark:bg-[#162032] border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden max-w-sm">
-                <div className="h-32 bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center">
-                  {settings.ogImage ? (
-                    <img src={settings.ogImage} alt="" className="w-full h-full object-cover" />
-                  ) : (
-                    <Globe className="w-8 h-8 text-white/60" />
-                  )}
-                </div>
-                <div className="p-3">
-                  <p className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">alaminrafi.com</p>
-                  <p className="text-xs font-bold text-zinc-800 dark:text-zinc-200 leading-snug truncate">
+            <Card>
+              <CardHeader icon={Eye} title="Google Preview" description="How this page appears in search results." />
+              <div className="p-5">
+                <div className="max-w-sm rounded-xl border border-zinc-200 p-4 dark:border-white/[0.08]">
+                  <p className="truncate text-xs text-emerald-700 dark:text-emerald-400">https://alaminrafi.com</p>
+                  <p className="mt-0.5 truncate text-sm font-medium leading-tight text-blue-800 dark:text-blue-300">
                     {settings.metaTitle || "Alamin Rafi — Website & Digital Services"}
                   </p>
-                  <p className="text-[10px] text-zinc-600 dark:text-zinc-400 line-clamp-2 mt-0.5">
-                    {settings.metaDescription || "Modern, affordable websites for businesses."}
+                  <p className="mt-0.5 line-clamp-2 text-xs text-zinc-600 dark:text-zinc-400">
+                    {settings.metaDescription || "Modern, affordable websites for businesses. Web design, development, WordPress, UI/UX — all in one place."}
                   </p>
                 </div>
               </div>
-            </div>
+            </Card>
 
-            {/* Checklist */}
-            <div className="bg-white dark:bg-[#162032] rounded-2xl border border-zinc-200 dark:border-white/[0.06] p-5">
-              <h3 className="text-xs font-bold text-zinc-900 dark:text-white mb-3">Optimization Checklist</h3>
-              <div className="space-y-2">
-                {[
-                  { label: "Meta title set", done: settings.metaTitle.length > 0 },
-                  { label: "Meta title length (40-60 chars)", done: settings.metaTitle.length >= 40 && settings.metaTitle.length <= 60 },
-                  { label: "Meta description set", done: settings.metaDescription.length > 0 },
-                  { label: "Meta description length (120-160 chars)", done: settings.metaDescription.length >= 120 && settings.metaDescription.length <= 160 },
-                  { label: "Keywords defined", done: settings.keywords.length > 0 },
-                  { label: "OG image set", done: settings.ogImage.length > 0 },
-                  { label: "Indexing enabled", done: settings.robots === "index, follow" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    {item.done ? (
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+            <Card>
+              <CardHeader icon={Smartphone} title="Social Share Preview" description="Shown when your site is shared on social media." />
+              <div className="p-5">
+                <div className="max-w-sm overflow-hidden rounded-xl border border-zinc-200 dark:border-white/[0.08]">
+                  <div className="flex h-32 items-center justify-center bg-gradient-to-br from-violet-600 to-cyan-500">
+                    {settings.ogImage ? (
+                      <img src={settings.ogImage} alt="" className="h-full w-full object-cover" />
                     ) : (
-                      <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                      <Globe className="h-8 w-8 text-white/60" />
                     )}
-                    <span className={`text-xs ${item.done ? "text-zinc-600 dark:text-zinc-400" : "text-zinc-900 dark:text-white font-medium"}`}>
+                  </div>
+                  <div className="p-3">
+                    <p className="text-[10px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400">alaminrafi.com</p>
+                    <p className="mt-0.5 truncate text-xs font-bold text-zinc-800 dark:text-zinc-200">
+                      {settings.metaTitle || "Alamin Rafi — Website & Digital Services"}
+                    </p>
+                    <p className="mt-0.5 line-clamp-2 text-[10px] text-zinc-600 dark:text-zinc-400">
+                      {settings.metaDescription || "Modern, affordable websites for businesses."}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            <Card>
+              <CardHeader icon={CheckCircle2} title="Optimization Checklist" />
+              <div className="space-y-2 p-5">
+                {checks.map((item) => (
+                  <div key={item.label} className="flex items-center gap-2">
+                    {item.done ? (
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                    ) : (
+                      <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-amber-500" />
+                    )}
+                    <span className={cn("text-xs", item.done ? "text-zinc-600 dark:text-zinc-400" : "font-medium text-zinc-900 dark:text-white")}>
                       {item.label}
                     </span>
                   </div>
                 ))}
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </div>
